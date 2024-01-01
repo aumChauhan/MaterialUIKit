@@ -1,3 +1,6 @@
+![MUILogo70x70](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/cd2d537e-436b-4ca2-b5e6-0893894192e2)
+
+
 # MaterialUIKit
 
 Material Design-inspired UI components for SwiftUI.
@@ -65,7 +68,7 @@ struct YourApp: App {
 
 ## Documentation
 
-Detailed documentation for each component can be found [here](DOCUMENTATION). Make sure to check it out for comprehensive usage examples and customization options.
+Detailed documentation for each component can be found [here](https://github.com/aumChauhan/MaterialUIKit/blob/main/DOCUMENTATION.md). Make sure to check it out for comprehensive usage examples and customization options.
 
 ## License
 

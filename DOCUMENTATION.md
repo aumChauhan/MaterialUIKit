@@ -1,3 +1,6 @@
+![MUILogo70x70](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/cd2d537e-436b-4ca2-b5e6-0893894192e2)
+
+
 # MaterialUIKit Documentation
 
 ## Form Controls

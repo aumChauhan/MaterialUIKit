@@ -1,6 +1,6 @@
 //
 // MUIFloatingButton.swift
-// MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit
+// MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
 // Created On: 30/12/23
