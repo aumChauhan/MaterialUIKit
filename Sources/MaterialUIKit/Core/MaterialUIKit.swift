@@ -26,7 +26,7 @@ final public class MaterialUI {
     /// ```
     /// # Available Themes:
     /// - Blue, Green, Pink, Purple.
-    public static var tint = MaterialUIColorThemes.blue
+    public static var tint: MaterialUIColorThemeProtocol = MaterialUIColorThemes.blue
     
     // MARK: - Initializers
     
