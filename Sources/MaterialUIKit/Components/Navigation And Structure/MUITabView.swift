@@ -13,8 +13,18 @@ import SwiftUI
 /// A model representing an item in the MaterialUI-style tab bar.
 @available(iOS 17.0, *)
 public struct MUITabBarItem: Hashable {
+    
+    // MARK: - Properties
+    
     public let systemImage: String
     public let title: String
+    
+    // MARK: - Initializers
+    
+    public init(systemImage: String, title: String) {
+        self.systemImage = systemImage
+        self.title = title
+    }
 }
 
 // MARK: - MUITabBarView
