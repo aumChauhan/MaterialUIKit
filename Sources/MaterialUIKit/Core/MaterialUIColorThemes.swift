@@ -28,7 +28,7 @@ final public class MaterialUIColorThemes {
     public static let purple = MaterialUIPurpleTheme()
 }
 
-
+#warning("TO REMOVE THIS COLOR EXTENSION")
 /// Extension to create SwiftUI `Color` from hexadecimal color values.
 @available(iOS 17.0, *)
 extension Color {

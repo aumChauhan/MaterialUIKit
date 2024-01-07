@@ -13,48 +13,48 @@ import SwiftUI
 @available(iOS 17.0, *)
 final public class MaterialUIPurpleTheme: MaterialUIColorThemeProtocol {
     
-    /// Returns the name of the Material UI Purple color theme.
+    /// Returns the themeName
     public func themeName() -> String {
         return "MaterialUIPurpleTheme"
     }
     
     /// Returns the accent color for the given color scheme.
-    public func accent(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "725188") : Color(hex: "DABBF5")
+    public func accent() -> Color {
+        Color(lightHex: "725188", darkHex: "DABBF5")
     }
     
     /// Returns the icon color for the given color scheme.
-    public func iconColor(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "F2F0F5") : Color(hex: "262429")
+    public func iconColor() -> Color {
+        Color(lightHex: "F2F0F5", darkHex: "262429")
     }
     
     /// Returns the background color for the given color scheme.
-    public func background(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "FFFFFF") : Color(hex: "1D1B1E")
+    public func background() -> Color {
+        Color(lightHex: "FFFFFF", darkHex: "1D1B1E")
     }
     
     /// Returns the secondary background color for the given color scheme.
-    public func secondaryBackground(_ colorScheme: ColorScheme) -> Color {
-       colorScheme == .light ? Color(hex: "F7E8F2") : Color(hex: "2B282F")
+    public func secondaryBackground() -> Color {
+        Color(lightHex: "F7E8F2", darkHex: "2B282F")
     }
     
     /// Returns the tertiary background color for the given color scheme.
-    public func tertiaryBackground(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "F0DDF5") : Color(hex: "4F4256")
+    public func tertiaryBackground() -> Color {
+        Color(lightHex: "F0DDF5", darkHex: "4F4256")
     }
     
     /// Returns the accent title color for the given color scheme.
-    public func accentTitle(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "48434B") : Color(hex: "E3D7EA")
+    public func accentTitle() -> Color {
+        Color(lightHex: "48434B", darkHex: "E3D7EA")
     }
     
     /// Returns the primary title color for the given color scheme.
-    public func primaryTitle(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "727574") : Color(hex: "D1CBD1")
+    public func primaryTitle() -> Color {
+        Color(lightHex: "727574", darkHex: "D1CBD1")
     }
     
     /// Returns the secondary title color for the given color scheme.
-    public func secondaryTitle(_ colorScheme: ColorScheme) -> Color {
-        colorScheme == .light ? Color(hex: "4F4E52") : Color(hex: "8E8C8D")
+    public func secondaryTitle() -> Color {
+        Color(lightHex: "4F4E52", darkHex: "8E8C8D")
     }
 }
