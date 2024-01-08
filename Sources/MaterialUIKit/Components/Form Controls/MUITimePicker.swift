@@ -52,7 +52,6 @@ private struct MUITimePickerView: View {
     // MARK: - Properties
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
-    @Environment(\.colorScheme) private var colorScheme
     
     @Binding public var isPresented: Bool
     @Binding public var selection: Date
@@ -81,7 +80,7 @@ private struct MUITimePickerView: View {
                 }
             }
             .padding(15)
-            .background(MaterialUI.tint.iconColor(colorScheme))
+            .background(MaterialUI.tint.iconColor())
             .cornerRadius(25)
             .padding(15)
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
@@ -113,7 +112,7 @@ extension MUITimePickerView {
                 }
             } label: {
                 Text("OK")
-                    .textButtonStyle(10, colorScheme)
+                    .textButtonStyle(10)
             }
         }
     }
@@ -125,7 +124,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title)
                 .fontWeight(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -134,7 +133,7 @@ extension MUITimePickerView {
             // SwiftUI's default timepicker
             DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)
-                .tint(MaterialUI.tint.accent(colorScheme))
+                .tint(MaterialUI.tint.accent())
             
             MUIDivider()
             
@@ -149,7 +148,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title)
                 .fontWeight(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -159,7 +158,7 @@ extension MUITimePickerView {
                 // SwiftUI's default timepicker
                 DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .tint(MaterialUI.tint.accent(colorScheme))
+                    .tint(MaterialUI.tint.accent())
             }
             
             MUIDivider()

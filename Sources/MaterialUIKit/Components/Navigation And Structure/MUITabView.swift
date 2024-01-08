@@ -82,8 +82,7 @@ private struct MUITabBarContainerView: View {
     @State public var localSelection: MUITabBarItem
     
     @Namespace private var namespace
-    @Environment(\.colorScheme) private var colorScheme
-
+    
     // MARK: - View Body
     
     var body: some View {
@@ -112,14 +111,14 @@ extension MUITabBarContainerView {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundColor(localSelection == tab ? MaterialUI.tint.iconColor(colorScheme) : MaterialUI.tint.primaryTitle(colorScheme))
+                        .foregroundColor(localSelection == tab ? MaterialUI.tint.iconColor() : MaterialUI.tint.primaryTitle())
                     
                     // Selected tab background
                         .background(
                             ZStack {
                                 if localSelection == tab {
                                     RoundedRectangle(cornerRadius: 100)
-                                        .fill(MaterialUI.tint.accent(colorScheme))
+                                        .fill(MaterialUI.tint.accent())
                                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                                 }
                             }
@@ -129,7 +128,7 @@ extension MUITabBarContainerView {
                     Text(tab.title)
                         .font(.footnote)
                         .fontWeight(localSelection == tab ? .bold : .medium)
-                        .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.primaryTitle())
                 }
                 .frame(maxWidth: .infinity)
                 // Switch tab action
@@ -141,7 +140,7 @@ extension MUITabBarContainerView {
         .padding(.top, 10)
         // Tab bar background
         .background(
-            MaterialUI.tint.secondaryBackground(colorScheme)
+            MaterialUI.tint.secondaryBackground()
                 .ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
@@ -167,7 +166,6 @@ private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
     
     public let tab: MUITabBarItem
     @Binding public var selection: MUITabBarItem
-    @Environment(\.colorScheme) private var colorScheme
     
     /// Applies the view modifier to handle the appearance of tab bar items.
     /// - Parameters:
@@ -176,7 +174,7 @@ private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if selection == tab {
             ZStack {
-                MaterialUI.tint.background(colorScheme)
+                MaterialUI.tint.background()
                 content
             }
             .opacity(1)

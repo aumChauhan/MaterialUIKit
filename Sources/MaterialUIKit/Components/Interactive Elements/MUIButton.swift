@@ -72,7 +72,6 @@ public struct MUIButton: View {
     public let style: MUIButtonStyle
     public let action: () -> Void
     
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializers
     
@@ -139,7 +138,7 @@ extension MUIButton {
     private func elevatedButtonStyle() -> some View {
         Button(action: action) {
             Text(title)
-                .elevatedButtonStyle(colorScheme)
+                .elevatedButtonStyle()
                 .cornerRadius(100)
                 .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
                 .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -151,7 +150,7 @@ extension MUIButton {
     private func filledButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .filledButtonStyle(colorScheme)
+                .filledButtonStyle()
                 .cornerRadius(100)
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -161,7 +160,7 @@ extension MUIButton {
     private func tonalButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .tonalButtonStyle(colorScheme)
+                .tonalButtonStyle()
                 .cornerRadius(100)
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -171,7 +170,7 @@ extension MUIButton {
     private func outlineButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .outlineButtonStyle(colorScheme)
+                .outlineButtonStyle()
                 
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -181,7 +180,7 @@ extension MUIButton {
     private func textButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .foregroundColor(MaterialUI.tint.accent(colorScheme))
+                .foregroundColor(MaterialUI.tint.accent())
                 .cornerRadius(100)
                 .padding()
         }
@@ -197,7 +196,7 @@ extension MUIButton {
     private func elevatedInfinityButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .elevatedInfinityButtonStyle(colorScheme)
+                .elevatedInfinityButtonStyle()
                 .cornerRadius(100)
                 .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
                 .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -209,7 +208,7 @@ extension MUIButton {
     private func filledInfinityButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .filledInfinityButtonStyle(colorScheme)
+                .filledInfinityButtonStyle()
                 .cornerRadius(100)
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -219,7 +218,7 @@ extension MUIButton {
     private func tonalInfinityButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .tonalInfinityButtonStyle(colorScheme)
+                .tonalInfinityButtonStyle()
                 .cornerRadius(100)
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -229,7 +228,7 @@ extension MUIButton {
     private func outlineInfinityButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .outlineInfinityButtonStyle(colorScheme)
+                .outlineInfinityButtonStyle()
                 .cornerRadius(100)
         }
         .buttonStyle(MUIButtonTapStyle())
@@ -243,121 +242,121 @@ extension MUIButton {
 extension View {
     
     /// `MaterialUI :` A button with an elevated background and rounded corners.
-    public func elevatedButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func elevatedButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUI.tint.tertiaryBackground(colorScheme))
+            .background(MaterialUI.tint.tertiaryBackground())
             .cornerRadius(15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
     }
     
     /// `MaterialUI :` A button with a filled background and rounded corners.
-    public func filledButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func filledButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.iconColor(colorScheme))
+            .foregroundColor(MaterialUI.tint.iconColor())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUI.tint.accent(colorScheme))
+            .background(MaterialUI.tint.accent())
             .cornerRadius(15)
     }
     
     /// `MaterialUI :` A button with a tonal background and rounded corners.
-    public func tonalButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func tonalButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUI.tint.secondaryBackground(colorScheme))
+            .background(MaterialUI.tint.secondaryBackground())
             .cornerRadius(15)
     }
     
     /// `MaterialUI :` A button with a outline background and rounded corners.
-    public func outlineButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func outlineButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .overlay(
                 RoundedRectangle(cornerRadius: 100)
-                    .stroke(MaterialUI.tint.primaryTitle(colorScheme), lineWidth: 1)
+                    .stroke(MaterialUI.tint.primaryTitle(), lineWidth: 1)
             )
     }
     
     /// `MaterialUI :`  A text-only button with no background.
-    public func textButtonStyle(_ padding: CGFloat? = nil, _ colorScheme: ColorScheme) -> some View {
+    public func textButtonStyle(_ padding: CGFloat? = nil) -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accent(colorScheme))
+            .foregroundColor(MaterialUI.tint.accent())
             .padding(padding ?? 10)
     }
     
     // MARK: - Infinity Width...
     
     /// `MaterialUI:` A button with elevated background and rounded corners, occupying full available width.
-    public func elevatedInfinityButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func elevatedInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUI.tint.tertiaryBackground(colorScheme))
+            .background(MaterialUI.tint.tertiaryBackground())
             .cornerRadius(15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
     }
     
     /// `MaterialUI:` A button with a filled background and rounded corners, occupying full available width.
-    public func filledInfinityButtonStyle( _ colorScheme: ColorScheme) -> some View {
+    public func filledInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.iconColor(colorScheme))
+            .foregroundColor(MaterialUI.tint.iconColor())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUI.tint.accent(colorScheme))
+            .background(MaterialUI.tint.accent())
             .cornerRadius(15)
     }
     
     /// `MaterialUI:` A button with a tonal background and rounded corners, occupying full available width.
-    public func tonalInfinityButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func tonalInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUI.tint.secondaryBackground(colorScheme))
+            .background(MaterialUI.tint.secondaryBackground())
             .cornerRadius(15)
     }
     
     /// `MaterialUI:` A button with an outlined border and rounded corners, occupying full available width.
-    public func outlineInfinityButtonStyle(_ colorScheme: ColorScheme) -> some View {
+    public func outlineInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
             .fontWeight(.medium)
-            .foregroundColor(MaterialUI.tint.accentTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .overlay(
                 RoundedRectangle(cornerRadius: 99)
-                    .stroke(MaterialUI.tint.primaryTitle(colorScheme), lineWidth: 1)
+                    .stroke(MaterialUI.tint.primaryTitle(), lineWidth: 1)
                     .frame(maxWidth: .infinity)
             )
     }

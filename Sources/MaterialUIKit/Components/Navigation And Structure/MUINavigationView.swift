@@ -29,7 +29,6 @@ public struct MUINavigationView<Content>: View where Content: View {
     // MARK: - Properties
     
     public let content: Content
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializer
     
@@ -44,7 +43,7 @@ public struct MUINavigationView<Content>: View where Content: View {
     public var body: some View {
         NavigationStack {
             ZStack {
-                MaterialUI.tint.background(colorScheme).ignoresSafeArea(.all)
+                MaterialUI.tint.background().ignoresSafeArea(.all)
                 
                 // Content container
                 MUINavigationBarContainerView {
@@ -100,7 +99,7 @@ extension MUINavigationHeader {
                         Image(systemName: "arrow.left")
                             .font(.title3)
                     }
-                    .tint(MaterialUI.tint.primaryTitle(colorScheme))
+                    .tint(MaterialUI.tint.primaryTitle())
                 }
                 
                 // Toolbar item
@@ -112,7 +111,7 @@ extension MUINavigationHeader {
             Text(title)
                 .font(.title)
         }
-        .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+        .foregroundColor(MaterialUI.tint.primaryTitle())
         .padding(15)
     }
     
@@ -138,7 +137,7 @@ extension MUINavigationHeader {
             // Toolbar Item
             toolbar.view
         }
-        .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+        .foregroundColor(MaterialUI.tint.primaryTitle())
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }

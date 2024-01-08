@@ -21,8 +21,6 @@ public struct MUIFloatingButton: View {
     public let title: String
     public let action: () -> Void
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Initializers
     
     /// Creates a floating button with a system symbol, title, and an action.
@@ -70,10 +68,10 @@ public struct MUIFloatingButton: View {
                 // Button title
                 Text(title)
             }
-            .foregroundColor(MaterialUI.tint.accent(colorScheme))
+            .foregroundColor(MaterialUI.tint.accent())
             .frame(minWidth: 30)
             .frame(height: 35)
-            .elevatedButtonStyle(colorScheme)
+            .elevatedButtonStyle()
             .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
             .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 3)
         }

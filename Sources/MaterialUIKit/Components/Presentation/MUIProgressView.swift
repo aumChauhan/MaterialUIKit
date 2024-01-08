@@ -40,8 +40,6 @@ public struct MUIProgressView: View {
     @State private var rotationAngle: Double = 0
     private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Initializer
     
     /// Creates a MaterialUI style progress view with default line width.
@@ -61,7 +59,7 @@ public struct MUIProgressView: View {
     
     public var body: some View {
         MUIOutlineCircleShape()
-            .stroke(MaterialUI.tint.accent(colorScheme), lineWidth: lineWidth)
+            .stroke(MaterialUI.tint.accent(), lineWidth: lineWidth)
             .frame(width: 35, height: 35)
             .rotationEffect(Angle(degrees: rotationAngle))
             .onReceive(timer) { _ in

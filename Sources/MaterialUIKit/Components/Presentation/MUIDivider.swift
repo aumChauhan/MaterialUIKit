@@ -25,7 +25,6 @@ public struct MUIDivider: View {
     // MARK: - Properties
     
     public let orientation: MUIDividerOrientation
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializer
     
@@ -65,7 +64,7 @@ extension MUIDivider {
                 .frame(height: 1)
                 .frame(maxWidth: .infinity)
                 .padding(5)
-                .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme).opacity(0.5))
+                .foregroundColor(MaterialUI.tint.secondaryTitle().opacity(0.5))
         }
     }
     
@@ -76,7 +75,7 @@ extension MUIDivider {
                 .frame(width: 1)
                 .frame(maxHeight: .infinity)
                 .padding(5)
-                .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme).opacity(0.5))
+                .foregroundColor(MaterialUI.tint.secondaryTitle().opacity(0.5))
         }
     }
 }

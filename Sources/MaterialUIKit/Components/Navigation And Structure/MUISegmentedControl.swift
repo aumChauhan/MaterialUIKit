@@ -22,7 +22,6 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
     
     @Binding public var selectedItem: Data.Element
     @Namespace private var namespace
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializer
     
@@ -48,14 +47,14 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                     // Selected tab background
                     if item == selectedItem {
                         RoundedRectangle(cornerRadius: 0)
-                            .foregroundColor(MaterialUI.tint.tertiaryBackground(colorScheme))
+                            .foregroundColor(MaterialUI.tint.tertiaryBackground())
                             .matchedGeometryEffect(id: "selectedTabBg", in: namespace)
                     }
                     
                     // Content
                     content(item)
                         .tag(item)
-                        .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.primaryTitle())
                         .fontWeight(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
@@ -71,19 +70,19 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                 // Vertical divider
                 if !isLastElement(data: data, item: item) {
                     RoundedRectangle(cornerRadius: 0.5)
-                        .foregroundStyle(MaterialUI.tint.accentTitle(colorScheme))
+                        .foregroundStyle(MaterialUI.tint.accentTitle())
                         .frame(width: 0.8)
                 }
             }
         }
         // Outline styling.
         .frame(maxWidth: .infinity, maxHeight: 48)
-        .background(MaterialUI.tint.background(colorScheme))
+        .background(MaterialUI.tint.background())
         .cornerRadius(99)
         // Outline width
         .padding(1)
         // Outline color
-        .background(MaterialUI.tint.accentTitle(colorScheme))
+        .background(MaterialUI.tint.accentTitle())
         .cornerRadius(99)
     }
     

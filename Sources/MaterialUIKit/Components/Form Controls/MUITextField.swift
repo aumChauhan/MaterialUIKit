@@ -23,7 +23,6 @@ public struct MUITextField: View {
     
     @FocusState private var isFocused: Bool
     @State private var textFieldIsFocused: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializers
     
@@ -74,7 +73,7 @@ public struct MUITextField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(textFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme))
+                    .foregroundColor(textFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
                     .padding(.leading, 15)
             }
             
@@ -91,7 +90,7 @@ public struct MUITextField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.secondaryTitle())
                         .padding(.trailing, 14)
                 }
             }
@@ -99,8 +98,8 @@ public struct MUITextField: View {
         .background(
             // Creates outline around textfield on focus state
             RoundedRectangle(cornerRadius: 20)
-                .stroke(textFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme), lineWidth: 2)
-                .background(background ?? MaterialUI.tint.secondaryBackground(colorScheme).opacity(0.5))
+                .stroke(textFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle(), lineWidth: 2)
+                .background(background ?? MaterialUI.tint.secondaryBackground().opacity(0.5))
                 .cornerRadius(20)
         )
         // Placeholder text that shifts upward on focus state.
@@ -110,7 +109,7 @@ public struct MUITextField: View {
             } else {
                 Text(titlekey)
                     .font(textFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(textFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme))
+                    .foregroundColor(textFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
                     .offset(x: textFieldIsFocused ? (systemSymbol != nil ? -45 : 0) : 0)
                     .offset(y: textFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

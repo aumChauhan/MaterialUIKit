@@ -14,9 +14,6 @@ import SwiftUI
 @available(iOS 17.0, *)
 private struct MUISwitchToggleStyle: ToggleStyle {
     
-    // MARK: - Properties
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Body
     
     public func makeBody(configuration: Configuration) -> some View {
@@ -24,17 +21,17 @@ private struct MUISwitchToggleStyle: ToggleStyle {
             configuration.label
             Spacer()
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(configuration.isOn ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.background(colorScheme))
+                .foregroundColor(configuration.isOn ? MaterialUI.tint.accent() : MaterialUI.tint.background())
                 .frame(width: 45, height: 25)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) { // Switch key
                     Circle()
                         .frame(width: 20)
-                        .foregroundColor(configuration.isOn ? MaterialUI.tint.iconColor(colorScheme) : MaterialUI.tint.primaryTitle(colorScheme))
+                        .foregroundColor(configuration.isOn ? MaterialUI.tint.iconColor() : MaterialUI.tint.primaryTitle())
                         .padding(.horizontal, 3)
                 }
                 .overlay( // Switch outline
                     RoundedRectangle(cornerRadius: 99)
-                        .stroke(MaterialUI.tint.primaryTitle(colorScheme), lineWidth: 1.5)
+                        .stroke(MaterialUI.tint.primaryTitle(), lineWidth: 1.5)
                         .frame(maxWidth: .infinity)
                 )
                 .onTapGesture { // Toggle Action
@@ -56,7 +53,6 @@ public struct MUISwitch: View {
     
     public let title: String
     @Binding public var isOn: Bool
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializers
     
@@ -74,7 +70,7 @@ public struct MUISwitch: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.primaryTitle())
             .labelsHidden()
             .toggleStyle(MUISwitchToggleStyle())
     }

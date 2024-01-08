@@ -51,7 +51,6 @@ public struct MUICardView<Content>: View where Content: View {
     public let content: Content
     
     @State private var descriptive: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
     @Namespace private var namespace
     
     // MARK: - Initializers
@@ -117,14 +116,14 @@ extension MUICardView {
         VStack(alignment: .leading, spacing: 5) {
             // Card heading
             Text(heading)
-                .foregroundStyle(MaterialUI.tint.primaryTitle(colorScheme))
+                .foregroundStyle(MaterialUI.tint.primaryTitle())
                 .font(.headline)
                 .fontWeight(.semibold)
                 .lineLimit(1)
             
             // Card subheading
             Text(subheading)
-                .foregroundStyle(MaterialUI.tint.secondaryTitle(colorScheme))
+                .foregroundStyle(MaterialUI.tint.secondaryTitle())
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .lineLimit(1)
@@ -153,7 +152,7 @@ extension MUICardView {
                 .frame(width: 70, height: 70)
                 .scaledToFit()
         }
-        .cardStyleModifier(cardStyle: cardStyle, colorScheme: colorScheme)
+        .cardStyleModifier(cardStyle: cardStyle)
         .onTapGesture { // Toggle card style to stack
             withAnimation(.bouncy) {
                 descriptive.toggle()
@@ -179,7 +178,7 @@ extension MUICardView {
                     } label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.title3)
-                            .foregroundColor(MaterialUI.tint.accent(colorScheme).opacity(0.7))
+                            .foregroundColor(MaterialUI.tint.accent().opacity(0.7))
                             .padding(5)
                             .matchedGeometryEffect(id: "toggleKey", in: namespace)
                     }
@@ -198,11 +197,11 @@ extension MUICardView {
             content
                 .font(.callout)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme))
+                .foregroundColor(MaterialUI.tint.secondaryTitle())
                 .matchedGeometryEffect(id: "cardDescription", in: namespace)
                 .frame(maxWidth: .infinity)
         }
-        .cardStyleModifier(cardStyle: cardStyle, colorScheme: colorScheme)
+        .cardStyleModifier(cardStyle: cardStyle)
     }
 }
 
@@ -217,13 +216,13 @@ extension View {
     ///
     /// - Parameter cardStyle: The card style to apply.
     /// - Returns: A view modified with the specified card style.
-    public func cardStyleModifier(cardStyle: MUICardStyle, colorScheme: ColorScheme) -> some View {
+    public func cardStyleModifier(cardStyle: MUICardStyle) -> some View {
         VStack {
             switch cardStyle {
             case .elevated:
-                self.elevatedInfinityButtonStyle(colorScheme)
+                self.elevatedInfinityButtonStyle()
             case .tonal:
-                self.tonalInfinityButtonStyle(colorScheme)
+                self.tonalInfinityButtonStyle()
             }
         }
     }

@@ -88,7 +88,6 @@ private struct MUIAlertView: View {
     
     @Binding public var isPresented: Bool
     @State private var animationFlag: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
 
     public let title: String
     public let message: String?
@@ -111,7 +110,7 @@ private struct MUIAlertView: View {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.semibold)
-                    .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                    .foregroundColor(MaterialUI.tint.primaryTitle())
                     .lineLimit(1)
                 
                 // Alert message
@@ -119,7 +118,7 @@ private struct MUIAlertView: View {
                     Text(message)
                         .font(.subheadline)
                         .fontWeight(.medium)
-                        .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.secondaryTitle())
                         .multilineTextAlignment(.leading)
                 }
                 
@@ -135,7 +134,7 @@ private struct MUIAlertView: View {
                             }
                         } label: {
                             Text(secondaryButtonTitle)
-                                .textButtonStyle(10, colorScheme)
+                                .textButtonStyle(10)
                         }
                     }
                     
@@ -151,14 +150,14 @@ private struct MUIAlertView: View {
                         }
                     } label: {
                         Text(primaryButtonTitle)
-                            .filledButtonStyle(colorScheme)
+                            .filledButtonStyle()
                             .cornerRadius(100)
                     }
                 }
             }
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
-            .background(MaterialUI.tint.iconColor(colorScheme))
+            .background(MaterialUI.tint.iconColor())
             .cornerRadius(25)
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
         }

@@ -23,7 +23,6 @@ public struct MUISecureField: View {
     
     @FocusState private var isFocused: Bool
     @State private var secureFieldIsFocused: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializers
     
@@ -74,7 +73,7 @@ public struct MUISecureField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme))
+                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
                     .padding(.leading, 15)
             }
             
@@ -91,7 +90,7 @@ public struct MUISecureField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(MaterialUI.tint.secondaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.secondaryTitle())
                         .padding(.trailing, 14)
                 }
             }
@@ -99,8 +98,8 @@ public struct MUISecureField: View {
         .background(
             // Creates outline around secureField on focus state
             RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme), lineWidth: 2)
-                .background(background ?? MaterialUI.tint.secondaryBackground(colorScheme).opacity(0.5))
+                .stroke(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle(), lineWidth: 2)
+                .background(background ?? MaterialUI.tint.secondaryBackground().opacity(0.5))
                 .cornerRadius(20)
         )
         
@@ -111,7 +110,7 @@ public struct MUISecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme))
+                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle(colorScheme))
                     .offset(x: secureFieldIsFocused ? (systemSymbol != nil ? -45 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

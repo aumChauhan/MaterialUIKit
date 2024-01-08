@@ -1,6 +1,5 @@
 ![MUILogo70x70](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/cd2d537e-436b-4ca2-b5e6-0893894192e2)
 
-
 # MaterialUIKit Documentation
 
 ## Form Controls
@@ -15,10 +14,6 @@ The `MUIDatePicker` SwiftUI component provides a Material Design-style date pick
 ## Usage
 
 To use the `MUIDatePicker`, you can apply the `mUIDatePicker` view modifier to any SwiftUI view. This will present a Material Design-style date picker over the existing content.
-
-```swift
-MUIDatePicker(isPresented: $isDatePickerPresented, selection: $selectedDate)
-```
 
 ## Parameters
 
@@ -37,8 +32,8 @@ struct ContentView: View {
             Button("Show Date Picker") {
                 isDatePickerPresented.toggle()
             }
-            .mUIDatePicker(isPresented: $isDatePickerPresented, selection: $selectedDate)
         }
+        .mUIDatePicker(isPresented: $isDatePickerPresented, selection: $selectedDate)
     }
 }
 ```
@@ -46,8 +41,6 @@ struct ContentView: View {
 ## Date Formatting
 
 The date picker includes a formatted representation of the selected date. The `formattedMUIDate` method is used to format the date as "E, MMM d". The formatting can be customized as needed.
-
-Feel free to integrate this Material Design-style date picker into your SwiftUI app to provide an enhanced and consistent user experience for date selection.
 
 </details>
 
@@ -60,25 +53,7 @@ The `MUITimePicker` SwiftUI component provides a Material Design-style time pick
 
 ## Usage
 
-To use the `MUITimePicker`, you can add the `mUITimePicker` modifier to any SwiftUI view. Below is an example of how to use it:
-
-```swift
-struct ContentView: View {
-    @State private var isTimePickerPresented = false
-    @State private var selectedTime = Date()
-
-    var body: some View {
-        VStack {
-            Button("Open Time Picker") {
-                isTimePickerPresented.toggle()
-            }
-            .mUITimePicker(isPresented: $isTimePickerPresented, selection: $selectedTime)
-        }
-    }
-}
-```
-
-This example demonstrates how to use the `MUITimePicker` in a SwiftUI view. The time picker is presented when the button is tapped, and the selected time is bound to a `Date` variable.
+To use the `MUITimePicker`, you can add the `mUITimePicker` modifier to any SwiftUI view. 
 
 ## Parameters
 
@@ -97,11 +72,12 @@ struct ContentView: View {
             Button("Select Time") {
                 isTimePickerPresented.toggle()
             }
-            .mUITimePicker(isPresented: $isTimePickerPresented, selection: $selectedTime)
         }
+        .mUITimePicker(isPresented: $isTimePickerPresented, selection: $selectedTime)
     }
 }
 ```
+This example demonstrates how to use the `MUITimePicker` in a SwiftUI view. The time picker is presented when the button is tapped, and the selected time is bound to a `Date` variable.
 
 </details>
 
@@ -203,7 +179,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             MUISecureField("Password", text: $password)
-            .padding()
+                .padding()
         }
     }
 }
@@ -221,7 +197,7 @@ The `MUIButton` SwiftUI component provides a versatile button with various style
 
 ## Usage
 
-To use the MUIButton, you can create an instance of it by providing a title, style, and an action closure. Below is an example of how to use it:
+To use the MUIButton, you can create an instance of it by providing a title, style, and an action closure.
 
 ## Parameters
 
@@ -474,20 +450,23 @@ struct ContentView: View {
             Button("Show Alert") {
                 showAlert.toggle()
             }
-            .mUIAlert(
-                isPresented: $showAlert,
-                title: "Alert Title",
-                message: "This is a sample alert message.",
-                primaryButtonTitle: "OK",
-                primaryAction: {
-                    // Handle OK button tap
-                },
-                secondaryButtonTitle: "Cancel",
-                secondaryAction: {
-                    // Handle Cancel button tap
-                }
-            )
         }
+        
+        // MUIAlert
+        .mUIAlert(
+            isPresented: $showAlert,
+            title: "Alert Title",
+            message: "This is a sample alert message.",
+            primaryButtonTitle: "OK",
+            primaryAction: {
+                // Handle OK button tap
+            },
+            // Optionals
+            secondaryButtonTitle: "Cancel",
+            secondaryAction: {
+                // Handle Cancel button tap
+            }
+        )
     }
 }
 ```
@@ -525,16 +504,18 @@ struct ContentView: View {
             Button("Show Snackbar") {
                 showSnackbar.toggle()
             }
-            .mUISnackbar(
-                isPresented: $showSnackbar,
-                message: "This is a sample snackbar message.",
-                duration: 3,
-                primaryButtonTitle: "Dismiss",
-                primaryAction: {
-                    // Handle dismiss button tap
-                }
-            )
         }
+        
+        // MUISnackbar
+        .mUISnackbar(
+            isPresented: $showSnackbar,
+            message: "This is a sample snackbar message.",
+            duration: 3,
+            primaryButtonTitle: "Dismiss",
+            primaryAction: {
+                // Handle dismiss button tap
+            }
+        )
     }
 }
 ```
@@ -546,7 +527,7 @@ struct ContentView: View {
 <summary> List </summary>
 
 # MUIList
-`MUIList` is a SwiftUI view that provides a MaterialUI-styled list with various visual styles. The `MUIList` view is designed to display a collection of elements with different visual styles such as plain, inset, or insetGrouped. It conforms to the MaterialUI design principles, providing a consistent and aesthetically pleasing list layout.
+`MUIList` is a SwiftUI view that provides a MaterialUI-styled list with various visual styles. The `MUIList` view is designed to display a collection of elements with different visual styles such as plain, inset, or insetGrouped.
 
 ## Usage
 
@@ -579,7 +560,7 @@ struct ContentView: View {
 
 # MUINavigationView
 
-`MUINavigationView` is a custom navigation view that provides a MaterialUI-styled navigation bar. It wraps the specified content in a visually appealing navigation bar, allowing you to create a consistent and polished look for your app's navigation.
+`MUINavigationView` is a custom navigation view that provides a MaterialUI-styled navigation bar.
 
 ## Usage
 
@@ -783,8 +764,8 @@ MUIProgressView(lineWidth: 5) // Custom line width
 struct ContentView: View {
     var body: some View {
         VStack {
-        Text("Loading...")
-        MUIProgressView()
+            Text("Loading...")
+            MUIProgressView()
         }
     }
 }
@@ -826,10 +807,9 @@ struct ContentView: View {
 
     var body: some View {
         MUISearchBar(searchText: $searchText) {
-        // Perform search action here
-        print("Searching for: \(searchText)")
-    }
-    .padding()
+            // Perform search action here
+            print("Searching for: \(searchText)")
+        }
     }
 }
 ```

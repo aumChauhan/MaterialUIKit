@@ -78,8 +78,7 @@ private struct MUISnackbarView: View {
     
     @Binding public var isPresented: Bool
     @State private var animationFlag: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
-
+    
     public let message: String
     public let duration: Double?
     public let primaryButtonTitle: String?
@@ -100,7 +99,7 @@ private struct MUISnackbarView: View {
                 HStack {
                     // Snackbar message
                     Text(message)
-                        .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                        .foregroundColor(MaterialUI.tint.primaryTitle())
                         .font(.system(.headline, weight: .medium))
                     
                     Spacer()
@@ -111,14 +110,14 @@ private struct MUISnackbarView: View {
                             primaryAction?()
                         } label: {
                             Text(primaryButtonTitle)
-                                .textButtonStyle(0, colorScheme)
+                                .textButtonStyle(0)
                                 .font(.system(.headline, weight: .semibold))
                         }
                     }
                 }
                 .lineLimit(1)
                 .padding(20)
-                .background(MaterialUI.tint.tertiaryBackground(colorScheme))
+                .background(MaterialUI.tint.tertiaryBackground())
                 .cornerRadius(20)
                 .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
             }

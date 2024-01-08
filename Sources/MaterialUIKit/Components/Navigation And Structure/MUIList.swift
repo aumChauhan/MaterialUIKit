@@ -36,8 +36,6 @@ public struct MUIList<Data, ID, Content>: View where Data: RandomAccessCollectio
     public var content: (Data.Element) -> Content
     public var listStyle: MUIListStyle
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Initializers
     
     /// Creates a stylized list with a default insetGrouped style.
@@ -97,7 +95,7 @@ extension MUIList {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeight(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                    .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(.horizontal, 15)
                     .padding(.vertical, 2)
                 
@@ -118,9 +116,9 @@ extension MUIList {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeight(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                    .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(20)
-                    .background(MaterialUI.tint.secondaryBackground(colorScheme))
+                    .background(MaterialUI.tint.secondaryBackground())
                     .cornerRadius(20)
             }
         }
@@ -136,7 +134,7 @@ extension MUIList {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeight(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+                    .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(0)
                 
                 if !isLastElement(data: data, item: item) {
@@ -145,7 +143,7 @@ extension MUIList {
             }
         }
         .padding(25)
-        .background(MaterialUI.tint.secondaryBackground(colorScheme))
+        .background(MaterialUI.tint.secondaryBackground())
         .cornerRadius(25)
         .padding(15)
     }

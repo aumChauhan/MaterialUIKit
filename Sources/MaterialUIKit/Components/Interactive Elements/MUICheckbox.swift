@@ -19,8 +19,6 @@ public struct MUICheckbox: View {
     public let title: String
     @Binding public var isOn: Bool
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Initializers
     
     /// Creates a MaterialUI style checkbox.
@@ -36,7 +34,7 @@ public struct MUICheckbox: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundColor(MaterialUI.tint.primaryTitle(colorScheme))
+            .foregroundColor(MaterialUI.tint.primaryTitle())
             .labelsHidden()
             .toggleStyle(MUICheckboxStyle())
     }
@@ -48,10 +46,6 @@ public struct MUICheckbox: View {
 @available(iOS 17.0, *)
 private struct MUICheckboxStyle: ToggleStyle {
     
-    // MARK: - Properties
-    
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Body
     
     public func makeBody(configuration: Configuration) -> some View {
@@ -62,7 +56,7 @@ private struct MUICheckboxStyle: ToggleStyle {
             
             Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
                 .font(.title2)
-                .foregroundColor(configuration.isOn ? MaterialUI.tint.accent(colorScheme) : MaterialUI.tint.secondaryTitle(colorScheme))
+                .foregroundColor(configuration.isOn ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
                 .onTapGesture { // Toggle checkbox action
                     withAnimation(.bouncy) {
                         configuration.isOn.toggle()

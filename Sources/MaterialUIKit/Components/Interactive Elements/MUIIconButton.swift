@@ -39,8 +39,6 @@ public struct MUIIconButton: View {
     public let style: MUIIconButtonStyle
     public let action: () -> ()
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: - Initializers
     
     /// Creates an icon button with a system symbol, style, and action.
@@ -116,7 +114,7 @@ extension MUIIconButton {
     private func elevatedIconStyle() -> some View {
         Button(action: action) {
             icon()
-                .elevatedButtonStyle(colorScheme)
+                .elevatedButtonStyle()
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
                 .padding(1)
@@ -130,7 +128,7 @@ extension MUIIconButton {
     private func filledIconStyle() -> some View {
         Button(action: action) {
             icon()
-                .filledButtonStyle(colorScheme)
+                .filledButtonStyle()
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
         }
@@ -141,7 +139,7 @@ extension MUIIconButton {
     private func tonalIconStyle() -> some View {
         Button(action: action) {
             icon()
-                .tonalButtonStyle(colorScheme)
+                .tonalButtonStyle()
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
         }
@@ -153,10 +151,10 @@ extension MUIIconButton {
         Button(action: action) {
             icon()
                 .fontWeight(.medium)
-                .foregroundColor(MaterialUI.tint.accent(colorScheme))
+                .foregroundColor(MaterialUI.tint.accent())
                 .padding(.vertical, 15)
                 .padding(.horizontal, 20)
-                .background(MaterialUI.tint.secondaryBackground(colorScheme))
+                .background(MaterialUI.tint.secondaryBackground())
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
         }
