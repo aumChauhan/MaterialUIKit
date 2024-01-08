@@ -407,7 +407,7 @@ To use `MUISwitch`, create an instance by providing the title and a binding to a
 
 ```swift
 MUISwitch("Enable Feature", isOn: $isEnabled)
-    .tint(MaterialUI.tint.accent(colorScheme))
+    .tint(MaterialUI.tint.accent())
     .padding()
 ```
 
