@@ -79,7 +79,7 @@ public struct MUISecureField: View {
             
             // SwiftUI's default securefield.
             SecureField("", text: $text)
-                .tint(MaterialUI.tint.accent(colorScheme))
+                .tint(MaterialUI.tint.accent())
                 .padding()
             
             Spacer()
@@ -110,7 +110,7 @@ public struct MUISecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle(colorScheme))
+                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
                     .offset(x: secureFieldIsFocused ? (systemSymbol != nil ? -45 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

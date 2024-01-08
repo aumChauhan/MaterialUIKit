@@ -19,9 +19,7 @@ public struct MUISearchBar: View {
     public let placeholder: String
     public let action: () -> Void
     @Binding public var searchText: String
-    
     @State private var showSearchButton: Bool = false
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializers
     

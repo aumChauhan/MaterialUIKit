@@ -68,7 +68,6 @@ private struct MUINavigationHeader: View {
     public let showBackButton: Bool
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - View Body
     

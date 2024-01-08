@@ -79,7 +79,7 @@ public struct MUITextField: View {
             
             // SwiftUI's default textfield
             TextField("", text: $text)
-                .tint(MaterialUI.tint.accent(colorScheme))
+                .tint(MaterialUI.tint.accent())
                 .padding()
             
             Spacer()

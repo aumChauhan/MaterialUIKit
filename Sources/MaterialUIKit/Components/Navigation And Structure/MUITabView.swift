@@ -39,7 +39,6 @@ public struct MUITabBarView<Content>: View where Content: View {
     
     @Binding public var selection: MUITabBarItem
     @State private var tabs: [MUITabBarItem] = []
-    @Environment(\.colorScheme) private var colorScheme
     
     // MARK: - Initializer
     
