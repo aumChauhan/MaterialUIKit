@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIOutlineCircleShape
 
 /// A custom shape for the `MUIProgressView`.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIOutlineCircleShape: Shape {
     
     func path(in rect: CGRect) -> Path {
@@ -30,7 +30,7 @@ private struct MUIOutlineCircleShape: Shape {
 // MARK: - MUIProgressView
 
 /// A SwiftUI view representing a MaterialUI style progress view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIProgressView: View {
     
     // MARK: - Properties

@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// A custom MaterialUI style snackbar that can be displayed at the bottom of the screen.
@@ -42,7 +42,7 @@ extension View {
 // MARK: - MUISnackbarModifier
 
 /// A view modifier that adds the MaterialUI style snackbar presentation behavior to any view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUISnackbarModifier: ViewModifier {
     
     // MARK: - Properties
@@ -71,7 +71,7 @@ private struct MUISnackbarModifier: ViewModifier {
 // MARK: - MUISnackbarView
 
 /// A custom MaterialUI style snackbar that can be displayed at the bottom of the screen.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUISnackbarView: View {
     
     // MARK: - Properties
@@ -100,7 +100,8 @@ private struct MUISnackbarView: View {
                     // Snackbar message
                     Text(message)
                         .foregroundColor(MaterialUI.tint.primaryTitle())
-                        .font(.system(.headline, weight: .medium))
+                        .font(.headline)
+                        .fontWeightWithFallback(.medium)
                     
                     Spacer()
                     
@@ -111,7 +112,8 @@ private struct MUISnackbarView: View {
                         } label: {
                             Text(primaryButtonTitle)
                                 .textButtonStyle(0)
-                                .font(.system(.headline, weight: .semibold))
+                                .font(.headline)
+                                .fontWeightWithFallback(.semibold)
                         }
                     }
                 }
@@ -127,7 +129,7 @@ private struct MUISnackbarView: View {
         // In-animation
         .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)
         // To toggle of snackbar
-        .onChange(of: isPresented) { oldValue, newValue in
+        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
                 animationFlag = isPresented
                 toggleOffSnackbar(isPresented: $isPresented, duration: duration)
@@ -138,7 +140,7 @@ private struct MUISnackbarView: View {
 
 // MARK: - Extension MUISnackbarView
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUISnackbarView {
     
     /// A function to toggle off the snackbar in specific time interval.

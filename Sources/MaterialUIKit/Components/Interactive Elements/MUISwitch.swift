@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUISwitchToggleStyle
 
 /// A custom toggle style for the MUISwitch.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUISwitchToggleStyle: ToggleStyle {
     
     // MARK: - Body
@@ -46,7 +46,7 @@ private struct MUISwitchToggleStyle: ToggleStyle {
 // MARK: - MUISwitch
 
 /// A SwiftUI view representing a MaterialUI style switch.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUISwitch: View {
     
     // MARK: - Properties
@@ -79,7 +79,7 @@ public struct MUISwitch: View {
 // MARK: - View Extension
 
 /// An extension to customize the tint color of the MUISwitch.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     func tint(_ color: Color) -> some View {
         self.modifier(TintColorModifier(tintColor: color))
@@ -89,7 +89,7 @@ extension View {
 // MARK: - TintColorModifier
 
 /// A view modifier to apply a tint color.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct TintColorModifier: ViewModifier {
     public let tintColor: Color
     

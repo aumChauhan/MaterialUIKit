@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUITextField
 
 /// A SwiftUI view representing a MaterialUI style text field.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUITextField: View {
     
     // MARK: - Properties
@@ -122,7 +122,7 @@ public struct MUITextField: View {
             isFocused.toggle()
         }
         // To change `@FocusState` value with animation
-        .onChange(of: isFocused) { oldValue, newValue in
+        .onChangeWithFallback(of: isFocused) { oldValue, newValue in
             withAnimation(.bouncy) {
                 textFieldIsFocused = newValue
             }

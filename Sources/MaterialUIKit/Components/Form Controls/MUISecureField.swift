@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUISecureField
 
 /// A SwiftUI view representing a MaterialUI style secure field.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUISecureField: View {
     
     // MARK: - Properties
@@ -123,7 +123,7 @@ public struct MUISecureField: View {
             isFocused.toggle()
         }
         // To change `@FocusState` value with animation
-        .onChange(of: isFocused) { oldValue, newValue in
+        .onChangeWithFallback(of: isFocused) { oldValue, newValue in
             withAnimation(.bouncy) {
                 secureFieldIsFocused = newValue
             }

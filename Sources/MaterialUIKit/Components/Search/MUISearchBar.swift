@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUISearchBar
 
 /// A MaterialUI-style search bar with a customizable placeholder and search text binding.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUISearchBar: View {
     
     // MARK: - Properties
@@ -86,12 +86,12 @@ public struct MUISearchBar: View {
             if showSearchButton {
                 Button("Search", action: action)
                     .foregroundColor(MaterialUI.tint.accent())
-                    .fontWeight(.medium)
+                    .fontWeightWithFallback(.medium)
                     .buttonStyle(MUIButtonTapStyle())
             }
         }
         // Changes states of `showSearchButton` with animation
-        .onChange(of: searchText) { oldValue, newValue in
+        .onChangeWithFallback(of: searchText) { oldValue, newValue in
             withAnimation {
                 if !(newValue.isEmpty) {
                     showSearchButton = true

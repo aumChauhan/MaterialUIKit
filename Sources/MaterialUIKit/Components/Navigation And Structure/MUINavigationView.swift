@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUINavigationHeaderStyle
 
 /// An enumeration representing different styles for navigation bar headers.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUINavigationHeaderStyle {
     /// A large-style navigation bar header.
     case large
@@ -23,7 +23,7 @@ public enum MUINavigationHeaderStyle {
 // MARK: - MUINavigationView
 
 /// A custom navigation view that wraps the content in a MaterialUI-styled navigation bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUINavigationView<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -41,15 +41,29 @@ public struct MUINavigationView<Content>: View where Content: View {
     // MARK: - View Body
     
     public var body: some View {
-        NavigationStack {
-            ZStack {
-                MaterialUI.tint.background().ignoresSafeArea(.all)
-                
-                // Content container
-                MUINavigationBarContainerView {
-                    content
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                ZStack {
+                    MaterialUI.tint.background().ignoresSafeArea(.all)
+                    
+                    // Content container
+                    MUINavigationBarContainerView {
+                        content
+                    }
+                    .navigationBarHidden(true)
                 }
-                .navigationBarHidden(true)
+            }
+        } else {
+            NavigationView {
+                ZStack {
+                    MaterialUI.tint.background().ignoresSafeArea(.all)
+                    
+                    // Content container
+                    MUINavigationBarContainerView {
+                        content
+                    }
+                    .navigationBarHidden(true)
+                }
             }
         }
     }
@@ -57,7 +71,7 @@ public struct MUINavigationView<Content>: View where Content: View {
 
 // MARK: - MUINavigationHeader
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUINavigationHeader: View {
     
     // MARK: - Properties
@@ -83,7 +97,7 @@ private struct MUINavigationHeader: View {
 
 // MARK: - Extension MUINavigationHeader
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUINavigationHeader {
     
     /// Returns a navigation header with large header style.
@@ -145,7 +159,7 @@ extension MUINavigationHeader {
 // MARK: - MUINavigationBarContainerView
 
 /// A container view that represents the navigation bar and content of a screen.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUINavigationBarContainerView<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -201,7 +215,7 @@ private struct MUINavigationBarContainerView<Content>: View where Content: View 
 // MARK: - MUINavigationLink
 
 /// A navigation link that wraps the destination in a MaterialUI-styled navigation bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUINavigationLink<Label, Destination>: View where Label: View, Destination: View {
     
     // MARK: - Properties
@@ -233,7 +247,7 @@ public struct MUINavigationLink<Label, Destination>: View where Label: View, Des
 // MARK: - Preference Keys
 
 /// Sets the title for the navigation bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUINavigaionBarTitlePreferenceKey: PreferenceKey {
     static var defaultValue: String = ""
     
@@ -243,7 +257,7 @@ private struct MUINavigaionBarTitlePreferenceKey: PreferenceKey {
 }
 
 /// Sets the visibility of the back button in the navigation bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUINavigationBarBackButtonHiddenPreferenceKey: PreferenceKey {
     static var defaultValue: Bool = false
     
@@ -253,7 +267,7 @@ private struct MUINavigationBarBackButtonHiddenPreferenceKey: PreferenceKey {
 }
 
 /// Sets the style for the navigation bar header.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUINavigationTitleStylePreferenceKey: PreferenceKey {
     static var defaultValue: MUINavigationHeaderStyle = .large
     
@@ -263,7 +277,7 @@ private struct MUINavigationTitleStylePreferenceKey: PreferenceKey {
 }
 
 /// Sets the toolbar for the navigation bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIToolbarViewPreferenceKey: PreferenceKey {
     static var defaultValue: EquatableViewContainer = EquatableViewContainer(view: AnyView(EmptyView()) )
     
@@ -274,7 +288,7 @@ private struct MUIToolbarViewPreferenceKey: PreferenceKey {
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Sets the title for the navigation bar.
@@ -323,7 +337,7 @@ extension View {
 // MARK: - EquatableViewContainer
 
 /// A container to hold an equatable view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct EquatableViewContainer: Equatable {
     let id = UUID().uuidString
     let view:AnyView

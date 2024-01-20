@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - View Extension
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Presents a Material Design date picker.
@@ -27,7 +27,7 @@ extension View {
 // MARK: - MUIDatePickerModifier
 
 /// A view modifier that adds the MaterialUI style date picker  presentation behavior to any view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIDatePickerModifier: ViewModifier {
     
     // MARK: - Properties
@@ -47,7 +47,7 @@ private struct MUIDatePickerModifier: ViewModifier {
 // MARK: - MUIDatePickerView
 
 /// A custom Material UI style date picker view that can be presented over other views.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIDatePickerView: View {
     
     // MARK: - Properties
@@ -88,7 +88,7 @@ private struct MUIDatePickerView: View {
         // In Animation
         .scaleEffect(animationFlag ? 1 : 0)
         .opacity(animationFlag ? 1 : 0)
-        .onChange(of: isPresented) { oldValue, newValue in
+        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
                 animationFlag = isPresented
             }
@@ -98,7 +98,7 @@ private struct MUIDatePickerView: View {
 
 // MARK: - Extension MUIDatePickerView
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIDatePickerView {
     
     /// Returns the dismiss button bar for the date picker.
@@ -123,7 +123,7 @@ extension MUIDatePickerView {
             // Selected date
             Text("\(selection.formattedMUIDate())")
                 .font(.title)
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
@@ -147,7 +147,7 @@ extension MUIDatePickerView {
             // Selected date
             Text("\(selection.formattedMUIDate())")
                 .font(.title)
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
@@ -172,7 +172,7 @@ extension MUIDatePickerView {
 // MARK: - Extension Date
 
 /// An extension on `Date` to format dates in a specific format.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension Date {
     
     /// Formats the date in the "E, MMM D" style.

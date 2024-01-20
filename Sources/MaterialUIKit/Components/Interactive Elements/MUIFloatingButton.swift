@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIFloatingButton
 
 /// A SwiftUI button designed for floating action button (FAB) functionality with various initialization options.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIFloatingButton: View {
     
     // MARK: - Properties

@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUICheckbox
 
 /// A SwiftUI view representing a MaterialUI style checkbox.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUICheckbox: View {
     
     // MARK: - Properties
@@ -43,7 +43,7 @@ public struct MUICheckbox: View {
 // MARK: - MUICheckboxStyle
 
 /// A custom toggle style for the MUICheckbox.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUICheckboxStyle: ToggleStyle {
     
     // MARK: - Body
@@ -67,7 +67,7 @@ private struct MUICheckboxStyle: ToggleStyle {
 }
 
 /// A view modifier to apply a tint color.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct TintColorModifier: ViewModifier {
     
     // MARK: - Properties

@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIIconButtonStyle
 
 /// Enumeration representing different styles for the `MUIIconButtonStyle`.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUIIconButtonStyle {
     /// A circular button with an secondary background.
     case secondary
@@ -29,7 +29,7 @@ public enum MUIIconButtonStyle {
 // MARK: - MUIIconButton
 
 /// `MUIIconButton` is a  SwiftUI icon button with various styles to fit different design needs.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIIconButton: View {
     
     // MARK: - Properties
@@ -88,7 +88,7 @@ public struct MUIIconButton: View {
 
 // MARK: - Extension MUIIconButton
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIIconButton {
     
     /// An icon from SFSymbol or bundle image.
@@ -105,7 +105,7 @@ extension MUIIconButton {
                 EmptyView()
             }
         }
-        .fontWeight(.semibold)
+        .fontWeightWithFallback(.semibold)
         .frame(minWidth: 25)
         .frame(height: 30)
     }
@@ -150,7 +150,7 @@ extension MUIIconButton {
     private func secondaryIconStyle() -> some View {
         Button(action: action) {
             icon()
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .foregroundColor(MaterialUI.tint.accent())
                 .padding(.vertical, 15)
                 .padding(.horizontal, 20)

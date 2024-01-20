@@ -10,8 +10,7 @@ MaterialUIKit is a SwiftUI package offering a set of user interface components i
 
 ## Requirements
 
-- Xcode 14.0 and above
-- iOS 17.0 and above
+- iOS 15.0 and above
 
 ## Preview
 

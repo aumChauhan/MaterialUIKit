@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIListStyle
 
 /// Enum representing different styles for `MUIList`.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUIListStyle {
     /// A plain-style list with default spacing and divider lines.
     case plain
@@ -26,7 +26,7 @@ public enum MUIListStyle {
 // MARK: - MUIList
 
 /// A MaterialUI style list with different visual styles.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIList<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable  {
     
     // MARK: - Properties
@@ -83,7 +83,7 @@ public struct MUIList<Data, ID, Content>: View where Data: RandomAccessCollectio
 
 // MARK: - Extension MIUList
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIList {
     
     /// Returns a plain-style list with a vertical stack of content items.
@@ -94,7 +94,7 @@ extension MUIList {
                     .tag(item)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeightWithFallback(.regular)
                     .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(.horizontal, 15)
                     .padding(.vertical, 2)
@@ -115,7 +115,7 @@ extension MUIList {
                     .tag(item)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeightWithFallback(.regular)
                     .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(20)
                     .background(MaterialUI.tint.secondaryBackground())
@@ -133,7 +133,7 @@ extension MUIList {
                     .tag(item)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
-                    .fontWeight(.regular)
+                    .fontWeightWithFallback(.regular)
                     .foregroundColor(MaterialUI.tint.primaryTitle())
                     .padding(0)
                 

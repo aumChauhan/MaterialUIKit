@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIButtonStyle
 
 /// Enumeration representing different styles for the `MUIButton`.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUIButtonStyle {
     /// A button with an elevated background and rounded corners.
     case elevated
@@ -46,7 +46,7 @@ public enum MUIButtonStyle {
 
 /// A SwiftUI button style for animating the appearance of a button during clicks.
 ///  - Note : `MUIButtonTapStyle` is the default button style in `MUIButton`,  `MUIFloatingButton` & `MUIIconButton`.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIButtonTapStyle: ButtonStyle {
     
     /// A SwiftUI button style for animating the appearance of a button during clicks.
@@ -63,7 +63,7 @@ public struct MUIButtonTapStyle: ButtonStyle {
 // MARK: - MUIButton
 
 /// `MUIButton` is a versatile SwiftUI button with various styles to fit different design needs.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIButton: View {
     
     // MARK: - Properties
@@ -132,7 +132,7 @@ public struct MUIButton: View {
 
 // MARK: - Extension MUIButton (Dynamic Width)
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIButton {
     /// A button with an elevated background and rounded corners.
     private func elevatedButtonStyle() -> some View {
@@ -190,7 +190,7 @@ extension MUIButton {
 
 // MARK: - Extension MUIButton (Infinity Width)
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIButton {
     /// A button with elevated background and rounded corners, occupying full available width.
     private func elevatedInfinityButtonStyle() -> some View {
@@ -238,14 +238,14 @@ extension MUIButton {
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// `MaterialUI :` A button with an elevated background and rounded corners.
     public func elevatedButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -259,7 +259,7 @@ extension View {
     public func filledButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.iconColor())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -271,7 +271,7 @@ extension View {
     public func tonalButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -283,7 +283,7 @@ extension View {
     public func outlineButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
@@ -297,7 +297,7 @@ extension View {
     public func textButtonStyle(_ padding: CGFloat? = nil) -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accent())
             .padding(padding ?? 10)
     }
@@ -308,7 +308,7 @@ extension View {
     public func elevatedInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
@@ -323,7 +323,7 @@ extension View {
     public func filledInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.iconColor())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
@@ -336,7 +336,7 @@ extension View {
     public func tonalInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
@@ -349,7 +349,7 @@ extension View {
     public func outlineInfinityButtonStyle() -> some View {
         return self
             .font(.headline)
-            .fontWeight(.medium)
+            .fontWeightWithFallback(.medium)
             .foregroundColor(MaterialUI.tint.accentTitle())
             .padding(.vertical, 15)
             .padding(.horizontal, 20)

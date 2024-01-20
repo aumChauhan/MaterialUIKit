@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// The core class for the MaterialUI package containing configuration settings.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 final public class MaterialUI {
     
     // MARK: - Properties

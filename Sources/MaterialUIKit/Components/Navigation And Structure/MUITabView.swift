@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUITabBarItem
 
 /// A model representing an item in the MaterialUI-style tab bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUITabBarItem: Hashable {
     
     // MARK: - Properties
@@ -30,7 +30,7 @@ public struct MUITabBarItem: Hashable {
 // MARK: - MUITabBarView
 
 /// A container view that includes the main content and a MaterialUI-style tab bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUITabBarView<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -71,7 +71,7 @@ public struct MUITabBarView<Content>: View where Content: View {
 // MARK: - MUITabBarContainerView
 
 /// A view that represents the MaterialUI-style tab bar.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUITabBarContainerView: View {
     
     // MARK: - Properties
@@ -86,7 +86,7 @@ private struct MUITabBarContainerView: View {
     
     var body: some View {
         tabBar
-            .onChange(of: selection) { oldValue, newValue in
+            .onChangeWithFallback(of: selection) { oldValue, newValue in
                 withAnimation(.bouncy) {
                     localSelection = newValue
                 }
@@ -96,7 +96,7 @@ private struct MUITabBarContainerView: View {
 
 // MARK: - Extension MUITabBarContainerView
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUITabBarContainerView {
     
     /// Returns tab bar.
@@ -126,7 +126,7 @@ extension MUITabBarContainerView {
                     // Tab title
                     Text(tab.title)
                         .font(.footnote)
-                        .fontWeight(localSelection == tab ? .bold : .medium)
+                        .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
                         .foregroundColor(MaterialUI.tint.primaryTitle())
                 }
                 .frame(maxWidth: .infinity)
@@ -148,7 +148,7 @@ extension MUITabBarContainerView {
 // MARK: - MUITabBarItemsPreferenceKey
 
 /// A preference key to collect tab bar items for rendering.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUITabBarItemsPreferenceKey: PreferenceKey {
     static var defaultValue: [MUITabBarItem] = []
     
@@ -160,7 +160,7 @@ private struct MUITabBarItemsPreferenceKey: PreferenceKey {
 // MARK: - MUITabBarItemViewModiferWithOnAppear
 
 /// A view modifier to handle the appearance of tab bar items.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
     
     public let tab: MUITabBarItem
@@ -188,7 +188,7 @@ private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Sets up a tab bar item with the specified system image, title, and selection binding.

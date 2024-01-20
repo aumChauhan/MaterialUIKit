@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Enum to specify the orientation of the divider.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUIDividerOrientation {
     /// A horizontal divider.
     case horizontal
@@ -19,7 +19,7 @@ public enum MUIDividerOrientation {
 }
 
 /// A SwiftUI view representing a MaterialUI style divider.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUIDivider: View {
     
     // MARK: - Properties
@@ -54,7 +54,7 @@ public struct MUIDivider: View {
 
 // MARK: - Extension MUIDivider
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUIDivider {
     
     /// Creates a MaterialUI style divider with the horizontal orientation.

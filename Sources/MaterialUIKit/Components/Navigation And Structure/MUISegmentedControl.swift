@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUISegmentedControl
 
 /// A segmented control with customizable appearance and behavior.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
     // MARK: - Properties
@@ -55,7 +55,7 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                     content(item)
                         .tag(item)
                         .foregroundColor(MaterialUI.tint.primaryTitle())
-                        .fontWeight(item == selectedItem ? .bold : .regular)
+                        .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
                     

@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUICardType
 
 /// Enum to specify the type of card layout.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUICardType {
     /// Automatically determine the card layout based on content.
     case automatic
@@ -26,7 +26,7 @@ public enum MUICardType {
 // MARK: - MUICardStyle
 
 /// Enum to specify the style of the card.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public enum MUICardStyle {
     /// Elevared card style.
     case elevated
@@ -38,7 +38,7 @@ public enum MUICardStyle {
 // MARK: - MUICardView
 
 /// A SwiftUI view representing a MaterialUI style card.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 public struct MUICardView<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -108,7 +108,7 @@ public struct MUICardView<Content>: View where Content: View {
 
 // MARK: - Extension MUICard
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUICardView {
     
     /// Returns a card with heading & subheading.
@@ -118,14 +118,14 @@ extension MUICardView {
             Text(heading)
                 .foregroundStyle(MaterialUI.tint.primaryTitle())
                 .font(.headline)
-                .fontWeight(.semibold)
+                .fontWeightWithFallback(.semibold)
                 .lineLimit(1)
             
             // Card subheading
             Text(subheading)
                 .foregroundStyle(MaterialUI.tint.secondaryTitle())
                 .font(.subheadline)
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .lineLimit(1)
         }
     }
@@ -207,7 +207,7 @@ extension MUICardView {
 
 // MARK: - View Extension
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Applies a dynamic card style to the view.

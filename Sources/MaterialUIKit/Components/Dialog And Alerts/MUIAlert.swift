@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Presents a MaterialUI style alert over the current view.
@@ -48,7 +48,7 @@ extension View {
 // MARK: - MUIAlertModifier
 
 /// A view modifier that adds the MaterialUI style alert presentation behavior to any view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIAlertModifier: ViewModifier {
     
     // MARK: - Properties
@@ -81,7 +81,7 @@ private struct MUIAlertModifier: ViewModifier {
 // MARK: - MUIAlertView
 
 /// A custom Material UI style alert view that can be presented over other views.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUIAlertView: View {
     
     // MARK: - Properties
@@ -109,7 +109,7 @@ private struct MUIAlertView: View {
                 // Alert tittle
                 Text(title)
                     .font(.title2)
-                    .fontWeight(.semibold)
+                    .fontWeightWithFallback(.semibold)
                     .foregroundColor(MaterialUI.tint.primaryTitle())
                     .lineLimit(1)
                 
@@ -117,7 +117,7 @@ private struct MUIAlertView: View {
                 if let message {
                     Text(message)
                         .font(.subheadline)
-                        .fontWeight(.medium)
+                        .fontWeightWithFallback(.medium)
                         .foregroundColor(MaterialUI.tint.secondaryTitle())
                         .multilineTextAlignment(.leading)
                 }
@@ -164,7 +164,7 @@ private struct MUIAlertView: View {
         // In-Out animation
         .scaleEffect(animationFlag ? 1 : 0)
         .opacity(animationFlag ? 1 : 0)
-        .onChange(of: isPresented) { oldValue, newValue in
+        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
                 animationFlag = isPresented
             }

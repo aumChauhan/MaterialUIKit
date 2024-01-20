@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 /// A concrete implementation of `MaterialUIColorThemeProtocol` representing the Material UI Purple color theme.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 final public class MaterialUIPurpleTheme: MaterialUIColorThemeProtocol {
     
     /// Returns the themeName

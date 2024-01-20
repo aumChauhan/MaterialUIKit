@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - Extension View
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension View {
     
     /// Presents a Material Design time picker.
@@ -26,7 +26,7 @@ extension View {
 // MARK: - MUITimePickerModifier
 
 /// A view modifier that adds the MaterialUI style time picker  presentation behavior to any view.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUITimePickerModifier: ViewModifier {
     
     // MARK: - Properties
@@ -46,7 +46,7 @@ private struct MUITimePickerModifier: ViewModifier {
 // MARK: - MUITimePickerView
 
 /// A custom Material UI style time picker view that can be presented over other views.
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 private struct MUITimePickerView: View {
     
     // MARK: - Properties
@@ -88,7 +88,7 @@ private struct MUITimePickerView: View {
         // In Animation
         .scaleEffect(animationFlag ? 1 : 0)
         .opacity(animationFlag ? 1 : 0)
-        .onChange(of: isPresented) { oldValue, newValue in
+        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
                 animationFlag = isPresented
             }
@@ -98,7 +98,7 @@ private struct MUITimePickerView: View {
 
 // MARK: - Extension MUITimePickerView
 
-@available(iOS 17.0, *)
+@available(iOS 15.0, *)
 extension MUITimePickerView {
     
     /// Returns the dismiss button bar for the time picker.
@@ -123,7 +123,7 @@ extension MUITimePickerView {
             // Time
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title)
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
@@ -147,7 +147,7 @@ extension MUITimePickerView {
             // Time
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title)
-                .fontWeight(.medium)
+                .fontWeightWithFallback(.medium)
                 .foregroundColor(MaterialUI.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
