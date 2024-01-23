@@ -32,6 +32,9 @@ MaterialUIKit is a SwiftUI package offering a set of user interface components i
 ### Date Picker
 ![DatePicker](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/ce23247f-4fa4-4c75-9841-8c062902adbc)
 
+### Dialog Sheet
+![Dialog Sheet](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/9d65a7ff-1afc-4d55-bd30-d30491525020)
+
 ### Floating Button
 ![FAB](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/fca45946-4c95-4d65-b834-054763e456ba)
 
@@ -75,7 +78,7 @@ MaterialUIKit is a SwiftUI package offering a set of user interface components i
 To integrate MaterialUIKit into your project, you can use `CocoaPods` or `Swift Package Manager`.
                                             
 <details>
-<summary> CocoaPods </summary>
+<summary> <strong> CocoaPods </strong> </summary>
                                             
 Add the following line to your Podfile:
 
@@ -88,7 +91,7 @@ Then run `pod install` to install the framework.
 </details>
 
 <details>
-<summary> Swift Package Manager </summary>
+<summary> <strong> Swift Package Manager </strong>  </summary>
 
 In Xcode, go to File -> Swift Packages -> Add Package Dependency and enter the repository URL:
 

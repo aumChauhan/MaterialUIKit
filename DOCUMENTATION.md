@@ -7,7 +7,7 @@
 <details>
 <summary>Date Picker</summary>
 
-# MUIDatePicker
+## `MUIDatePicker`
 
 The `MUIDatePicker` SwiftUI component provides a Material Design-style date picker with customizable appearance and behavior.
 
@@ -47,7 +47,7 @@ The date picker includes a formatted representation of the selected date. The `f
 <details>
 <summary>Time Picker</summary>
 
-# MUITimePicker
+## `MUITimePicker`
 
 The `MUITimePicker` SwiftUI component provides a Material Design-style time picker with customizable appearance and behavior.
 
@@ -84,7 +84,7 @@ This example demonstrates how to use the `MUITimePicker` in a SwiftUI view. The 
 <details>
 <summary> TextField </summary>
 
-# MUITextField
+## `MUITextField`
 
 The `MUITextField` SwiftUI component provides a Material Design-style text field with customizable appearance and behavior.
 
@@ -137,7 +137,7 @@ struct ContentView: View {
 <details>
 <summary> SecureField </summary>
 
-# MUISecureField
+## `MUISecureField`
 
 The `MUISecureField` SwiftUI component provides a Material Design-style secure field with customizable appearance and behavior.
 
@@ -191,7 +191,7 @@ struct ContentView: View {
 <details>
 <summary> Button </summary>
 
-# MUIButton
+## `MUIButton`
 
 The `MUIButton` SwiftUI component provides a versatile button with various styles to suit different design needs.
 
@@ -235,7 +235,7 @@ MUIButton("Title", style: .elevated, action: {
 <details>
 <summary> Card </summary>
 
-# MUICardView
+## `MUICardView`
 
 The `MUICardView` SwiftUI component represents a MaterialUI style card.
 
@@ -300,7 +300,7 @@ MUICardView(
 <details>
 <summary> Checkbox </summary>
 
-# MUICheckbox
+## `MUICheckbox`
 
 `MUICheckbox` provides a checkbox with a clean and modern MaterialUI design. It allows users to toggle between the checked and unchecked states by tapping the checkbox.
 
@@ -327,7 +327,7 @@ MUICheckbox("Enable Feature", isOn: $isChecked)
 <details>
 <summary> Floating Button </summary>
 
-# MUIFloatingButton
+## `MUIFloatingButton`
 
 A SwiftUI button designed for floating action button (FAB) functionality with various initialization options. MUIIconButton provides the flexibility to create circular icon buttons with different styles, allowing you to choose from elevated, filled, tonal, or secondary background styles.
 
@@ -357,7 +357,7 @@ MUIFloatingButton(image: "customIcon", title: "Custom") {
 <details>
 <summary> Icon Button </summary>
 
-# MUIIconButton
+## `MUIIconButton`
 
 `MUIIconButton` provides the flexibility to create circular icon buttons with different styles, allowing you to choose from elevated, filled, tonal, or secondary background styles.
 
@@ -390,7 +390,7 @@ MUIIconButton("customImage", style: .filled) {
 <details>
 <summary> Switch </summary>
 
-# MUISwitch
+## `MUISwitch`
 
 `MUISwitch` is a SwiftUI view representing a MaterialUI style switch.it provides a custom-styled switch with a MaterialUI design, offering a unique appearance for toggling between states.
 
@@ -418,8 +418,7 @@ MUISwitch("Enable Feature", isOn: $isEnabled)
 <details>
 <summary> Alerts </summary>
 
-
-# MUIAlert
+## `MUIAlert`
 
 `MUIAlert` provides a convenient way to present a MaterialUI style alert over the current view.
 
@@ -474,9 +473,52 @@ struct ContentView: View {
 </details>
 
 <details>
+<summary> Dialog Sheet </summary>
+
+## `MUIDialogSheet`
+
+`MUIAlert` provides a convenient way to present a MaterialUI style dialog sheet over the current view.
+
+`.mUIDialogSheet()` is an extension to the `View` protocol in SwiftUI, offering a modifier that can be applied to any view. This modifier presents a MaterialUI style dialog sheet.
+
+## Usage
+
+To use `MUIDialogSheet`, apply the `mUIDialogSheet` modifier to a SwiftUI view and provide the necessary parameters:
+
+## Parameters
+
+- `isPresented: Binding<Bool>`: Binding to control the presentation state of the dialog sheet.
+- `content: View`: A view content to be displayed in the dialog sheet.
+
+## Example
+
+```swift
+struct ContentView: View {
+    @State private var showDialogSheet = false
+
+    var body: some View {
+        VStack {
+            Button("Show Alert") {
+                showDialogSheet.toggle()
+            }
+        }
+        
+        // MUIDialogSheet
+        .mUIDialogSheet(isPresented: $showDialogSheet) {
+            Text("Dialog sheet content")
+        }
+}
+    }
+}
+```
+
+</details>
+
+
+<details>
 <summary> Snackbar </summary>
 
-# MUISnackbar
+## `MUISnackbar`
 `MUISnackbar` provides a customizable MaterialUI style snackbar that can be displayed at the bottom of the screen.
 
 `.mUISnackbar()` is an extension to the `View` protocol in SwiftUI, offering a modifier that can be applied to any view. This modifier presents a MaterialUI style snackbar with customizable parameters such as message, duration, and an optional primary action button.
@@ -526,7 +568,7 @@ struct ContentView: View {
 <details>
 <summary> List </summary>
 
-# MUIList
+## `MUIList`
 `MUIList` is a SwiftUI view that provides a MaterialUI-styled list with various visual styles. The `MUIList` view is designed to display a collection of elements with different visual styles such as plain, inset, or insetGrouped.
 
 ## Usage
@@ -558,7 +600,7 @@ struct ContentView: View {
 <details>
 <summary> Navigation View </summary>
 
-# MUINavigationView
+## `MUINavigationView`
 
 `MUINavigationView` is a custom navigation view that provides a MaterialUI-styled navigation bar.
 
@@ -610,7 +652,7 @@ MUINavigationLink(destination: {
 })
 ```
 
-## MUINavigationHeaderStyle
+## `MUINavigationHeaderStyle`
 
 `MUINavigationHeaderStyle` is an enumeration representing different styles for navigation bar headers.
 
@@ -622,7 +664,7 @@ MUINavigationLink(destination: {
 <details>
 <summary> Tab View</summary>
 
-# MUITabView
+## `MUITabView`
 
 The `MUITabView` SwiftUI component combines main content with a MaterialUI-style tab bar for easy navigation.
 
@@ -655,7 +697,7 @@ MUITabBarView(selection: $selection) {
 <details>
 <summary> Segmented Control </summary>
 
-# MUISegmentedControl
+## `MUISegmentedControl`
 
 The `MUISegmentedControl` SwiftUI component provides a segmented control with customizable appearance and behavior.
 
@@ -699,7 +741,7 @@ struct ContentView: View {
 <details>
 <summary> Divider </summary>
 
-# MUIDivider
+## `MUIDivider`
 
 The `MUIDivider` SwiftUI component represents a MaterialUI-style divider with customizable orientation.
 
@@ -738,7 +780,7 @@ struct ContentView: View {
 <details>
 <summary> Progress View </summary>
 
-# MUIProgressView
+## `MUIProgressView`
 
 The `MUIProgressView` SwiftUI component represents a MaterialUI-style progress view with customizable line width.
 
@@ -777,7 +819,7 @@ struct ContentView: View {
 <details>
 <summary> SearchBar </summary>
 
-# MUISearchBar
+## `MUISearchBar`
 
 The `MUISearchBar` SwiftUI component represents a MaterialUI-style search bar with a customizable placeholder and search text binding.
 
