@@ -33,7 +33,7 @@ MaterialUIKit is a SwiftUI package offering a set of user interface components i
 ![DatePicker](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/ce23247f-4fa4-4c75-9841-8c062902adbc)
 
 ### Dialog Sheet
-![Dialog Sheet](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/9d65a7ff-1afc-4d55-bd30-d30491525020)
+![Dialog Sheet](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/4018cb9b-64c5-4b99-a6ca-b452277cc056)
 
 ### Floating Button
 ![FAB](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/fca45946-4c95-4d65-b834-054763e456ba)

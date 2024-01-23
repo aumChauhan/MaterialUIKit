@@ -477,7 +477,7 @@ struct ContentView: View {
 
 ## `MUIDialogSheet`
 
-`MUIAlert` provides a convenient way to present a MaterialUI style dialog sheet over the current view.
+`MUIDialogSheet` provides a convenient way to present a MaterialUI style dialog sheet over the current view.
 
 `.mUIDialogSheet()` is an extension to the `View` protocol in SwiftUI, offering a modifier that can be applied to any view. This modifier presents a MaterialUI style dialog sheet.
 
@@ -498,7 +498,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Button("Show Alert") {
+            Button("Show dialog sheet") {
                 showDialogSheet.toggle()
             }
         }
@@ -507,7 +507,6 @@ struct ContentView: View {
         .mUIDialogSheet(isPresented: $showDialogSheet) {
             Text("Dialog sheet content")
         }
-}
     }
 }
 ```
