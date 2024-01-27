@@ -85,6 +85,7 @@ private struct MUITimePickerView: View {
             .padding(15)
             .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
         }
+        .frame(width: UIScreen.main.bounds.width)
         // In Animation
         .scaleEffect(animationFlag ? 1 : 0)
         .opacity(animationFlag ? 1 : 0)
@@ -165,6 +166,6 @@ extension MUITimePickerView {
             
             dismissDatePicker()
         }
-        .frame(width: UIScreen.main.bounds.height)
+        .frame(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height / 1.2)
     }
 }
