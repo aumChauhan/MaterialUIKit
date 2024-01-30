@@ -570,26 +570,27 @@ struct ContentView: View {
 ## `MUIList`
 `MUIList` is a SwiftUI view that provides a MaterialUI-styled list with various visual styles. The `MUIList` view is designed to display a collection of elements with different visual styles such as plain, inset, or insetGrouped.
 
-## Usage
-
-To use `MUIList`, create an instance of the view by specifying the data, a key path to uniquely identify each element, and a closure that returns the content view for a given element. Additionally, you can customize the list style.
 
 ## Parameters
 
-- `data: Data`: A collection of elements to display in the list.
-- `id: KeyPath<Data.Element, ID>`: A key path to an `ID` property on each element to uniquely identify them.
-- `listStyle: MUIListStyle`: The style of the list, such as `.plain`, `.inset`, or `.insetGrouped`.
-- `content: (Data.Element) -> Content`: A closure that returns the content view for a given element.
+- `listStyle:`: The style of the list, such as `.plain`, `.inset`, or `.insetGrouped`.
+- `content:`: A closure that returns the content view for a given element.
 
 ## Example
 
 ```swift
 struct ContentView: View {
-    let items = ["Item 1", "Item 2", "Item 3"]
-
     var body: some View {
-        MUIList(items, id: \.self, listStyle: .insetGrouped) { item in
-            Text(item)
+        MUIList(listStyle: .insetGrouped) { in
+            Text("item_1")
+            Text("item_2")
+        }
+        
+        // OR 
+        
+        MUIList() {
+            Text("item_1")
+            Text("item_2")
         }
     }
 }
