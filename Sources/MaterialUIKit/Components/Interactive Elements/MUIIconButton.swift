@@ -151,10 +151,10 @@ extension MUIIconButton {
         Button(action: action) {
             icon()
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUI.tint.accent())
+                .foregroundColor(MaterialUIKit.tint.accent())
                 .padding(.vertical, 15)
                 .padding(.horizontal, 20)
-                .background(MaterialUI.tint.secondaryBackground())
+                .background(MaterialUIKit.tint.secondaryBackground())
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
         }

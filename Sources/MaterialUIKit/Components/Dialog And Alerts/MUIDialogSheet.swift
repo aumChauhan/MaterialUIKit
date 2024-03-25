@@ -18,7 +18,7 @@ extension View {
     /// - Parameters:
     ///   - isPresented: Binding to control the presentation state of the dialog sheet.
     ///   - content: A view content to be displayed in the dialog sheet.
-    public func mUIDialogSheet<Content: View>(isPresented: Binding<Bool>, _ content: () -> Content) -> some View {
+    public func muiDialogSheet<Content: View>(isPresented: Binding<Bool>, _ content: () -> Content) -> some View {
         self.modifier(
             MUIDialogSheetModifer(isPresented: isPresented, dialogSheetContent: AnyView(content()))
         )
@@ -69,11 +69,6 @@ private struct MUIDialogSheetView: View {
     
     var body: some View {
         ZStack {
-            // Backgorund
-            Color.gray.opacity(0.0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .leading, spacing: 10) {
                 // Sheet dismiss button
                 HStack {
@@ -81,22 +76,29 @@ private struct MUIDialogSheetView: View {
                         isPresented.toggle()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(MaterialUI.tint.secondaryTitle())
+                            .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                     }
-                    
                     Spacer()
                 }
                 
                 AnyView(content)
             }
+            // Dialog sheet width & style
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
-            .background(MaterialUI.tint.iconColor())
+            .background(MaterialUIKit.tint.iconColor())
             .cornerRadius(25)
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
+            // Stroke
+            .padding(0.8)
+            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .cornerRadius(25)
+            // Scale-In animation
+            .scaleEffect(animationFlag ? 1 : 0)
         }
-        // In-Out animation
-        .scaleEffect(animationFlag ? 1 : 0)
+        // Fullscreen backdrop
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.45))
+        // Opacity animation
         .opacity(animationFlag ? 1 : 0)
         .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {

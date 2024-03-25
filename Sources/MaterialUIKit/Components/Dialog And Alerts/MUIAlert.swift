@@ -23,7 +23,7 @@ extension View {
     ///   - secondaryButtonTitle: The title of the secondary button (optional).
     ///   - primaryAction: The action to be executed when the primary button is tapped.
     ///   - secondaryAction: The action to be executed when the secondary button is tapped (optional).
-    public func mUIAlert(
+    public func muiAlert(
         isPresented: Binding<Bool>,
         title: String,
         message: String,
@@ -100,25 +100,20 @@ private struct MUIAlertView: View {
     
     var body: some View {
         ZStack {
-            // Backgorund
-            Color.gray.opacity(0.0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: 15) {
                 // Alert tittle
                 Text(title)
-                    .font(.title2)
-                    .fontWeightWithFallback(.semibold)
-                    .foregroundColor(MaterialUI.tint.primaryTitle())
+                    .font(.title3)
+                    .fontWeightWithFallback(.medium)
+                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
                     .lineLimit(1)
                 
                 // Alert message
                 if let message {
                     Text(message)
-                        .font(.subheadline)
+                        .font(.headline)
                         .fontWeightWithFallback(.medium)
-                        .foregroundColor(MaterialUI.tint.secondaryTitle())
+                        .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                         .multilineTextAlignment(.leading)
                 }
                 
@@ -155,14 +150,22 @@ private struct MUIAlertView: View {
                     }
                 }
             }
+            // Alert box width & style
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
-            .background(MaterialUI.tint.iconColor())
+            .background(MaterialUIKit.tint.background())
             .cornerRadius(25)
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
+            // Stroke
+            .padding(0.8)
+            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .cornerRadius(25)
+            // Scale-In animation
+            .scaleEffect(animationFlag ? 1 : 0)
         }
-        // In-Out animation
-        .scaleEffect(animationFlag ? 1 : 0)
+        // Fullscreen backdrop
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.45))
+        // Opacity animation
         .opacity(animationFlag ? 1 : 0)
         .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {

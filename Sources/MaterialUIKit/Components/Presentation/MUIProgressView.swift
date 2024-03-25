@@ -59,7 +59,7 @@ public struct MUIProgressView: View {
     
     public var body: some View {
         MUIOutlineCircleShape()
-            .stroke(MaterialUI.tint.accent(), lineWidth: lineWidth)
+            .stroke(MaterialUIKit.tint.accent(), lineWidth: lineWidth)
             .frame(width: 35, height: 35)
             .rotationEffect(Angle(degrees: rotationAngle))
             .onReceive(timer) { _ in

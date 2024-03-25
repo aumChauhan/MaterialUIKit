@@ -51,16 +51,16 @@ public struct MUISearchBar: View {
     public var body: some View {
         HStack {
             // Search bar
-            HStack(spacing: 15) {
+            HStack(spacing: 10) {
                 // Search icon
                 Image(systemName: "magnifyingglass")
-                    .font(.title3)
-                    .foregroundColor(MaterialUI.tint.secondaryTitle())
+                    .font(.headline)
+                    .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                 
                 // Search field
                 TextField(placeholder, text: $searchText)
                     .keyboardType(.webSearch)
-                    .tint(MaterialUI.tint.accent())
+                    .tint(MaterialUIKit.tint.accent())
                 
                 Spacer()
                 
@@ -73,19 +73,24 @@ public struct MUISearchBar: View {
                         }
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(MaterialUI.tint.secondaryTitle())
+                            .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                     }
                 }
             }
-            .padding(15)
-            .background(MaterialUI.tint.secondaryBackground())
-            .cornerRadius(99)
-            .tint(MaterialUI.tint.accent())
+            // Searchfield backdrop
+            .padding(12)
+            .background(MaterialUIKit.tint.secondaryBackground())
+            .cornerRadius(100)
+            // Stroke
+            .padding(1)
+            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.5))
+            .cornerRadius(100)
+            .tint(MaterialUIKit.tint.accent())
             
             // Search action
             if showSearchButton {
                 Button("Search", action: action)
-                    .foregroundColor(MaterialUI.tint.accent())
+                    .foregroundColor(MaterialUIKit.tint.accent())
                     .fontWeightWithFallback(.medium)
                     .buttonStyle(MUIButtonTapStyle())
             }

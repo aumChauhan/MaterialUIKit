@@ -10,7 +10,7 @@ import SwiftUI
 
 /// The core class for the MaterialUI package containing configuration settings.
 @available(iOS 15.0, *)
-final public class MaterialUI {
+final public class MaterialUIKit {
     
     // MARK: - Properties
     
@@ -21,16 +21,16 @@ final public class MaterialUI {
     /// Example:
     /// ```swift
     /// init() {
-    ///     MaterialUI.tint = MaterialUIColorThemes.blue
+    ///     MaterialUI.tint = MUIColorThemes.blue
     ///  }
     /// ```
     /// # Available Themes:
     /// - Blue, Green, Pink, Purple.
-    public static var tint: MaterialUIColorThemeProtocol = MaterialUIColorThemes.blue
+    public static var tint: MUIColorThemeProtocol = MUIColorThemes.pink
     
     // MARK: - Initializers
     
     private init() {
-        print("MaterialUI color palette is set to \(MaterialUI.tint.themeName())")
+        print("MaterialUI color palette is set to \(MaterialUIKit.tint.themeName())")
     }
 }

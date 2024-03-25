@@ -12,7 +12,7 @@ import SwiftUI
 
 /// Enum to specify the type of card layout.
 @available(iOS 15.0, *)
-public enum MUICardType {
+@frozen public enum MUICardType {
     /// Automatically determine the card layout based on content.
     case automatic
     
@@ -27,7 +27,7 @@ public enum MUICardType {
 
 /// Enum to specify the style of the card.
 @available(iOS 15.0, *)
-public enum MUICardStyle {
+@frozen public enum MUICardStyle {
     /// Elevared card style.
     case elevated
     
@@ -43,12 +43,12 @@ public struct MUICardView<Content>: View where Content: View {
     
     // MARK: - Properties
     
-    public let heading: String
-    public let subheading: String
-    public let image: String
-    public let cardType: MUICardType
-    public let cardStyle: MUICardStyle
-    public let content: Content
+    private let heading: String
+    private let subheading: String
+    private let image: String
+    private let cardType: MUICardType
+    private let cardStyle: MUICardStyle
+    private let content: Content
     
     @State private var descriptive: Bool = false
     @Namespace private var namespace
@@ -113,20 +113,19 @@ extension MUICardView {
     
     /// Returns a card with heading & subheading.
     private func titleContent() -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 10) {
             // Card heading
             Text(heading)
-                .foregroundStyle(MaterialUI.tint.primaryTitle())
+                .foregroundStyle(MaterialUIKit.tint.primaryTitle())
                 .font(.headline)
                 .fontWeightWithFallback(.semibold)
                 .lineLimit(1)
             
             // Card subheading
             Text(subheading)
-                .foregroundStyle(MaterialUI.tint.secondaryTitle())
-                .font(.subheadline)
+                .foregroundStyle(MaterialUIKit.tint.secondaryTitle())
+                .font(.body)
                 .fontWeightWithFallback(.medium)
-                .lineLimit(1)
         }
     }
     
@@ -153,7 +152,8 @@ extension MUICardView {
                 .scaledToFit()
         }
         .cardStyleModifier(cardStyle: cardStyle)
-        .onTapGesture { // Toggle card style to stack
+        // Toggles card style to stack
+        .onTapGesture {
             withAnimation(.bouncy) {
                 descriptive.toggle()
             }
@@ -178,7 +178,7 @@ extension MUICardView {
                     } label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.title3)
-                            .foregroundColor(MaterialUI.tint.accent().opacity(0.7))
+                            .foregroundColor(MaterialUIKit.tint.accent().opacity(0.7))
                             .padding(5)
                             .matchedGeometryEffect(id: "toggleKey", in: namespace)
                     }
@@ -189,17 +189,20 @@ extension MUICardView {
             // Card image
             Image(image)
                 .resizable()
-                .cornerRadius(15)
+                .cornerRadius(20)
                 .matchedGeometryEffect(id: "cardImage", in: namespace)
                 .frame(maxWidth: .infinity)
                 .scaledToFit()
             
+            // Card Content
             content
                 .font(.callout)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(MaterialUI.tint.secondaryTitle())
+                .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                 .matchedGeometryEffect(id: "cardDescription", in: namespace)
                 .frame(maxWidth: .infinity)
+                .padding(8)
+
         }
         .cardStyleModifier(cardStyle: cardStyle)
     }
@@ -220,9 +223,9 @@ extension View {
         VStack {
             switch cardStyle {
             case .elevated:
-                self.elevatedInfinityButtonStyle()
+                self.elevatedInfinityButtonStyle(cornerRadius: 25)
             case .tonal:
-                self.tonalInfinityButtonStyle()
+                self.tonalInfinityButtonStyle(cornerRadius: 25)
             }
         }
     }

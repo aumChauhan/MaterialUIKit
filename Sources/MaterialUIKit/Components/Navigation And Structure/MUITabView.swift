@@ -110,14 +110,14 @@ extension MUITabBarContainerView {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundColor(localSelection == tab ? MaterialUI.tint.iconColor() : MaterialUI.tint.primaryTitle())
+                        .foregroundColor(localSelection == tab ? MaterialUIKit.tint.iconColor() : MaterialUIKit.tint.primaryTitle())
                     
                     // Selected tab background
                         .background(
                             ZStack {
                                 if localSelection == tab {
                                     RoundedRectangle(cornerRadius: 100)
-                                        .fill(MaterialUI.tint.accent())
+                                        .fill(MaterialUIKit.tint.accent())
                                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                                 }
                             }
@@ -127,7 +127,7 @@ extension MUITabBarContainerView {
                     Text(tab.title)
                         .font(.footnote)
                         .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
-                        .foregroundColor(MaterialUI.tint.primaryTitle())
+                        .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 }
                 .frame(maxWidth: .infinity)
                 // Switch tab action
@@ -139,7 +139,7 @@ extension MUITabBarContainerView {
         .padding(.top, 10)
         // Tab bar background
         .background(
-            MaterialUI.tint.secondaryBackground()
+            MaterialUIKit.tint.secondaryBackground()
                 .ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
@@ -173,7 +173,7 @@ private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if selection == tab {
             ZStack {
-                MaterialUI.tint.background()
+                MaterialUIKit.tint.background()
                 content
             }
             .opacity(1)
@@ -197,7 +197,7 @@ extension View {
     ///   - title: The title text for the tab item.
     ///   - selection: Binding to the selected tab item.
     /// - Returns: A modified view with the specified tab bar item.
-    public func mUITabBarItem(systemImage: String, title: String, selection: Binding<MUITabBarItem>) -> some View {
+    public func muiTabBarItem(systemImage: String, title: String, selection: Binding<MUITabBarItem>) -> some View {
         modifier(
             MUITabBarItemViewModiferWithOnAppear(
                 tab: MUITabBarItem(systemImage: systemImage, title: title),

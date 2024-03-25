@@ -18,7 +18,7 @@ extension View {
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation of the time picker.
     ///   - selection: A binding to manage the selected date.
-    public func mUITimePicker(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
+    public func muiTimePicker(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
         return self.modifier(MUITimePickerModifier(isPresented: isPresented, selection: selection))
     }
 }
@@ -61,10 +61,6 @@ private struct MUITimePickerView: View {
     
     public var body: some View {
         ZStack {
-            Color.gray.opacity(0.0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .leading, spacing: 10) {
                 // For portrait mode
                 if horizontalSizeClass == .compact && verticalSizeClass == .regular {
@@ -79,15 +75,21 @@ private struct MUITimePickerView: View {
                     portraitDatePicker()
                 }
             }
-            .padding(15)
-            .background(MaterialUI.tint.iconColor())
+            // Time picker styling
+            .padding(20)
+            .background(MaterialUIKit.tint.iconColor())
             .cornerRadius(25)
-            .padding(15)
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
+            // Stroke
+            .padding(0.8)
+            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .cornerRadius(25)
+            // Scale-In animation
+            .scaleEffect(animationFlag ? 1 : 0)
+            .padding(20)
         }
-        .frame(width: UIScreen.main.bounds.width)
-        // In Animation
-        .scaleEffect(animationFlag ? 1 : 0)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.45))
+        // Opacity animation
         .opacity(animationFlag ? 1 : 0)
         .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
@@ -123,9 +125,9 @@ extension MUITimePickerView {
         VStack(alignment: .leading, spacing: 10) {
             // Time
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
-                .font(.title)
+                .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle())
+                .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -134,7 +136,7 @@ extension MUITimePickerView {
             // SwiftUI's default timepicker
             DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)
-                .tint(MaterialUI.tint.accent())
+                .tint(MaterialUIKit.tint.accent())
             
             MUIDivider()
             
@@ -147,9 +149,9 @@ extension MUITimePickerView {
         VStack(alignment: .leading, spacing: 10) {
             // Time
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
-                .font(.title)
+                .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle())
+                .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -159,7 +161,7 @@ extension MUITimePickerView {
                 // SwiftUI's default timepicker
                 DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .tint(MaterialUI.tint.accent())
+                    .tint(MaterialUIKit.tint.accent())
             }
             
             MUIDivider()

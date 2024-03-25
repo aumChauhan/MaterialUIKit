@@ -18,7 +18,7 @@ extension View {
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation of the date picker.
     ///   - selection: A binding to manage the selected date.
-    public func mUIDatePicker(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
+    public func muiDatePicker(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
         return self.modifier(MUIDatePickerModifier(isPresented: isPresented, selection: selection))
     }
     
@@ -62,32 +62,32 @@ private struct MUIDatePickerView: View {
     
     var body: some View {
         ZStack {
-            Color.gray.opacity(0.0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .leading, spacing: 10) {
-                if horizontalSizeClass == .compact && verticalSizeClass == .regular { // For portrait mode
-                    
+                if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+                    // For portrait mode
                     portraitDatePicker()
-                    
-                } else if horizontalSizeClass == .compact && verticalSizeClass == .compact { // For landscope mode
-                    
+                } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
+                    // For landscope mode
                     landscapeDatePicker()
-                    
-                } else { // Default̉
+                } else {
                     portraitDatePicker()
                 }
             }
-            .padding(15)
-            .background(MaterialUI.tint.iconColor())
+            // Date picker styling
+            .padding(20)
+            .background(MaterialUIKit.tint.iconColor())
             .cornerRadius(25)
-            .padding(15)
-            .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 1)
+            // Stroke
+            .padding(0.8)
+            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.5))
+            .cornerRadius(25)
+            // Scale-In animation
+            .scaleEffect(animationFlag ? 1 : 0)
+            .padding(20)
         }
-        .frame(width: UIScreen.main.bounds.width)
-        // In Animation
-        .scaleEffect(animationFlag ? 1 : 0)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.45))
+        // Opacity animation
         .opacity(animationFlag ? 1 : 0)
         .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
@@ -123,9 +123,9 @@ extension MUIDatePickerView {
         VStack(alignment: .leading, spacing: 10) {
             // Selected date
             Text("\(selection.formattedMUIDate())")
-                .font(.title)
+                .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle())
+                .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -134,7 +134,7 @@ extension MUIDatePickerView {
             // SwiftUI's default datepicker
             DatePicker("", selection: $selection, displayedComponents: .date)
                 .datePickerStyle(.graphical)
-                .tint(MaterialUI.tint.accent())
+                .tint(MaterialUIKit.tint.accent())
             
             MUIDivider()
             
@@ -147,9 +147,9 @@ extension MUIDatePickerView {
         VStack(alignment: .leading, spacing: 10) {
             // Selected date
             Text("\(selection.formattedMUIDate())")
-                .font(.title)
+                .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUI.tint.primaryTitle())
+                .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -159,7 +159,7 @@ extension MUIDatePickerView {
                 // SwiftUI's default datepicker
                 DatePicker("", selection: $selection, displayedComponents: .date)
                     .datePickerStyle(.graphical)
-                    .tint(MaterialUI.tint.accent())
+                    .tint(MaterialUIKit.tint.accent())
             }
             
             MUIDivider()

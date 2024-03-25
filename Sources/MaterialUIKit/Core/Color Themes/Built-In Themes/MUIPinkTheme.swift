@@ -1,5 +1,5 @@
 //
-// MaterialUIGreenTheme.swift
+// MUIPinkTheme.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,52 +9,52 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MaterialUIColorThemeProtocol` representing the Material UI Green color theme.
+/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Pink color theme.
 @available(iOS 15.0, *)
-final public class MaterialUIGreenTheme: MaterialUIColorThemeProtocol {
+final public class MUIPinkTheme: MUIColorThemeProtocol {
     
-    /// Returns the theme name.
+    /// Returns the theme name
     public func themeName() -> String {
-        return "MaterialUIGreenTheme"
+        return "MaterialUI-PinkTheme"
     }
     
     /// Returns the accent color for the given color scheme.
     public func accent() -> Color {
-        Color(lightHex: "38693C", darkHex: "9DD49D")
+        Color(lightHex: "904858", darkHex : "FFB1C1")
     }
     
     /// Returns the icon color for the given color scheme.
     public func iconColor() -> Color {
-        Color(lightHex: "EDF2EE", darkHex: "20251F")
+        Color(lightHex: "F5F1F2", darkHex : "2B2122")
     }
     
     /// Returns the background color for the given color scheme.
     public func background() -> Color {
-        Color(lightHex: "FFFFFF", darkHex: "1A1C19")
+        Color(lightHex: "FFFFFF", darkHex : "201A1A")
     }
     
     /// Returns the secondary background color for the given color scheme.
     public func secondaryBackground() -> Color {
-        Color(lightHex: "EAF0E6", darkHex: "262D25")
+        Color(lightHex: "FEE5E5", darkHex : "34282A")
     }
     
     /// Returns the tertiary background color for the given color scheme.
     public func tertiaryBackground() -> Color {
-        Color(lightHex: "D4E7D0", darkHex: "3A4B39")
+        Color(lightHex: "FED9E0", darkHex : "5C3F43")
     }
     
     /// Returns the accent title color for the given color scheme.
     public func accentTitle() -> Color {
-        Color(lightHex: "101E0E", darkHex: "C1C9BC")
+        Color(lightHex: "2C1619", darkHex : "E9C7C9")
     }
     
     /// Returns the primary title color for the given color scheme.
     public func primaryTitle() -> Color {
-        Color(lightHex: "747474", darkHex: "CAD0C8")
+        Color(lightHex: "514C4C", darkHex : "C1B7B8")
     }
     
     /// Returns the secondary title color for the given color scheme.
     public func secondaryTitle() -> Color {
-        Color(lightHex: "51534B", darkHex: "909090")
+        Color(lightHex: "736B6A", darkHex : "8F8F8D")
     }
 }

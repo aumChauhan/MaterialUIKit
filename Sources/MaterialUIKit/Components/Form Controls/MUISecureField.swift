@@ -73,15 +73,15 @@ public struct MUISecureField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
+                    .foregroundColor(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
                     .padding(.leading, 15)
             }
             
             // SwiftUI's default securefield.
             SecureField("", text: $text)
-                .tint(MaterialUI.tint.accent())
-                .padding()
-            
+                .tint(MaterialUIKit.tint.accent())
+                .padding(16)
+
             Spacer()
             
             // Clear securefield button
@@ -90,7 +90,7 @@ public struct MUISecureField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(MaterialUI.tint.secondaryTitle())
+                        .foregroundColor(MaterialUIKit.tint.secondaryTitle())
                         .padding(.trailing, 14)
                 }
             }
@@ -98,8 +98,8 @@ public struct MUISecureField: View {
         .background(
             // Creates outline around secureField on focus state
             RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle(), lineWidth: 2)
-                .background(background ?? MaterialUI.tint.secondaryBackground().opacity(0.5))
+                .stroke(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle(), lineWidth: 1)
+                .background(background ?? MaterialUIKit.tint.secondaryBackground().opacity(0.5))
                 .cornerRadius(20)
         )
         
@@ -110,11 +110,11 @@ public struct MUISecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
-                    .offset(x: secureFieldIsFocused ? (systemSymbol != nil ? -45 : 0) : 0)
+                    .foregroundColor(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
+                    .offset(x: secureFieldIsFocused ? (systemSymbol != nil ? -35 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)
-                    .padding(.leading, systemSymbol != nil ? 50 : 15)
+                    .padding(.leading, systemSymbol != nil ? 40 : 15)
             }
         }
         .focused($isFocused)

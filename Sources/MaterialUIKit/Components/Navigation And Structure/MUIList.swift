@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - MUIListStyle
 
 /// Enum representing different styles for `MUIList`.
-public enum MUIListStyle {
+@frozen public enum MUIListStyle {
     /// A plain-style list with default spacing and divider lines.
     case plain
     
@@ -24,7 +24,7 @@ public enum MUIListStyle {
 
 // MARK: - MUIListViewLayout
 
-/// A `_Variadic­View.Tree` with a MUIListViewLayout and list styles.
+/// A `_Variadic­View.Tree` with a `MUIListViewLayout` and list styles.
 @available(iOS 15.0, *)
 private struct MUIListViewLayout: _VariadicView_UnaryViewRoot {
     
@@ -59,6 +59,7 @@ private struct MUIListViewLayout: _VariadicView_UnaryViewRoot {
 }
 
 // MARK: - Extension MIUList
+
 @available(iOS 15.0, *)
 extension MUIListViewLayout {
     
@@ -67,64 +68,57 @@ extension MUIListViewLayout {
         
         let last = children.last?.id
         
-        return VStack(spacing: 12) {
+        return VStack(spacing: 10) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle())
-                    .padding(.horizontal, 15)
-                    .padding(.vertical, 2)
+                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 
                 if child.id != last {
                     MUIDivider()
                 }
-                
             }
         }
-        .padding(10)
     }
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
     private func insetStyle(children: _VariadicView.Children) -> some View {
-        return VStack(spacing: 12) {
+        return VStack(spacing: 15) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle())
-                    .padding(20)
-                    .background(MaterialUI.tint.secondaryBackground())
-                    .cornerRadius(20)
+                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .padding(16)
+                    .background(MaterialUIKit.tint.secondaryBackground())
+                    .cornerRadius(15)
             }
         }
-        .padding(10)
     }
     
     /// Returns an inset-grouped-style list with rounded rectangles as background.
     private func insetGroupedStyle(children: _VariadicView.Children) -> some View {
         let last = children.last?.id
         
-        return VStack(spacing: 12) {
+        return VStack(spacing: 15) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUI.tint.primaryTitle())
-                    .padding(0)
+                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
                 
                 if child.id != last {
                     MUIDivider()
                 }
             }
         }
-        .padding(25)
-        .background(MaterialUI.tint.secondaryBackground())
+        .padding(20)
+        .background(MaterialUIKit.tint.secondaryBackground())
         .cornerRadius(25)
-        .padding(15)
     }
 }
 

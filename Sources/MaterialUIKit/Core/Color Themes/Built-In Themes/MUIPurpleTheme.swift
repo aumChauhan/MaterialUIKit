@@ -1,5 +1,5 @@
 //
-// MaterialUIPurpleTheme.swift
+// MUIPurpleTheme.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,13 +9,13 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MaterialUIColorThemeProtocol` representing the Material UI Purple color theme.
+/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Purple color theme.
 @available(iOS 15.0, *)
-final public class MaterialUIPurpleTheme: MaterialUIColorThemeProtocol {
+final public class MUIPurpleTheme: MUIColorThemeProtocol {
     
     /// Returns the themeName
     public func themeName() -> String {
-        return "MaterialUIPurpleTheme"
+        return "MaterialUI-PurpleTheme"
     }
     
     /// Returns the accent color for the given color scheme.

@@ -34,7 +34,7 @@ public struct MUICheckbox: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundColor(MaterialUI.tint.primaryTitle())
+            .foregroundColor(MaterialUIKit.tint.primaryTitle())
             .labelsHidden()
             .toggleStyle(MUICheckboxStyle())
     }
@@ -56,13 +56,15 @@ private struct MUICheckboxStyle: ToggleStyle {
             
             Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
                 .font(.title2)
-                .foregroundColor(configuration.isOn ? MaterialUI.tint.accent() : MaterialUI.tint.secondaryTitle())
+                .foregroundColor(configuration.isOn ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
                 .onTapGesture { // Toggle checkbox action
                     withAnimation(.bouncy) {
                         configuration.isOn.toggle()
                     }
                 }
         }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 3)
     }
 }
 

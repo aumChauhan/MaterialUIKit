@@ -44,7 +44,7 @@ public struct MUINavigationView<Content>: View where Content: View {
         if #available(iOS 16.0, *) {
             NavigationStack {
                 ZStack {
-                    MaterialUI.tint.background().ignoresSafeArea(.all)
+                    MaterialUIKit.tint.background().ignoresSafeArea(.all)
                     
                     // Content container
                     MUINavigationBarContainerView {
@@ -56,7 +56,7 @@ public struct MUINavigationView<Content>: View where Content: View {
         } else {
             NavigationView {
                 ZStack {
-                    MaterialUI.tint.background().ignoresSafeArea(.all)
+                    MaterialUIKit.tint.background().ignoresSafeArea(.all)
                     
                     // Content container
                     MUINavigationBarContainerView {
@@ -112,7 +112,7 @@ extension MUINavigationHeader {
                         Image(systemName: "arrow.left")
                             .font(.title3)
                     }
-                    .tint(MaterialUI.tint.primaryTitle())
+                    .tint(MaterialUIKit.tint.primaryTitle())
                 }
                 
                 // Toolbar item
@@ -123,9 +123,11 @@ extension MUINavigationHeader {
             // Navigation title
             Text(title)
                 .font(.title)
+                .fontWeightWithFallback(.medium)
         }
-        .foregroundColor(MaterialUI.tint.primaryTitle())
-        .padding(15)
+        .foregroundColor(MaterialUIKit.tint.primaryTitle())
+        .padding(.horizontal, 15)
+        .padding(.vertical, 10)
     }
     
     /// Returns a navigation header with inline header style.
@@ -137,20 +139,20 @@ extension MUINavigationHeader {
                     dismiss()
                 } label: {
                     Image(systemName: "arrow.left")
-                        .font(.title3)
+                        .font(.headline)
                 }
             }
             
             // Navigation title
             Text(title)
-                .font(.title2)
+                .font(.title3)
             
             Spacer()
             
             // Toolbar Item
             toolbar.view
         }
-        .foregroundColor(MaterialUI.tint.primaryTitle())
+        .foregroundColor(MaterialUIKit.tint.primaryTitle())
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }
@@ -240,6 +242,7 @@ public struct MUINavigationLink<Label, Destination>: View where Label: View, Des
             .navigationBarHidden(true)
         } label: {
             label
+                .padding(.horizontal, 8)
         }
     }
 }
@@ -294,28 +297,28 @@ extension View {
     /// Sets the title for the navigation bar.
     /// - Parameter title: The title to be displayed in the navigation bar.
     /// - Returns: A view modified to include the specified navigation bar title.
-    public func mUINavigationTitle(_ title: String) -> some View {
+    public func muiNavigationTitle(_ title: String) -> some View {
         return self.preference(key: MUINavigaionBarTitlePreferenceKey.self, value: title)
     }
     
     /// Sets the style for the navigation bar header.
     /// - Parameter style: The style of the navigation bar header.
     /// - Returns: A view modified to include the specified navigation bar header style.
-    public func mUINavigationHeaderStyle(_ style: MUINavigationHeaderStyle) -> some View {
+    public func muiNavigationHeaderStyle(_ style: MUINavigationHeaderStyle) -> some View {
         return self.preference(key: MUINavigationTitleStylePreferenceKey.self, value: style)
     }
     
     /// Sets the toolbar for the navigation bar.
     /// - Parameter toolbar: The toolbar to be displayed in the navigation bar.
     /// - Returns: A view modified to include the specified toolbar.
-    public func mUIToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
+    public func muiToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
         return self.preference(key: MUIToolbarViewPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
     }
     
     /// Sets the visibility of the back button in the navigation bar.
     /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
     /// - Returns: A view modified to include the specified back button visibility.
-    public func mUINavigationBarBackButtonHidden(_ hidden: Bool) -> some View {
+    public func muiNavigationBarBackButtonHidden(_ hidden: Bool) -> some View {
         return self.preference(key: MUINavigationBarBackButtonHiddenPreferenceKey.self, value: !hidden)
     }
     
@@ -325,11 +328,11 @@ extension View {
     ///   - backButtonHidden: A Boolean value indicating whether the back button should be hidden.
     ///   - style: The style of the navigation bar header.
     /// - Returns: A view modified to include the specified navigation bar properties.
-    public func mUINavigationBar(title: String = "", backButtonHidden: Bool = false, style: MUINavigationHeaderStyle = .large) -> some View {
+    public func muiNavigationBar(title: String = "", backButtonHidden: Bool = false, style: MUINavigationHeaderStyle = .large) -> some View {
         self
-            .mUINavigationTitle(title)
-            .mUINavigationBarBackButtonHidden(backButtonHidden)
-            .mUINavigationHeaderStyle(style)
+            .muiNavigationTitle(title)
+            .muiNavigationBarBackButtonHidden(backButtonHidden)
+            .muiNavigationHeaderStyle(style)
     }
     
 }

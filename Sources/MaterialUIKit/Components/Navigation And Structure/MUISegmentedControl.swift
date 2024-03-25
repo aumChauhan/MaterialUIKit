@@ -47,14 +47,14 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                     // Selected tab background
                     if item == selectedItem {
                         RoundedRectangle(cornerRadius: 0)
-                            .foregroundColor(MaterialUI.tint.tertiaryBackground())
+                            .foregroundColor(MaterialUIKit.tint.tertiaryBackground())
                             .matchedGeometryEffect(id: "selectedTabBg", in: namespace)
                     }
                     
                     // Content
                     content(item)
                         .tag(item)
-                        .foregroundColor(MaterialUI.tint.primaryTitle())
+                        .foregroundColor(MaterialUIKit.tint.primaryTitle())
                         .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
@@ -70,20 +70,20 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                 // Vertical divider
                 if !isLastElement(data: data, item: item) {
                     RoundedRectangle(cornerRadius: 0.5)
-                        .foregroundStyle(MaterialUI.tint.accentTitle())
+                        .foregroundStyle(MaterialUIKit.tint.accentTitle())
                         .frame(width: 0.8)
                 }
             }
         }
         // Outline styling.
-        .frame(maxWidth: .infinity, maxHeight: 48)
-        .background(MaterialUI.tint.background())
-        .cornerRadius(99)
+        .frame(maxWidth: .infinity, maxHeight: 40)
+        .background(MaterialUIKit.tint.background())
+        .cornerRadius(100)
         // Outline width
         .padding(1)
         // Outline color
-        .background(MaterialUI.tint.accentTitle())
-        .cornerRadius(99)
+        .background(MaterialUIKit.tint.accentTitle().opacity(0.8))
+        .cornerRadius(100)
     }
     
     /// Checks if the current element is the last one in the collection.

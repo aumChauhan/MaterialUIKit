@@ -21,7 +21,7 @@ extension View {
     ///   - duration: The duration(in seconds) for which the snackbar is visible before automatically toggling off.
     ///   - primaryButtonTitle: The title of the primary (main) button.
     ///   - primaryAction: The action to be executed when the primary button is tapped.
-    public func mUISnackbar(
+    public func muiSnackbar(
         isPresented: Binding<Bool>,
         message: String,
         duration: Double? = nil,
@@ -88,19 +88,14 @@ private struct MUISnackbarView: View {
     
     var body: some View {
         ZStack {
-            // Backgorund
-            Color.gray.opacity(0.0)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .leading) {
                 Spacer()
                 
                 HStack {
                     // Snackbar message
                     Text(message)
-                        .foregroundColor(MaterialUI.tint.primaryTitle())
                         .font(.headline)
+                        .foregroundStyle(MaterialUIKit.tint.primaryTitle())
                         .fontWeightWithFallback(.medium)
                     
                     Spacer()
@@ -119,16 +114,16 @@ private struct MUISnackbarView: View {
                 }
                 .lineLimit(1)
                 .padding(20)
-                .background(MaterialUI.tint.tertiaryBackground())
+                .background(MaterialUIKit.tint.tertiaryBackground())
                 .cornerRadius(20)
                 .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
             }
             .frame(width: UIScreen.main.bounds.width/1.1)
-            .padding(.bottom, 75)
+            // In-animation
+            .offset(y: animationFlag ? 0 :  UIScreen.main.bounds.height)
+
         }
-        // In-animation
-        .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)
-        // To toggle of snackbar
+        // To toggle-off snackbar
         .onChangeWithFallback(of: isPresented) { oldValue, newValue in
             withAnimation(.bouncy) {
                 animationFlag = isPresented
