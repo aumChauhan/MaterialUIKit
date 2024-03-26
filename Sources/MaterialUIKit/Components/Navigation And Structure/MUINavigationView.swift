@@ -49,6 +49,7 @@ public struct MUINavigationView<Content>: View where Content: View {
                     // Content container
                     MUINavigationBarContainerView {
                         content
+                            .padding(MUIConstants.insideMargin)
                     }
                     .navigationBarHidden(true)
                 }
@@ -61,6 +62,7 @@ public struct MUINavigationView<Content>: View where Content: View {
                     // Content container
                     MUINavigationBarContainerView {
                         content
+                            .padding(MUIConstants.insideMargin)
                     }
                     .navigationBarHidden(true)
                 }
