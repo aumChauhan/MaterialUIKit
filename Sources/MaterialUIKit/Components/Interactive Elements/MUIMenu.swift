@@ -221,7 +221,7 @@ extension MUIMenu {
                             MaterialUIKit.tint.secondaryBackground()
                                 .shadow(color: .black.opacity(0.5), radius: 80, x: 0, y: 10)
                         }
-                        .cornerRadius(25)
+                        .cornerRadius(MUIConstants.cornerRadius)
                         .onAppear {
                             self.height = geo.size.height
                         }

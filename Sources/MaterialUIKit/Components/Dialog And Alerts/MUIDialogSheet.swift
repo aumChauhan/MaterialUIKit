@@ -69,7 +69,7 @@ private struct MUIDialogSheetView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 10) {
+            VStack(alignment: .leading, spacing: MUIConstants.verticalContentPadding) {
                 // Sheet dismiss button
                 HStack {
                     Button {
@@ -87,11 +87,11 @@ private struct MUIDialogSheetView: View {
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
             .background(MaterialUIKit.tint.iconColor())
-            .cornerRadius(25)
+            .cornerRadius(MUIConstants.cornerRadius)
             // Stroke
             .padding(0.8)
             .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
-            .cornerRadius(25)
+            .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)
         }

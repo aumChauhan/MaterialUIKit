@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-// MARK: - MUINavLinkLabel
+// MARK: - MUINavigationLabel
 
 /// A SwiftUI view that represents a navigation link label in Material-UI style.
 @available(iOS 15.0, *)
-public struct MUINavLinkLabel: View {
+public struct MUINavigationLabel: View {
     
     // MARK: - Properties
     

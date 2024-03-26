@@ -162,7 +162,7 @@ extension MUICardView {
     
     /// Returns a Stack card.
     private func stackCard() -> some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: MUIConstants.verticalContentPadding) {
             HStack {
                 titleContent()
                     .matchedGeometryEffect(id: "cardTitle", in: namespace)
@@ -223,9 +223,9 @@ extension View {
         VStack {
             switch cardStyle {
             case .elevated:
-                self.elevatedInfinityButtonStyle(cornerRadius: 25)
+                self.elevatedInfinityButtonStyle(cornerRadius: MUIConstants.cornerRadius)
             case .tonal:
-                self.tonalInfinityButtonStyle(cornerRadius: 25)
+                self.tonalInfinityButtonStyle(cornerRadius: MUIConstants.cornerRadius)
             }
         }
     }

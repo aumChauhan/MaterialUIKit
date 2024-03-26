@@ -76,11 +76,11 @@ private struct MUIDatePickerView: View {
             // Date picker styling
             .padding(20)
             .background(MaterialUIKit.tint.iconColor())
-            .cornerRadius(25)
+            .cornerRadius(MUIConstants.cornerRadius)
             // Stroke
             .padding(0.8)
             .background(MaterialUIKit.tint.secondaryTitle().opacity(0.5))
-            .cornerRadius(25)
+            .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)
             .padding(20)

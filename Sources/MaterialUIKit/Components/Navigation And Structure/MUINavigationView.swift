@@ -102,7 +102,7 @@ extension MUINavigationHeader {
     
     /// Returns a navigation header with large header style.
     private func largeHeader() -> some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: MUIConstants.verticalContentPadding) {
             HStack {
                 // Dismiss button
                 if showBackButton {

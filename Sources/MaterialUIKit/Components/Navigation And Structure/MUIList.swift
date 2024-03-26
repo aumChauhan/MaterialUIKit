@@ -85,7 +85,7 @@ extension MUIListViewLayout {
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
     private func insetStyle(children: _VariadicView.Children) -> some View {
-        return VStack(spacing: 15) {
+        return VStack(spacing: MUIConstants.verticalContentPadding) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -103,7 +103,7 @@ extension MUIListViewLayout {
     private func insetGroupedStyle(children: _VariadicView.Children) -> some View {
         let last = children.last?.id
         
-        return VStack(spacing: 15) {
+        return VStack(spacing: MUIConstants.verticalContentPadding) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -118,7 +118,7 @@ extension MUIListViewLayout {
         }
         .padding(20)
         .background(MaterialUIKit.tint.secondaryBackground())
-        .cornerRadius(25)
+        .cornerRadius(MUIConstants.cornerRadius)
     }
 }
 

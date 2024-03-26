@@ -100,7 +100,7 @@ private struct MUIAlertView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 15) {
+            VStack(alignment: .leading, spacing: MUIConstants.verticalContentPadding) {
                 // Alert tittle
                 Text(title)
                     .font(.title3)
@@ -158,7 +158,7 @@ private struct MUIAlertView: View {
             // Stroke
             .padding(0.8)
             .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
-            .cornerRadius(25)
+            .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)
         }
