@@ -44,13 +44,11 @@ private struct MUIFloatingButtonModifier: ViewModifier {
     // MARK: - Body
     
     func body(content: Content) -> some View {
-        VStack {
-            Spacer()
-            
+        content.overlay(
             MUIFloatingButton(systemSymbol: systemSymbol, title: title, action)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        .padding(10)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                .padding(20)
+        )
     }
 }
 
