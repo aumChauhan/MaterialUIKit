@@ -180,7 +180,7 @@ extension MUIButton {
     private func textButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .foregroundStyle(MaterialUIKit.tint.accent())
+                .foregroundStyle(.muiAccent)
                 .cornerRadius(100)
                 .padding()
         }
@@ -246,10 +246,10 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.accentTitle())
+            .foregroundColor(.muiAccentTitle)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUIKit.tint.tertiaryBackground())
+            .background(.muiTertiaryBackground)
             .cornerRadius(15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -260,10 +260,10 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.iconColor())
+            .foregroundColor(.muiTonal)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUIKit.tint.accent())
+            .background(.muiAccent)
             .cornerRadius(15)
     }
     
@@ -272,10 +272,10 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.accentTitle())
+            .foregroundColor(.muiAccentTitle)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(MaterialUIKit.tint.secondaryBackground())
+            .background(.muiSecondaryBackground)
             .cornerRadius(15)
     }
     
@@ -284,12 +284,12 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundColor(MaterialUIKit.tint.accent())
+            .foregroundColor(.muiAccent)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .overlay(
                 RoundedRectangle(cornerRadius: 100)
-                    .stroke(MaterialUIKit.tint.accent(), lineWidth: 1)
+                    .stroke(.muiAccent, lineWidth: 1)
             )
     }
     
@@ -298,7 +298,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.accent())
+            .foregroundColor(.muiAccent)
             .padding(padding ?? 10)
     }
     
@@ -309,11 +309,11 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.accentTitle())
+            .foregroundColor(.muiAccentTitle)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUIKit.tint.tertiaryBackground())
+            .background(.muiTertiaryBackground)
             .cornerRadius(cornerRadius ?? 15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -324,11 +324,11 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.iconColor())
+            .foregroundColor(.muiTonal)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUIKit.tint.accent())
+            .background(.muiAccent)
             .cornerRadius(cornerRadius ?? 15)
     }
     
@@ -337,11 +337,11 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(MaterialUIKit.tint.accentTitle())
+            .foregroundColor(.muiAccentTitle)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(MaterialUIKit.tint.secondaryBackground())
+            .background(.muiSecondaryBackground)
             .cornerRadius(cornerRadius ?? 15)
     }
     
@@ -350,13 +350,13 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundColor(MaterialUIKit.tint.accent())
+            .foregroundColor(.muiAccent)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .overlay(
                 RoundedRectangle(cornerRadius: 99)
-                    .stroke(MaterialUIKit.tint.accent(), lineWidth: 1)
+                    .stroke(.muiAccent, lineWidth: 1)
                     .frame(maxWidth: .infinity)
             )
     }

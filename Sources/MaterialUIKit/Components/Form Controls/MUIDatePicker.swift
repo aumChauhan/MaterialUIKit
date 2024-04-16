@@ -75,11 +75,11 @@ private struct MUIDatePickerView: View {
             }
             // Date picker styling
             .padding(20)
-            .background(MaterialUIKit.tint.iconColor())
+            .background(.muiTonal)
             .cornerRadius(MUIConstants.cornerRadius)
             // Stroke
             .padding(0.8)
-            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.5))
+            .background(.muiSecondaryTitle.opacity(0.5))
             .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)
@@ -125,7 +125,7 @@ extension MUIDatePickerView {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                .foregroundColor(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -134,7 +134,7 @@ extension MUIDatePickerView {
             // SwiftUI's default datepicker
             DatePicker("", selection: $selection, displayedComponents: .date)
                 .datePickerStyle(.graphical)
-                .tint(MaterialUIKit.tint.accent())
+                .tint(.muiAccent)
             
             MUIDivider()
             
@@ -149,7 +149,7 @@ extension MUIDatePickerView {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                .foregroundColor(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -159,7 +159,7 @@ extension MUIDatePickerView {
                 // SwiftUI's default datepicker
                 DatePicker("", selection: $selection, displayedComponents: .date)
                     .datePickerStyle(.graphical)
-                    .tint(MaterialUIKit.tint.accent())
+                    .tint(.muiAccent)
             }
             
             MUIDivider()

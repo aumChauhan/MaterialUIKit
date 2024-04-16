@@ -110,14 +110,14 @@ extension MUITabBarContainerView {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundColor(localSelection == tab ? MaterialUIKit.tint.iconColor() : MaterialUIKit.tint.primaryTitle())
+                        .foregroundColor(localSelection == tab ? .muiTonal : .muiPrimaryTitle)
                     
                     // Selected tab background
                         .background(
                             ZStack {
                                 if localSelection == tab {
                                     RoundedRectangle(cornerRadius: 100)
-                                        .fill(MaterialUIKit.tint.accent())
+                                        .fill(.muiAccent)
                                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                                 }
                             }
@@ -127,7 +127,7 @@ extension MUITabBarContainerView {
                     Text(tab.title)
                         .font(.footnote)
                         .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
-                        .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                        .foregroundColor(.muiPrimaryTitle)
                 }
                 .frame(maxWidth: .infinity)
                 // Switch tab action
@@ -173,7 +173,7 @@ private struct MUITabBarItemViewModiferWithOnAppear: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if selection == tab {
             ZStack {
-                MaterialUIKit.tint.background()
+                MaterialUIKit.tint.primaryBackground()
                 content
             }
             .opacity(1)

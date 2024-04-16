@@ -116,14 +116,14 @@ extension MUICardView {
         VStack(alignment: .leading, spacing: 10) {
             // Card heading
             Text(heading)
-                .foregroundStyle(MaterialUIKit.tint.primaryTitle())
+                .foregroundStyle(.muiPrimaryTitle)
                 .font(.headline)
                 .fontWeightWithFallback(.semibold)
                 .lineLimit(1)
             
             // Card subheading
             Text(subheading)
-                .foregroundStyle(MaterialUIKit.tint.secondaryTitle())
+                .foregroundStyle(.muiSecondaryTitle)
                 .font(.body)
                 .fontWeightWithFallback(.medium)
         }
@@ -178,7 +178,7 @@ extension MUICardView {
                     } label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.title3)
-                            .foregroundColor(MaterialUIKit.tint.accent().opacity(0.7))
+                            .foregroundColor(.muiAccent.opacity(0.7))
                             .padding(5)
                             .matchedGeometryEffect(id: "toggleKey", in: namespace)
                     }
@@ -198,7 +198,7 @@ extension MUICardView {
             content
                 .font(.callout)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                .foregroundColor(.muiSecondaryTitle)
                 .matchedGeometryEffect(id: "cardDescription", in: namespace)
                 .frame(maxWidth: .infinity)
                 .padding(8)

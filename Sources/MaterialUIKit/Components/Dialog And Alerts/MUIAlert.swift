@@ -105,7 +105,7 @@ private struct MUIAlertView: View {
                 Text(title)
                     .font(.title3)
                     .fontWeightWithFallback(.medium)
-                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .foregroundColor(.muiPrimaryTitle)
                     .lineLimit(1)
                 
                 // Alert message
@@ -113,7 +113,7 @@ private struct MUIAlertView: View {
                     Text(message)
                         .font(.headline)
                         .fontWeightWithFallback(.medium)
-                        .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                        .foregroundColor(.muiSecondaryTitle)
                         .multilineTextAlignment(.leading)
                 }
                 
@@ -153,11 +153,11 @@ private struct MUIAlertView: View {
             // Alert box width & style
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
-            .background(MaterialUIKit.tint.background())
+            .background(.muiPrimaryBackground)
             .cornerRadius(25)
             // Stroke
             .padding(0.8)
-            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .background(.muiSecondaryTitle().opacity(0.4))
             .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)

@@ -45,13 +45,13 @@ public struct MUINavigationLabel: View {
             Text(title)
                 .font(.headline)
                 .fontWeightWithFallback(.regular)
-                .foregroundStyle(MaterialUIKit.tint.primaryTitle())
+                .foregroundStyle(.muiPrimaryTitle)
             
             Spacer()
             
             // Navigation arrow
             Image(systemName: "chevron.right")
-                .foregroundStyle(MaterialUIKit.tint.secondaryTitle())
+                .foregroundStyle(.muiSecondaryTitle)
         }
     }
 }

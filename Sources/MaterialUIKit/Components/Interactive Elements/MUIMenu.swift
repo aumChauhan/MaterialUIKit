@@ -36,11 +36,11 @@ public struct MUIMenuLabel: View {
         HStack(spacing: 10) {
             // System image
             Image(systemName: systemImage)
-                .foregroundStyle(MaterialUIKit.tint.accent())
+                .foregroundStyle(.muiAccent)
             
             // Label title
             Text(title)
-                .foregroundStyle(MaterialUIKit.tint.primaryTitle())
+                .foregroundStyle(.muiPrimaryTitle)
         }
     }
 }
@@ -61,7 +61,7 @@ private struct MUIMenuViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .foregroundColor(.muiPrimaryTitle)
                 
                 if child.id != children.last?.id {
                     MUIDivider()
@@ -145,7 +145,7 @@ public struct MUIMenu<Label, Content> : View where Label : View, Content : View 
             }
         } label: {
             label
-                .tint(MaterialUIKit.tint.accent())
+                .tint(.muiAccent)
         }
         .onAppear {
             screenWidth = UIScreen.main.bounds.size.width

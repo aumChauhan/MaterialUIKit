@@ -44,7 +44,7 @@ public struct MUINavigationView<Content>: View where Content: View {
         if #available(iOS 16.0, *) {
             NavigationStack {
                 ZStack {
-                    MaterialUIKit.tint.background().ignoresSafeArea(.all)
+                    MaterialUIKit.tint.primaryBackground().ignoresSafeArea(.all)
                     
                     // Content container
                     MUINavigationBarContainerView {
@@ -57,7 +57,7 @@ public struct MUINavigationView<Content>: View where Content: View {
         } else {
             NavigationView {
                 ZStack {
-                    MaterialUIKit.tint.background().ignoresSafeArea(.all)
+                    MaterialUIKit.tint.primaryBackground().ignoresSafeArea(.all)
                     
                     // Content container
                     MUINavigationBarContainerView {
@@ -114,7 +114,7 @@ extension MUINavigationHeader {
                         Image(systemName: "arrow.left")
                             .font(.title3)
                     }
-                    .tint(MaterialUIKit.tint.primaryTitle())
+                    .tint(.muiPrimaryTitle)
                 }
                 
                 // Toolbar item
@@ -127,7 +127,7 @@ extension MUINavigationHeader {
                 .font(.title)
                 .fontWeightWithFallback(.medium)
         }
-        .foregroundColor(MaterialUIKit.tint.primaryTitle())
+        .foregroundColor(.muiPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }
@@ -154,7 +154,7 @@ extension MUINavigationHeader {
             // Toolbar Item
             toolbar.view
         }
-        .foregroundColor(MaterialUIKit.tint.primaryTitle())
+        .foregroundColor(.muiPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }

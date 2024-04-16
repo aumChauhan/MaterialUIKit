@@ -23,18 +23,18 @@ private struct MUISwitchToggleStyle: ToggleStyle {
             Spacer()
             
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(configuration.isOn ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.background())
+                .foregroundColor(configuration.isOn ? .muiAccent : .muiPrimaryBackground)
                 .frame(width: 45, height: 25)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) { // Switch key
                     Circle()
                         .frame(width: 20)
-                        .foregroundColor(configuration.isOn ? MaterialUIKit.tint.iconColor() : MaterialUIKit.tint.secondaryTitle())
+                        .foregroundColor(configuration.isOn ? .muiTonal : .muiSecondaryTitle)
                         .padding(.horizontal, 3)
                 }
                 .overlay(
                     // Outline stroke
                     RoundedRectangle(cornerRadius: 99)
-                        .stroke(MaterialUIKit.tint.secondaryTitle(), lineWidth: 1.5)
+                        .stroke(.muiSecondaryTitle, lineWidth: 1.5)
                         .frame(maxWidth: .infinity)
                 )
                 .onTapGesture {
@@ -76,7 +76,7 @@ public struct MUISwitch: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundColor(MaterialUIKit.tint.primaryTitle())
+            .foregroundColor(.muiPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MUISwitchToggleStyle())
     }

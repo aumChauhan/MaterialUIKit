@@ -76,7 +76,7 @@ private struct MUIDialogSheetView: View {
                         isPresented.toggle()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                            .foregroundColor(.muiSecondaryTitle)
                     }
                     Spacer()
                 }
@@ -86,11 +86,11 @@ private struct MUIDialogSheetView: View {
             // Dialog sheet width & style
             .frame(width: UIScreen.main.bounds.width/1.3)
             .padding(20)
-            .background(MaterialUIKit.tint.iconColor())
+            .background(.muiTonal)
             .cornerRadius(MUIConstants.cornerRadius)
             // Stroke
             .padding(0.8)
-            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .background(.muiSecondaryTitle.opacity(0.4))
             .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)

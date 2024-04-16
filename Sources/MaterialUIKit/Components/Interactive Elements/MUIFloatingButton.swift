@@ -68,7 +68,7 @@ public struct MUIFloatingButton: View {
                 // Button title
                 Text(title)
             }
-            .foregroundColor(MaterialUIKit.tint.accent())
+            .foregroundColor(.muiAccent)
             .frame(minWidth: 30)
             .frame(height: 35)
             .elevatedButtonStyle()

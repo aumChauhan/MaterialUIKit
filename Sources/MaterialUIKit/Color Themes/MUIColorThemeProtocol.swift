@@ -17,12 +17,12 @@ public protocol MUIColorThemeProtocol {
     func accent() -> Color
     
     /// Returns the icon color based on the given color scheme.
-    /// - Returns: The icon color.
-    func iconColor() -> Color
+    /// - Returns: The accent tonal color.
+    func tonal() -> Color
     
-    /// Returns the background co_ lor based on the given color scheme.
+    /// Returns the background color based on the given color scheme.
     /// - Returns: The background color.
-    func background() -> Color
+    func primaryBackground() -> Color
     
     /// Returns the secondary background color based on the given color scheme.
     /// - Returns: The secondary background color.

@@ -73,13 +73,13 @@ public struct MUISecureField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
+                    .foregroundColor(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .padding(.leading, 15)
             }
             
             // SwiftUI's default securefield.
             SecureField("", text: $text)
-                .tint(MaterialUIKit.tint.accent())
+                .tint(.muiAccent)
                 .padding(16)
 
             Spacer()
@@ -90,7 +90,7 @@ public struct MUISecureField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                        .foregroundColor(.muiSecondaryTitle)
                         .padding(.trailing, 14)
                 }
             }
@@ -98,8 +98,8 @@ public struct MUISecureField: View {
         .background(
             // Creates outline around secureField on focus state
             RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle(), lineWidth: 1)
-                .background(background ?? MaterialUIKit.tint.secondaryBackground().opacity(0.5))
+                .stroke(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle, lineWidth: 1)
+                .background(background ?? .muiSecondaryBackground.opacity(0.5))
                 .cornerRadius(20)
         )
         
@@ -110,7 +110,7 @@ public struct MUISecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(secureFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
+                    .foregroundColor(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .offset(x: secureFieldIsFocused ? (systemSymbol != nil ? -35 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

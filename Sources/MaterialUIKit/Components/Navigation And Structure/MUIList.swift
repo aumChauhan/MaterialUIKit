@@ -74,7 +74,7 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .foregroundColor(.muiPrimaryTitle)
                 
                 if child.id != last {
                     MUIDivider()
@@ -91,9 +91,9 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .foregroundColor(.muiPrimaryTitle)
                     .padding(16)
-                    .background(MaterialUIKit.tint.secondaryBackground())
+                    .background(.muiSecondaryBackground)
                     .cornerRadius(15)
             }
         }
@@ -109,7 +109,7 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                    .foregroundColor(.muiPrimaryTitle)
                 
                 if child.id != last {
                     MUIDivider()
@@ -117,7 +117,7 @@ extension MUIListViewLayout {
             }
         }
         .padding(20)
-        .background(MaterialUIKit.tint.secondaryBackground())
+        .background(.muiSecondaryBackground)
         .cornerRadius(MUIConstants.cornerRadius)
     }
 }

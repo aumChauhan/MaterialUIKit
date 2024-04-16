@@ -95,7 +95,7 @@ private struct MUISnackbarView: View {
                     // Snackbar message
                     Text(message)
                         .font(.headline)
-                        .foregroundStyle(MaterialUIKit.tint.primaryTitle())
+                        .foregroundStyle(.muiPrimaryTitle)
                         .fontWeightWithFallback(.medium)
                     
                     Spacer()
@@ -114,7 +114,7 @@ private struct MUISnackbarView: View {
                 }
                 .lineLimit(1)
                 .padding(20)
-                .background(MaterialUIKit.tint.tertiaryBackground())
+                .background(.muiTertiaryBackground)
                 .cornerRadius(20)
                 .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
             }

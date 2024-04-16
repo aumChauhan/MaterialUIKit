@@ -77,11 +77,11 @@ private struct MUITimePickerView: View {
             }
             // Time picker styling
             .padding(20)
-            .background(MaterialUIKit.tint.iconColor())
+            .background(.muiTonal)
             .cornerRadius(MUIConstants.cornerRadius)
             // Stroke
             .padding(0.8)
-            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.4))
+            .background(.muiSecondaryTitle.opacity(0.4))
             .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)
@@ -127,7 +127,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                .foregroundColor(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -136,7 +136,7 @@ extension MUITimePickerView {
             // SwiftUI's default timepicker
             DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)
-                .tint(MaterialUIKit.tint.accent())
+                .tint(.muiAccent)
             
             MUIDivider()
             
@@ -151,7 +151,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(MaterialUIKit.tint.primaryTitle())
+                .foregroundColor(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -161,7 +161,7 @@ extension MUITimePickerView {
                 // SwiftUI's default timepicker
                 DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .tint(MaterialUIKit.tint.accent())
+                    .tint(.muiAccent)
             }
             
             MUIDivider()

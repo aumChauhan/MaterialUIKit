@@ -73,13 +73,13 @@ public struct MUITextField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(textFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
+                    .foregroundColor(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .padding(.leading, 15)
             }
             
             // SwiftUI's default textfield
             TextField("", text: $text)
-                .tint(MaterialUIKit.tint.accent())
+                .tint(.muiAccent)
                 .padding(16)
             
             Spacer()
@@ -90,7 +90,7 @@ public struct MUITextField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                        .foregroundColor(.muiSecondaryTitle)
                         .padding(.trailing, 14)
                 }
             }
@@ -98,8 +98,8 @@ public struct MUITextField: View {
         .background(
             // Creates outline around textfield on focus state
             RoundedRectangle(cornerRadius: 20)
-                .stroke(textFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle(), lineWidth: 1)
-                .background(background ?? MaterialUIKit.tint.secondaryBackground().opacity(0.5))
+                .stroke(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle, lineWidth: 1)
+                .background(background ?? .muiSecondaryBackground.opacity(0.5))
                 .cornerRadius(20)
         )
         // Placeholder text that shifts upward on focus state.
@@ -109,7 +109,7 @@ public struct MUITextField: View {
             } else {
                 Text(titlekey)
                     .font(textFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(textFieldIsFocused ? MaterialUIKit.tint.accent() : MaterialUIKit.tint.secondaryTitle())
+                    .foregroundColor(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .offset(x: textFieldIsFocused ? (systemSymbol != nil ? -35 : 0) : 0)
                     .offset(y: textFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

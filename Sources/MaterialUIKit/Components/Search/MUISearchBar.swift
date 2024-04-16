@@ -55,12 +55,12 @@ public struct MUISearchBar: View {
                 // Search icon
                 Image(systemName: "magnifyingglass")
                     .font(.headline)
-                    .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                    .foregroundColor(.muiSecondaryTitle)
                 
                 // Search field
                 TextField(placeholder, text: $searchText)
                     .keyboardType(.webSearch)
-                    .tint(MaterialUIKit.tint.accent())
+                    .tint(.muiAccent)
                 
                 Spacer()
                 
@@ -73,24 +73,24 @@ public struct MUISearchBar: View {
                         }
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(MaterialUIKit.tint.secondaryTitle())
+                            .foregroundColor(.muiSecondaryTitle)
                     }
                 }
             }
             // Searchfield backdrop
             .padding(12)
-            .background(MaterialUIKit.tint.secondaryBackground())
+            .background(.muiSecondaryBackground)
             .cornerRadius(100)
             // Stroke
             .padding(1)
-            .background(MaterialUIKit.tint.secondaryTitle().opacity(0.5))
+            .background(.muiSecondaryTitle.opacity(0.5))
             .cornerRadius(100)
-            .tint(MaterialUIKit.tint.accent())
+            .tint(.muiAccent)
             
             // Search action
             if showSearchButton {
                 Button("Search", action: action)
-                    .foregroundColor(MaterialUIKit.tint.accent())
+                    .foregroundColor(.muiAccent)
                     .fontWeightWithFallback(.medium)
                     .buttonStyle(MUIButtonTapStyle())
             }
