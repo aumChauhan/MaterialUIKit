@@ -32,7 +32,9 @@ public struct MUIBlankView<Content>: View where Content: View {
             MaterialUIKit.tint.primaryBackground().ignoresSafeArea(.all)
             
             // Content
-            content
+            VStack {
+                content
+            }
                 .padding(MUIConstants.insideMargin)
         }
     }
