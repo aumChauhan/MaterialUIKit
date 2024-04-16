@@ -16,8 +16,8 @@ public struct MUICheckbox: View {
     
     // MARK: - Properties
     
-    public let title: String
-    @Binding public var isOn: Bool
+    private let title: String
+    @Binding private var isOn: Bool
     
     // MARK: - Initializers
     
@@ -48,7 +48,7 @@ private struct MUICheckboxStyle: ToggleStyle {
     
     // MARK: - Body
     
-    public func makeBody(configuration: Configuration) -> some View {
+    internal func makeBody(configuration: Configuration) -> some View {
         HStack(alignment: .center) {
             configuration.label
             
@@ -74,7 +74,7 @@ private struct TintColorModifier: ViewModifier {
     
     // MARK: - Properties
     
-    public let tintColor: Color
+    internal let tintColor: Color
     
     // MARK: - Body
     

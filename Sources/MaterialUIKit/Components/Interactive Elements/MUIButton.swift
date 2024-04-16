@@ -68,10 +68,9 @@ public struct MUIButton: View {
     
     // MARK: - Properties
     
-    public let title: String
-    public let style: MUIButtonStyle
-    public let action: () -> Void
-    
+    private let title: String
+    private let style: MUIButtonStyle
+    private let action: () -> Void
     
     // MARK: - Initializers
     

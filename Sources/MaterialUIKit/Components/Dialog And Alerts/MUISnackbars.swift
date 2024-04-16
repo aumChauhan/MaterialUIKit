@@ -47,11 +47,11 @@ private struct MUISnackbarModifier: ViewModifier {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
-    public let message: String
-    public let duration: Double?
-    public let primaryButtonTitle: String?
-    public let primaryAction: (() -> Void)?
+    @Binding internal var isPresented: Bool
+    internal let message: String
+    internal let duration: Double?
+    internal let primaryButtonTitle: String?
+    internal let primaryAction: (() -> Void)?
     
     // MARK: - Body
     

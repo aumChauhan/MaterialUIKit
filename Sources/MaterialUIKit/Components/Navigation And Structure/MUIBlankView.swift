@@ -14,7 +14,7 @@ public struct MUIBlankView<Content>: View where Content: View {
     
     // MARK: - Properties
     
-    let content: Content
+    private let content: Content
     
     // MARK: - Initializer
     

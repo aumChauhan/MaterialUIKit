@@ -12,7 +12,7 @@ import SwiftUI
 
 /// Enumeration representing different styles for the `MUIIconButtonStyle`.
 @available(iOS 15.0, *)
-public enum MUIIconButtonStyle {
+@frozen public enum MUIIconButtonStyle {
     /// A circular button with an secondary background.
     case secondary
     
@@ -34,10 +34,10 @@ public struct MUIIconButton: View {
     
     // MARK: - Properties
     
-    public let systemSymbol: String?
-    public let image: String?
-    public let style: MUIIconButtonStyle
-    public let action: () -> ()
+    private let systemSymbol: String?
+    private let image: String?
+    private let style: MUIIconButtonStyle
+    private let action: () -> ()
     
     // MARK: - Initializers
     

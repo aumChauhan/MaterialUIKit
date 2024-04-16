@@ -33,8 +33,8 @@ private struct MUIDialogSheetModifer: ViewModifier {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
-    public let dialogSheetContent: AnyView
+    @Binding internal var isPresented: Bool
+    internal let dialogSheetContent: AnyView
     
     // MARK: - Body
     

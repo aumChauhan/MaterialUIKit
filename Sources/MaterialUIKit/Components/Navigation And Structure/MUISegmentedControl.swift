@@ -16,11 +16,11 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
     
     // MARK: - Properties
     
-    public var data: Data
-    public var id: KeyPath<Data.Element, ID>
-    public var content: (Data.Element) -> Content
+    private var data: Data
+    private var id: KeyPath<Data.Element, ID>
+    private var content: (Data.Element) -> Content
     
-    @Binding public var selectedItem: Data.Element
+    @Binding private var selectedItem: Data.Element
     @Namespace private var namespace
     
     // MARK: - Initializer

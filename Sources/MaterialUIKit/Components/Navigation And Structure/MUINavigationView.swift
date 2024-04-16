@@ -28,7 +28,7 @@ public struct MUINavigationView<Content>: View where Content: View {
     
     // MARK: - Properties
     
-    public let content: Content
+    private let content: Content
     
     // MARK: - Initializer
     

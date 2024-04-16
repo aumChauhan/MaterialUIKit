@@ -31,8 +31,8 @@ private struct MUITimePickerModifier: ViewModifier {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
-    @Binding public var selection: Date
+    @Binding internal var isPresented: Bool
+    @Binding internal var selection: Date
     
     // MARK: - Body
     
@@ -53,8 +53,8 @@ private struct MUITimePickerView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     
-    @Binding public var isPresented: Bool
-    @Binding public var selection: Date
+    @Binding internal var isPresented: Bool
+    @Binding internal var selection: Date
     @State private var animationFlag: Bool = false
     
     // MARK: - View Body

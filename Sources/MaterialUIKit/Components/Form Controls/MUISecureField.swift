@@ -16,10 +16,10 @@ public struct MUISecureField: View {
     
     // MARK: - Properties
     
-    @Binding public var text: String
-    public let systemSymbol: String?
-    public let titlekey: String
-    public let background: Color?
+    @Binding private var text: String
+    private let systemSymbol: String?
+    private let titlekey: String
+    private let background: Color?
     
     @FocusState private var isFocused: Bool
     @State private var secureFieldIsFocused: Bool = false

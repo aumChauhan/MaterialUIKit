@@ -35,7 +35,7 @@ public struct MUIProgressView: View {
     
     // MARK: - Properties
     
-    public let lineWidth: CGFloat
+    private let lineWidth: CGFloat
     
     @State private var rotationAngle: Double = 0
     private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()

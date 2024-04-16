@@ -57,8 +57,8 @@ public struct MUISwitch: View {
     
     // MARK: - Properties
     
-    public let title: String
-    @Binding public var isOn: Bool
+    private let title: String
+    @Binding private var isOn: Bool
     
     // MARK: - Initializers
     

@@ -86,9 +86,9 @@ public struct MUIMenu<Label, Content> : View where Label : View, Content : View 
     @State private var screenHeight: Double = 0
     @Binding private var isActive: Bool
     
-    var label: Label!
-    var content: Content!
-    var width: Double = 200
+    private var label: Label!
+    private var content: Content!
+    private var width: Double = 200
     
     // MARK: - Initializers
     

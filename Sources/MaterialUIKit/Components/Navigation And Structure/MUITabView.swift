@@ -35,9 +35,9 @@ public struct MUITabBarView<Content>: View where Content: View {
     
     // MARK: - Properties
     
-    public let content: Content
+    private let content: Content
     
-    @Binding public var selection: MUITabBarItem
+    @Binding private var selection: MUITabBarItem
     @State private var tabs: [MUITabBarItem] = []
     
     // MARK: - Initializer

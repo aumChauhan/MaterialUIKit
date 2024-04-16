@@ -53,13 +53,13 @@ private struct MUIAlertModifier: ViewModifier {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
-    public let title: String
-    public let message: String?
-    public let primaryButtonTitle: String
-    public let primaryAction: () -> Void
-    public let secondaryButtonTitle: String?
-    public let secondaryAction: (() -> Void)?
+    @Binding internal var isPresented: Bool
+    internal let title: String
+    internal let message: String?
+    internal let primaryButtonTitle: String
+    internal let primaryAction: () -> Void
+    internal let secondaryButtonTitle: String?
+    internal let secondaryAction: (() -> Void)?
     
     // MARK: - Body
     
@@ -86,15 +86,15 @@ private struct MUIAlertView: View {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
+    @Binding internal var isPresented: Bool
     @State private var animationFlag: Bool = false
 
-    public let title: String
-    public let message: String?
-    public let primaryButtonTitle: String
-    public let primaryAction: () -> Void
-    public let secondaryButtonTitle: String?
-    public let secondaryAction: (() -> Void)?
+    internal let title: String
+    internal let message: String?
+    internal let primaryButtonTitle: String
+    internal let primaryAction: () -> Void
+    internal let secondaryButtonTitle: String?
+    internal let secondaryAction: (() -> Void)?
     
     // MARK: - View Body
     

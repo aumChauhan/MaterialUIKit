@@ -11,6 +11,7 @@ import SwiftUI
 // MARK: - MUIListStyle
 
 /// Enum representing different styles for `MUIList`.
+@available(iOS 15.0, *)
 @frozen public enum MUIListStyle {
     /// A plain-style list with default spacing and divider lines.
     case plain
@@ -30,7 +31,7 @@ private struct MUIListViewLayout: _VariadicView_UnaryViewRoot {
     
     // MARK: - Properties
     
-    public var listStyle: MUIListStyle
+    internal var listStyle: MUIListStyle
     
     // MARK: - Initializers
     
@@ -131,8 +132,8 @@ public struct MUIList<Content>: View where Content: View {
     
     // MARK: - Properties
     
-    public var content: Content
-    public var listStyle: MUIListStyle
+    private var content: Content
+    private var listStyle: MUIListStyle
     
     // MARK: - Initializers
     

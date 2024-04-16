@@ -32,8 +32,8 @@ private struct MUIDatePickerModifier: ViewModifier {
     
     // MARK: - Properties
     
-    @Binding public var isPresented: Bool
-    @Binding public var selection: Date
+    @Binding internal var isPresented: Bool
+    @Binding internal var selection: Date
     
     // MARK: - Body
     
@@ -54,8 +54,8 @@ private struct MUIDatePickerView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
     
-    @Binding public var isPresented: Bool
-    @Binding public var selection: Date
+    @Binding internal var isPresented: Bool
+    @Binding internal var selection: Date
     @State private var animationFlag: Bool = false
     
     // MARK: - View Body
@@ -167,20 +167,5 @@ extension MUIDatePickerView {
             dismissDatePicker()
         }
         .frame(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height / 1.2)
-    }
-}
-
-// MARK: - Extension Date
-
-/// An extension on `Date` to format dates in a specific format.
-@available(iOS 15.0, *)
-extension Date {
-    
-    /// Formats the date in the "E, MMM D" style.
-    /// - Returns: A formatted string representing the date.
-    public func formattedMUIDate() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, MMM d"
-        return dateFormatter.string(from: self)
     }
 }

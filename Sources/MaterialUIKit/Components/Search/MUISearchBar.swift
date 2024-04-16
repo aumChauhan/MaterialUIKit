@@ -16,9 +16,9 @@ public struct MUISearchBar: View {
     
     // MARK: - Properties
     
-    public let placeholder: String
-    public let action: () -> Void
-    @Binding public var searchText: String
+    private let placeholder: String
+    private let action: () -> Void
+    @Binding private var searchText: String
     @State private var showSearchButton: Bool = false
     
     // MARK: - Initializers
