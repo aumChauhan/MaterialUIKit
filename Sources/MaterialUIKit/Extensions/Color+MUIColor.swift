@@ -14,9 +14,7 @@ import SwiftUI
 public extension Color {
     
     /// The accent color based on the current tint setting.
-    static var muiAccent: Color {
-        MaterialUIKit.tint.accent()
-    }
+     static let muiAccent: Color = MaterialUIKit.tint.accent()
     
     /// The accent tonal color shade based on the current tint setting.
     static var muiTonal: Color {

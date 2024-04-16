@@ -73,7 +73,7 @@ public struct MUITextField: View {
             if let systemSymbol {
                 Image(systemName: systemSymbol)
                     .font(.callout)
-                    .foregroundColor(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .padding(.leading, 15)
             }
             
@@ -90,7 +90,7 @@ public struct MUITextField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundColor(.muiSecondaryTitle)
+                        .foregroundStyle(.muiSecondaryTitle)
                         .padding(.trailing, 14)
                 }
             }
@@ -109,7 +109,7 @@ public struct MUITextField: View {
             } else {
                 Text(titlekey)
                     .font(textFieldIsFocused ? .caption : .callout)
-                    .foregroundColor(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
                     .offset(x: textFieldIsFocused ? (systemSymbol != nil ? -35 : 0) : 0)
                     .offset(y: textFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

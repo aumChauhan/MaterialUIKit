@@ -61,7 +61,7 @@ private struct MUIMenuViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(.muiPrimaryTitle)
+                    .foregroundStyle(.muiPrimaryTitle)
                 
                 if child.id != children.last?.id {
                     MUIDivider()
@@ -179,7 +179,7 @@ extension MUIMenu {
                         }
                     } label: {
                         Rectangle()
-                            .foregroundColor(.clear)
+                            .foregroundStyle(.clear)
                             .contentShape(Rectangle())
                     }
                     .offset(x: -geo.frame(in: .global).origin.x)

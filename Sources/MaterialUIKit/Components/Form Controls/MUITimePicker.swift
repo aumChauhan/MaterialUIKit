@@ -127,7 +127,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(.muiPrimaryTitle)
+                .foregroundStyle(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -151,7 +151,7 @@ extension MUITimePickerView {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(.muiPrimaryTitle)
+                .foregroundStyle(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             

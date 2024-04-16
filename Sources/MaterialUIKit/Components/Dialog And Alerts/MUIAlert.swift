@@ -105,7 +105,7 @@ private struct MUIAlertView: View {
                 Text(title)
                     .font(.title3)
                     .fontWeightWithFallback(.medium)
-                    .foregroundColor(.muiPrimaryTitle)
+                    .foregroundStyle(.muiPrimaryTitle)
                     .lineLimit(1)
                 
                 // Alert message
@@ -113,7 +113,7 @@ private struct MUIAlertView: View {
                     Text(message)
                         .font(.headline)
                         .fontWeightWithFallback(.medium)
-                        .foregroundColor(.muiSecondaryTitle)
+                        .foregroundStyle(.muiSecondaryTitle)
                         .multilineTextAlignment(.leading)
                 }
                 
@@ -157,7 +157,7 @@ private struct MUIAlertView: View {
             .cornerRadius(25)
             // Stroke
             .padding(0.8)
-            .background(.muiSecondaryTitle().opacity(0.4))
+            .background(.muiSecondaryTitle.opacity(0.4))
             .cornerRadius(MUIConstants.cornerRadius)
             // Scale-In animation
             .scaleEffect(animationFlag ? 1 : 0)

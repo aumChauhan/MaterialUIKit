@@ -246,7 +246,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiAccentTitle)
+            .foregroundStyle(.muiAccentTitle)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .background(.muiTertiaryBackground)
@@ -260,7 +260,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiTonal)
+            .foregroundStyle(.muiTonal)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .background(.muiAccent)
@@ -272,7 +272,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiAccentTitle)
+            .foregroundStyle(.muiAccentTitle)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .background(.muiSecondaryBackground)
@@ -284,7 +284,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundColor(.muiAccent)
+            .foregroundStyle(.muiAccent)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .overlay(
@@ -298,7 +298,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiAccent)
+            .foregroundStyle(.muiAccent)
             .padding(padding ?? 10)
     }
     
@@ -309,7 +309,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiAccentTitle)
+            .foregroundStyle(.muiAccentTitle)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
@@ -324,7 +324,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiTonal)
+            .foregroundStyle(.muiTonal)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
@@ -337,7 +337,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundColor(.muiAccentTitle)
+            .foregroundStyle(.muiAccentTitle)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
@@ -350,7 +350,7 @@ extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundColor(.muiAccent)
+            .foregroundStyle(.muiAccent)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)

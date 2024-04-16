@@ -64,7 +64,7 @@ extension MUIDivider {
                 .frame(height: 1)
                 .frame(maxWidth: .infinity)
                 .padding(5)
-                .foregroundColor(.muiSecondaryTitle.opacity(0.5))
+                .foregroundStyle(.muiSecondaryTitle.opacity(0.5))
         }
     }
     
@@ -75,7 +75,7 @@ extension MUIDivider {
                 .frame(width: 1)
                 .frame(maxHeight: .infinity)
                 .padding(5)
-                .foregroundColor(.muiSecondaryTitle.opacity(0.5))
+                .foregroundStyle(.muiSecondaryTitle.opacity(0.5))
         }
     }
 }

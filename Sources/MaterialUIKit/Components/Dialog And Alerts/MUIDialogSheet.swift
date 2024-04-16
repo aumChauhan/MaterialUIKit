@@ -76,7 +76,7 @@ private struct MUIDialogSheetView: View {
                         isPresented.toggle()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundColor(.muiSecondaryTitle)
+                            .foregroundStyle(.muiSecondaryTitle)
                     }
                     Spacer()
                 }

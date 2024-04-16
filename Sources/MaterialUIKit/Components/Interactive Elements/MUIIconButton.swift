@@ -151,7 +151,7 @@ extension MUIIconButton {
         Button(action: action) {
             icon()
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(.muiAccent)
+                .foregroundStyle(.muiAccent)
                 .padding(.vertical, 15)
                 .padding(.horizontal, 20)
                 .background(.muiSecondaryBackground)

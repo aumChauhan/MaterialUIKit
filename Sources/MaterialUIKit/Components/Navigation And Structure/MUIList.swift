@@ -74,7 +74,7 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(.muiPrimaryTitle)
+                    .foregroundStyle(.muiPrimaryTitle)
                 
                 if child.id != last {
                     MUIDivider()
@@ -91,7 +91,7 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(.muiPrimaryTitle)
+                    .foregroundStyle(.muiPrimaryTitle)
                     .padding(16)
                     .background(.muiSecondaryBackground)
                     .cornerRadius(15)
@@ -109,7 +109,7 @@ extension MUIListViewLayout {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundColor(.muiPrimaryTitle)
+                    .foregroundStyle(.muiPrimaryTitle)
                 
                 if child.id != last {
                     MUIDivider()

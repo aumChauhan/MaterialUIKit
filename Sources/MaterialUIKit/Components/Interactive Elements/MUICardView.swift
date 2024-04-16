@@ -178,7 +178,7 @@ extension MUICardView {
                     } label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .font(.title3)
-                            .foregroundColor(.muiAccent.opacity(0.7))
+                            .foregroundStyle(.muiAccent.opacity(0.7))
                             .padding(5)
                             .matchedGeometryEffect(id: "toggleKey", in: namespace)
                     }
@@ -198,7 +198,7 @@ extension MUICardView {
             content
                 .font(.callout)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(.muiSecondaryTitle)
+                .foregroundStyle(.muiSecondaryTitle)
                 .matchedGeometryEffect(id: "cardDescription", in: namespace)
                 .frame(maxWidth: .infinity)
                 .padding(8)

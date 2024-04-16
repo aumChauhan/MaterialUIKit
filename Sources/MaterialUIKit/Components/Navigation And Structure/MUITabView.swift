@@ -110,7 +110,7 @@ extension MUITabBarContainerView {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundColor(localSelection == tab ? .muiTonal : .muiPrimaryTitle)
+                        .foregroundStyle(localSelection == tab ? .muiTonal : .muiPrimaryTitle)
                     
                     // Selected tab background
                         .background(
@@ -127,7 +127,7 @@ extension MUITabBarContainerView {
                     Text(tab.title)
                         .font(.footnote)
                         .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
-                        .foregroundColor(.muiPrimaryTitle)
+                        .foregroundStyle(.muiPrimaryTitle)
                 }
                 .frame(maxWidth: .infinity)
                 // Switch tab action

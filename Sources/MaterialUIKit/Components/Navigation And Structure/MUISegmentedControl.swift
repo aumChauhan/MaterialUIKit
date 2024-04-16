@@ -47,14 +47,14 @@ public struct MUISegmentedControl<Data, ID, Content>: View where Data: RandomAcc
                     // Selected tab background
                     if item == selectedItem {
                         RoundedRectangle(cornerRadius: 0)
-                            .foregroundColor(.muiTertiaryBackground)
+                            .foregroundStyle(.muiTertiaryBackground)
                             .matchedGeometryEffect(id: "selectedTabBg", in: namespace)
                     }
                     
                     // Content
                     content(item)
                         .tag(item)
-                        .foregroundColor(.muiPrimaryTitle)
+                        .foregroundStyle(.muiPrimaryTitle)
                         .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)

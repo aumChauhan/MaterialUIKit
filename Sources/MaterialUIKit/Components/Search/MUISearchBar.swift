@@ -55,7 +55,7 @@ public struct MUISearchBar: View {
                 // Search icon
                 Image(systemName: "magnifyingglass")
                     .font(.headline)
-                    .foregroundColor(.muiSecondaryTitle)
+                    .foregroundStyle(.muiSecondaryTitle)
                 
                 // Search field
                 TextField(placeholder, text: $searchText)
@@ -73,7 +73,7 @@ public struct MUISearchBar: View {
                         }
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.muiSecondaryTitle)
+                            .foregroundStyle(.muiSecondaryTitle)
                     }
                 }
             }
@@ -90,7 +90,7 @@ public struct MUISearchBar: View {
             // Search action
             if showSearchButton {
                 Button("Search", action: action)
-                    .foregroundColor(.muiAccent)
+                    .foregroundStyle(.muiAccent)
                     .fontWeightWithFallback(.medium)
                     .buttonStyle(MUIButtonTapStyle())
             }

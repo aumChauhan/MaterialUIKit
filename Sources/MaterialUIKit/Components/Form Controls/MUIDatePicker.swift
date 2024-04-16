@@ -125,7 +125,7 @@ extension MUIDatePickerView {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(.muiPrimaryTitle)
+                .foregroundStyle(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -149,7 +149,7 @@ extension MUIDatePickerView {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundColor(.muiPrimaryTitle)
+                .foregroundStyle(.muiPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             

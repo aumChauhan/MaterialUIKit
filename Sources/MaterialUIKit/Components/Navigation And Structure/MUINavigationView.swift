@@ -127,7 +127,7 @@ extension MUINavigationHeader {
                 .font(.title)
                 .fontWeightWithFallback(.medium)
         }
-        .foregroundColor(.muiPrimaryTitle)
+        .foregroundStyle(.muiPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }
@@ -154,7 +154,7 @@ extension MUINavigationHeader {
             // Toolbar Item
             toolbar.view
         }
-        .foregroundColor(.muiPrimaryTitle)
+        .foregroundStyle(.muiPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }

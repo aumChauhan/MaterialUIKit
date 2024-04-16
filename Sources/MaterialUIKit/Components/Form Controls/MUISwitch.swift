@@ -23,12 +23,12 @@ private struct MUISwitchToggleStyle: ToggleStyle {
             Spacer()
             
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(configuration.isOn ? .muiAccent : .muiPrimaryBackground)
+                .foregroundStyle(configuration.isOn ? .muiAccent : .muiPrimaryBackground)
                 .frame(width: 45, height: 25)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) { // Switch key
                     Circle()
                         .frame(width: 20)
-                        .foregroundColor(configuration.isOn ? .muiTonal : .muiSecondaryTitle)
+                        .foregroundStyle(configuration.isOn ? .muiTonal : .muiSecondaryTitle)
                         .padding(.horizontal, 3)
                 }
                 .overlay(
@@ -76,7 +76,7 @@ public struct MUISwitch: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundColor(.muiPrimaryTitle)
+            .foregroundStyle(.muiPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MUISwitchToggleStyle())
     }
