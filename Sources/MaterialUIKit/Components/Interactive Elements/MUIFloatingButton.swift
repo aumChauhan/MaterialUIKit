@@ -8,18 +8,64 @@
 
 import SwiftUI
 
+// MARK: - Extension View
+
+@available(iOS 15.0, *)
+extension View {
+    
+    ///  Presents a Material-UI style floating button to the view with a `bottomTrailing` alignment.
+    ///
+    /// - Parameters
+    ///   - systemSymbol: The system symbol name for the button icon.
+    ///   - title: The title text displayed on the button.
+    ///   - action: A closure to be executed when the button is tapped.
+    public func muiFloatingButton(
+        systemSymbol: String,
+        title: String,
+        action: @escaping () -> Void) -> some View {
+            self.modifier(
+                MUIFloatingButtonModifier(systemSymbol: systemSymbol, title: title, action: action)
+            )
+        }
+}
+
+// MARK: - MUIFloatingButtonModifier
+
+/// A view modifier that adds a floating button with specified system symbol and title aligned at the bottom of the screen.
+@available(iOS 15.0, *)
+private struct MUIFloatingButtonModifier: ViewModifier {
+    
+    // MARK: - Properties
+    
+    public let systemSymbol: String
+    public let title: String
+    public let action: () -> Void
+    
+    // MARK: - Body
+    
+    func body(content: Content) -> some View {
+        VStack {
+            Spacer()
+            
+            MUIFloatingButton(systemSymbol: systemSymbol, title: title, action)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(10)
+    }
+}
+
 // MARK: - MUIFloatingButton
 
 /// A SwiftUI button designed for floating action button (FAB) functionality with various initialization options.
 @available(iOS 15.0, *)
-public struct MUIFloatingButton: View {
+private struct MUIFloatingButton: View {
     
     // MARK: - Properties
     
-    public let systemSymbol: String?
-    public let image: String?
-    public let title: String
-    public let action: () -> Void
+    private let systemSymbol: String?
+    private let image: String?
+    private let title: String
+    private let action: () -> Void
     
     // MARK: - Initializers
     
@@ -29,7 +75,7 @@ public struct MUIFloatingButton: View {
     /// - `systemSymbol`:  SF Symbol string for system-provided icons.
     /// - `title`:  Optional title for a textual label beside the button.
     /// - `action`: The closure to execute when the button is pressed.
-    public init(systemSymbol: String, title: String, _ action: @escaping () -> Void) {
+    init(systemSymbol: String, title: String, _ action: @escaping () -> Void) {
         self.systemSymbol = systemSymbol
         self.title = title
         self.action = action
@@ -42,7 +88,7 @@ public struct MUIFloatingButton: View {
     /// - `image`:  Custom SwiftUI `Image` for a personalized button icon.
     /// - `title`:  Optional title for a textual label beside the button.
     /// - `action`: The closure to execute when the button is pressed.
-    public init(image: String, title: String, _ action: @escaping () -> Void) {
+    init(image: String, title: String, _ action: @escaping () -> Void) {
         self.image = image
         self.title = title
         self.action = action
@@ -51,7 +97,7 @@ public struct MUIFloatingButton: View {
     
     // MARK: - View Body
     
-    public var body: some View {
+    var body: some View {
         Button(action: action) {
             HStack {
                 // Button Symbol
