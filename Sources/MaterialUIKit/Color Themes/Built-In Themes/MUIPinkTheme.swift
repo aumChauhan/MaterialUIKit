@@ -11,7 +11,7 @@ import SwiftUI
 
 /// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Pink color theme.
 @available(iOS 15.0, *)
-final public class MUIPinkTheme: MUIColorThemeProtocol {
+public struct MUIPinkTheme: MUIColorThemeProtocol {
     
     /// Returns the theme name
     public func themeName() -> String {

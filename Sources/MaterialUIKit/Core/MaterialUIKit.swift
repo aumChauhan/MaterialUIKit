@@ -21,7 +21,7 @@ final public class MaterialUIKit {
     /// Example:
     /// ```swift
     /// init() {
-    ///     MaterialUI.tint = MUIColorThemes.blue
+    ///     MaterialUIKit.tint = MUIColorThemes.blue
     ///  }
     /// ```
     /// # Available Themes:

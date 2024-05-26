@@ -11,7 +11,7 @@ import SwiftUI
 /// A class containing built-in color themes of type MaterialUI ColorPalette for the MaterialUI package.
 /// - Note: `MUIColorThemes` extension allows you to create a custom theme by setting thecolors.
 @available(iOS 15.0, *)
-final public class MUIColorThemes {
+public struct MUIColorThemes {
     
     // MARK: - Static Properties
     

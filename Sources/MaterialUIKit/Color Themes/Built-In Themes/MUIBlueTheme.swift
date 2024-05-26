@@ -11,7 +11,7 @@ import SwiftUI
 
 /// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Blue color theme.
 @available(iOS 15.0, *)
-final public class MUIBlueTheme: MUIColorThemeProtocol {
+public struct MUIBlueTheme: MUIColorThemeProtocol {
     
     /// Returns the theme name.
     public func themeName() -> String {

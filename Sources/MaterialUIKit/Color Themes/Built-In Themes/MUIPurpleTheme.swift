@@ -11,7 +11,7 @@ import SwiftUI
 
 /// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Purple color theme.
 @available(iOS 15.0, *)
-final public class MUIPurpleTheme: MUIColorThemeProtocol {
+public struct MUIPurpleTheme: MUIColorThemeProtocol {
     
     /// Returns the themeName
     public func themeName() -> String {

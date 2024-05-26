@@ -10,7 +10,7 @@ import SwiftUI
 
 /// The `MUIConstants` class encapsulates various constants that are utilized throughout the package.
 @available(iOS 15.0, *)
-internal final class MUIConstants {
+internal struct MUIConstants {
     
     private init() {}
     
