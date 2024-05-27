@@ -124,7 +124,7 @@ extension MUINavigationHeader {
             
             // Navigation title
             Text(title)
-                .font(.title)
+                .font(.largeTitle)
                 .fontWeightWithFallback(.medium)
         }
         .foregroundStyle(.muiPrimaryTitle)
@@ -147,7 +147,7 @@ extension MUINavigationHeader {
             
             // Navigation title
             Text(title)
-                .font(.title3)
+                .font(.title2)
             
             Spacer()
             
@@ -238,13 +238,11 @@ public struct MUINavigationLink<Label, Destination>: View where Label: View, Des
     
     public var body: some View {
         NavigationLink {
-            MUINavigationBarContainerView {
-                destination
-            }
-            .navigationBarHidden(true)
+            destination
+                .navigationBarHidden(true)
         } label: {
             label
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 4)
         }
     }
 }

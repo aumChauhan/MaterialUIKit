@@ -27,7 +27,7 @@ extension View {
 
 // MARK: - MUIDialogSheetModifer
 
-/// A view modifier that adds the MaterialUI style dialog sheet  behavior to any view.
+/// A view modifier that adds the MaterialUI style dialog sheet behavior to any view.
 @available(iOS 15.0, *)
 private struct MUIDialogSheetModifer: ViewModifier {
     
