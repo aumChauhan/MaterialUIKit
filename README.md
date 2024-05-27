@@ -4,7 +4,7 @@
 
 Material Design-inspired UI components for SwiftUI.
 
-**Sample Project:** https://github.com/aumChauhan/
+**Sample Project:** https://github.com/aumChauhan/MaterialUIKit_SampleProject
 
 ## Overview
                                             
