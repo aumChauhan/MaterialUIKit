@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Green color theme.
+/// A concrete implementation of `MaterialColorScheme` representing the Material UI Green color theme.
 @available(iOS 15.0, *)
-public struct MUIGreenTheme: MUIColorThemeProtocol {
+public struct MUIGreenTheme: MaterialColorScheme {
     
     /// Returns the theme name.
     public func themeName() -> String {
@@ -44,7 +44,7 @@ public struct MUIGreenTheme: MUIColorThemeProtocol {
     }
     
     /// Returns the accent title color for the `MUIGreenTheme` color scheme.
-    public func accentTitle() -> Color {
+    public func highlight() -> Color {
         Color(lightHex: "101E0E", darkHex: "C1C9BC")
     }
     

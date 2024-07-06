@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Purple color theme.
+/// A concrete implementation of `MaterialColorScheme` representing the Material UI Purple color theme.
 @available(iOS 15.0, *)
-public struct MUIPurpleTheme: MUIColorThemeProtocol {
+public struct MUIPurpleTheme: MaterialColorScheme {
     
     /// Returns the themeName
     public func themeName() -> String {
@@ -44,7 +44,7 @@ public struct MUIPurpleTheme: MUIColorThemeProtocol {
     }
     
     /// Returns the accent title color for the `MUIPurpleTheme` color scheme.
-    public func accentTitle() -> Color {
+    public func highlight() -> Color {
         Color(lightHex: "48434B", darkHex: "E3D7EA")
     }
     

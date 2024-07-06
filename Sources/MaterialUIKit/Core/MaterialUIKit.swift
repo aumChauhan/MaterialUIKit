@@ -25,11 +25,5 @@ final public class MaterialUIKit {
     /// ```
     /// # Available Themes:
     /// - Blue, Green, Pink, Purple.
-    public static var tint: MUIColorThemeProtocol = MUIColorThemes.pink
-    
-    // MARK: - Initializers
-    
-    private init() {
-        print("MaterialUI color palette is set to \(MaterialUIKit.tint.themeName())")
-    }
+    public static var tint: MaterialColorScheme = MUIColorThemes.pink
 }

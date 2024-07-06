@@ -34,8 +34,8 @@ public extension Color {
     }
     
     /// The accent title color based on the current tint setting.
-    static var materialAccentTitle: Color {
-        MaterialUIKit.tint.accentTitle()
+    static var materialHighlight: Color {
+        MaterialUIKit.tint.highlight()
     }
     
     /// The primary title color based on the current tint setting.

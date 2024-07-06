@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Blue color theme.
+/// A concrete implementation of `MaterialColorScheme` representing the Material UI Blue color theme.
 @available(iOS 15.0, *)
-public struct MUIBlueTheme: MUIColorThemeProtocol {
+public struct MUIBlueTheme: MaterialColorScheme {
     
     /// Returns the theme name.
     public func themeName() -> String {
@@ -45,7 +45,7 @@ public struct MUIBlueTheme: MUIColorThemeProtocol {
     }
     
     /// Returns the accent title color for the `MUIBlueTheme` color scheme.
-    public func accentTitle() -> Color {
+    public func highlight() -> Color {
         Color(lightHex: "454A50", darkHex: "C9D0D6")
     }
     

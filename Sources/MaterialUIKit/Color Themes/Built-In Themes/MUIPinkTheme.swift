@@ -9,9 +9,9 @@
 import Foundation
 import SwiftUI
 
-/// A concrete implementation of `MUIColorThemeProtocol` representing the Material UI Pink color theme.
+/// A concrete implementation of `MaterialColorScheme` representing the Material UI Pink color theme.
 @available(iOS 15.0, *)
-public struct MUIPinkTheme: MUIColorThemeProtocol {
+public struct MUIPinkTheme: MaterialColorScheme {
     
     /// Returns the theme name
     public func themeName() -> String {
@@ -44,7 +44,7 @@ public struct MUIPinkTheme: MUIColorThemeProtocol {
     }
     
     /// Returns the accent title color for the `MUIPinkTheme` color scheme.
-    public func accentTitle() -> Color {
+    public func highlight() -> Color {
         Color(lightHex: "2C1619", darkHex : "E9C7C9")
     }
     
