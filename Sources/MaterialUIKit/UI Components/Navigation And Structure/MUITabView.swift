@@ -80,7 +80,7 @@ fileprivate struct MaterialTabBarContainerView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundStyle(localSelection == tab ? .muiTonal : .muiPrimaryTitle)
+                        .foregroundStyle(localSelection == tab ? .muiTonal : .materialPrimaryTitle)
                         .background(
                             ZStack {
                                 if localSelection == tab {

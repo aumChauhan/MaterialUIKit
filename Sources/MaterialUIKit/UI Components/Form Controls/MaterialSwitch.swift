@@ -50,12 +50,12 @@ private struct MaterialSwitchToggleStyle: ToggleStyle {
             Spacer()
             
             RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(configuration.isOn ? .muiAccent : .muiPrimaryBackground)
+                .foregroundStyle(configuration.isOn ? .muiAccent : .materialPrimaryBackground)
                 .frame(width: 45, height: 25)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) { // Switch key
                     Circle()
                         .frame(width: 20)
-                        .foregroundStyle(configuration.isOn ? .muiTonal : .muiSecondaryTitle)
+                        .foregroundStyle(configuration.isOn ? .muiTonal : .materialSecondaryTitle)
                         .padding(.horizontal, 3)
                 }
                 .overlay(

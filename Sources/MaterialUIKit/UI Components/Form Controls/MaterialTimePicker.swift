@@ -120,7 +120,7 @@ private struct MaterialTimePickerView: View {
                 // SwiftUI's default timepicker
                 DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                     .datePickerStyle(.wheel)
-                    .tint(.muiAccent)
+                    .tint(.materialAccent)
                 
                 MaterialDivider()
                 
@@ -145,7 +145,7 @@ private struct MaterialTimePickerView: View {
                     // SwiftUI's default timepicker
                     DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel)
-                        .tint(.muiAccent)
+                        .tint(.materialAccent)
                 }
                 
                 MaterialDivider()

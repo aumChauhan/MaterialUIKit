@@ -69,12 +69,12 @@ public struct MaterialTextField: View {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
-                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
                     .padding(.leading, 15)
             }
             
             TextField("", text: $text)
-                .tint(.muiAccent)
+                .tint(.materialAccent)
                 .padding(16)
             
             Spacer()
@@ -91,8 +91,8 @@ public struct MaterialTextField: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle, lineWidth: 1)
-                .background(background ?? .muiSecondaryBackground.opacity(0.5))
+                .stroke(textFieldIsFocused ? .muiAccent : .materialSecondaryTitle, lineWidth: 1)
+                .background(background ?? .materialSecondaryBackground.opacity(0.5))
                 .cornerRadius(20)
         )
 
@@ -102,7 +102,7 @@ public struct MaterialTextField: View {
             } else {
                 Text(titlekey)
                     .font(textFieldIsFocused ? .caption : .callout)
-                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(textFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
                     .offset(x: textFieldIsFocused ? (systemName != nil ? -35 : 0) : 0)
                     .offset(y: textFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

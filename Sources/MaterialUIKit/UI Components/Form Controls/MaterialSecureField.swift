@@ -69,12 +69,12 @@ public struct MaterialSecureField: View {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
-                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
                     .padding(.leading, 15)
             }
             
             SecureField("", text: $text)
-                .tint(.muiAccent)
+                .tint(.materialAccent)
                 .padding(16)
             
             Spacer()
@@ -91,8 +91,8 @@ public struct MaterialSecureField: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle, lineWidth: 1)
-                .background(background ?? .muiSecondaryBackground.opacity(0.5))
+                .stroke(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle, lineWidth: 1)
+                .background(background ?? .materialSecondaryBackground.opacity(0.5))
                 .cornerRadius(20)
         )
         
@@ -103,7 +103,7 @@ public struct MaterialSecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .muiSecondaryTitle)
+                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
                     .offset(x: secureFieldIsFocused ? (systemName != nil ? -35 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

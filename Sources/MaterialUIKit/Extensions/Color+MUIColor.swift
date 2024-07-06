@@ -6,48 +6,45 @@
 // Created On: 16/04/24
 //
 
-
 import SwiftUI
 
 ///  A set of custom color definitions tailored for MaterialUIKit styling.
-@available(iOS 15.0, *)
 public extension Color {
-    
     /// The accent color based on the current tint setting.
-     static let muiAccent: Color = MaterialUIKit.tint.accent()
+    static let materialAccent: Color = MaterialUIKit.tint.accent()
     
     /// The accent tonal color shade based on the current tint setting.
-    static var muiTonal: Color {
+    static var materialTonal: Color {
         MaterialUIKit.tint.tonal()
     }
     
     /// The primary background color based on the current tint setting.
-    static var muiPrimaryBackground: Color {
+    static var materialPrimaryBackground: Color {
         MaterialUIKit.tint.primaryBackground()
     }
     
     /// The secondary background color based on the current tint setting.
-    static var muiSecondaryBackground: Color {
+    static var materialSecondaryBackground: Color {
         MaterialUIKit.tint.secondaryBackground()
     }
     
     /// The tertiary background color based on the current tint setting.
-    static var muiTertiaryBackground: Color {
+    static var materialTertiaryBackground: Color {
         MaterialUIKit.tint.tertiaryBackground()
     }
     
     /// The accent title color based on the current tint setting.
-    static var muiAccentTitle: Color {
+    static var materialAccentTitle: Color {
         MaterialUIKit.tint.accentTitle()
     }
     
     /// The primary title color based on the current tint setting.
-    static var muiPrimaryTitle: Color {
+    static var materialPrimaryTitle: Color {
         MaterialUIKit.tint.primaryTitle()
     }
     
     /// The secondary title color based on the current tint setting.
-    static var muiSecondaryTitle: Color {
+    static var materialSecondaryTitle: Color {
         MaterialUIKit.tint.secondaryTitle()
     }
 }

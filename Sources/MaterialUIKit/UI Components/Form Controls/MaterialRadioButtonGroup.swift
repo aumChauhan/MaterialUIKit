@@ -56,7 +56,7 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
                     
                     Image(systemName: item == selection ? "circle.circle.fill" : "circle")
                         .font(.title3)
-                        .foregroundStyle(item == selection ? .muiAccent : .muiSecondaryTitle)
+                        .foregroundStyle(item == selection ? .muiAccent : .materialSecondaryTitle)
                         .onTapGesture {
                             withAnimation(.bouncy) {
                                 selection = item

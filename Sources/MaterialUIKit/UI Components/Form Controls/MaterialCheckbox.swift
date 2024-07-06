@@ -53,7 +53,7 @@ private struct MaterialCheckboxStyle: ToggleStyle {
             
             Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
                 .font(.title2)
-                .foregroundStyle(configuration.isOn ? .muiAccent : .muiSecondaryTitle)
+                .foregroundStyle(configuration.isOn ? .muiAccent : .materialSecondaryTitle)
                 .onTapGesture {
                     withAnimation(.bouncy) {
                         configuration.isOn.toggle()

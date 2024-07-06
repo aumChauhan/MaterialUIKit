@@ -56,7 +56,7 @@ public struct MaterialSearchBar: View {
                 
                 TextField(placeholder, text: $searchText)
                     .keyboardType(.webSearch)
-                    .tint(.muiAccent)
+                    .tint(.materialAccent)
                 
                 Spacer()
                 
@@ -78,7 +78,7 @@ public struct MaterialSearchBar: View {
             .padding(1)
             .background(.muiSecondaryTitle.opacity(0.5))
             .cornerRadius(100)
-            .tint(.muiAccent)
+            .tint(.materialAccent)
             
             if showSearchButton {
                 Button("Search", action: action)

@@ -138,7 +138,7 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
             }
         } label: {
             label
-                .tint(.muiAccent)
+                .tint(.materialAccent)
         }
         .onAppear {
             screenWidth = UIScreen.main.bounds.size.width

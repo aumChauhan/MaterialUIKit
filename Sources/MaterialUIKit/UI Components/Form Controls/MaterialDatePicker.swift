@@ -120,7 +120,7 @@ fileprivate struct MaterialDatePickerView: View {
             
             DatePicker("", selection: $selection, displayedComponents: .date)
                 .datePickerStyle(.graphical)
-                .tint(.muiAccent)
+                .tint(.materialAccent)
             
             MaterialDivider()
             
@@ -143,7 +143,7 @@ fileprivate struct MaterialDatePickerView: View {
             ScrollView {
                 DatePicker("", selection: $selection, displayedComponents: .date)
                     .datePickerStyle(.graphical)
-                    .tint(.muiAccent)
+                    .tint(.materialAccent)
             }
             
             MaterialDivider()
