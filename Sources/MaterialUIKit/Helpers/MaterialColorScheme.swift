@@ -10,7 +10,6 @@ import SwiftUI
 
 /// A protocol defining methods to provide color values for various components based on the specified color scheme.
 public protocol MaterialColorScheme {
-    
     /// The accent color used for emphasis.
     func accent() -> Color
     
