@@ -10,7 +10,6 @@ import SwiftUI
 import UIKit
 
 /// Extension on `UIColor` providing a convenience initializer to create a color from a hex string.
-@available(iOS 15.0, *)
 public extension UIColor {
     
     /// Initializes a color with a hex string and an optional alpha value.
@@ -35,7 +34,6 @@ public extension UIColor {
 }
 
 /// Extension on `Color` providing an initializer that dynamically selects a color based on the current user interface style.
-@available(iOS 15.0, *)
 public extension Color {
     
     /// Initializes a color with light and dark hex strings.
