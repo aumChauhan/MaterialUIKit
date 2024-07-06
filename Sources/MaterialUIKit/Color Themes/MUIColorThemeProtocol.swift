@@ -9,7 +9,6 @@
 import SwiftUI
 
 /// A protocol defining methods to provide color values for various components based on the specified color scheme.
-@available(iOS 15.0, *)
 public protocol MUIColorThemeProtocol {
     
     /// Returns the accent color based on the given color scheme.

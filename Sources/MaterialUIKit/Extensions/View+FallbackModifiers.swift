@@ -9,10 +9,10 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 15.0, *)
-internal extension View {
+package extension View {
     
     /// Adjusts font weight with fallback for older iOS versions.
+    /// 
     /// - Parameter weight: The font weight to apply of type `Font.Weight`.
     /// - Returns: A view with adjusted font weight.
     func fontWeightWithFallback(_ weight: Font.Weight) -> some View {
@@ -26,6 +26,7 @@ internal extension View {
     }
     
     /// Adds a modifier for this view that fires an action when a specific value changes with fallback for older iOS versions.
+    ///
     /// - Parameters:
     ///   - value: The value to check against when determining whether
     ///     to run the closure.
