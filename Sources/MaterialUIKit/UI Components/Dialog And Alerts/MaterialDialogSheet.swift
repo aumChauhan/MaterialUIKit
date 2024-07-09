@@ -17,7 +17,7 @@ extension View {
     ///   - content: A closure returning the view content to be displayed in the dialog sheet.
     ///
     /// - Returns: A modified view with the Material Design dialog sheet behavior.
-    public func materialDesignDialogSheet<Content>(
+    public func materialDialogSheet<Content>(
         isPresented: Binding<Bool>,
         _ content: @escaping () -> Content
     ) -> some View where Content: View {
@@ -34,7 +34,7 @@ fileprivate struct MaterialDesignDialogSheetModifier: ViewModifier {
     
     @Binding var isPresented: Bool
     let dialogSheetContent: AnyView
-
+    
     func body(content: Content) -> some View {
         content.overlay(
             MaterialDesignDialogSheetView(isPresented: $isPresented, content: dialogSheetContent)
@@ -48,24 +48,24 @@ fileprivate struct MaterialDesignDialogSheetModifier: ViewModifier {
 fileprivate struct MaterialDesignDialogSheetView: View {
     
     // MARK: - Properties
-
+    
     @Binding var isPresented: Bool
     @State private var animationFlag: Bool = false
     
     let content: AnyView
     
     // MARK: - Initializer
-
+    
     init(isPresented: Binding<Bool>, content: AnyView) {
         self._isPresented = isPresented
         self.content = content
     }
     
     // MARK: - View Body
-
+    
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: MaterialUIKitConstants.verticalContentPadding) {
+            VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
                 HStack {
                     Button {
                         isPresented.toggle()
@@ -73,26 +73,15 @@ fileprivate struct MaterialDesignDialogSheetView: View {
                         Image(systemName: "xmark")
                             .foregroundStyle(.materialSecondaryTitle)
                     }
-                    Spacer()
                 }
+                .align(.leading)
+                
                 content
             }
-            .frame(width: UIScreen.main.bounds.width / 1.3)
-            .padding(20)
-            .background(.materialTonal)
-            .cornerRadius(MaterialUIKitConstants.cornerRadius)
-            .padding(0.8)
-            .background(.materialSecondaryTitle.opacity(0.4))
-            .cornerRadius(MaterialUIKitConstants.cornerRadius)
-            .scaleEffect(animationFlag ? 1 : 0)
+            .frame(width: UIScreen.main.bounds.width/1.3)
+            .primaryBackground()
+            .scaleEffect(animationFlag ? 1 : 1.1)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black.opacity(0.45))
-        .opacity(animationFlag ? 1 : 0)
-        .onChange(of: isPresented) { _ in
-            withAnimation(.bouncy) {
-                animationFlag = isPresented
-            }
-        }
+        .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
 }
