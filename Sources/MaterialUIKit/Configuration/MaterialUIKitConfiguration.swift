@@ -11,28 +11,28 @@ import SwiftUI
 
 public struct MaterialUIKitConfiguration {
     /// The margin around views.
-    public var margin: CGFloat = 24
+    public var margin: CGFloat = 20
         
     /// The default horizontal padding applied to views.
-    public var horizontalPadding: CGFloat = 8
+    public var horizontalPadding: CGFloat = 12
     
     /// The default vertical padding applied to views.
     public var verticalPadding: CGFloat = 16
     
     /// The corner radius applied to rounded UI elements.
-    public var cornerRadius: CGFloat = 8
+    public var cornerRadius: CGFloat = 24
     
     /// The spacing between elements in a stack layout.
-    public var stackSpacing: CGFloat = 24
+    public var stackSpacing: CGFloat = 20
     
     /// The width of the border applied to bordered elements.
-    public var borderWidth: CGFloat = 1
+    public var borderWidth: CGFloat = 0.8
     
     /// The color of the border applied to bordered elements.
     public var borderColor: Color = Color.gray
     
     /// The duration of animations.
-    public var animationDuration: Double = 0.8
+    public var animationDuration: Double = 0.4
     
     /// The type of animation curve.
     public var animationType: Animation
@@ -45,6 +45,6 @@ public struct MaterialUIKitConfiguration {
     
     /// Initializes a `MaterialUIKitConfiguration` instance with default values.
     public init() {
-        animationType = .easeInOut(duration: animationDuration)
+        animationType = .bouncy(duration: animationDuration)
     }
 }
