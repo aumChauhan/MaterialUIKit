@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A MaterialUI styled checkbox.
+/// A Material UI style checkbox.
 public struct MaterialCheckbox: View {
     
     // MARK: - Properties
@@ -18,7 +18,7 @@ public struct MaterialCheckbox: View {
     
     // MARK: - Initializers
     
-    /// Creates a Material UI styled checkbox.
+    /// Creates a Material UI style checkbox.
     ///
     /// - Parameters:
     ///   - titleKey: The title displayed next to the checkbox.
@@ -35,32 +35,5 @@ public struct MaterialCheckbox: View {
             .foregroundStyle(.materialPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MaterialCheckboxStyle())
-    }
-}
-
-// MARK: - MaterialCheckboxStyle
-
-/// Visual representation of the Material design styled checkbox.
-private struct MaterialCheckboxStyle: ToggleStyle {
-    
-    // MARK: - Body
-    
-    internal func makeBody(configuration: Configuration) -> some View {
-        HStack(alignment: .center) {
-            configuration.label
-            
-            Spacer()
-            
-            Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
-                .font(.title2)
-                .foregroundStyle(configuration.isOn ? .materialAccent : .materialSecondaryTitle)
-                .onTapGesture {
-                    withAnimation(.bouncy) {
-                        configuration.isOn.toggle()
-                    }
-                }
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 3)
     }
 }
