@@ -22,30 +22,30 @@ extension View {
         _ content: @escaping () -> Content
     ) -> some View where Content: View {
         self.modifier(
-            MaterialDesignDialogSheetModifier(isPresented: isPresented, dialogSheetContent: AnyView(content()))
+            MaterialDialogSheetModifier(isPresented: isPresented, dialogSheetContent: AnyView(content()))
         )
     }
 }
 
-// MARK: - MaterialDesignDialogSheetModifier
+// MARK: - MaterialDialogSheetModifier
 
 /// A view modifier that adds dialog sheet behavior to any view.
-fileprivate struct MaterialDesignDialogSheetModifier: ViewModifier {
+fileprivate struct MaterialDialogSheetModifier: ViewModifier {
     
     @Binding var isPresented: Bool
     let dialogSheetContent: AnyView
     
     func body(content: Content) -> some View {
         content.overlay(
-            MaterialDesignDialogSheetView(isPresented: $isPresented, content: dialogSheetContent)
+            MaterialDialogSheetView(isPresented: $isPresented, content: dialogSheetContent)
         )
     }
 }
 
-// MARK: - MaterialDesignDialogSheetView
+// MARK: - MaterialDialogSheetView
 
 /// A view represents Material UI styled dialog sheet.
-fileprivate struct MaterialDesignDialogSheetView: View {
+fileprivate struct MaterialDialogSheetView: View {
     
     // MARK: - Properties
     

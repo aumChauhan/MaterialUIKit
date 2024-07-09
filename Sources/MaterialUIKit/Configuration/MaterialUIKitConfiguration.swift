@@ -45,6 +45,6 @@ public struct MaterialUIKitConfiguration {
     
     /// Initializes a `MaterialUIKitConfiguration` instance with default values.
     public init() {
-        animationType = .bouncy(duration: animationDuration)
+        animationType = .smooth(duration: animationDuration)
     }
 }
