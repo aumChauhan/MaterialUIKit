@@ -17,12 +17,12 @@ extension View {
     ///   - message: The message displayed in the snackbar.
     ///
     /// - Returns: A view presenting a Material Design styled snackbar.
-    public func materialDesignSnackbar(
+    public func materialSnackbar(
         isPresented: Binding<Bool>,
         message: String
     ) -> some View {
         self.modifier(
-            MaterialDesignSnackbarModifier(
+            MaterialSnackbarModifier(
                 isPresented: isPresented,
                 message: message,
                 duration: nil,
@@ -42,15 +42,15 @@ extension View {
     ///   - action: The action to perform when the primary button is tapped. Defaults to `nil`.
     ///
     /// - Returns: A view presenting a Material Design styled snackbar.
-    public func materialDesignSnackbar(
+    public func materialSnackbar(
         isPresented: Binding<Bool>,
         message: String,
-        duration: Double? = nil,
-        buttonTitleKey: String? = nil,
-        action: (() -> Void)? = nil
+        duration: Double,
+        buttonTitleKey: String,
+        action: (() -> Void)?
     ) -> some View {
         self.modifier(
-            MaterialDesignSnackbarModifier(
+            MaterialSnackbarModifier(
                 isPresented: isPresented,
                 message: message,
                 duration: duration,
@@ -61,10 +61,10 @@ extension View {
     }
 }
 
-// MARK: - MaterialDesignSnackbarModifier
+// MARK: - MaterialSnackbarModifier
 
 /// A view modifier that adds snackbar presentation behavior to any view.
-fileprivate struct MaterialDesignSnackbarModifier: ViewModifier {
+fileprivate struct MaterialSnackbarModifier: ViewModifier {
     
     @Binding var isPresented: Bool
     let message: String
@@ -74,7 +74,7 @@ fileprivate struct MaterialDesignSnackbarModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content.overlay(
-            MaterialDesignSnackbarView(
+            MaterialSnackbarView(
                 isPresented: $isPresented,
                 message: message,
                 duration: duration,
@@ -85,17 +85,19 @@ fileprivate struct MaterialDesignSnackbarModifier: ViewModifier {
     }
 }
 
-// MARK: - MaterialDesignSnackbarView
+// MARK: - MaterialSnackbarView
 
 /// Represents Material Design styled snackbar.
-fileprivate struct MaterialDesignSnackbarView: View {
+fileprivate struct MaterialSnackbarView: View {
     
     // MARK: Properties
     
     @Binding var isPresented: Bool
     @State private var animationFlag: Bool = false
+    
     let message: String
     let duration: Double?
+    let defaultDuration = 4.0
     let primaryButtonTitle: String?
     let primaryAction: (() -> Void)?
     
@@ -103,20 +105,18 @@ fileprivate struct MaterialDesignSnackbarView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer()
-            
             HStack {
                 Text(message)
                     .font(.headline)
-                    .foregroundStyle(.materialPrimaryTitle)
+                    .foregroundStyle(.materialSecondaryTitle)
                     .fontWeightWithFallback(.medium)
-                
-                Spacer()
+                    .align(.leading)
                 
                 if let primaryButtonTitle = primaryButtonTitle {
                     Button {
                         primaryAction?()
-                        withAnimation {
+                        
+                        withMaterialAnimation {
                             isPresented = false
                         }
                     } label: {
@@ -125,32 +125,29 @@ fileprivate struct MaterialDesignSnackbarView: View {
                             .font(.headline)
                             .fontWeightWithFallback(.semibold)
                     }
+                    .tint(.materialAccent)
+                    .align(.trailing)
                 }
             }
             .lineLimit(1)
-            .padding(20)
-            .background(.materialTertiaryBackground)
-            .cornerRadius(20)
-            .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
+            .secondaryBackground()
+            .align(.bottom)
         }
-        .frame(width: UIScreen.main.bounds.width / 1.1)
+        .frame(width: UIScreen.main.bounds.width/1.1)
         .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)
-        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
-            withAnimation(.bouncy) {
+        .onChangeWithFallback(of: isPresented) { _, _ in
+            withMaterialAnimation {
                 animationFlag = isPresented
-                toggleOffSnackbar()
+                toggleOffSnackbar(isPresented: $isPresented, duration: duration)
             }
         }
     }
     
-    // MARK: - Helpers
-    
     /// Toggles off the snackbar after a specified duration.
-    private func toggleOffSnackbar() {
-        guard let duration = duration else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            withAnimation {
-                isPresented = false
+    private func toggleOffSnackbar(isPresented: Binding<Bool>, duration: Double?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + (duration ?? defaultDuration)) {
+            withMaterialAnimation {
+                isPresented.wrappedValue = false
             }
         }
     }
