@@ -204,12 +204,6 @@ fileprivate struct MaterialAlertView: View {
             .primaryBackground()
             .scaleEffect(animationFlag ? 1 : 1.1)
         }
-        .fullScreenOverlayBackground()
-        .opacity(animationFlag ? 1 : 0)
-        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
-            withAnimation {
-                animationFlag = isPresented
-            }
-        }
+        .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
 }

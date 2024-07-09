@@ -34,13 +34,6 @@ package extension View {
             .cornerRadius(MaterialUIKit.configuration.cornerRadius)
     }
     
-    /// Applies full-screen background styling with semi-transparent overlay, suitable for modals or alerts.
-    func fullScreenOverlayBackground() -> some View {
-        self
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.black.opacity(0.45))
-    }
-    
     /// Aligns the view within its frame based on the specified alignment option.
     ///
     /// - Parameter at: The alignment option specifying how to align the view within its frame.
@@ -77,5 +70,22 @@ package extension View {
         withAnimation(MaterialUIKit.configuration.animationType) {
             action()
         }
+    }
+    
+    /// Adds a backdrop for modal presentation, with animation synchronization.
+    ///
+    /// - Parameters:
+    ///   - isPresented: Binding to control the modal presentation.
+    ///   - animationFlag: Binding to synchronize animation state.
+    func modalBackdrop(isPresented: Binding<Bool>, animationFlag: Binding<Bool>) -> some View {
+        self
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black.opacity(0.45))
+            .opacity(animationFlag.wrappedValue ? 1 : 0)
+            .onChange(of: isPresented.wrappedValue) { _ in
+                withAnimation {
+                    animationFlag.wrappedValue = isPresented.wrappedValue
+                }
+            }
     }
 }
