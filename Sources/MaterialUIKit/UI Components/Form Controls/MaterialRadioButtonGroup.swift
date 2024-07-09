@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A Material UI styled collection of items in a radio button form.
+/// A Material UI style collection of items in a radio button form.
 public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
     // MARK: - Properties
@@ -43,14 +43,13 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
     // MARK: - View Body
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: 7) {
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalPadding) {
             ForEach(data, id: id) { item in
                 HStack(alignment: .center) {
                     content(item)
                         .tag(item)
                         .foregroundStyle(.materialPrimaryTitle)
                         .fontWeightWithFallback(.regular)
-                        .padding(.vertical, 10)
                     
                     Spacer()
                     
@@ -58,7 +57,7 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
                         .font(.title3)
                         .foregroundStyle(item == selection ? .materialAccent : .materialSecondaryTitle)
                         .onTapGesture {
-                            withAnimation(.bouncy) {
+                            withMaterialAnimation {
                                 selection = item
                             }
                         }
