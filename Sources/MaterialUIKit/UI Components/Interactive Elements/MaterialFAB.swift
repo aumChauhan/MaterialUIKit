@@ -80,7 +80,7 @@ fileprivate struct MaterialFAB: View {
                 Image(systemName: systemName)
                 Text(title)
             }
-            .foregroundStyle(.muiAccent)
+            .foregroundStyle(.materialAccent)
             .frame(minWidth: 30)
             .frame(height: 35)
             .elevatedStyledBackground()

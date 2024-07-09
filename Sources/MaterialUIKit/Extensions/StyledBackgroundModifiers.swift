@@ -14,10 +14,10 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiAccentTitle)
+            .foregroundStyle(.materialHighlight)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(.muiTertiaryBackground)
+            .background(.materialTertiaryBackground)
             .cornerRadius(15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -28,10 +28,10 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiTonal)
+            .foregroundStyle(.materialTonal)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(.muiAccent)
+            .background(.materialAccent)
             .cornerRadius(15)
     }
     
@@ -40,10 +40,10 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiAccentTitle)
+            .foregroundStyle(.materialHighlight)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
-            .background(.muiSecondaryBackground)
+            .background(.materialSecondaryBackground)
             .cornerRadius(15)
     }
     
@@ -52,12 +52,12 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundStyle(.muiAccent)
+            .foregroundStyle(.materialAccent)
             .padding(.vertical, 10)
             .padding(.horizontal, 20)
             .overlay(
                 RoundedRectangle(cornerRadius: 100)
-                    .stroke(.muiAccent, lineWidth: 1)
+                    .stroke(.materialAccent, lineWidth: 1)
             )
     }
     
@@ -66,7 +66,7 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiAccent)
+            .foregroundStyle(.materialAccent)
             .padding(padding ?? 10)
     }
     
@@ -77,11 +77,11 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiAccentTitle)
+            .foregroundStyle(.materialHighlight)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(.muiTertiaryBackground)
+            .background(.materialTertiaryBackground)
             .cornerRadius(cornerRadius ?? 15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -92,11 +92,11 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiTonal)
+            .foregroundStyle(.materialTonal)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(.muiAccent)
+            .background(.materialAccent)
             .cornerRadius(cornerRadius ?? 15)
     }
     
@@ -105,11 +105,11 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.medium)
-            .foregroundStyle(.muiAccentTitle)
+            .foregroundStyle(.materialHighlight)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
-            .background(.muiSecondaryBackground)
+            .background(.materialSecondaryBackground)
             .cornerRadius(cornerRadius ?? 15)
     }
     
@@ -118,13 +118,13 @@ package extension View {
         return self
             .font(.headline)
             .fontWeightWithFallback(.regular)
-            .foregroundStyle(.muiAccent)
+            .foregroundStyle(.materialAccent)
             .padding(.vertical, 15)
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)
             .overlay(
                 RoundedRectangle(cornerRadius: 99)
-                    .stroke(.muiAccent, lineWidth: 1)
+                    .stroke(.materialAccent, lineWidth: 1)
                     .frame(maxWidth: .infinity)
             )
     }

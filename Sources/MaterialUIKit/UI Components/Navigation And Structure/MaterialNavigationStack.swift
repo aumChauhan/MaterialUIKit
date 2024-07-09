@@ -39,7 +39,7 @@ public struct MaterialNavigationStack<Content>: View where Content: View {
     /// A wrapper function that provides a custom-styled content view.
     private func contentWrapper() -> some View {
         ZStack {
-            MaterialUIKit.tint.primaryBackground().ignoresSafeArea(.all)
+            Color.materialPrimaryBackground.ignoresSafeArea(.all)
             
             MaterialNavigationBarContainerView {
                 content
@@ -85,7 +85,7 @@ private struct MaterialNavigationHeader: View {
                         Image(systemName: "arrow.left")
                             .font(.title3)
                     }
-                    .tint(.muiPrimaryTitle)
+                    .tint(.materialPrimaryTitle)
                 }
                 
                 toolbar.view
@@ -96,7 +96,7 @@ private struct MaterialNavigationHeader: View {
                 .font(.largeTitle)
                 .fontWeightWithFallback(.semibold)
         }
-        .foregroundStyle(.muiPrimaryTitle)
+        .foregroundStyle(.materialPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }
@@ -120,7 +120,7 @@ private struct MaterialNavigationHeader: View {
             
             toolbar.view
         }
-        .foregroundStyle(.muiPrimaryTitle)
+        .foregroundStyle(.materialPrimaryTitle)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
     }
@@ -256,7 +256,7 @@ extension View {
     /// - Parameter title: The title to be displayed in the navigation bar.
     ///
     /// - Returns: A view modified to include the specified navigation bar title.
-    public func muiNavigationTitle(_ title: String) -> some View {
+    public func materialNavigationTitle(_ title: String) -> some View {
         return self.preference(key: MUINavigaionBarTitlePreferenceKey.self, value: title)
     }
     
@@ -265,7 +265,7 @@ extension View {
     /// - Parameter style: The style of the navigation bar header.
     ///
     /// - Returns: A view modified to include the specified navigation bar header style.
-    public func muiNavigationHeaderStyle(_ style: MaterialNavigationHeaderStyle) -> some View {
+    public func materialNavigationHeaderStyle(_ style: MaterialNavigationHeaderStyle) -> some View {
         return self.preference(key: MUINavigationTitleStylePreferenceKey.self, value: style)
     }
     
@@ -274,7 +274,7 @@ extension View {
     /// - Parameter toolbar: The toolbar to be displayed in the navigation bar.
     ///
     /// - Returns: A view modified to include the specified toolbar.
-    public func muiToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
+    public func materialToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
         return self.preference(key: MUIToolbarViewPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
     }
     
@@ -283,7 +283,7 @@ extension View {
     /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
     ///
     /// - Returns: A view modified to include the specified back button visibility.
-    public func muiNavigationBarBackButtonHidden(_ hidden: Bool) -> some View {
+    public func materialNavigationBarBackButtonHidden(_ hidden: Bool) -> some View {
         return self.preference(key: MUINavigationBarBackButtonHiddenPreferenceKey.self, value: !hidden)
     }
     
@@ -297,9 +297,9 @@ extension View {
     /// - Returns: A view modified to include the specified navigation bar properties.
     public func muiNavigationBar(title: String = "", backButtonHidden: Bool = false, style: MaterialNavigationHeaderStyle = .large) -> some View {
         self
-            .muiNavigationTitle(title)
-            .muiNavigationBarBackButtonHidden(backButtonHidden)
-            .muiNavigationHeaderStyle(style)
+            .materialNavigationTitle(title)
+            .materialNavigationBarBackButtonHidden(backButtonHidden)
+            .materialNavigationHeaderStyle(style)
     }
     
 }

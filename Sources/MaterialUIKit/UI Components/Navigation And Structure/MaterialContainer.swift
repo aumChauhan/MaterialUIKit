@@ -28,7 +28,7 @@ public struct MaterialContainer<Content>: View where Content: View {
     
     public var body: some View {
         ZStack {
-            MaterialUIKit.tint.primaryBackground().ignoresSafeArea(.all)
+            Color.materialPrimaryBackground.ignoresSafeArea(.all)
             
             VStack { content }
                 .padding(MaterialUIKitConstants.insideMargin)

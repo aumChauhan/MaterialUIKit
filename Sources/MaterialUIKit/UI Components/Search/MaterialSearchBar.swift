@@ -52,7 +52,7 @@ public struct MaterialSearchBar: View {
             HStack(spacing: 10) {
                 Image(systemName: "magnifyingglass")
                     .font(.headline)
-                    .foregroundStyle(.muiSecondaryTitle)
+                    .foregroundStyle(.materialSecondaryTitle)
                 
                 TextField(placeholder, text: $searchText)
                     .keyboardType(.webSearch)
@@ -68,21 +68,21 @@ public struct MaterialSearchBar: View {
                         }
                     } label: {
                         Image(systemName: "xmark.circle.fill")
-                            .foregroundStyle(.muiSecondaryTitle)
+                            .foregroundStyle(.materialSecondaryTitle)
                     }
                 }
             }
             .padding(12)
-            .background(.muiSecondaryBackground)
+            .background(.materialSecondaryBackground)
             .cornerRadius(100)
             .padding(1)
-            .background(.muiSecondaryTitle.opacity(0.5))
+            .background(.materialSecondaryTitle.opacity(0.5))
             .cornerRadius(100)
             .tint(.materialAccent)
             
             if showSearchButton {
                 Button("Search", action: action)
-                    .foregroundStyle(.muiAccent)
+                    .foregroundStyle(.materialAccent)
                     .fontWeightWithFallback(.medium)
                     .buttonStyle(ShrinkFadeButtonStyle())
             }

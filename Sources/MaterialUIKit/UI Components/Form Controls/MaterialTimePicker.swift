@@ -67,10 +67,10 @@ private struct MaterialTimePickerView: View {
                 }
             }
             .padding(20)
-            .background(.muiTonal)
+            .background(.materialTonal)
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
             .padding(0.8)
-            .background(.muiSecondaryTitle.opacity(0.4))
+            .background(.materialSecondaryTitle.opacity(0.4))
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
 
             .scaleEffect(animationFlag ? 1 : 0)
@@ -111,7 +111,7 @@ private struct MaterialTimePickerView: View {
                 Text("\(selection.formatted(date: .omitted, time: .shortened))")
                     .font(.title2)
                     .fontWeightWithFallback(.medium)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                     .padding(.top, 5)
                     .padding(.leading, 10)
                 
@@ -135,7 +135,7 @@ private struct MaterialTimePickerView: View {
                 Text("\(selection.formatted(date: .omitted, time: .shortened))")
                     .font(.title2)
                     .fontWeightWithFallback(.medium)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                     .padding(.top, 5)
                     .padding(.leading, 10)
                 

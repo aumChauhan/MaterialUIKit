@@ -136,10 +136,10 @@ public struct MaterialCircularButton: View {
         Button(action: action) {
             icon()
                 .fontWeightWithFallback(.medium)
-                .foregroundStyle(.muiAccent)
+                .foregroundStyle(.materialAccent)
                 .padding(.vertical, 15)
                 .padding(.horizontal, 20)
-                .background(.muiSecondaryBackground)
+                .background(.materialSecondaryBackground)
                 .frame(width: 45, height: 45)
                 .cornerRadius(50)
         }

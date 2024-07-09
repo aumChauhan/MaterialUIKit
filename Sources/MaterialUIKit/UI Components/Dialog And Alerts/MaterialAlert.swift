@@ -153,72 +153,67 @@ fileprivate struct MaterialAlertView: View {
     // MARK: - View Body
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(titleKey)
-                    .font(.title3)
-                    .fontWeight(.medium)
-                    .foregroundColor(.primary)
-                    .lineLimit(1)
-                
-                if let message = message {
-                    Text(message)
-                        .font(.headline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.leading)
-                }
-                
-                HStack {
-                    Spacer()
-                    
-                    if let secondaryButtonTitle = secondaryButtonTitle {
-                        Button {
-                            secondaryAction?()
-                            withAnimation {
-                                isPresented = false
-                            }
-                        } label: {
-                            Text(secondaryButtonTitle)
-                        }
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
-                    }
-                    
-                    Button {
-                        primaryAction()
-                        withAnimation {
-                            isPresented = false
-                        }
-                    } label: {
-                        Text(primaryButtonTitle)
-                    }
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-                }
-            }
-            .frame(maxWidth: UIScreen.main.bounds.width * 0.75)
-            .padding()
-            .background(Color.white)
-            .cornerRadius(16)
-            .shadow(radius: 10)
-            .scaleEffect(animationFlag ? 1 : 0)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black.opacity(0.45))
-        .opacity(animationFlag ? 1 : 0)
-        .onAppear {
-            withAnimation {
-                animationFlag = true
-            }
-        }
-        .onDisappear {
-            withAnimation {
-                animationFlag = false
-            }
-        }
-    }
-}
+          ZStack {
+              VStack(alignment: .leading, spacing: MaterialUIKitConstants.verticalContentPadding) {
+                  Text(titleKey)
+                      .font(.title2)
+                      .fontWeightWithFallback(.medium)
+                      .foregroundStyle(.materialPrimaryTitle)
+                      .lineLimit(1)
+                  
+                  if let message {
+                      Text(message)
+                          .font(.headline)
+                          .fontWeightWithFallback(.medium)
+                          .foregroundStyle(.materialSecondaryTitle)
+                          .multilineTextAlignment(.leading)
+                  }
+                  
+                  HStack {
+                      Spacer()
+                      if let secondaryButtonTitle = secondaryButtonTitle {
+                          Button {
+                              secondaryAction?()
+                              withAnimation(.bouncy) {
+                                  isPresented = false
+                              }
+                          } label: {
+                              Text(secondaryButtonTitle)
+                                  .textStyledBackground(10)
+                          }
+                      }
+                      
+                      Button {
+                          primaryAction()
+                          
+                          if secondaryAction == nil {
+                              withAnimation(.bouncy) {
+                                  isPresented = false
+                              }
+                          }
+                      } label: {
+                          Text(primaryButtonTitle)
+                              .filledStyledBackground()
+                              .cornerRadius(100)
+                      }
+                  }
+              }
+              .frame(width: UIScreen.main.bounds.width/1.3)
+              .padding(20)
+              .background(.materialPrimaryBackground)
+              .cornerRadius(25)
+              .padding(0.8)
+              .background(.materialSecondaryTitle.opacity(0.4))
+              .cornerRadius(MaterialUIKitConstants.cornerRadius)
+              .scaleEffect(animationFlag ? 1 : 0)
+          }
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background(Color.black.opacity(0.45))
+          .opacity(animationFlag ? 1 : 0)
+          .onChangeWithFallback(of: isPresented) { oldValue, newValue in
+              withAnimation(.bouncy) {
+                  animationFlag = isPresented
+              }
+          }
+      }
+  }

@@ -32,7 +32,7 @@ public struct MaterialSwitch: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
-            .foregroundStyle(.muiPrimaryTitle)
+            .foregroundStyle(.materialPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MaterialSwitchToggleStyle())
     }
@@ -50,17 +50,17 @@ private struct MaterialSwitchToggleStyle: ToggleStyle {
             Spacer()
             
             RoundedRectangle(cornerRadius: 20)
-                .foregroundStyle(configuration.isOn ? .muiAccent : .materialPrimaryBackground)
+                .foregroundStyle(configuration.isOn ? .materialAccent : .materialPrimaryBackground)
                 .frame(width: 45, height: 25)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) { // Switch key
                     Circle()
                         .frame(width: 20)
-                        .foregroundStyle(configuration.isOn ? .muiTonal : .materialSecondaryTitle)
+                        .foregroundStyle(configuration.isOn ? .materialTonal : .materialSecondaryTitle)
                         .padding(.horizontal, 3)
                 }
                 .overlay(
                     RoundedRectangle(cornerRadius: 99)
-                        .stroke(.muiSecondaryTitle, lineWidth: 1.5)
+                        .stroke(.materialSecondaryTitle, lineWidth: 1.5)
                         .frame(maxWidth: .infinity)
                 )
                 .onTapGesture {

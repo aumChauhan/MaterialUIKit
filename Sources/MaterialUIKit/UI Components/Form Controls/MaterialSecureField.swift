@@ -69,7 +69,7 @@ public struct MaterialSecureField: View {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
-                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
+                    .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
                     .padding(.leading, 15)
             }
             
@@ -84,14 +84,14 @@ public struct MaterialSecureField: View {
                     text = ""
                 } label:  {
                     Image(systemName: "xmark.circle")
-                        .foregroundStyle(.muiSecondaryTitle)
+                        .foregroundStyle(.materialSecondaryTitle)
                         .padding(.trailing, 14)
                 }
             }
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle, lineWidth: 1)
+                .stroke(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle, lineWidth: 1)
                 .background(background ?? .materialSecondaryBackground.opacity(0.5))
                 .cornerRadius(20)
         )
@@ -103,7 +103,7 @@ public struct MaterialSecureField: View {
             } else {
                 Text(titlekey)
                     .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundStyle(secureFieldIsFocused ? .muiAccent : .materialSecondaryTitle)
+                    .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
                     .offset(x: secureFieldIsFocused ? (systemName != nil ? -35 : 0) : 0)
                     .offset(y: secureFieldIsFocused ? -40 : 0)
                     .animation(.bouncy, value: 1)

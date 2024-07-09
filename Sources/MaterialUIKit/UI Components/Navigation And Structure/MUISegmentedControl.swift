@@ -49,13 +49,13 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
                 ZStack {
                     if item == selectedItem {
                         RoundedRectangle(cornerRadius: 0)
-                            .foregroundStyle(.muiTertiaryBackground)
+                            .foregroundStyle(.materialTertiaryBackground)
                             .matchedGeometryEffect(id: "selectedTabBg", in: namespace)
                     }
                     
                     content(item)
                         .tag(item)
-                        .foregroundStyle(.muiPrimaryTitle)
+                        .foregroundStyle(.materialPrimaryTitle)
                         .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, 10)
                         .frame(maxWidth: .infinity)
@@ -68,16 +68,16 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
                 
                 if !isLastElement(data: data, item: item) {
                     RoundedRectangle(cornerRadius: 0.5)
-                        .foregroundStyle(.muiAccentTitle)
+                        .foregroundStyle(.materialHighlight)
                         .frame(width: 0.8)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 40)
-        .background(.muiPrimaryBackground)
+        .background(.materialPrimaryBackground)
         .cornerRadius(100)
         .padding(1)
-        .background(.muiAccentTitle.opacity(0.8))
+        .background(.materialHighlight.opacity(0.8))
         .cornerRadius(100)
     }
     

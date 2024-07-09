@@ -80,12 +80,12 @@ fileprivate struct MaterialTabBarContainerView: View {
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)
                         .font(.headline)
-                        .foregroundStyle(localSelection == tab ? .muiTonal : .materialPrimaryTitle)
+                        .foregroundStyle(localSelection == tab ? .materialTonal : .materialPrimaryTitle)
                         .background(
                             ZStack {
                                 if localSelection == tab {
                                     RoundedRectangle(cornerRadius: 100)
-                                        .fill(.muiAccent)
+                                        .fill(.materialAccent)
                                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                                 }
                             }
@@ -94,7 +94,7 @@ fileprivate struct MaterialTabBarContainerView: View {
                     Text(tab.title)
                         .font(.footnote)
                         .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
-                        .foregroundStyle(.muiPrimaryTitle)
+                        .foregroundStyle(.materialPrimaryTitle)
                 }
                 .frame(maxWidth: .infinity)
                 .onTapGesture {
@@ -104,7 +104,7 @@ fileprivate struct MaterialTabBarContainerView: View {
         }
         .padding(.top, 10)
         .background(
-            MaterialUIKit.tint.secondaryBackground()
+            MaterialUIKit.configuration.colorScheme.secondaryBackground
                 .ignoresSafeArea(edges: [.horizontal, .bottom])
         )
     }
@@ -136,7 +136,7 @@ fileprivate struct MaterialTabBarItemViewModiferWithOnAppear: ViewModifier {
     @ViewBuilder func body(content: Content) -> some View {
         if selection == tab {
             ZStack {
-                MaterialUIKit.tint.primaryBackground()
+                MaterialUIKit.configuration.colorScheme.primaryBackground
                 content
             }
             .opacity(1)

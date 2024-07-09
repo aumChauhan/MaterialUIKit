@@ -71,7 +71,7 @@ fileprivate struct MaterialDesignDialogSheetView: View {
                         isPresented.toggle()
                     } label: {
                         Image(systemName: "xmark")
-                            .foregroundStyle(.muiSecondaryTitle)
+                            .foregroundStyle(.materialSecondaryTitle)
                     }
                     Spacer()
                 }
@@ -79,10 +79,10 @@ fileprivate struct MaterialDesignDialogSheetView: View {
             }
             .frame(width: UIScreen.main.bounds.width / 1.3)
             .padding(20)
-            .background(.muiTonal)
+            .background(.materialTonal)
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
             .padding(0.8)
-            .background(.muiSecondaryTitle.opacity(0.4))
+            .background(.materialSecondaryTitle.opacity(0.4))
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
             .scaleEffect(animationFlag ? 1 : 0)
         }

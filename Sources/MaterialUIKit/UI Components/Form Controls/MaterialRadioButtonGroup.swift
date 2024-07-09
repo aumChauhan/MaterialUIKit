@@ -48,7 +48,7 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
                 HStack(alignment: .center) {
                     content(item)
                         .tag(item)
-                        .foregroundStyle(.muiPrimaryTitle)
+                        .foregroundStyle(.materialPrimaryTitle)
                         .fontWeightWithFallback(.regular)
                         .padding(.vertical, 10)
                     
@@ -56,7 +56,7 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
                     
                     Image(systemName: item == selection ? "circle.circle.fill" : "circle")
                         .font(.title3)
-                        .foregroundStyle(item == selection ? .muiAccent : .materialSecondaryTitle)
+                        .foregroundStyle(item == selection ? .materialAccent : .materialSecondaryTitle)
                         .onTapGesture {
                             withAnimation(.bouncy) {
                                 selection = item

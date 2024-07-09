@@ -54,7 +54,7 @@ public struct MaterialProgressView: View {
     
     public var body: some View {
         MaterialProgressArc()
-            .stroke(.muiAccent, lineWidth: lineWidth)
+            .stroke(.materialAccent, lineWidth: lineWidth)
             .frame(width: 35, height: 35)
             .rotationEffect(Angle(degrees: rotationAngle))
             .onReceive(timer) { _ in

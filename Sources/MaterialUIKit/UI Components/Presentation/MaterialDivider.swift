@@ -51,7 +51,7 @@ public struct MaterialDivider: View {
                 .frame(height: 1)
                 .frame(maxWidth: .infinity)
                 .padding(5)
-                .foregroundStyle(.muiSecondaryTitle.opacity(0.5))
+                .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
         }
     }
     
@@ -62,7 +62,7 @@ public struct MaterialDivider: View {
                 .frame(width: 1)
                 .frame(maxHeight: .infinity)
                 .padding(5)
-                .foregroundStyle(.muiSecondaryTitle.opacity(0.5))
+                .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
         }
     }
 }

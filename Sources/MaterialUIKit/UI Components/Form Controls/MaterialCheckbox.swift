@@ -32,7 +32,7 @@ public struct MaterialCheckbox: View {
     
     public var body: some View {
         Toggle(titleKey, isOn: $isOn)
-            .foregroundStyle(.muiPrimaryTitle)
+            .foregroundStyle(.materialPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MaterialCheckboxStyle())
     }
@@ -53,7 +53,7 @@ private struct MaterialCheckboxStyle: ToggleStyle {
             
             Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
                 .font(.title2)
-                .foregroundStyle(configuration.isOn ? .muiAccent : .materialSecondaryTitle)
+                .foregroundStyle(configuration.isOn ? .materialAccent : .materialSecondaryTitle)
                 .onTapGesture {
                     withAnimation(.bouncy) {
                         configuration.isOn.toggle()

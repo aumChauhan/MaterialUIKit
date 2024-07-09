@@ -108,7 +108,7 @@ fileprivate struct MaterialDesignSnackbarView: View {
             HStack {
                 Text(message)
                     .font(.headline)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                     .fontWeightWithFallback(.medium)
                 
                 Spacer()
@@ -129,7 +129,7 @@ fileprivate struct MaterialDesignSnackbarView: View {
             }
             .lineLimit(1)
             .padding(20)
-            .background(.muiTertiaryBackground)
+            .background(.materialTertiaryBackground)
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.15), radius: 3, x: 0, y: 2)
         }

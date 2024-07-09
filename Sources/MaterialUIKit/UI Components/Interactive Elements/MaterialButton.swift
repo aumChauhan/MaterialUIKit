@@ -126,7 +126,7 @@ extension MaterialButton {
     private func textButtonStyle() -> some View {
         return Button(action: action) {
             Text(title)
-                .foregroundStyle(.muiAccent)
+                .foregroundStyle(.materialAccent)
                 .cornerRadius(100)
                 .padding()
         }

@@ -43,12 +43,12 @@ public struct MUINavigationLabel: View {
             Text(title)
                 .font(.headline)
                 .fontWeightWithFallback(.regular)
-                .foregroundStyle(.muiPrimaryTitle)
+                .foregroundStyle(.materialPrimaryTitle)
             
             Spacer()
             
             Image(systemName: "chevron.right")
-                .foregroundStyle(.muiSecondaryTitle)
+                .foregroundStyle(.materialSecondaryTitle)
         }
     }
 }

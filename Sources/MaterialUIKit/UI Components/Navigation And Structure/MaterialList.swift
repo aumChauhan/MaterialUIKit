@@ -54,7 +54,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                 
                 if child.id != last {
                     MaterialDivider()
@@ -71,9 +71,9 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                     .padding(16)
-                    .background(.muiSecondaryBackground)
+                    .background(.materialSecondaryBackground)
                     .cornerRadius(15)
             }
         }
@@ -89,7 +89,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                 
                 if child.id != last {
                     MaterialDivider()
@@ -97,7 +97,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
             }
         }
         .padding(20)
-        .background(.muiSecondaryBackground)
+        .background(.materialSecondaryBackground)
         .cornerRadius(MaterialUIKitConstants.cornerRadius)
     }
 }

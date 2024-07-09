@@ -70,10 +70,10 @@ fileprivate struct MaterialDatePickerView: View {
                 }
             }
             .padding(20)
-            .background(.muiTonal)
+            .background(.materialTonal)
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
             .padding(0.8)
-            .background(.muiSecondaryTitle.opacity(0.5))
+            .background(.materialSecondaryTitle.opacity(0.5))
             .cornerRadius(MaterialUIKitConstants.cornerRadius)
             .scaleEffect(animationFlag ? 1 : 0)
             .padding(20)
@@ -112,7 +112,7 @@ fileprivate struct MaterialDatePickerView: View {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundStyle(.muiPrimaryTitle)
+                .foregroundStyle(.materialPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             
@@ -134,7 +134,7 @@ fileprivate struct MaterialDatePickerView: View {
             Text("\(selection.formattedMUIDate())")
                 .font(.title2)
                 .fontWeightWithFallback(.medium)
-                .foregroundStyle(.muiPrimaryTitle)
+                .foregroundStyle(.materialPrimaryTitle)
                 .padding(.top, 5)
                 .padding(.leading, 10)
             

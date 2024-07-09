@@ -11,26 +11,32 @@ import SwiftUI
 /// A protocol defining methods to provide color values for various components based on the specified color scheme.
 public protocol MaterialColorScheme {
     /// The accent color used for emphasis.
-    func accent() -> Color
+    var accent: Color { get set }
     
     /// The tonal color used for tonal variations.
-    func tonal() -> Color
+    var tonal: Color { get set }
+    
+    /// The color used for indicating errors and alerts.
+    var error: Color { get set }
     
     /// The primary background color.
-    func primaryBackground() -> Color
+    var primaryBackground: Color { get set }
     
     /// The secondary background color.
-    func secondaryBackground() -> Color
+    var secondaryBackground: Color { get set }
     
     /// The tertiary background color.
-    func tertiaryBackground() -> Color
+    var tertiaryBackground: Color { get set }
+    
+    /// The quaternary background color.
+    var quaternaryBackground: Color { get set }
     
     /// The color used for highlighting elements.
-    func highlight() -> Color
+    var highlight: Color { get set }
     
     /// The primary title color.
-    func primaryTitle() -> Color
+    var primaryTitle: Color { get set }
     
     /// The secondary title color.
-    func secondaryTitle() -> Color
+    var secondaryTitle: Color { get set }
 }

@@ -35,10 +35,10 @@ public struct MaterialMenuLabel: View {
     public var body: some View {
         HStack(spacing: 10) {
             Image(systemName: systemName)
-                .foregroundStyle(.muiAccent)
+                .foregroundStyle(.materialAccent)
             
             Text(title)
-                .foregroundStyle(.muiPrimaryTitle)
+                .foregroundStyle(.materialPrimaryTitle)
         }
     }
 }
@@ -55,7 +55,7 @@ fileprivate struct MaterialMenuViewLayout: _VariadicView_UnaryViewRoot {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.muiPrimaryTitle)
+                    .foregroundStyle(.materialPrimaryTitle)
                 
                 if child.id != children.last?.id {
                     MaterialDivider()
@@ -206,7 +206,7 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
                 .background(
                     GeometryReader { geo in
                         ZStack {
-                            MaterialUIKit.tint.secondaryBackground()
+                            Color.materialSecondaryBackground
                                 .shadow(color: .black.opacity(0.5), radius: 80, x: 0, y: 10)
                         }
                         .cornerRadius(MaterialUIKitConstants.cornerRadius)
