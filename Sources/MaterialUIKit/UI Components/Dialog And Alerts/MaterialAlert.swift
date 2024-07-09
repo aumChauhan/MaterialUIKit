@@ -153,67 +153,63 @@ fileprivate struct MaterialAlertView: View {
     // MARK: - View Body
     
     var body: some View {
-          ZStack {
-              VStack(alignment: .leading, spacing: MaterialUIKitConstants.verticalContentPadding) {
-                  Text(titleKey)
-                      .font(.title2)
-                      .fontWeightWithFallback(.medium)
-                      .foregroundStyle(.materialPrimaryTitle)
-                      .lineLimit(1)
-                  
-                  if let message {
-                      Text(message)
-                          .font(.headline)
-                          .fontWeightWithFallback(.medium)
-                          .foregroundStyle(.materialSecondaryTitle)
-                          .multilineTextAlignment(.leading)
-                  }
-                  
-                  HStack {
-                      Spacer()
-                      if let secondaryButtonTitle = secondaryButtonTitle {
-                          Button {
-                              secondaryAction?()
-                              withAnimation(.bouncy) {
-                                  isPresented = false
-                              }
-                          } label: {
-                              Text(secondaryButtonTitle)
-                                  .textStyledBackground(10)
-                          }
-                      }
-                      
-                      Button {
-                          primaryAction()
-                          
-                          if secondaryAction == nil {
-                              withAnimation(.bouncy) {
-                                  isPresented = false
-                              }
-                          }
-                      } label: {
-                          Text(primaryButtonTitle)
-                              .filledStyledBackground()
-                              .cornerRadius(100)
-                      }
-                  }
-              }
-              .frame(width: UIScreen.main.bounds.width/1.3)
-              .padding(20)
-              .background(.materialPrimaryBackground)
-              .cornerRadius(25)
-              .padding(0.8)
-              .background(.materialSecondaryTitle.opacity(0.4))
-              .cornerRadius(MaterialUIKitConstants.cornerRadius)
-              .scaleEffect(animationFlag ? 1 : 0)
-          }
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(Color.black.opacity(0.45))
-          .opacity(animationFlag ? 1 : 0)
-          .onChangeWithFallback(of: isPresented) { oldValue, newValue in
-              withAnimation(.bouncy) {
-                  animationFlag = isPresented
-              }
-          }
-      }
-  }
+        ZStack {
+            VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
+                Text(titleKey)
+                    .font(.title2)
+                    .fontWeightWithFallback(.semibold)
+                    .foregroundStyle(.materialPrimaryTitle)
+                    .lineLimit(1)
+                
+                if let message {
+                    Text(message)
+                        .font(.headline)
+                        .fontWeightWithFallback(.medium)
+                        .foregroundStyle(.materialSecondaryTitle)
+                        .multilineTextAlignment(.leading)
+                }
+                
+                HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+                    if let secondaryButtonTitle = secondaryButtonTitle {
+                        Button {
+                            secondaryAction?()
+                            
+                            withMaterialAnimation {
+                                isPresented = false
+                            }
+                        } label: {
+                            Text(secondaryButtonTitle)
+                                .textStyledBackground(10)
+                        }
+                        .align(.trailing)
+                    }
+                    
+                    Button {
+                        primaryAction()
+                        
+                        if secondaryAction == nil {
+                            withMaterialAnimation {
+                                isPresented = false
+                            }
+                        }
+                    } label: {
+                        Text(primaryButtonTitle)
+                            .filledStyledBackground()
+                            .cornerRadius(.infinity)
+                    }
+                }
+                .align(.trailing)
+            }
+            .frame(width: UIScreen.main.bounds.width/1.3)
+            .primaryBackground()
+            .scaleEffect(animationFlag ? 1 : 1.1)
+        }
+        .fullScreenOverlayBackground()
+        .opacity(animationFlag ? 1 : 0)
+        .onChangeWithFallback(of: isPresented) { oldValue, newValue in
+            withAnimation {
+                animationFlag = isPresented
+            }
+        }
+    }
+}
