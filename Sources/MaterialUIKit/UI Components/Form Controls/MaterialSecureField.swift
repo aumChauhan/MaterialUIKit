@@ -20,7 +20,8 @@ public struct MaterialSecureField: View {
     
     @FocusState private var isFocused: Bool
     @State private var secureFieldIsFocused: Bool = false
-    
+    @Environment(\.cornerRadius) private var cornerRadius: CGFloat
+
     // MARK: - Initializers
     
     /// Creates a default secure field.
@@ -65,17 +66,18 @@ public struct MaterialSecureField: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
                     .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
-                    .padding(.leading, 15)
+                    .padding(.leading, 16)
             }
             
-            SecureField("", text: $text)
+            SecureField(titlekey, text: $text)
                 .tint(.materialAccent)
-                .padding(16)
+                .padding(.vertical, 16)
+                .padding(.horizontal, systemName != nil ? 0 : 20)
             
             Spacer()
             
@@ -85,41 +87,51 @@ public struct MaterialSecureField: View {
                 } label:  {
                     Image(systemName: "xmark.circle")
                         .foregroundStyle(.materialSecondaryTitle)
-                        .padding(.trailing, 14)
+                        .padding(.trailing, 16)
                 }
             }
         }
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle, lineWidth: 1)
-                .background(background ?? .materialSecondaryBackground.opacity(0.5))
-                .cornerRadius(20)
-        )
-        
-        // Placeholder text that shifts upward on focus state
-        .overlay(alignment: .leading) {
-            if (!secureFieldIsFocused && !text.isEmpty) {
-                EmptyView()
-            } else {
-                Text(titlekey)
-                    .font(secureFieldIsFocused ? .caption : .callout)
-                    .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
-                    .offset(x: secureFieldIsFocused ? (systemName != nil ? -35 : 0) : 0)
-                    .offset(y: secureFieldIsFocused ? -40 : 0)
-                    .animation(.bouncy, value: 1)
-                    .padding(.leading, systemName != nil ? 40 : 15)
-            }
-        }
+        .background(background ?? .materialSecondaryBackground)
+        .cornerRadius(cornerRadius)
+        .padding(MaterialUIKit.configuration.borderWidth)
+        .background(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle.opacity(0.5))
+        .cornerRadius(cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()
         }
         .onChangeWithFallback(of: isFocused) { oldValue, newValue in
-            withAnimation(.bouncy) {
+            withMaterialAnimation {
                 secureFieldIsFocused = newValue
             }
         }
-        // Safearea for placeholder during focusState
-        .padding(.top, secureFieldIsFocused ? 15 : 0)
+    }
+}
+
+// MARK: - Environment Keys
+
+/// Environment key for setting the corner radius.
+fileprivate struct CornerRadiusKey: EnvironmentKey {
+    static var defaultValue: CGFloat = 16
+}
+
+fileprivate extension EnvironmentValues {
+    var cornerRadius: CGFloat {
+        get { self[CornerRadiusKey.self] }
+        set { self[CornerRadiusKey.self] = newValue }
+    }
+}
+
+// MARK: - Extension View
+
+extension View {
+    
+    /// Sets the corner radius for the secure field.
+    ///
+    /// - Parameter radius: The corner radius to be applied to the secure field.
+    ///
+    /// - Returns: A view modified to include the specified corner radius.
+    public func secureFieldCornerRadius(_ radius: CGFloat) -> some View {
+        self.environment(\.cornerRadius, radius)
     }
 }
