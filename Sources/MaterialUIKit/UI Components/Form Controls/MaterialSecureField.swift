@@ -71,13 +71,13 @@ public struct MaterialSecureField: View {
                 Image(systemName: systemName)
                     .font(.callout)
                     .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
-                    .padding(.leading, 16)
+                    .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
             SecureField(titlekey, text: $text)
                 .tint(.materialAccent)
-                .padding(.vertical, 16)
-                .padding(.horizontal, systemName != nil ? 0 : 20)
+                .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
+                .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
             
             Spacer()
             
@@ -87,7 +87,7 @@ public struct MaterialSecureField: View {
                 } label:  {
                     Image(systemName: "xmark.circle")
                         .foregroundStyle(.materialSecondaryTitle)
-                        .padding(.trailing, 16)
+                        .padding(.trailing, MaterialUIKit.configuration.horizontalPadding)
                 }
             }
         }
