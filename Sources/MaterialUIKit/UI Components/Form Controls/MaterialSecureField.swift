@@ -131,7 +131,7 @@ extension View {
     /// - Parameter radius: The corner radius to be applied to the secure field.
     ///
     /// - Returns: A view modified to include the specified corner radius.
-    public func secureFieldCornerRadius(_ radius: CGFloat) -> some View {
+    public func materialSecureFieldCornerRadius(_ radius: CGFloat) -> some View {
         self.environment(\.cornerRadius, radius)
     }
 }

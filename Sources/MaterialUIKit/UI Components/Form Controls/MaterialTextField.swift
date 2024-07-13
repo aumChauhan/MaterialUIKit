@@ -131,7 +131,7 @@ extension View {
     /// - Parameter radius: The corner radius to be applied to the text field.
     ///
     /// - Returns: A view modified to include the specified corner radius.
-    public func textFieldCornerRadius(_ radius: CGFloat) -> some View {
+    public func materialTextFieldCornerRadius(_ radius: CGFloat) -> some View {
         self.environment(\.textFieldcornerRadius, radius)
     }
 }
