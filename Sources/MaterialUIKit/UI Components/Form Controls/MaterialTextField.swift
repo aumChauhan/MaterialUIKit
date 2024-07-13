@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A Material UI styled text field.
+/// A Material UI style text field.
 public struct MaterialTextField: View {
     
     // MARK: - Properties
@@ -20,7 +20,8 @@ public struct MaterialTextField: View {
     
     @FocusState private var isFocused: Bool
     @State private var textFieldIsFocused: Bool = false
-    
+    @Environment(\.textFieldcornerRadius) private var cornerRadius: CGFloat
+
     // MARK: - Initializers
     
     /// Creates a default text field.
@@ -65,17 +66,18 @@ public struct MaterialTextField: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
                     .foregroundStyle(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
-                    .padding(.leading, 15)
+                    .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
-            TextField("", text: $text)
+            TextField(titlekey, text: $text)
                 .tint(.materialAccent)
-                .padding(16)
+                .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
+                .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
             
             Spacer()
             
@@ -85,30 +87,15 @@ public struct MaterialTextField: View {
                 } label:  {
                     Image(systemName: "xmark.circle")
                         .foregroundStyle(.materialSecondaryTitle)
-                        .padding(.trailing, 14)
+                        .padding(.trailing, MaterialUIKit.configuration.horizontalPadding)
                 }
             }
         }
-        .background(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle, lineWidth: 1)
-                .background(background ?? .materialSecondaryBackground.opacity(0.5))
-                .cornerRadius(20)
-        )
-
-        .overlay(alignment: .leading) {
-            if (!textFieldIsFocused && !text.isEmpty) {
-                EmptyView()
-            } else {
-                Text(titlekey)
-                    .font(textFieldIsFocused ? .caption : .callout)
-                    .foregroundStyle(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
-                    .offset(x: textFieldIsFocused ? (systemName != nil ? -35 : 0) : 0)
-                    .offset(y: textFieldIsFocused ? -40 : 0)
-                    .animation(.bouncy, value: 1)
-                    .padding(.leading, systemName != nil ? 40 : 15)
-            }
-        }
+        .background(background ?? .materialSecondaryBackground)
+        .cornerRadius(cornerRadius)
+        .padding(MaterialUIKit.configuration.borderWidth)
+        .background(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle.opacity(0.5))
+        .cornerRadius(cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()
@@ -118,6 +105,33 @@ public struct MaterialTextField: View {
                 textFieldIsFocused = newValue
             }
         }
-        .padding(.top, textFieldIsFocused ? 15 : 0)
+    }
+}
+
+// MARK: - Environment Keys
+
+/// Environment key for setting the corner radius.
+fileprivate struct CornerRadiusKey: EnvironmentKey {
+    static var defaultValue: CGFloat = 16
+}
+
+fileprivate extension EnvironmentValues {
+    var textFieldcornerRadius: CGFloat {
+        get { self[CornerRadiusKey.self] }
+        set { self[CornerRadiusKey.self] = newValue }
+    }
+}
+
+// MARK: - Extension View
+
+extension View {
+    
+    /// Sets the corner radius for the text field.
+    ///
+    /// - Parameter radius: The corner radius to be applied to the text field.
+    ///
+    /// - Returns: A view modified to include the specified corner radius.
+    public func textFieldCornerRadius(_ radius: CGFloat) -> some View {
+        self.environment(\.textFieldcornerRadius, radius)
     }
 }
