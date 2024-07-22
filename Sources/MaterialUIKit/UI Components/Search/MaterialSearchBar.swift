@@ -49,7 +49,7 @@ public struct MaterialSearchBar: View {
     
     public var body: some View {
         HStack {
-            HStack(spacing: 10) {
+            HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
                 Image(systemName: "magnifyingglass")
                     .font(.headline)
                     .foregroundStyle(.materialSecondaryTitle)
@@ -62,7 +62,7 @@ public struct MaterialSearchBar: View {
                 
                 if !(searchText.isEmpty) {
                     Button {
-                        withAnimation {
+                        withMaterialAnimation {
                             searchText = ""
                             showSearchButton = false
                         }
@@ -72,12 +72,12 @@ public struct MaterialSearchBar: View {
                     }
                 }
             }
-            .padding(12)
+            .padding(MaterialUIKit.configuration.verticalPadding)
             .background(.materialSecondaryBackground)
-            .cornerRadius(100)
+            .cornerRadius(.infinity)
             .padding(1)
             .background(.materialSecondaryTitle.opacity(0.5))
-            .cornerRadius(100)
+            .cornerRadius(.infinity)
             .tint(.materialAccent)
             
             if showSearchButton {
@@ -88,7 +88,7 @@ public struct MaterialSearchBar: View {
             }
         }
         .onChangeWithFallback(of: searchText) { oldValue, newValue in
-            withAnimation {
+            withMaterialAnimation {
                 if !(newValue.isEmpty) {
                     showSearchButton = true
                 }
