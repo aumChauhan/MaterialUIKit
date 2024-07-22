@@ -33,13 +33,14 @@ public struct MaterialMenuLabel: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
             Image(systemName: systemName)
                 .foregroundStyle(.materialAccent)
             
             Text(title)
                 .foregroundStyle(.materialPrimaryTitle)
         }
+        .padding(.leading, 4)
     }
 }
 
@@ -49,10 +50,10 @@ public struct MaterialMenuLabel: View {
 fileprivate struct MaterialMenuViewLayout: _VariadicView_UnaryViewRoot {
     @ViewBuilder
     func body(children: _VariadicView.Children) -> some View {
-        VStack(spacing: 10) {
+        VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
             ForEach(children) { child in
                 child
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .align(.leading)
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
@@ -133,7 +134,7 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
     
     public var body: some View {
         Button {
-            withAnimation(.bouncy()) {
+            withMaterialAnimation {
                 showMenu.toggle()
             }
         } label: {
@@ -147,11 +148,10 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
         .overlay(backgroundOverlay())
         .overlay(menuOverlay())
         .onChangeWithFallback(of: isActive) { oldValue, newValue in
-            withAnimation(.bouncy()) {
+            withMaterialAnimation {
                 showMenu.toggle()
             }
         }
-        .zIndex(.infinity)
     }
     
     // MARK: - Helpers
@@ -162,7 +162,7 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
             VStack {
                 if showMenu {
                     Button {
-                        withAnimation(.easeInOut(duration: 0.25)) {
+                        withMaterialAnimation {
                             showMenu.toggle()
                         }
                     } label: {
@@ -202,14 +202,14 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
                         .frame(width: 180)
                     }
                 }
-                .padding(20)
+                .padding(MaterialUIKit.configuration.margin)
                 .background(
                     GeometryReader { geo in
                         ZStack {
                             Color.materialSecondaryBackground
                                 .shadow(color: .black.opacity(0.5), radius: 80, x: 0, y: 10)
                         }
-                        .cornerRadius(MaterialUIKitConstants.cornerRadius)
+                        .cornerRadius(MaterialUIKit.configuration.cornerRadius)
                         .onAppear {
                             self.height = geo.size.height
                         }
