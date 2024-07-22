@@ -9,7 +9,6 @@
 import SwiftUI
 
 /// A Material UI style divider.
-@available(iOS 15.0, *)
 public struct MaterialDivider: View {
     
     // MARK: - Properties
@@ -47,10 +46,10 @@ public struct MaterialDivider: View {
     /// Returns horizontal oriented divider.
     private func horizontalDivider() -> some View {
         HStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(height: 1)
+            RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
+                .frame(height: MaterialUIKit.configuration.borderWidth)
                 .frame(maxWidth: .infinity)
-                .padding(5)
+                .padding(2)
                 .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
         }
     }
@@ -58,10 +57,10 @@ public struct MaterialDivider: View {
     /// Returns vertical oriented divider.
     private func verticalDivider() -> some View {
         HStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 1)
+            RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
+                .frame(width: MaterialUIKit.configuration.borderWidth)
                 .frame(maxHeight: .infinity)
-                .padding(5)
+                .padding(2)
                 .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
         }
     }

@@ -39,7 +39,7 @@ public struct MaterialProgressView: View {
     
     /// Creates a progress view with default line width.
     public init() {
-        lineWidth = 3
+        lineWidth = 2
     }
     
     /// Creates a progress view with a custom line width.
@@ -58,7 +58,7 @@ public struct MaterialProgressView: View {
             .frame(width: 35, height: 35)
             .rotationEffect(Angle(degrees: rotationAngle))
             .onReceive(timer) { _ in
-                withAnimation {
+                withMaterialAnimation {
                     rotationAngle += 40
                 }
             }
