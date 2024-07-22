@@ -14,7 +14,7 @@ public struct MaterialUIKitConfiguration {
     public var margin: CGFloat = 20
         
     /// The default horizontal padding applied to views.
-    public var horizontalPadding: CGFloat = 12
+    public var horizontalPadding: CGFloat = 20
     
     /// The default vertical padding applied to views.
     public var verticalPadding: CGFloat = 16
@@ -26,7 +26,7 @@ public struct MaterialUIKitConfiguration {
     public var stackSpacing: CGFloat = 20
     
     /// The width of the border applied to bordered elements.
-    public var borderWidth: CGFloat = 0.8
+    public var borderWidth: CGFloat = 1.0
     
     /// The color of the border applied to bordered elements.
     public var borderColor: Color = Color.gray

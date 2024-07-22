@@ -12,13 +12,9 @@ package extension View {
     /// Adds an elevated background and rounded corners.
     func elevatedStyledBackground() -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialHighlight)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 20)
+            .margin()
             .background(.materialTertiaryBackground)
-            .cornerRadius(15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
     }
@@ -26,63 +22,43 @@ package extension View {
     /// Adds a filled background and rounded corners.
     func filledStyledBackground() -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialTonal)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 20)
+            .margin()
             .background(.materialAccent)
-            .cornerRadius(15)
     }
     
     /// Adds a tonal background and rounded corners.
     func tonalStyledBackground() -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialHighlight)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 20)
+            .margin()
             .background(.materialSecondaryBackground)
-            .cornerRadius(15)
     }
     
     /// Adds a outline background and rounded corners.
-    func outlineStyledBackground() -> some View {
+    func outlineStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.regular)
             .foregroundStyle(.materialAccent)
-            .padding(.vertical, 10)
-            .padding(.horizontal, 20)
+            .margin()
             .overlay(
-                RoundedRectangle(cornerRadius: 100)
-                    .stroke(.materialAccent, lineWidth: 1)
+                RoundedRectangle(cornerRadius: cornerRadius ?? .infinity)
+                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth)
             )
     }
     
     /// Adds a text-only button with no background.
     func textStyledBackground(_ padding: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialAccent)
             .padding(padding ?? 10)
     }
     
-    // MARK: - Infinity Width View Modifiers
-    
     /// Adds elevated background and rounded corners, occupying full available width.
     func elevatedStretchedStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialHighlight)
-            .padding(.vertical, 15)
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
+            .extendedWidthPadded()
             .background(.materialTertiaryBackground)
-            .cornerRadius(cornerRadius ?? 15)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
     }
@@ -90,41 +66,27 @@ package extension View {
     /// Adds a filled background and rounded corners, occupying full available width.
     func filledStretchedStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialTonal)
-            .padding(.vertical, 15)
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
+            .extendedWidthPadded()
             .background(.materialAccent)
-            .cornerRadius(cornerRadius ?? 15)
     }
     
     /// Adds a tonal background and rounded corners, occupying full available width.
     func tonalStretchedStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.medium)
             .foregroundStyle(.materialHighlight)
-            .padding(.vertical, 15)
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
+            .extendedWidthPadded()
             .background(.materialSecondaryBackground)
-            .cornerRadius(cornerRadius ?? 15)
     }
     
     /// Adds an outlined border and rounded corners, occupying full available width.
-    func outlineStretchedStyledBackground() -> some View {
+    func outlineStretchedStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
-            .font(.headline)
-            .fontWeightWithFallback(.regular)
             .foregroundStyle(.materialAccent)
-            .padding(.vertical, 15)
-            .padding(.horizontal, 20)
-            .frame(maxWidth: .infinity)
+            .extendedWidthPadded()
             .overlay(
-                RoundedRectangle(cornerRadius: 99)
-                    .stroke(.materialAccent, lineWidth: 1)
+                RoundedRectangle(cornerRadius: cornerRadius ?? .infinity)
+                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth)
                     .frame(maxWidth: .infinity)
             )
     }

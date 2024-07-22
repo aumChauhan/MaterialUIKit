@@ -88,4 +88,23 @@ package extension View {
                 }
             }
     }
+    
+    /// Applies vertical and horizontal padding to the view using the values from `MaterialUIKit.configuration`.
+    ///
+    /// - Returns: A view with the specified vertical and horizontal padding applied.
+    func margin() -> some View {
+        self
+            .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
+            .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
+    }
+    
+    /// Applies vertical and horizontal padding to the view and sets the width to the maximum available, using the values from `MaterialUIKit.configuration`.
+    ///
+    /// - Returns: A view with the specified vertical and horizontal padding applied and width set to maximum.
+    func extendedWidthPadded() -> some View {
+        self
+            .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
+            .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
+            .frame(maxWidth: .infinity)
+    }
 }
