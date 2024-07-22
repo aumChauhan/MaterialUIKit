@@ -10,7 +10,7 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material designed styled FAB to the view with a bottom trailing alignment.
+    /// Presents a Material UI style FAB to the view with a bottom trailing alignment.
     ///
     /// - Parameters:
     ///   - systemSymbol: The system symbol name for the button icon.
@@ -22,7 +22,24 @@ extension View {
         action: @escaping () -> Void
     ) -> some View {
         self.modifier(
-            MaterialFABModifier(systemName: systemName, title: title, action: action)
+            MaterialFABModifier(systemName: systemName, title: title, cornerRadius: nil, action: action)
+        )
+    }
+    /// Presents a Material UI style FAB to the view with a bottom trailing alignment and a customizable corner radius.
+    ///
+    /// - Parameters:
+    ///   - systemName: The system symbol name for the button icon.
+    ///   - title: The title text displayed on the button.
+    ///   - cornerRadius: The corner radius to apply to the button.
+    ///   - action: A closure to be executed when the button is tapped.
+    public func materialFAB(
+        systemName: String,
+        title: String,
+        cornerRadius: CGFloat,
+        action: @escaping () -> Void
+    ) -> some View {
+        self.modifier(
+            MaterialFABModifier(systemName: systemName, title: title, cornerRadius: cornerRadius, action: action)
         )
     }
 }
@@ -31,28 +48,23 @@ extension View {
 
 /// A view modifier that adds a floating button with specified system symbol and title aligned at the bottom of the screen.
 fileprivate struct MaterialFABModifier: ViewModifier {
-    
-    // MARK: - Properties
-    
     let systemName: String
     let title: String
+    let cornerRadius: CGFloat?
     let action: () -> Void
-    
-    // MARK: - Body
-    
+        
     func body(content: Content) -> some View {
         content.overlay(
-            MaterialFAB(systemName: systemName, title: title, action)
+            MaterialFAB(systemName: systemName, title: title, action, cornerRadius: cornerRadius)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                .padding(20)
+                .padding(MaterialUIKit.configuration.margin)
         )
     }
 }
 
 // MARK: - MaterialFAB
 
-/// A Material design styled FAB.
-@available(iOS 15.0, *)
+/// A Material UI style FAB.
 fileprivate struct MaterialFAB: View {
     
     // MARK: - Properties
@@ -60,15 +72,17 @@ fileprivate struct MaterialFAB: View {
     let systemName: String
     let image: String?
     let title: String
+    let cornerRadius: CGFloat?
     let action: () -> Void
     
     // MARK: - Initializers
     
-    /// Creates a FAB with a system symbol, title, and an action.
-    init(systemName: String, title: String, _ action: @escaping () -> Void) {
+    /// Creates a FAB with a system symbol, title, and an action.
+    init(systemName: String, title: String, _ action: @escaping () -> Void, cornerRadius: CGFloat?) {
         self.systemName = systemName
         self.title = title
         self.action = action
+        self.cornerRadius = cornerRadius
         self.image = nil
     }
     
@@ -80,12 +94,10 @@ fileprivate struct MaterialFAB: View {
                 Image(systemName: systemName)
                 Text(title)
             }
-            .foregroundStyle(.materialAccent)
-            .frame(minWidth: 30)
-            .frame(height: 35)
+            .fontWeightWithFallback(.medium)
+            .padding(.horizontal, 4)
             .elevatedStyledBackground()
-            .shadow(color: .black.opacity(0.1), radius: 1, x: 0, y: 1)
-            .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 3)
+            .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
         }
         .buttonStyle(ShrinkFadeButtonStyle())
     }
