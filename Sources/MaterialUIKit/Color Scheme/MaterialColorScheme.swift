@@ -17,7 +17,7 @@ public protocol MaterialColorScheme {
     var tonal: Color { get set }
     
     /// The color used for indicating errors and alerts.
-    var error: Color { get set }
+    var onError: Color { get set }
     
     /// The primary background color.
     var primaryBackground: Color { get set }
@@ -40,6 +40,16 @@ public protocol MaterialColorScheme {
     /// The secondary title color.
     var secondaryTitle: Color { get set }
     
-    /// The color used for dividers.
-    var dividerColor: Color { get set }
+    /// The color used for dividers and separator.
+    var separator: Color { get set }
+    
+    /// The color used for outlines and stroke.
+    var outline: Color { get set }
+    
+    /// The color used for representing disabled or inactive elements in the UI.
+    /// 
+    /// This color is typically applied to elements that are not currently interactive,
+    /// such as switchs, checkbox, or radio buttons in a disabled state. It helps indicate to users
+    /// that these elements cannot be interacted with.
+    var onDisabled: Color { get set }
 }

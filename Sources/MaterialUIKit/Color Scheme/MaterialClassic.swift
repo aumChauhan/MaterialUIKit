@@ -10,10 +10,6 @@ import SwiftUI
 
 /// A default implementation of a classic Material color scheme.
 public struct MaterialClassic: MaterialColorScheme {
-    public var dividerColor: Color = Color(lightHex: "dee2e6", darkHex: "495057")
-    
-    public var error: Color = Color(lightHex: "DB362E", darkHex: "F2B8B6")
-    
     public var accent = Color(lightHex: "246488", darkHex: "94CDF8")
     
     public var tonal = Color(lightHex: "EDF2F6", darkHex: "202529")
@@ -31,4 +27,12 @@ public struct MaterialClassic: MaterialColorScheme {
     public var quaternaryBackground = Color(lightHex: "ced4da", darkHex: "6c757d")
     
     public var highlight = Color(lightHex: "33415c", darkHex: "5c677d")
+    
+    public var separator: Color = Color(lightHex: "dee2e6", darkHex: "495057")
+    
+    public var onError: Color = Color(lightHex: "DB362E", darkHex: "F2B8B6")
+    
+    public var onDisabled: Color =  Color(lightHex: "495057", darkHex: "dee2e6")
+    
+    public var outline: Color = Color(lightHex: "495057", darkHex: "dee2e6")
 }

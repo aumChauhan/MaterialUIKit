@@ -38,8 +38,14 @@ public extension Color {
     static var materialSecondaryTitle: Color = MaterialUIKit.configuration.colorScheme.secondaryTitle
     
     /// The color used for indicating errors and alerts.
-    static var materialError: Color = MaterialUIKit.configuration.colorScheme.error
+    static var materialOnError: Color = MaterialUIKit.configuration.colorScheme.onError
     
-    /// The divider color based on the current color scheme setting.
-    static var materialDivider: Color = MaterialUIKit.configuration.colorScheme.dividerColor
+    /// The separator color based on the current color scheme setting.
+    static var materialSeparator: Color = MaterialUIKit.configuration.colorScheme.separator
+    
+    /// The color used for indicating inactive or disabled state.
+    static var materialOnDisabled: Color = MaterialUIKit.configuration.colorScheme.onDisabled
+    
+    /// The color used for outlines and stroke.
+    static var materialOutline: Color = MaterialUIKit.configuration.colorScheme.outline
 }
