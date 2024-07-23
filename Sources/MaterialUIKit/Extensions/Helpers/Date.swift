@@ -9,12 +9,12 @@
 import SwiftUI
 
 /// An extension on `Date` to format dates in a specific format.
-extension Date {
+package extension Date {
     
     /// Formats the date in the "E, MMM D" style.
     ///
     /// - Returns: A formatted string representing the date.
-    public func formattedMUIDate() -> String {
+    func formattedMUIDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MMM d"
         return dateFormatter.string(from: self)
