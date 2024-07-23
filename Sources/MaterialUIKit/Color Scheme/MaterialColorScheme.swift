@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A protocol defining methods to provide color values for various components based on the specified color scheme.
+/// Definines the color scheme for Material UI components.
 public protocol MaterialColorScheme {
     /// The accent color used for emphasis.
     var accent: Color { get set }
@@ -39,4 +39,7 @@ public protocol MaterialColorScheme {
     
     /// The secondary title color.
     var secondaryTitle: Color { get set }
+    
+    /// The color used for dividers.
+    var dividerColor: Color { get set }
 }

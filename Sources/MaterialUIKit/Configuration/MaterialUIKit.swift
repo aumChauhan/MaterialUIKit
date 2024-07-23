@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// The core class for the MaterialUI package containing configuration settings.
+/// MaterialUIKit module containing configuration settings.
 open class MaterialUIKit {
     public static var configuration: MaterialUIKitConfiguration = MaterialUIKitConfiguration()
 }
