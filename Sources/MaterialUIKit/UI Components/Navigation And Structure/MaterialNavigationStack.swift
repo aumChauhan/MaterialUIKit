@@ -76,7 +76,7 @@ private struct MaterialNavigationHeader: View {
     
     /// Returns a navigation header with large header style.
     private func largeHeader() -> some View {
-        VStack(alignment: .leading, spacing: MaterialUIKitConstants.verticalContentPadding) {
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
             HStack {
                 if showBackButton {
                     Button {

@@ -65,7 +65,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
     private func insetStyle(children: _VariadicView.Children) -> some View {
-        return VStack(spacing: MaterialUIKitConstants.verticalContentPadding) {
+        return VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -83,7 +83,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
     private func insetGroupedStyle(children: _VariadicView.Children) -> some View {
         let last = children.last?.id
         
-        return VStack(spacing: MaterialUIKitConstants.verticalContentPadding) {
+        return VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
