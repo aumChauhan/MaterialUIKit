@@ -48,7 +48,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
         
         let last = children.last?.id
         
-        return VStack(spacing: 10) {
+        return VStack(spacing: MaterialUIKit.configuration.verticalPadding) {
             ForEach(children) { child in
                 child
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -72,9 +72,9 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
                     .font(.headline)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
-                    .padding(16)
+                    .padding(MaterialUIKit.configuration.margin)
                     .background(.materialSecondaryBackground)
-                    .cornerRadius(15)
+                    .cornerRadius(MaterialUIKit.configuration.cornerRadius)
             }
         }
     }
@@ -96,9 +96,7 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
                 }
             }
         }
-        .padding(20)
-        .background(.materialSecondaryBackground)
-        .cornerRadius(MaterialUIKitConstants.cornerRadius)
+        .secondaryBackground()
     }
 }
 

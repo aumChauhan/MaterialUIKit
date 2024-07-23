@@ -1,5 +1,5 @@
 //
-// MUIView.swift
+// MaterialContainer.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -31,7 +31,7 @@ public struct MaterialContainer<Content>: View where Content: View {
             Color.materialPrimaryBackground.ignoresSafeArea(.all)
             
             VStack { content }
-                .padding(MaterialUIKitConstants.insideMargin)
+                .padding(MaterialUIKit.configuration.margin)
         }
     }
 }

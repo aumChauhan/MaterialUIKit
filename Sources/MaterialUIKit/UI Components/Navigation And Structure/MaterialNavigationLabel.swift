@@ -1,5 +1,5 @@
 //
-// MaterialLabels.swift
+// MaterialNavigationLabel.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-// MARK: - MUINavigationLabel
+// MARK: - MaterialNavigationLabel
 
-/// A Material UI styled navigation link label.
-public struct MUINavigationLabel: View {
+/// A Material UI style navigation link label.
+public struct MaterialNavigationLabel: View {
     
     // MARK: - Properties
     
@@ -33,7 +33,7 @@ public struct MUINavigationLabel: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
             Image(systemName: systemName)
                 .font(.subheadline)
                 .elevatedStyledBackground()

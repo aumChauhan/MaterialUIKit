@@ -1,5 +1,5 @@
 //
-// MUITabView.swift
+// MaterialTabBar.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A Material UI styled tab bar container.
+/// A Material UI style tab bar container.
 public struct MaterialTabBar<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -65,7 +65,7 @@ fileprivate struct MaterialTabBarContainerView: View {
     var body: some View {
         tabBar
             .onChangeWithFallback(of: selection) { oldValue, newValue in
-                withAnimation(.bouncy) {
+                withMaterialAnimation {
                     localSelection = newValue
                 }
             }
@@ -77,16 +77,16 @@ fileprivate struct MaterialTabBarContainerView: View {
             ForEach(tabs, id: \.self) { tab in
                 VStack(alignment: .center , spacing: 4) {
                     Image(systemName: tab.systemName)
-                        .padding(.horizontal, 20)
+                        .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
                         .padding(.vertical, 5)
                         .font(.headline)
                         .foregroundStyle(localSelection == tab ? .materialTonal : .materialPrimaryTitle)
                         .background(
                             ZStack {
                                 if localSelection == tab {
-                                    RoundedRectangle(cornerRadius: 100)
+                                    RoundedRectangle(cornerRadius: .infinity)
                                         .fill(.materialAccent)
-                                        .matchedGeometryEffect(id: "background_rectangle", in: namespace)
+                                        .matchedGeometryEffect(id: "backgroundRectangle", in: namespace)
                                 }
                             }
                         )

@@ -10,7 +10,7 @@ import SwiftUI
 
 // MARK: - MaterialNavigationStack
 
-/// A navigation stack that wraps the content in a MaterialUI-styled navigation bar.
+/// A navigation stack that wraps the content in a MaterialUI-style navigation bar.
 public struct MaterialNavigationStack<Content>: View where Content: View {
     
     // MARK: - Properties
@@ -43,7 +43,7 @@ public struct MaterialNavigationStack<Content>: View where Content: View {
             
             MaterialNavigationBarContainerView {
                 content
-                    .padding(MaterialUIKitConstants.insideMargin)
+                    .padding(MaterialUIKit.configuration.margin)
             }
             .navigationBarHidden(true)
         }
@@ -90,20 +90,20 @@ private struct MaterialNavigationHeader: View {
                 
                 toolbar.view
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .align(.leading)
             
             Text(title)
                 .font(.largeTitle)
                 .fontWeightWithFallback(.semibold)
         }
         .foregroundStyle(.materialPrimaryTitle)
-        .padding(.horizontal, 15)
-        .padding(.vertical, 10)
+        .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
+        .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
     }
     
     /// Returns a navigation header with inline header style.
     private func inlineHeader() -> some View {
-        HStack(spacing: 10) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
             if showBackButton {
                 Button {
                     dismiss()
@@ -121,8 +121,8 @@ private struct MaterialNavigationHeader: View {
             toolbar.view
         }
         .foregroundStyle(.materialPrimaryTitle)
-        .padding(.horizontal, 15)
-        .padding(.vertical, 10)
+        .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
+        .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
     }
 }
 
@@ -161,19 +161,19 @@ private struct MaterialNavigationBarContainerView<Content>: View where Content: 
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         // Sets navigation title
-        .onPreferenceChange(MUINavigaionBarTitlePreferenceKey.self) { value in
+        .onPreferenceChange(MaterialNavigaionBarTitlePreferenceKey.self) { value in
             self.title = value
         }
         // Sets the visiblity for back button
-        .onPreferenceChange(MUINavigationBarBackButtonHiddenPreferenceKey.self) { value in
+        .onPreferenceChange(MaterialNavigationBarBackButtonHiddenPreferenceKey.self) { value in
             self.showBackButton = value
         }
         // Sets the navigation title style
-        .onPreferenceChange(MUINavigationTitleStylePreferenceKey.self) { value in
+        .onPreferenceChange(MaterialNavigationTitleStylePreferenceKey.self) { value in
             self.headerStyle = value
         }
         // Sets the toolbar
-        .onPreferenceChange(MUIToolbarViewPreferenceKey.self) { value in
+        .onPreferenceChange(MaterialToolbarViewPreferenceKey.self) { value in
             toolbar = value
         }
     }
@@ -204,7 +204,7 @@ public struct MaterialNavigationLink<Label, Destination>: View where Label: View
                 .navigationBarHidden(true)
         } label: {
             label
-                .padding(.horizontal, 4)
+            .padding(.horizontal, 4)
         }
     }
 }
@@ -212,7 +212,7 @@ public struct MaterialNavigationLink<Label, Destination>: View where Label: View
 // MARK: - Preference Keys
 
 /// Sets the title for the navigation bar.
-private struct MUINavigaionBarTitlePreferenceKey: PreferenceKey {
+private struct MaterialNavigaionBarTitlePreferenceKey: PreferenceKey {
     static var defaultValue: String = ""
     
     static func reduce(value: inout String, nextValue: () -> String) {
@@ -221,7 +221,7 @@ private struct MUINavigaionBarTitlePreferenceKey: PreferenceKey {
 }
 
 /// Sets the visibility of the back button in the navigation bar.
-private struct MUINavigationBarBackButtonHiddenPreferenceKey: PreferenceKey {
+private struct MaterialNavigationBarBackButtonHiddenPreferenceKey: PreferenceKey {
     static var defaultValue: Bool = false
     
     static func reduce(value: inout Bool, nextValue: () -> Bool) {
@@ -230,7 +230,7 @@ private struct MUINavigationBarBackButtonHiddenPreferenceKey: PreferenceKey {
 }
 
 /// Sets the style for the navigation bar header.
-private struct MUINavigationTitleStylePreferenceKey: PreferenceKey {
+private struct MaterialNavigationTitleStylePreferenceKey: PreferenceKey {
     static var defaultValue: MaterialNavigationHeaderStyle = .large
     
     static func reduce(value: inout MaterialNavigationHeaderStyle, nextValue: () -> MaterialNavigationHeaderStyle) {
@@ -239,7 +239,7 @@ private struct MUINavigationTitleStylePreferenceKey: PreferenceKey {
 }
 
 /// Sets the toolbar for the navigation bar.
-private struct MUIToolbarViewPreferenceKey: PreferenceKey {
+private struct MaterialToolbarViewPreferenceKey: PreferenceKey {
     static var defaultValue: EquatableViewContainer = EquatableViewContainer(view: AnyView(EmptyView()) )
     
     static func reduce(value: inout EquatableViewContainer, nextValue: () -> EquatableViewContainer) {
@@ -257,7 +257,7 @@ extension View {
     ///
     /// - Returns: A view modified to include the specified navigation bar title.
     public func materialNavigationTitle(_ title: String) -> some View {
-        return self.preference(key: MUINavigaionBarTitlePreferenceKey.self, value: title)
+        return self.preference(key: MaterialNavigaionBarTitlePreferenceKey.self, value: title)
     }
     
     /// Sets the style for the navigation bar header.
@@ -266,7 +266,7 @@ extension View {
     ///
     /// - Returns: A view modified to include the specified navigation bar header style.
     public func materialNavigationHeaderStyle(_ style: MaterialNavigationHeaderStyle) -> some View {
-        return self.preference(key: MUINavigationTitleStylePreferenceKey.self, value: style)
+        return self.preference(key: MaterialNavigationTitleStylePreferenceKey.self, value: style)
     }
     
     /// Sets the toolbar for the navigation bar.
@@ -275,7 +275,7 @@ extension View {
     ///
     /// - Returns: A view modified to include the specified toolbar.
     public func materialToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
-        return self.preference(key: MUIToolbarViewPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
+        return self.preference(key: MaterialToolbarViewPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
     }
     
     /// Sets the visibility of the back button in the navigation bar.
@@ -284,7 +284,7 @@ extension View {
     ///
     /// - Returns: A view modified to include the specified back button visibility.
     public func materialNavigationBarBackButtonHidden(_ hidden: Bool) -> some View {
-        return self.preference(key: MUINavigationBarBackButtonHiddenPreferenceKey.self, value: !hidden)
+        return self.preference(key: MaterialNavigationBarBackButtonHiddenPreferenceKey.self, value: !hidden)
     }
     
     /// Sets the properties for the navigation bar.
@@ -295,7 +295,7 @@ extension View {
     ///   - style: The style of the navigation bar header.
     ///
     /// - Returns: A view modified to include the specified navigation bar properties.
-    public func muiNavigationBar(title: String = "", backButtonHidden: Bool = false, style: MaterialNavigationHeaderStyle = .large) -> some View {
+    public func materialNavigationBar(title: String = "", backButtonHidden: Bool = false, style: MaterialNavigationHeaderStyle = .large) -> some View {
         self
             .materialNavigationTitle(title)
             .materialNavigationBarBackButtonHidden(backButtonHidden)

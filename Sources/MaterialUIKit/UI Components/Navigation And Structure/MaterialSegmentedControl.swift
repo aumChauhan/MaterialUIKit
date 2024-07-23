@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A Material UI styled segmented control.
+/// A Material UI style segmented control.
 public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
     // MARK: - Properties
@@ -44,23 +44,23 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: .zero) {
             ForEach(data, id: id) { item in
                 ZStack {
                     if item == selectedItem {
-                        RoundedRectangle(cornerRadius: 0)
+                        RoundedRectangle(cornerRadius: .zero)
                             .foregroundStyle(.materialTertiaryBackground)
-                            .matchedGeometryEffect(id: "selectedTabBg", in: namespace)
+                            .matchedGeometryEffect(id: "selectedTabBackground", in: namespace)
                     }
                     
                     content(item)
                         .tag(item)
                         .foregroundStyle(.materialPrimaryTitle)
                         .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
-                        .padding(.vertical, 10)
+                        .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
                         .frame(maxWidth: .infinity)
                         .onTapGesture {
-                            withAnimation(.bouncy) {
+                            withMaterialAnimation {
                                 selectedItem = item
                             }
                         }
@@ -75,14 +75,14 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
         }
         .frame(maxWidth: .infinity, maxHeight: 40)
         .background(.materialPrimaryBackground)
-        .cornerRadius(100)
-        .padding(1)
+        .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+        .padding(MaterialUIKit.configuration.borderWidth)
         .background(.materialHighlight.opacity(0.8))
-        .cornerRadius(100)
+        .cornerRadius(MaterialUIKit.configuration.cornerRadius)
     }
     
     /// Checks if the current element is the last one in the collection.
-    private func isLastElement(data: Data, item: Data.Element) -> Bool {
+    fileprivate func isLastElement(data: Data, item: Data.Element) -> Bool {
         return data.last == item
     }
 }
