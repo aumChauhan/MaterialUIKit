@@ -11,13 +11,13 @@ import SwiftUI
 /// Visual representation of the Material design styled checkbox.
 package struct MaterialCheckboxStyle: ToggleStyle {
     package func makeBody(configuration: Configuration) -> some View {
-        HStack(alignment: .center, spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack {
             configuration.label
                 .align(.leading)
             
             Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
                 .font(.title2)
-                .foregroundStyle(configuration.isOn ? .materialAccent : .materialSecondaryTitle)
+                .foregroundStyle(configuration.isOn ? .materialAccent : .materialOnDisabled)
                 .onTapGesture {
                     withAnimation(MaterialUIKit.configuration.animationType) {
                         configuration.isOn.toggle()

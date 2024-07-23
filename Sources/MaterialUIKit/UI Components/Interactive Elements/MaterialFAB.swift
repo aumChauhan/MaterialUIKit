@@ -56,8 +56,8 @@ fileprivate struct MaterialFABModifier: ViewModifier {
     func body(content: Content) -> some View {
         content.overlay(
             MaterialFAB(systemName: systemName, title: title, action, cornerRadius: cornerRadius)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                .padding(MaterialUIKit.configuration.margin)
+                .align(.bottomTrailing)
+                .padding(MaterialUIKit.configuration.contentPadding)
         )
     }
 }
@@ -93,10 +93,10 @@ fileprivate struct MaterialFAB: View {
             HStack {
                 Image(systemName: systemName)
                 Text(title)
+                    .font(MaterialUIKit.configuration.h4)
             }
             .fontWeightWithFallback(.medium)
-            .padding(.horizontal, 4)
-            .elevatedStyledBackground()
+            .filledStyledBackground()
             .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
         }
         .buttonStyle(ShrinkFadeButtonStyle())

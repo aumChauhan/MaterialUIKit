@@ -93,7 +93,6 @@ fileprivate struct MaterialTabBarContainerView: View {
                     
                     Text(tab.title)
                         .font(.footnote)
-                        .fontWeightWithFallback(localSelection == tab ? .bold : .medium)
                         .foregroundStyle(.materialPrimaryTitle)
                 }
                 .frame(maxWidth: .infinity)
@@ -102,7 +101,7 @@ fileprivate struct MaterialTabBarContainerView: View {
                 }
             }
         }
-        .padding(.top, 10)
+        .padding(.vertical, 10)
         .background(
             MaterialUIKit.configuration.colorScheme.secondaryBackground
                 .ignoresSafeArea(edges: [.horizontal, .bottom])
@@ -133,7 +132,8 @@ fileprivate struct MaterialTabBarItemViewModiferWithOnAppear: ViewModifier {
     /// - Parameters:
     ///   - content: The content to be modified.
     /// - Returns: A modified view.
-    @ViewBuilder func body(content: Content) -> some View {
+    @ViewBuilder
+    func body(content: Content) -> some View {
         if selection == tab {
             ZStack {
                 MaterialUIKit.configuration.colorScheme.primaryBackground

@@ -48,13 +48,13 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
         
         let last = children.last?.id
         
-        return VStack(spacing: MaterialUIKit.configuration.verticalPadding) {
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             ForEach(children) { child in
                 child
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.headline)
+                    .font(MaterialUIKit.configuration.h4)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
+                    .align(.leading)
                 
                 if child.id != last {
                     MaterialDivider()
@@ -65,16 +65,14 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
     private func insetStyle(children: _VariadicView.Children) -> some View {
-        return VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             ForEach(children) { child in
                 child
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.headline)
+                    .font(MaterialUIKit.configuration.h4)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
-                    .padding(MaterialUIKit.configuration.margin)
-                    .background(.materialSecondaryBackground)
-                    .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+                    .align(.leading)
+                    .secondaryBackground()
             }
         }
     }
@@ -83,13 +81,13 @@ fileprivate struct MaterialListViewLayout: _VariadicView_UnaryViewRoot {
     private func insetGroupedStyle(children: _VariadicView.Children) -> some View {
         let last = children.last?.id
         
-        return VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             ForEach(children) { child in
                 child
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.headline)
+                    .font(MaterialUIKit.configuration.h4)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
+                    .align(.leading)
                 
                 if child.id != last {
                     MaterialDivider()

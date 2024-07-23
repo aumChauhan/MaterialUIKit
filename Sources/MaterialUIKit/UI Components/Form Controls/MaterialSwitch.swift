@@ -32,6 +32,7 @@ public struct MaterialSwitch: View {
     
     public var body: some View {
         Toggle(title, isOn: $isOn)
+            .font(MaterialUIKit.configuration.h4)
             .foregroundStyle(.materialPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MaterialSwitchToggleStyle())

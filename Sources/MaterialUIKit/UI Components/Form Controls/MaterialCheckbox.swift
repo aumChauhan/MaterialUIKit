@@ -32,6 +32,7 @@ public struct MaterialCheckbox: View {
     
     public var body: some View {
         Toggle(titleKey, isOn: $isOn)
+            .font(MaterialUIKit.configuration.h4)
             .foregroundStyle(.materialPrimaryTitle)
             .labelsHidden()
             .toggleStyle(MaterialCheckboxStyle())

@@ -11,23 +11,23 @@ import SwiftUI
 /// Visual representation of the Material Design styled toggle switch.
 package struct MaterialSwitchToggleStyle: ToggleStyle {
     package func makeBody(configuration: Configuration) -> some View {
-        HStack(alignment: .center) {
+        HStack {
             configuration.label
-
+            
             Spacer()
             
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
                 .foregroundStyle(configuration.isOn ? .materialAccent : .materialPrimaryBackground)
-                .frame(width: 40, height: 22)
+                .frame(width: 42, height: 24)
                 .overlay(alignment: configuration.isOn ? .trailing : .leading) {
                     Circle()
-                        .frame(width: 18)
-                        .foregroundStyle(configuration.isOn ? .materialTonal : .materialSecondaryTitle)
-                        .padding(.horizontal, 2)
+                        .frame(width: configuration.isOn ? 18 : 14)
+                        .foregroundStyle(configuration.isOn ? .materialTonal : .materialOnDisabled)
+                        .padding(.horizontal, configuration.isOn ? 2 : 4)
                 }
                 .overlay(
                     RoundedRectangle(cornerRadius: .infinity)
-                        .stroke(.materialSecondaryTitle, lineWidth: MaterialUIKit.configuration.borderWidth)
+                        .stroke(.materialOutline, lineWidth: MaterialUIKit.configuration.borderWidth)
                         .frame(maxWidth: .infinity)
                 )
                 .onTapGesture {

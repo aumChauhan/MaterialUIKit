@@ -33,7 +33,7 @@ public struct MaterialNavigationLabel: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             Image(systemName: systemName)
                 .font(.subheadline)
                 .elevatedStyledBackground()
@@ -41,7 +41,7 @@ public struct MaterialNavigationLabel: View {
                 .cornerRadius(50)
             
             Text(title)
-                .font(.headline)
+                .font(MaterialUIKit.configuration.h4)
                 .fontWeightWithFallback(.regular)
                 .foregroundStyle(.materialPrimaryTitle)
             

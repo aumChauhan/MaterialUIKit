@@ -11,27 +11,33 @@ import SwiftUI
 package extension View {
     
     /// Applies a stroke to the view using the configuration settings for border width, color, and corner radius.
-    func stroke() -> some View {
+    ///
+    /// - Parameter cornerRadius: The corner radius for the stroke. If `nil`, the radius from the configuration is used.
+    func stroke(background: Color? = nil, cornerRadius: CGFloat? = nil) -> some View {
         self
             .padding(MaterialUIKit.configuration.borderWidth)
-            .background(.materialSecondaryTitle.opacity(0.5))
-            .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+            .background(background ?? .materialOutline)
+            .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
     }
     
     /// Applies a material primary background with corner radius and margin to the view.
-    func primaryBackground() -> some View {
+    ///
+    /// - Parameter cornerRadius: The corner radius for the stroke. If `nil`, the radius from the configuration is used.
+    func primaryBackground(cornerRadius: CGFloat? = nil) -> some View {
         self
-            .padding(MaterialUIKit.configuration.margin)
+            .padding(MaterialUIKit.configuration.contentPadding)
             .background(.materialPrimaryBackground)
-            .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+            .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
     }
     
     /// Applies a material secondary background with corner radius and margin to the view.
-    func secondaryBackground() -> some View {
+    ///
+    /// - Parameter cornerRadius: The corner radius for the stroke. If `nil`, the radius from the configuration is used.
+    func secondaryBackground(cornerRadius: CGFloat? = nil) -> some View {
         self
-            .padding(MaterialUIKit.configuration.margin)
+            .padding(MaterialUIKit.configuration.contentPadding)
             .background(.materialSecondaryBackground)
-            .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+            .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
     }
     
     /// Aligns the view within its frame based on the specified alignment option.
@@ -83,7 +89,7 @@ package extension View {
             .background(Color.black.opacity(0.45))
             .opacity(animationFlag.wrappedValue ? 1 : 0)
             .onChange(of: isPresented.wrappedValue) { _ in
-                withAnimation {
+                withMaterialAnimation {
                     animationFlag.wrappedValue = isPresented.wrappedValue
                 }
             }
@@ -92,8 +98,9 @@ package extension View {
     /// Applies vertical and horizontal padding to the view using the values from `MaterialUIKit.configuration`.
     ///
     /// - Returns: A view with the specified vertical and horizontal padding applied.
-    func margin() -> some View {
+    func contentPadding() -> some View {
         self
+            .padding(.horizontal, 4)
             .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
             .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
     }

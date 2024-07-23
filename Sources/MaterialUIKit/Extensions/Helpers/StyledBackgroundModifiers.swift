@@ -9,11 +9,12 @@
 import SwiftUI
 
 package extension View {
+    
     /// Adds an elevated background and rounded corners.
     func elevatedStyledBackground() -> some View {
         return self
             .foregroundStyle(.materialHighlight)
-            .margin()
+            .contentPadding()
             .background(.materialTertiaryBackground)
             .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
             .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
@@ -23,7 +24,7 @@ package extension View {
     func filledStyledBackground() -> some View {
         return self
             .foregroundStyle(.materialTonal)
-            .margin()
+            .contentPadding()
             .background(.materialAccent)
     }
     
@@ -31,7 +32,7 @@ package extension View {
     func tonalStyledBackground() -> some View {
         return self
             .foregroundStyle(.materialHighlight)
-            .margin()
+            .contentPadding()
             .background(.materialSecondaryBackground)
     }
     
@@ -39,10 +40,10 @@ package extension View {
     func outlineStyledBackground(cornerRadius: CGFloat? = nil) -> some View {
         return self
             .foregroundStyle(.materialAccent)
-            .margin()
+            .contentPadding()
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius ?? .infinity)
-                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth)
+                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth + 0.5)
             )
     }
     
@@ -86,7 +87,7 @@ package extension View {
             .extendedWidthPadded()
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius ?? .infinity)
-                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth)
+                    .stroke(.materialAccent, lineWidth: MaterialUIKit.configuration.borderWidth + 0.5)
                     .frame(maxWidth: .infinity)
             )
     }

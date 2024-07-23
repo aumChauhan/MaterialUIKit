@@ -1,5 +1,5 @@
 //
-// MaterialCircularButtonStyle.swift
+// MaterialIconButtonStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-/// Represens different styles for the ``MaterialCircularButton``.
+/// Represens different styles for the ``MaterialIconButton``.
 @frozen
-public enum MaterialCircularButtonStyle {
+public enum MaterialIconButtonStyle {
     /// A circular button with an secondary style.
     case secondary
     

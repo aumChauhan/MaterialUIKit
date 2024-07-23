@@ -32,36 +32,13 @@ public struct MaterialDivider: View {
     // MARK: - View Body
     
     public var body: some View {
-        switch orientation {
-        case .horizontal:
-            horizontalDivider()
-            
-        case .vertical:
-            verticalDivider()
-        }
-    }
-    
-    // MARK: - Helpers
-    
-    /// Returns horizontal oriented divider.
-    private func horizontalDivider() -> some View {
-        HStack {
-            RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
-                .frame(height: MaterialUIKit.configuration.borderWidth)
-                .frame(maxWidth: .infinity)
-                .padding(2)
-                .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
-        }
-    }
-    
-    /// Returns vertical oriented divider.
-    private func verticalDivider() -> some View {
-        HStack {
-            RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
-                .frame(width: MaterialUIKit.configuration.borderWidth)
-                .frame(maxHeight: .infinity)
-                .padding(2)
-                .foregroundStyle(.materialSecondaryTitle.opacity(0.5))
-        }
+        RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
+            .frame(
+                width: orientation == .vertical ? MaterialUIKit.configuration.borderWidth : nil,
+                height: orientation == .horizontal ? MaterialUIKit.configuration.borderWidth : nil
+            )
+            .frame(maxWidth: orientation == .horizontal ? .infinity : nil, maxHeight: orientation == .vertical ? .infinity : nil)
+            .padding(2)
+            .foregroundStyle(.materialSeparator)
     }
 }

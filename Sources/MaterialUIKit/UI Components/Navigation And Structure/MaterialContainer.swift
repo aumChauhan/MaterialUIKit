@@ -30,8 +30,10 @@ public struct MaterialContainer<Content>: View where Content: View {
         ZStack {
             Color.materialPrimaryBackground.ignoresSafeArea(.all)
             
-            VStack { content }
-                .padding(MaterialUIKit.configuration.margin)
+            VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+                content
+            }
+            .padding(MaterialUIKit.configuration.contentPadding)
         }
     }
 }

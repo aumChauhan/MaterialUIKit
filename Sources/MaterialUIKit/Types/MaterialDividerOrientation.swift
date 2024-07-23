@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// Represents the orientation of the divider.
+/// Represents the orientation of the separator.
 @frozen
 public enum MaterialDividerOrientation {
     /// A horizontal divider.

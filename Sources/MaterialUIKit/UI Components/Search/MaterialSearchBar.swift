@@ -49,7 +49,7 @@ public struct MaterialSearchBar: View {
     
     public var body: some View {
         HStack {
-            HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+            HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
                 Image(systemName: "magnifyingglass")
                     .font(.headline)
                     .foregroundStyle(.materialSecondaryTitle)
@@ -72,12 +72,11 @@ public struct MaterialSearchBar: View {
                     }
                 }
             }
-            .padding(MaterialUIKit.configuration.verticalPadding)
+            .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
+            .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
             .background(.materialSecondaryBackground)
             .cornerRadius(.infinity)
-            .padding(1)
-            .background(.materialSecondaryTitle.opacity(0.5))
-            .cornerRadius(.infinity)
+            .stroke(cornerRadius: .infinity)
             .tint(.materialAccent)
             
             if showSearchButton {

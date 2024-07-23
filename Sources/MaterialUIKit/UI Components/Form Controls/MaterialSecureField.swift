@@ -16,7 +16,6 @@ public struct MaterialSecureField: View {
     @Binding private var text: String
     private let systemName: String?
     private let titlekey: String
-    private let background: Color?
     
     @FocusState private var isFocused: Bool
     @State private var secureFieldIsFocused: Bool = false
@@ -33,7 +32,6 @@ public struct MaterialSecureField: View {
         self.titlekey = titlekey
         self._text = text
         self.systemName = nil
-        self.background = nil
     }
     
     /// Creates a secure field with a system symbol.
@@ -46,35 +44,21 @@ public struct MaterialSecureField: View {
         self.titlekey = titlekey
         self._text = text
         self.systemName = systemName
-        self.background = nil
-    }
-    
-    /// Creates a secure field with a system symbol and custom background color.
-    ///
-    /// - Parameters:
-    ///   - systemName: System (SF)symbol for the secure field.
-    ///   - titleKey: Title key for the secure field.
-    ///   - text: Binding to the text value of the secure field.
-    ///   - background: Custom background color for the secure field.
-    public init(systemName: String, _ titlekey: String, text: Binding<String>, _ background: Color) {
-        self.titlekey = titlekey
-        self._text = text
-        self.systemName = systemName
-        self.background = background
     }
     
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
-                    .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
+                    .foregroundStyle(secureFieldIsFocused ? .materialAccent : .materialOnDisabled)
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
             SecureField(titlekey, text: $text)
+                .font(MaterialUIKit.configuration.h4)
                 .tint(.materialAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
                 .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
@@ -85,17 +69,15 @@ public struct MaterialSecureField: View {
                 Button {
                     text = ""
                 } label:  {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.materialSecondaryTitle)
                         .padding(.trailing, MaterialUIKit.configuration.horizontalPadding)
                 }
             }
         }
-        .background(background ?? .materialSecondaryBackground)
+        .background(.materialSecondaryBackground)
         .cornerRadius(cornerRadius)
-        .padding(MaterialUIKit.configuration.borderWidth)
-        .background(secureFieldIsFocused ? .materialAccent : .materialSecondaryTitle.opacity(0.5))
-        .cornerRadius(cornerRadius)
+        .stroke(background: secureFieldIsFocused ? .materialAccent : .materialOnDisabled)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()
@@ -112,7 +94,7 @@ public struct MaterialSecureField: View {
 
 /// Environment key for setting the corner radius.
 fileprivate struct CornerRadiusKey: EnvironmentKey {
-    static var defaultValue: CGFloat = 16
+    static var defaultValue: CGFloat = MaterialUIKit.configuration.cornerRadius
 }
 
 fileprivate extension EnvironmentValues {

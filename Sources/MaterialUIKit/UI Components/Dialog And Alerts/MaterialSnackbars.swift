@@ -10,7 +10,7 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style snackbar with a description message.
+    /// Presents a Material UI style snackbar with a description message with a default time of 5s.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation state of the snackbar.
@@ -97,45 +97,42 @@ fileprivate struct MaterialSnackbarView: View {
     
     let message: String
     let duration: Double?
-    let defaultDuration = 4.0
+    let defaultDuration = 5.0
     let primaryButtonTitle: String?
     let primaryAction: (() -> Void)?
     
     // MARK: - View Body
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(message)
-                    .font(.headline)
-                    .foregroundStyle(.materialSecondaryTitle)
-                    .fontWeightWithFallback(.medium)
-                    .align(.leading)
-                
-                if let primaryButtonTitle = primaryButtonTitle {
-                    Button {
-                        primaryAction?()
-                        
-                        withMaterialAnimation {
-                            isPresented = false
-                        }
-                    } label: {
-                        Text(primaryButtonTitle)
-                            .buttonStyle(.borderedProminent)
-                            .font(.headline)
-                            .fontWeightWithFallback(.semibold)
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
+            Text(message)
+                .font(MaterialUIKit.configuration.h4)
+                .fontWeightWithFallback(.medium)
+                .foregroundStyle(.materialSecondaryTitle)
+                .align(.leading)
+            
+            if let primaryButtonTitle = primaryButtonTitle {
+                Button {
+                    primaryAction?()
+                    
+                    withMaterialAnimation {
+                        isPresented = false
                     }
-                    .tint(.materialAccent)
-                    .align(.trailing)
+                } label: {
+                    Text(primaryButtonTitle)
+                        .font(MaterialUIKit.configuration.h4)
+                        .fontWeightWithFallback(.semibold)
                 }
+                .tint(.materialAccent)
+                .align(.trailing)
             }
-            .lineLimit(1)
-            .secondaryBackground()
-            .align(.bottom)
         }
+        .lineLimit(1)
+        .secondaryBackground()
+        .align(.bottom)
         .frame(width: UIScreen.main.bounds.width/1.1)
         .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)
-        .onChangeWithFallback(of: isPresented) { _, _ in
+        .onChangeWithFallback(of: isPresented) { _ , _ in
             withMaterialAnimation {
                 animationFlag = isPresented
                 toggleOffSnackbar(isPresented: $isPresented, duration: duration)

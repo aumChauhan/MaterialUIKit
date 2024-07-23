@@ -55,6 +55,7 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
                     
                     content(item)
                         .tag(item)
+                        .font(MaterialUIKit.configuration.h4)
                         .foregroundStyle(.materialPrimaryTitle)
                         .fontWeightWithFallback(item == selectedItem ? .bold : .regular)
                         .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
@@ -68,17 +69,15 @@ public struct MaterialSegmentedControl<Data, ID, Content>: View where Data: Rand
                 
                 if !isLastElement(data: data, item: item) {
                     RoundedRectangle(cornerRadius: 0.5)
-                        .foregroundStyle(.materialHighlight)
-                        .frame(width: 0.8)
+                        .foregroundStyle(.materialSeparator)
+                        .frame(width: MaterialUIKit.configuration.borderWidth)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: 40)
         .background(.materialPrimaryBackground)
         .cornerRadius(MaterialUIKit.configuration.cornerRadius)
-        .padding(MaterialUIKit.configuration.borderWidth)
-        .background(.materialHighlight.opacity(0.8))
-        .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+        .stroke(background: .materialHighlight)
     }
     
     /// Checks if the current element is the last one in the collection.

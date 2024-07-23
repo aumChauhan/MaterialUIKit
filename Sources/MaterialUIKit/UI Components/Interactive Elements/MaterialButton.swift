@@ -126,7 +126,6 @@ public struct MaterialButton: View {
             Text(title)
                 .foregroundStyle(.materialAccent)
                 .materialButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
-                .padding()
         }
         .buttonStyle(ShrinkFadeButtonStyle())
     }
@@ -188,12 +187,12 @@ fileprivate extension View {
 
 /// Environment key for setting the corner radius.
 fileprivate struct CornerRadiusKey: EnvironmentKey {
-    static var defaultValue: CGFloat = 16
+    static var defaultValue: CGFloat = MaterialUIKit.configuration.cornerRadius
 }
 
 /// Environment key for setting the font.
 fileprivate struct FontKey: EnvironmentKey {
-    static var defaultValue: Font = .headline
+    static var defaultValue: Font = MaterialUIKit.configuration.h4
 }
 
 /// Environment key for setting the font weight.

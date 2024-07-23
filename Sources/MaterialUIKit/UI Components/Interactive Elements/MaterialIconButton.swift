@@ -8,16 +8,16 @@
 
 import SwiftUI
 
-// MARK: - MUIIconButton
+// MARK: - MaterialIconButton
 
 /// A Material UI style circular icon button.
-public struct MaterialCircularButton: View {
+public struct MaterialIconButton: View {
     
     // MARK: - Properties
     
     private let systemSymbol: String?
     private let image: String?
-    private let style: MaterialCircularButtonStyle
+    private let style: MaterialIconButtonStyle
     private let action: () -> ()
     
     @Environment(\.frameSize) private var frameSize: CGFloat
@@ -25,7 +25,7 @@ public struct MaterialCircularButton: View {
     
     // MARK: - Initializers
     
-    /// Creates a circular button with a system symbol, style, and action.
+    /// Creates a circular icon button with a system symbol, style, and action.
     ///
     /// - Parameters:
     ///  - systemSymbol: SF Symbol string for system-provided icons.
@@ -33,7 +33,7 @@ public struct MaterialCircularButton: View {
     ///  - action: The closure to execute when the button is pressed.
     public init(
         systemSymbol: String,
-        style: MaterialCircularButtonStyle,
+        style: MaterialIconButtonStyle,
         _ action: @escaping () -> Void
     ) {
         self.systemSymbol = systemSymbol
@@ -42,7 +42,7 @@ public struct MaterialCircularButton: View {
         self.image = nil
     }
     
-    /// Creates a circular button with a custom image, style, and action.
+    /// Creates a circular icon  button with a custom image, style, and action.
     ///
     /// - Parameters:
     ///   - image: String representing the name of a custom image.
@@ -50,7 +50,7 @@ public struct MaterialCircularButton: View {
     ///   - action: The closure to execute when the button is pressed.
     public init(
         _ image: String,
-        style: MaterialCircularButtonStyle,
+        style: MaterialIconButtonStyle,
         _ action: @escaping () -> Void
     ) {
         self.style = style
@@ -90,12 +90,12 @@ public struct MaterialCircularButton: View {
                     .resizable()
                     .renderingMode(.template)
                     .font(fontSize)
-            }
+            } 
         }
         .fontWeightWithFallback(.semibold)
     }
     
-    /// A circular button with a elevated background.
+    /// A circular icon  button with a elevated background.
     private func elevatedIconStyle() -> some View {
         Button(action: action) {
             icon()
@@ -136,7 +136,7 @@ public struct MaterialCircularButton: View {
             icon()
                 .foregroundStyle(.materialAccent)
                 .frame(width: frameSize, height: frameSize)
-                .margin()
+                .contentPadding()
                 .background(.materialSecondaryBackground)
                 .clipShape(Circle())
         }
@@ -148,12 +148,12 @@ public struct MaterialCircularButton: View {
 
 /// Environment key for setting the frame size.
 fileprivate struct FrameSizeKey: EnvironmentKey {
-    static var defaultValue: CGFloat = MaterialUIKit.configuration.verticalPadding
+    static var defaultValue: CGFloat = 20
 }
 
 /// Environment key for setting the font weight.
 fileprivate struct FontSizeKey: EnvironmentKey {
-    static var defaultValue: Font = .subheadline
+    static var defaultValue: Font = MaterialUIKit.configuration.h4
 }
 
 fileprivate extension EnvironmentValues {
@@ -172,21 +172,21 @@ fileprivate extension EnvironmentValues {
 
 extension View {
     
-    /// Sets the corner radius for Material Buttons within the environment.
+    /// Sets the corner radius for Material icon button  within the environment.
     ///
     /// - Parameter radius: The corner radius value to apply.
     ///
     /// - Returns: A modified view environment with the specified corner radius applied.
-    public func materialCircularButtonSize(_ frameSize: CGFloat) -> some View {
+    public func materialIconButtonSize(_ frameSize: CGFloat) -> some View {
         self.environment(\.frameSize, frameSize)
     }
     
-    /// Sets the font weight for Material Circular button within the environment.
+    /// Sets the font weight for Material icon button within the environment.
     ///
     /// - Parameter fontWeight: The font weight to apply.
     ///
     /// - Returns: A modified view environment with the specified font weight applied.
-    public func materialCircularButtonFontSize(_ fontSize: Font) -> some View {
+    public func materialIconButtonFontSize(_ fontSize: Font) -> some View {
         self.environment(\.font, fontSize)
     }
 }

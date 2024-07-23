@@ -153,57 +153,57 @@ fileprivate struct MaterialAlertView: View {
     // MARK: - View Body
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
-                Text(titleKey)
-                    .font(.title2)
-                    .fontWeightWithFallback(.semibold)
-                    .foregroundStyle(.materialPrimaryTitle)
-                    .lineLimit(1)
-                
-                if let message {
-                    Text(message)
-                        .font(.headline)
-                        .fontWeightWithFallback(.medium)
-                        .foregroundStyle(.materialSecondaryTitle)
-                        .multilineTextAlignment(.leading)
-                }
-                
-                HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
-                    if let secondaryButtonTitle = secondaryButtonTitle {
-                        Button {
-                            secondaryAction?()
-                            
-                            withMaterialAnimation {
-                                isPresented = false
-                            }
-                        } label: {
-                            Text(secondaryButtonTitle)
-                                .textStyledBackground(10)
-                        }
-                        .align(.trailing)
-                    }
-                    
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            Text(titleKey)
+                .font(MaterialUIKit.configuration.h2)
+                .fontWeightWithFallback(.semibold)
+                .foregroundStyle(.materialPrimaryTitle)
+                .lineLimit(1)
+            
+            if let message {
+                Text(message)
+                    .font(MaterialUIKit.configuration.h4)
+                    .foregroundStyle(.materialSecondaryTitle)
+                    .multilineTextAlignment(.leading)
+            }
+            
+            HStack(spacing: MaterialUIKit.configuration.contentPadding) {
+                if let secondaryButtonTitle = secondaryButtonTitle {
                     Button {
-                        primaryAction()
+                        secondaryAction?()
                         
-                        if secondaryAction == nil {
-                            withMaterialAnimation {
-                                isPresented = false
-                            }
+                        withMaterialAnimation {
+                            isPresented = false
                         }
                     } label: {
-                        Text(primaryButtonTitle)
-                            .filledStyledBackground()
-                            .cornerRadius(.infinity)
+                        Text(secondaryButtonTitle)
+                            .font(MaterialUIKit.configuration.h4)
                     }
+                    .tint(.materialAccent)
+                    .align(.trailing)
                 }
-                .align(.trailing)
+                
+                Button {
+                    primaryAction()
+                    
+                    withMaterialAnimation {
+                        isPresented = false
+                    }
+                } label: {
+                    Text(primaryButtonTitle)
+                        .font(MaterialUIKit.configuration.h4)
+                        .padding(.vertical, 9)
+                        .padding(.horizontal, 18)
+                        .foregroundStyle(.materialTonal)
+                        .background(.materialAccent)
+                        .cornerRadius(.infinity)
+                }
             }
-            .frame(width: UIScreen.main.bounds.width/1.3)
-            .primaryBackground()
-            .scaleEffect(animationFlag ? 1 : 1.1)
+            .align(.trailing)
         }
+        .frame(width: UIScreen.main.bounds.width/1.3)
+        .primaryBackground()
+        .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
 }

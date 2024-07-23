@@ -33,14 +33,15 @@ public struct MaterialMenuLabel: View {
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             Image(systemName: systemName)
                 .foregroundStyle(.materialAccent)
             
             Text(title)
+                .font(MaterialUIKit.configuration.h4)
                 .foregroundStyle(.materialPrimaryTitle)
         }
-        .padding(.leading, 4)
+        // .padding(.leading, 4)
     }
 }
 
@@ -50,13 +51,13 @@ public struct MaterialMenuLabel: View {
 fileprivate struct MaterialMenuViewLayout: _VariadicView_UnaryViewRoot {
     @ViewBuilder
     func body(children: _VariadicView.Children) -> some View {
-        VStack(spacing: MaterialUIKit.configuration.stackSpacing) {
+        VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             ForEach(children) { child in
                 child
-                    .align(.leading)
-                    .font(.headline)
+                    .font(MaterialUIKit.configuration.h4)
                     .fontWeightWithFallback(.regular)
                     .foregroundStyle(.materialPrimaryTitle)
+                    .align(.leading)
                 
                 if child.id != children.last?.id {
                     MaterialDivider()
@@ -68,9 +69,8 @@ fileprivate struct MaterialMenuViewLayout: _VariadicView_UnaryViewRoot {
 
 // MARK: - MaterialMenu
 
-/// A Material UI Styled Menu.
+/// A Material UI style menu.
 public struct MaterialMenu<Label, Content> : View where Label : View, Content : View {
-    @Environment(\.colorScheme) var colorScheme
     
     // MARK: - Properties
     
@@ -202,7 +202,7 @@ public struct MaterialMenu<Label, Content> : View where Label : View, Content : 
                         .frame(width: 180)
                     }
                 }
-                .padding(MaterialUIKit.configuration.margin)
+                .padding(MaterialUIKit.configuration.contentPadding)
                 .background(
                     GeometryReader { geo in
                         ZStack {

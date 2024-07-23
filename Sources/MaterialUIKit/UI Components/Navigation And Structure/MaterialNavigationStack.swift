@@ -43,7 +43,7 @@ public struct MaterialNavigationStack<Content>: View where Content: View {
             
             MaterialNavigationBarContainerView {
                 content
-                    .padding(MaterialUIKit.configuration.margin)
+                    .padding(MaterialUIKit.configuration.contentPadding)
             }
             .navigationBarHidden(true)
         }
@@ -76,7 +76,7 @@ private struct MaterialNavigationHeader: View {
     
     /// Returns a navigation header with large header style.
     private func largeHeader() -> some View {
-        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             HStack {
                 if showBackButton {
                     Button {
@@ -93,17 +93,15 @@ private struct MaterialNavigationHeader: View {
             .align(.leading)
             
             Text(title)
-                .font(.largeTitle)
+                .font(MaterialUIKit.configuration.hXL)
                 .fontWeightWithFallback(.semibold)
         }
         .foregroundStyle(.materialPrimaryTitle)
-        .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
-        .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
     }
     
     /// Returns a navigation header with inline header style.
     private func inlineHeader() -> some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             if showBackButton {
                 Button {
                     dismiss()
@@ -114,15 +112,13 @@ private struct MaterialNavigationHeader: View {
             }
             
             Text(title)
-                .font(.title2)
+                .font(MaterialUIKit.configuration.h2)
             
             Spacer()
             
             toolbar.view
         }
         .foregroundStyle(.materialPrimaryTitle)
-        .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
-        .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
     }
 }
 
@@ -156,6 +152,7 @@ private struct MaterialNavigationBarContainerView<Content>: View where Content: 
                 headerStyle: headerStyle,
                 showBackButton: showBackButton
             )
+            .padding(.horizontal, MaterialUIKit.configuration.contentPadding)
             
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -204,7 +201,6 @@ public struct MaterialNavigationLink<Label, Destination>: View where Label: View
                 .navigationBarHidden(true)
         } label: {
             label
-            .padding(.horizontal, 4)
         }
     }
 }

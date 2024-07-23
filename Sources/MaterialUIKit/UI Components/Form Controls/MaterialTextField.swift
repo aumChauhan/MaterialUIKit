@@ -16,12 +16,11 @@ public struct MaterialTextField: View {
     @Binding private var text: String
     private let systemName: String?
     private let titlekey: String
-    private let background: Color?
     
     @FocusState private var isFocused: Bool
     @State private var textFieldIsFocused: Bool = false
     @Environment(\.textFieldcornerRadius) private var cornerRadius: CGFloat
-
+    
     // MARK: - Initializers
     
     /// Creates a default text field.
@@ -33,7 +32,6 @@ public struct MaterialTextField: View {
         self.titlekey = titlekey
         self._text = text
         self.systemName = nil
-        self.background = nil
     }
     
     /// Creates a text field with a system symbol.
@@ -46,35 +44,21 @@ public struct MaterialTextField: View {
         self.titlekey = titlekey
         self._text = text
         self.systemName = systemName
-        self.background = nil
-    }
-    
-    /// Creates a text field with a system symbol and custom background color.
-    ///
-    /// - Parameters:
-    ///   - systemName: System (SF)symbol for the text field.
-    ///   - titleKey: Title key for the text field.
-    ///   - text: Binding to the text value of the text field.
-    ///   - background: Custom background color for the text field.
-    public init(systemName: String, _ titlekey: String, text: Binding<String>, background: Color) {
-        self.titlekey = titlekey
-        self._text = text
-        self.systemName = systemName
-        self.background = background
     }
     
     // MARK: - View Body
     
     public var body: some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalPadding) {
+        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             if let systemName {
                 Image(systemName: systemName)
                     .font(.callout)
-                    .foregroundStyle(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle)
+                    .foregroundStyle(textFieldIsFocused ? .materialAccent : .materialOnDisabled)
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
             TextField(titlekey, text: $text)
+                .font(MaterialUIKit.configuration.h4)
                 .tint(.materialAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
                 .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
@@ -85,23 +69,21 @@ public struct MaterialTextField: View {
                 Button {
                     text = ""
                 } label:  {
-                    Image(systemName: "xmark.circle")
+                    Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.materialSecondaryTitle)
                         .padding(.trailing, MaterialUIKit.configuration.horizontalPadding)
                 }
             }
         }
-        .background(background ?? .materialSecondaryBackground)
+        .background(.materialSecondaryBackground)
         .cornerRadius(cornerRadius)
-        .padding(MaterialUIKit.configuration.borderWidth)
-        .background(textFieldIsFocused ? .materialAccent : .materialSecondaryTitle.opacity(0.5))
-        .cornerRadius(cornerRadius)
+        .stroke(background: textFieldIsFocused ? .materialAccent : .materialOnDisabled)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()
         }
         .onChangeWithFallback(of: isFocused) { oldValue, newValue in
-            withAnimation(.bouncy) {
+            withMaterialAnimation {
                 textFieldIsFocused = newValue
             }
         }
@@ -112,7 +94,7 @@ public struct MaterialTextField: View {
 
 /// Environment key for setting the corner radius.
 fileprivate struct CornerRadiusKey: EnvironmentKey {
-    static var defaultValue: CGFloat = 16
+    static var defaultValue: CGFloat = MaterialUIKit.configuration.cornerRadius
 }
 
 fileprivate extension EnvironmentValues {

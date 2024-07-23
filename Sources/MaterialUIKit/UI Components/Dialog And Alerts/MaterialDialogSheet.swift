@@ -64,24 +64,20 @@ fileprivate struct MaterialDialogSheetView: View {
     // MARK: - View Body
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
-                HStack {
-                    Button {
-                        isPresented.toggle()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .foregroundStyle(.materialSecondaryTitle)
-                    }
-                }
-                .align(.leading)
-                
-                content
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            Button {
+                isPresented.toggle()
+            } label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(.materialPrimaryTitle)
             }
-            .frame(width: UIScreen.main.bounds.width/1.3)
-            .primaryBackground()
-            .scaleEffect(animationFlag ? 1 : 1.1)
+            .align(.leading)
+            
+            content
         }
+        .frame(width: UIScreen.main.bounds.width/1.3)
+        .primaryBackground()
+        .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
 }

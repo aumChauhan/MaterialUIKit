@@ -56,20 +56,18 @@ fileprivate struct MaterialTimePickerView: View {
     // MARK: - View Body
     
     var body: some View {
-        ZStack {
-            VStack(alignment: .leading, spacing: MaterialUIKit.configuration.stackSpacing) {
-                if horizontalSizeClass == .compact && verticalSizeClass == .regular {
-                    portraitDatePicker()
-                } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
-                    landscapeDatePicker()
-                } else {
-                    portraitDatePicker()
-                }
+        VStack(alignment: .leading) {
+            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+                portraitDatePicker()
+            } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
+                landscapeDatePicker()
+            } else {
+                portraitDatePicker()
             }
-            .frame(width: UIScreen.main.bounds.width/1.3)
-            .primaryBackground()
-            .scaleEffect(animationFlag ? 1 : 1.1)
         }
+        .frame(width: UIScreen.main.bounds.width/1.3)
+        .primaryBackground()
+        .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
     
@@ -80,18 +78,20 @@ fileprivate struct MaterialTimePickerView: View {
                 isPresented.toggle()
             }
         } label: {
-            Text("OK")
-                .textStyledBackground()
+            Text("Okay")
+                .font(MaterialUIKit.configuration.h4)
+                .fontWeightWithFallback(.semibold)
         }
+        .tint(.materialAccent)
         .align(.trailing)
+        .padding(.horizontal, 10)
     }
     
     /// Returns the time picker view for portrait mode.
     private func portraitDatePicker() -> some View {
         VStack {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
-                .font(.title)
-                .padding(.top, MaterialUIKit.configuration.verticalPadding)
+                .font(MaterialUIKit.configuration.h1)
                 .fontWeightWithFallback(.medium)
                 .foregroundStyle(.materialPrimaryTitle)
             
@@ -109,8 +109,7 @@ fileprivate struct MaterialTimePickerView: View {
     private func landscapeDatePicker() -> some View {
         VStack {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
-                .font(.title)
-                .padding(.top, MaterialUIKit.configuration.verticalPadding)
+                .font(MaterialUIKit.configuration.h1)
                 .fontWeightWithFallback(.medium)
                 .foregroundStyle(.materialPrimaryTitle)
             
@@ -124,6 +123,6 @@ fileprivate struct MaterialTimePickerView: View {
             
             dismissDatePicker()
         }
-        .frame(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height/1.2)
+        .frame(height: UIScreen.main.bounds.height/1.3)
     }
 }

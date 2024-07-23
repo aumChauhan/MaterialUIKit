@@ -43,19 +43,19 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
     // MARK: - View Body
     
     public var body: some View {
-        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalPadding) {
+        VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             ForEach(data, id: id) { item in
-                HStack(alignment: .center) {
+                HStack {
                     content(item)
                         .tag(item)
+                        .font(MaterialUIKit.configuration.h4)
                         .foregroundStyle(.materialPrimaryTitle)
-                        .fontWeightWithFallback(.regular)
                     
                     Spacer()
                     
                     Image(systemName: item == selection ? "circle.circle.fill" : "circle")
                         .font(.title3)
-                        .foregroundStyle(item == selection ? .materialAccent : .materialSecondaryTitle)
+                        .foregroundStyle(item == selection ? .materialAccent : .materialOnDisabled)
                         .onTapGesture {
                             withMaterialAnimation {
                                 selection = item
@@ -68,7 +68,7 @@ public struct MaterialRadioButtonGroup<Data, ID, Content>: View where Data: Rand
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .align(.leading)
     }
     
     /// Checks if the current element is the last one in the collection.
