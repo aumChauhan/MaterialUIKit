@@ -9,11 +9,10 @@ let package = Package(
     products: [
         .library(
             name: "MaterialUIKit",
-            targets: ["MaterialUIKit"]),
-        
+            targets: ["MaterialUIKit"]
+        )
     ],
     targets: [
-        .target(
-            name: "MaterialUIKit")
+        .target(name: "MaterialUIKit")
     ]
 )

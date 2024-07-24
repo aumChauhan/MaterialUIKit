@@ -31,5 +31,3 @@ Material Design-inspired UI components for SwiftUI.
 ## License
 
 - MaterialUIKit is released under the [MIT License](LICENSE)
-
-
