@@ -10,5 +10,5 @@ import SwiftUI
 
 /// MaterialUIKit module containing configuration settings.
 open class MaterialUIKit {
-    public static var configuration: MaterialUIKitConfiguration = MaterialUIKitConfiguration()
+    public static var configuration: MUIKitConfiguration = MUIKitConfiguration()
 }

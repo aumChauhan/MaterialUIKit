@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// A default implementation of a classic Material color scheme.
-public struct MaterialClassic: MaterialColorScheme {
+public struct MaterialClassic: MUIColorScheme {
     public var accent = Color(lightHex: "246488", darkHex: "94CDF8")
     
     public var tonal = Color(lightHex: "EDF2F6", darkHex: "202529")
