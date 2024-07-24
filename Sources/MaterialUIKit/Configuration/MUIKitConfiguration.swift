@@ -84,7 +84,7 @@ public struct MUIKitConfiguration {
     /// The duration of animations applied to UI elements.
     ///
     /// Defaults to `0.4` seconds, controlling the speed of animations.
-    public var animationDuration: Double = 0.4
+    public var animationDuration: Double = 0.3
     
     /// The type of animation applied to UI elements.
     ///
@@ -103,6 +103,6 @@ public struct MUIKitConfiguration {
     
     /// Initializes a `MaterialUIKitConfiguration` instance with default values.
     public init() {
-        animationType = .easeInOut(duration: animationDuration)
+        animationType = .spring(duration: animationDuration)
     }
 }

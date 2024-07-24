@@ -8,37 +8,37 @@
 
 import SwiftUI
 
-/// A Material UI style navigation-container link label.
+/// A Material UI style navigation container link label.
 public struct NavigationContainerLabel: View {
     
     // MARK: - PROPERTIES
 
-    private let systemName: String
-    private let title: String
+    private let systemImage: String
+    private let titleKey: String
     
     // MARK: - INITIALIZERS
     
-    /// Creates a navigation-container link label with the specified system image and title.
+    /// Creates a navigation container link label with the specified system image and title.
     ///
     /// - Parameters:
-    ///   - systemName: The system image name for the icon.
-    ///   - title: The title for the label.
-    public init(systemName: String, _ title: String) {
-        self.systemName = systemName
-        self.title = title
+    ///   - systemImage: The system image name for the icon.
+    ///   - titleKey: The title for the label.
+    public init(systemImage: String, _ titleKey: String) {
+        self.systemImage = systemImage
+        self.titleKey = titleKey
     }
     
     // MARK: - VIEW BODY
 
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
-            Image(systemName: systemName)
+            Image(systemName: systemImage)
                 .font(.subheadline)
                 .elevatedStyledBackground()
                 .frame(width: 35, height: 35)
                 .cornerRadius(50)
             
-            Text(title)
+            Text(titleKey)
                 .font(MaterialUIKit.configuration.h4)
                 .fontWeightWithFallback(.regular)
                 .foregroundStyle(.materialUIPrimaryTitle)

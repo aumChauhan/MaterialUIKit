@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-/// A navigation route that wraps the destination in a MaterialUI-styled navigation bar.
+/// A navigation route that wraps the destination in a MaterialUI-styled navigation container.
 public struct NavigationRoute<Label, Destination>: View where Label: View, Destination: View {
     
     // MARK: - PROPERTIES
@@ -24,7 +24,7 @@ public struct NavigationRoute<Label, Destination>: View where Label: View, Desti
     }
     
     // MARK: - VIEW BODY
-
+    
     public var body: some View {
         NavigationLink {
             destination

@@ -16,34 +16,34 @@ public struct Collection<Content>: View where Content: View {
     // MARK: - PROPERTIES
     
     private var content: Content
-    private var listStyle: MUICollectionStyle
+    private var style: MUICollectionStyle
     
     // MARK: - INITIALIZERS
     
-    /// Creates a stylized collection (list) with a default insetGrouped style.
+    /// Creates a stylized collection with a default insetGrouped style.
     ///
     /// - Parameters:
     ///   - content: A closure that returns the content view for a given element.
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
-        self.listStyle = .insetGrouped
+        self.style = .insetGrouped
     }
     
-    /// Creates a stylized collection (list) with a custom list style.
+    /// Creates a stylized collection with a custom collection style.
     ///
     /// - Parameters:
-    ///   - listStyle: The style of the list, such as `.plain`, `.inset`, or `.insetGrouped`.
+    ///   - style: The style of the collection(list), such as `.plain`, `.inset`, or `.insetGrouped`.
     ///   - content: A closure that returns the content view for a given element.
-    public init(listStyle: MUICollectionStyle, @ViewBuilder content: () -> Content) {
+    public init(style: MUICollectionStyle, @ViewBuilder _ content: () -> Content) {
         self.content = content()
-        self.listStyle = listStyle
+        self.style = style
     }
     
     // MARK: - VIEW BODY
     
     public var body: some View {
         ScrollView(.vertical) {
-            switch listStyle {
+            switch style {
             case .plain:
                 plainStyle()
                 
@@ -63,21 +63,21 @@ fileprivate extension Collection {
     
     /// Returns a plain-style list with a vertical stack of content items.
     func plainStyle() -> some View {
-        _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
+        _VariadicView.Tree(CollectionViewLayout(style: style)) {
             content
         }
     }
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
     func insetStyle() -> some View {
-        _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
+        _VariadicView.Tree(CollectionViewLayout(style: style)) {
             content
         }
     }
     
     /// Returns an inset-grouped-style list with rounded rectangles as background.
     func insetGroupedStyle() -> some View {
-        _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
+        _VariadicView.Tree(CollectionViewLayout(style: style)) {
             content
         }
     }
@@ -88,12 +88,12 @@ fileprivate struct CollectionViewLayout: _VariadicView_UnaryViewRoot {
     
     // MARK: - Properties
     
-    var listStyle: MUICollectionStyle
+    var style: MUICollectionStyle
     
     // MARK: - Initializers
     
-    public init(listStyle: MUICollectionStyle) {
-        self.listStyle = listStyle
+    public init(style: MUICollectionStyle) {
+        self.style = style
     }
     
     // MARK: - View Body
@@ -101,7 +101,7 @@ fileprivate struct CollectionViewLayout: _VariadicView_UnaryViewRoot {
     @ViewBuilder
     public func body(children: _VariadicView.Children) -> some View {
         ScrollView {
-            switch listStyle {
+            switch style {
             case .plain:
                 plainStyle(children: children)
                 

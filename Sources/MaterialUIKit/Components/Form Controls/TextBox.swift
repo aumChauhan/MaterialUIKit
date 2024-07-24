@@ -14,8 +14,9 @@ public struct TextBox: View {
     // MARK: - PROPERTIES
     
     @Binding private var text: String
-    private let systemName: String?
+    private let systemImage: String?
     private let titlekey: String
+    private let background: Color?
     
     @FocusState private var isFocused: Bool
     @State private var textFieldIsFocused: Bool = false
@@ -23,7 +24,7 @@ public struct TextBox: View {
     
     // MARK: - INITIALIZERS
     
-    /// Creates a default text field.
+    /// Creates a default text box.
     ///
     /// - Parameters:
     ///   - titleKey: Title key for the text field.
@@ -31,27 +32,43 @@ public struct TextBox: View {
     public init(_ titlekey: String, text: Binding<String>) {
         self.titlekey = titlekey
         self._text = text
-        self.systemName = nil
+        self.systemImage = nil
+        self.background = nil
     }
     
-    /// Creates a text field with a system symbol.
+    /// Creates a text box with a system symbol.
     ///
     /// - Parameters:
-    ///   - systemName: System (SF)symbol for the text field.
+    ///   - systemImage: System symbol for the text field.
     ///   - titleKey: Title key for the text field.
     ///   - text: Binding to the text value of the text field.
-    public init(systemName: String, _ titlekey: String, text: Binding<String>) {
+    public init(systemImage: String, _ titlekey: String, text: Binding<String>) {
         self.titlekey = titlekey
         self._text = text
-        self.systemName = systemName
+        self.systemImage = systemImage
+        self.background = nil
+    }
+    
+    /// Creates a MaterialUI style text box with a system symbol and custom background color.
+    ///
+    /// - Parameters:
+    ///   - systemImage: System symbol for the text box.
+    ///   - titleKey: Title key for the text box.
+    ///   - text: Binding to the text value of the text box.
+    ///   - background: Custom background color for the text box.
+    public init(systemImage: String, _ titlekey: String, text: Binding<String>, background: Color) {
+        self.titlekey = titlekey
+        self._text = text
+        self.systemImage = systemImage
+        self.background = background
     }
     
     // MARK: - VIEW BODY
     
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
-            if let systemName {
-                Image(systemName: systemName)
+            if let systemImage {
+                Image(systemName: systemImage)
                     .font(.callout)
                     .foregroundStyle(textFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled)
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
@@ -61,9 +78,7 @@ public struct TextBox: View {
                 .font(MaterialUIKit.configuration.h4)
                 .tint(.materialUIAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
-                .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
-            
-            Spacer()
+                .padding(.horizontal, systemImage != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
             
             if !text.isEmpty {
                 Button {
@@ -75,9 +90,9 @@ public struct TextBox: View {
                 }
             }
         }
-        .background(.materialUISecondaryBackground)
+        .background(background ?? .materialUISecondaryBackground)
         .cornerRadius(cornerRadius)
-        .stroke(background: textFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled)
+        .stroke(background: textFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled, cornerRadius: cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()

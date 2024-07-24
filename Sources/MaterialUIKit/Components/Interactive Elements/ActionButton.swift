@@ -15,7 +15,7 @@ public struct ActionButton: View {
     
     // MARK: - PROPERTIES
     
-    private let title: String
+    private let titleKey: String
     private let style: MUIActionButtonStyle
     private let action: () -> Void
     @Environment(\.cornerRadius) private var cornerRadius: CGFloat
@@ -27,10 +27,10 @@ public struct ActionButton: View {
     /// Creates a button with a default style.
     ///
     /// - Parameters:
-    ///   - title: The text to display on the button.
+    ///   - titleKey: The text key to display on the button.
     ///   - action: The closure to execute when the button is pressed.
-    public init(_ title: String, action: @escaping () -> Void) {
-        self.title = title
+    public init(_ titleKey: String, action: @escaping () -> Void) {
+        self.titleKey = titleKey
         self.style = MUIActionButtonStyle.filled
         self.action = action
     }
@@ -38,11 +38,11 @@ public struct ActionButton: View {
     /// Creates a button with a specific style.
     ///
     /// - Parameters:
-    ///   - title: The text to display on the button.
+    ///   - titleKey: The text key to display on the button.
     ///   - style: The style of the button.
     ///   - action:The closure to execute when the button is pressed.
-    public init(_ title: String, style: MUIActionButtonStyle, action: @escaping () -> Void) {
-        self.title = title
+    public init(_ titleKey: String, style: MUIActionButtonStyle, action: @escaping () -> Void) {
+        self.titleKey = titleKey
         self.style = style
         self.action = action
     }
@@ -83,30 +83,30 @@ public struct ActionButton: View {
 
 extension View {
     
-    /// Sets the corner radius for Material Buttons within the environment.
+    /// Sets the corner radius for Material action buttons within the environment.
     ///
     /// - Parameter radius: The corner radius value to apply.
     ///
     /// - Returns: A modified view environment with the specified corner radius applied.
-    public func materialButtonCornerRadius(_ radius: CGFloat) -> some View {
+    public func actionButtonCornerRadius(_ radius: CGFloat) -> some View {
         self.environment(\.cornerRadius, radius)
     }
     
-    /// Sets the font size for Material Buttons within the environment.
+    /// Sets the font size for Material action buttons within the environment.
     ///
     /// - Parameter font: The font size to apply.
     ///
     /// - Returns: A modified view environment with the specified font size applied.
-    public func materialButtonFontStyle(_ font: Font) -> some View {
+    public func actionButtonFontStyle(_ font: Font) -> some View {
         self.environment(\.font, font)
     }
     
-    /// Sets the font weight for Material Buttons within the environment.
+    /// Sets the font weight for Material action buttons within the environment.
     ///
     /// - Parameter fontWeight: The font weight to apply.
     ///
     /// - Returns: A modified view environment with the specified font weight applied.
-    public func materialButtonFontWeight(_ fontWeight: Font.Weight) -> some View {
+    public func actionButtonFontWeight(_ fontWeight: Font.Weight) -> some View {
         self.environment(\.fontWeight, fontWeight)
     }
 }
@@ -114,10 +114,11 @@ extension View {
 // MARK: - FILE PRIVATE
 
 fileprivate extension ActionButton {
+    
     /// A button with an elevated background and rounded corners.
     func elevatedButtonStyle() -> some View {
         Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .elevatedStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
                 .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
@@ -129,7 +130,7 @@ fileprivate extension ActionButton {
     /// A button with an filled background and rounded corners.
     func filledButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .filledStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -139,7 +140,7 @@ fileprivate extension ActionButton {
     /// A button with an tonal background and rounded corners.
     func tonalButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .tonalStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -149,7 +150,7 @@ fileprivate extension ActionButton {
     /// A button with an outlined border and rounded corners.
     func outlineButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .outlineStyledBackground(cornerRadius: cornerRadius)
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -158,7 +159,7 @@ fileprivate extension ActionButton {
     /// A button with only text.
     func textButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .foregroundStyle(.materialUIAccent)
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -168,7 +169,7 @@ fileprivate extension ActionButton {
     /// A button with elevated background and rounded corners, occupying maximum available width.
     func elevatedStretchedButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .elevatedStretchedStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
                 .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
@@ -180,7 +181,7 @@ fileprivate extension ActionButton {
     /// A button with filled background and rounded corners, occupying maximum available width.
     func filledStretchedButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .filledStretchedStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -190,7 +191,7 @@ fileprivate extension ActionButton {
     /// A button with tonal background and rounded corners, occupying maximum available width.
     func tonalStretchedButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .tonalStretchedStyledBackground()
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }
@@ -200,7 +201,7 @@ fileprivate extension ActionButton {
     /// A button with an outlined border and rounded corners, occupying maximum available width.
     func outlineStretchedButtonStyle() -> some View {
         return Button(action: action) {
-            Text(title)
+            Text(titleKey)
                 .outlineStretchedStyledBackground(cornerRadius: cornerRadius)
                 .materialActionButtonStyle(font: font, fontWeight: fontWeight, cornerRadius: cornerRadius)
         }

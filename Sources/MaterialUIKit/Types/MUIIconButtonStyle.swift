@@ -11,9 +11,6 @@ import SwiftUI
 /// Represens different styles for the ``IconButton``.
 @frozen
 public enum MUIIconButtonStyle {
-    /// A circular button with an secondary style.
-    case secondary
-    
     /// A circular button with an elevated style.
     case elevated
     

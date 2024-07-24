@@ -1,5 +1,5 @@
 //
-// MaterialViewModifiers.swift
+// ViewModifiers.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -37,6 +37,16 @@ package extension View {
         self
             .padding(MaterialUIKit.configuration.contentPadding)
             .background(.materialUISecondaryBackground)
+            .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
+    }
+    
+    /// Applies a material tertiary background with corner radius and margin to the view.
+    ///
+    /// - Parameter cornerRadius: The corner radius for the stroke. If `nil`, the radius from the configuration is used.
+    func tertiaryBackground(cornerRadius: CGFloat? = nil) -> some View {
+        self
+            .padding(MaterialUIKit.configuration.contentPadding)
+            .background(.materialUITertiaryBackground)
             .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
     }
     

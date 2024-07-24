@@ -13,29 +13,29 @@ public struct DropdownMenuLabel: View {
     
     // MARK: - PROPERTIES
     
-    private let systemName: String
-    private let title: String
+    private let systemImage: String
+    private let titleKey: String
     
     // MARK: - INITIALIZERS
     
     /// Creates a menu label with the given system image and title.
     ///
     /// - Parameters:
-    ///   - systemName: The name of the system image.
-    ///   - title: The title displayed next to the system image.
-    public init(systemName: String, _ title: String) {
-        self.systemName = systemName
-        self.title = title
+    ///   - systemImage: The name of the system image.
+    ///   - titleKey: The title displayed next to the system image.
+    public init(systemImage: String, _ titleKey: String) {
+        self.systemImage = systemImage
+        self.titleKey = titleKey
     }
     
     // MARK: - VIEW BODY
     
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
-            Image(systemName: systemName)
+            Image(systemName: systemImage)
                 .foregroundStyle(.materialUIAccent)
             
-            Text(title)
+            Text(titleKey)
                 .font(MaterialUIKit.configuration.h4)
                 .foregroundStyle(.materialUIPrimaryTitle)
         }

@@ -28,8 +28,8 @@ extension View {
                 isPresented: isPresented,
                 message: message,
                 duration: nil,
-                primaryButtonTitle: nil,
-                primaryAction: nil
+                actionButtonKey: nil,
+                action: nil
             )
         )
     }
@@ -40,7 +40,7 @@ extension View {
     ///   - isPresented: A binding to control the presentation state of the snackbar.
     ///   - message: The message displayed in the snackbar.
     ///   - duration: The duration (in seconds) for which the snackbar is visible before automatically hiding. Defaults to `nil`.
-    ///   - buttonTitleKey: The title of the primary button. If `nil`, no button is displayed. Defaults to `nil`.
+    ///   - actionButtonKey: The title key of the action button. If `nil`, no button is displayed. Defaults to `nil`.
     ///   - action: The action to perform when the primary button is tapped. Defaults to `nil`.
     ///
     /// - Returns: A view presenting a Material Design styled snackbar.
@@ -48,7 +48,7 @@ extension View {
         isPresented: Binding<Bool>,
         message: String,
         duration: Double,
-        buttonTitleKey: String,
+        actionButtonKey: String,
         action: (() -> Void)?
     ) -> some View {
         self.modifier(
@@ -56,8 +56,8 @@ extension View {
                 isPresented: isPresented,
                 message: message,
                 duration: duration,
-                primaryButtonTitle: buttonTitleKey,
-                primaryAction: action
+                actionButtonKey: actionButtonKey,
+                action: action
             )
         )
     }
@@ -71,8 +71,8 @@ fileprivate struct SnackbarViewModifier: ViewModifier {
     @Binding var isPresented: Bool
     let message: String
     let duration: Double?
-    let primaryButtonTitle: String?
-    let primaryAction: (() -> Void)?
+    let actionButtonKey: String?
+    let action: (() -> Void)?
     
     func body(content: Content) -> some View {
         content.overlay(
@@ -80,8 +80,8 @@ fileprivate struct SnackbarViewModifier: ViewModifier {
                 isPresented: $isPresented,
                 message: message,
                 duration: duration,
-                primaryButtonTitle: primaryButtonTitle,
-                primaryAction: primaryAction
+                actionButtonKey: actionButtonKey,
+                action: action
             )
         )
     }
@@ -98,8 +98,8 @@ fileprivate struct Snackbar: View {
     let message: String
     let duration: Double?
     let defaultDuration = 5.0
-    let primaryButtonTitle: String?
-    let primaryAction: (() -> Void)?
+    let actionButtonKey: String?
+    let action: (() -> Void)?
     
     // MARK: - VIEW_BODY
     
@@ -111,15 +111,15 @@ fileprivate struct Snackbar: View {
                 .foregroundStyle(.materialUISecondaryTitle)
                 .align(.leading)
             
-            if let primaryButtonTitle = primaryButtonTitle {
+            if let actionButtonKey = actionButtonKey {
                 Button {
-                    primaryAction?()
+                    action?()
                     
                     withMaterialAnimation {
                         isPresented = false
                     }
                 } label: {
-                    Text(primaryButtonTitle)
+                    Text(actionButtonKey)
                         .font(MaterialUIKit.configuration.h4)
                         .fontWeightWithFallback(.semibold)
                 }
@@ -128,7 +128,7 @@ fileprivate struct Snackbar: View {
             }
         }
         .lineLimit(1)
-        .secondaryBackground()
+        .tertiaryBackground()
         .align(.bottom)
         .frame(width: UIScreen.main.bounds.width/1.1)
         .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)

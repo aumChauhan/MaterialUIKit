@@ -15,33 +15,33 @@ extension View {
     /// Presents a Material UI style FAB to the view with a bottom trailing alignment.
     ///
     /// - Parameters:
-    ///   - systemSymbol: The system symbol name for the button icon.
-    ///   - title: The title text displayed on the button.
+    ///   - systemImage: The system symbol name for the button icon.
+    ///   - titleKey: The title key displayed on the button.
     ///   - action: A closure to be executed when the button is tapped.
     public func floatingActionButton(
-        systemName: String,
-        title: String,
+        systemImage: String,
+        titleKey: String,
         action: @escaping () -> Void
     ) -> some View {
         self.modifier(
-            FABViewModifier(systemName: systemName, title: title, cornerRadius: nil, action: action)
+            FABViewModifier(systemImage: systemImage, titleKey: titleKey, cornerRadius: nil, action: action)
         )
     }
     /// Presents a Material UI style FAB to the view with a bottom trailing alignment and a customizable corner radius.
     ///
     /// - Parameters:
-    ///   - systemName: The system symbol name for the button icon.
-    ///   - title: The title text displayed on the button.
+    ///   - systemImage: The system symbol name for the button icon.
+    ///   - titleKey: The title key displayed on the button.
     ///   - cornerRadius: The corner radius to apply to the button.
     ///   - action: A closure to be executed when the button is tapped.
     public func floatingActionButton(
-        systemName: String,
-        title: String,
+        systemImage: String,
+        titleKey: String,
         cornerRadius: CGFloat,
         action: @escaping () -> Void
     ) -> some View {
         self.modifier(
-            FABViewModifier(systemName: systemName, title: title, cornerRadius: cornerRadius, action: action)
+            FABViewModifier(systemImage: systemImage, titleKey: titleKey, cornerRadius: cornerRadius, action: action)
         )
     }
 }
@@ -50,14 +50,14 @@ extension View {
 
 /// A view modifier that adds a floating action button with specified system symbol and title aligned at the bottom of the screen.
 fileprivate struct FABViewModifier: ViewModifier {
-    let systemName: String
-    let title: String
+    let systemImage: String
+    let titleKey: String
     let cornerRadius: CGFloat?
     let action: () -> Void
         
     func body(content: Content) -> some View {
         content.overlay(
-            FAB(systemName: systemName, title: title, action, cornerRadius: cornerRadius)
+            FAB(systemImage: systemImage, titleKey: titleKey, action, cornerRadius: cornerRadius)
                 .align(.bottomTrailing)
                 .padding(MaterialUIKit.configuration.contentPadding)
         )
@@ -69,18 +69,18 @@ fileprivate struct FAB: View {
     
     // MARK: - PROPERTIES
     
-    let systemName: String
+    let systemImage: String
     let image: String?
-    let title: String
+    let titleKey: String
     let cornerRadius: CGFloat?
     let action: () -> Void
     
     // MARK: - INITIALIZERS
     
     /// Creates a FAB with a system symbol, title, and an action.
-    init(systemName: String, title: String, _ action: @escaping () -> Void, cornerRadius: CGFloat?) {
-        self.systemName = systemName
-        self.title = title
+    init(systemImage: String, titleKey: String, _ action: @escaping () -> Void, cornerRadius: CGFloat?) {
+        self.systemImage = systemImage
+        self.titleKey = titleKey
         self.action = action
         self.cornerRadius = cornerRadius
         self.image = nil
@@ -91,8 +91,8 @@ fileprivate struct FAB: View {
     var body: some View {
         Button(action: action) {
             HStack {
-                Image(systemName: systemName)
-                Text(title)
+                Image(systemName: systemImage)
+                Text(titleKey)
                     .font(MaterialUIKit.configuration.h4)
             }
             .fontWeightWithFallback(.medium)

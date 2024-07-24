@@ -15,7 +15,7 @@ public struct IconButton: View {
     
     // MARK: - PROPERTIES
     
-    private let systemSymbol: String?
+    private let systemImage: String?
     private let image: String?
     private let style: MUIIconButtonStyle
     private let action: () -> ()
@@ -28,15 +28,15 @@ public struct IconButton: View {
     /// Creates a circular icon button with a system symbol, style, and action.
     ///
     /// - Parameters:
-    ///  - systemSymbol: SF Symbol string for system-provided icons.
+    ///  - systemImage: SF Symbol string for system-provided icons.
     ///  - style: The style of the button, defined by `MUIIconButtonStyle`.
     ///  - action: The closure to execute when the button is pressed.
     public init(
-        systemSymbol: String,
+        systemImage: String,
         style: MUIIconButtonStyle,
         _ action: @escaping () -> Void
     ) {
-        self.systemSymbol = systemSymbol
+        self.systemImage = systemImage
         self.style = style
         self.action = action
         self.image = nil
@@ -56,7 +56,7 @@ public struct IconButton: View {
         self.style = style
         self.action = action
         self.image = image
-        self.systemSymbol = nil
+        self.systemImage = nil
     }
     
     // MARK: - VIEW BODY
@@ -71,9 +71,6 @@ public struct IconButton: View {
             
         case .tonal:
             tonalIconStyle()
-            
-        case .secondary:
-            secondaryIconStyle()
         }
     }
 }
@@ -105,8 +102,8 @@ fileprivate extension IconButton {
     /// An icon from SFSymbol or bundle image.
     func icon() -> some View {
         VStack {
-            if let systemSymbol = systemSymbol {
-                Image(systemName: systemSymbol)
+            if let systemImage = systemImage {
+                Image(systemName: systemImage)
                     .font(fontSize)
             } else if let image = image {
                 Image(image)
@@ -148,19 +145,6 @@ fileprivate extension IconButton {
             icon()
                 .frame(width: frameSize, height: frameSize)
                 .tonalStyledBackground()
-                .clipShape(Circle())
-        }
-        .buttonStyle(MUIActionButtonAnimationStyle())
-    }
-    
-    /// A circular button with a secondary background.
-    func secondaryIconStyle() -> some View {
-        Button(action: action) {
-            icon()
-                .foregroundStyle(.materialUIAccent)
-                .frame(width: frameSize, height: frameSize)
-                .contentPadding()
-                .background(.materialUISecondaryBackground)
                 .clipShape(Circle())
         }
         .buttonStyle(MUIActionButtonAnimationStyle())

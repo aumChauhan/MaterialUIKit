@@ -13,7 +13,7 @@ public struct Switch: View {
     
     // MARK: - PROPERTIES
     
-    private let title: String
+    private let titleKey: String
     @Binding private var isOn: Bool
     
     // MARK: - INITIALIZERS
@@ -21,17 +21,17 @@ public struct Switch: View {
     /// Creates a Material UI style switch.
     ///
     /// - Parameters:
-    ///   - title: The title of the switch.
+    ///   - titleKey: The title key of the switch.
     ///   - isOn: A binding to a boolean value that determines the on/off state of the switch.
-    public init(_ title: String, isOn: Binding<Bool>) {
-        self.title = title
+    public init(_ titleKey: String, isOn: Binding<Bool>) {
+        self.titleKey = titleKey
         self._isOn = isOn
     }
     
     // MARK: - VIEW BODY
     
     public var body: some View {
-        Toggle(title, isOn: $isOn)
+        Toggle(titleKey, isOn: $isOn)
             .font(MaterialUIKit.configuration.h4)
             .foregroundStyle(.materialUIPrimaryTitle)
             .labelsHidden()

@@ -14,44 +14,62 @@ public struct SecureTextBox: View {
     // MARK: - PROPERTIES
     
     @Binding private var text: String
-    private let systemName: String?
+    private let systemImage: String?
     private let titlekey: String
+    private let background: Color?
     
     @FocusState private var isFocused: Bool
     @State private var secureFieldIsFocused: Bool = false
     @Environment(\.cornerRadius) private var cornerRadius: CGFloat
-
+    
     // MARK: - INITIALIZERS
     
-    /// Creates a default secure field.
+    /// Creates a default secure text box.
     ///
     /// - Parameters:
-    ///   - titleKey: Title key for the secure field.
+    ///   - titleKey: Title key for the secure text box.
     ///   - text: Binding to the text value of the secure field.
     public init(_ titlekey: String, text: Binding<String>) {
         self.titlekey = titlekey
         self._text = text
-        self.systemName = nil
+        self.systemImage = nil
+        self.background = nil
     }
     
-    /// Creates a secure field with a system symbol.
+    /// Creates a secure text box with a system symbol.
     ///
     /// - Parameters:
-    ///   - systemName: System (SF)symbol for the secure field.
+    ///   - systemImage: System symbol for the secure field.
     ///   - titleKey: Title key for the secure field.
     ///   - text: Binding to the text value of the secure field.
-    public init(systemName: String, _ titlekey: String, text: Binding<String>) {
+    public init(systemImage: String, _ titlekey: String, text: Binding<String>) {
         self.titlekey = titlekey
         self._text = text
-        self.systemName = systemName
+        self.systemImage = systemImage
+        self.background = nil
     }
+    
+    /// Creates a MaterialUI style secure field with a system symbol and custom background color.
+    ///
+    /// - Parameters:
+    ///   - systemImage: System symbol for the secure field.
+    ///   - titleKey: Title key for the secure field.
+    ///   - text: Binding to the text value of the secure field.
+    ///   - background: Custom background color for the secure field.
+    public init(systemImage: String, _ titlekey: String, text: Binding<String>, background: Color) {
+        self.titlekey = titlekey
+        self._text = text
+        self.systemImage = systemImage
+        self.background = background
+    }
+    
     
     // MARK: - VIEW BODY
     
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
-            if let systemName {
-                Image(systemName: systemName)
+            if let systemImage {
+                Image(systemName: systemImage)
                     .font(.callout)
                     .foregroundStyle(secureFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled)
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
@@ -61,9 +79,7 @@ public struct SecureTextBox: View {
                 .font(MaterialUIKit.configuration.h4)
                 .tint(.materialUIAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
-                .padding(.horizontal, systemName != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
-            
-            Spacer()
+                .padding(.horizontal, systemImage != nil ? 0 : MaterialUIKit.configuration.horizontalPadding)
             
             if !(text.isEmpty) {
                 Button {
@@ -75,9 +91,9 @@ public struct SecureTextBox: View {
                 }
             }
         }
-        .background(.materialUISecondaryBackground)
+        .background(background ?? .materialUISecondaryBackground)
         .cornerRadius(cornerRadius)
-        .stroke(background: secureFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled)
+        .stroke(background: secureFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled, cornerRadius: cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()

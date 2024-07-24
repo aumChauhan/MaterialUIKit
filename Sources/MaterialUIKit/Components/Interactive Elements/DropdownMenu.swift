@@ -150,10 +150,10 @@ fileprivate extension DropdownMenu {
                 .background(
                     GeometryReader { geo in
                         ZStack {
-                            Color.materialUISecondaryBackground
-                                .shadow(color: .black.opacity(0.5), radius: 80, x: 0, y: 10)
+                            Color.materialUITertiaryBackground
                         }
                         .cornerRadius(MaterialUIKit.configuration.cornerRadius)
+                        .shadow(color: .black.opacity(0.15), radius: 40, x: 0, y: geo.frame(in: .global).origin.y > screenHeight / 3.5 ? -10 : 10)
                         .onAppear {
                             self.height = geo.size.height
                         }

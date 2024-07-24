@@ -21,7 +21,7 @@ public struct NavigationContainer<Content>: View where Content: View {
 
     /// Creates a custom navigation container with the specified content.
     ///
-    /// - Parameter content: The content to be wrapped in the navigation stack.
+    /// - Parameter content: The content to be wrapped in the navigation container.
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
@@ -52,34 +52,34 @@ public struct NavigationContainer<Content>: View where Content: View {
 
 extension View {
     
-    /// Sets the title for the navigation bar.
+    /// Sets the title for the navigation container.
     ///
-    /// - Parameter title: The title to be displayed in the navigation bar.
+    /// - Parameter title: The title to be displayed in the navigation container.
     ///
     /// - Returns: A view modified to include the specified navigation bar title.
     public func navigationContainerTitle(_ title: String) -> some View {
         return self.preference(key: NavigationContainerTitlePreferenceKey.self, value: title)
     }
     
-    /// Sets the style for the navigation bar header.
+    /// Sets the style for the navigation container header.
     ///
-    /// - Parameter style: The style of the navigation bar header.
+    /// - Parameter style: The style of the navigation container header.
     ///
-    /// - Returns: A view modified to include the specified navigation bar header style.
+    /// - Returns: A view modified to include the specified navigation container header style.
     public func navigationContainerHeaderStyle(_ style: MUINavigationContainerHeaderStyle) -> some View {
         return self.preference(key: NavigationContainerHeaderStylePreferenceKey.self, value: style)
     }
     
-    /// Sets the toolbar for the navigation bar.
+    /// Sets the toolbar for the navigation container.
     ///
-    /// - Parameter toolbar: The toolbar to be displayed in the navigation bar.
+    /// - Parameter toolbar: The toolbar to be displayed in the navigation container.
     ///
     /// - Returns: A view modified to include the specified toolbar.
     public func navigationContainerToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
         return self.preference(key: NavigationContainerToolBarPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
     }
     
-    /// Sets the visibility of the back button in the navigation bar.
+    /// Sets the visibility of the back button in the navigation container.
     ///
     /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
     ///
@@ -88,15 +88,15 @@ extension View {
         return self.preference(key: NavigationContainerBackButtonHiddenPreferenceKey.self, value: !hidden)
     }
     
-    /// Sets the properties for the navigation bar.
+    /// Sets the properties for the navigation container.
     ///
     /// - Parameters:
-    ///   - title: The title to be displayed in the navigation bar.
+    ///   - title: The title to be displayed in the navigation container.
     ///   - backButtonHidden: A Boolean value indicating whether the back button should be hidden.
-    ///   - style: The style of the navigation bar header.
+    ///   - style: The style of the navigation container header.
     ///
     /// - Returns: A view modified to include the specified navigation bar properties.
-    public func navigationContainerTopBar(title: String = "", backButtonHidden: Bool = false, style: MUINavigationContainerHeaderStyle = .large) -> some View {
+    public func navigationContainerTopBar(title: String, backButtonHidden: Bool, style: MUINavigationContainerHeaderStyle) -> some View {
         self
             .navigationContainerTitle(title)
             .navigationContainerBackButtonHidden(backButtonHidden)

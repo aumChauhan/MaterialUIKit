@@ -29,7 +29,7 @@ extension View {
             isPresented: isPresented,
             titleKey: titleKey,
             message: message,
-            primaryButtonTitle: "Cancel",
+            primaryActionKey: "Cancel",
             primaryAction: {}
         )
     }
@@ -40,7 +40,7 @@ extension View {
     ///   - isPresented: A binding to a Boolean value that determines whether to present the alert.
     ///   - titleKey: The title of the alert.
     ///   - message: The message displayed in the alert.
-    ///   - primaryButtonTitle: The title of the primary button.
+    ///   - primaryActionKey: The title key of the primary button.
     ///   - primaryAction: The action to perform when the primary button is tapped.
     ///
     /// - Returns: A view that presents a Material Design styled alert.
@@ -48,16 +48,16 @@ extension View {
         isPresented: Binding<Bool>,
         titleKey: String,
         message: String,
-        primaryButtonTitle: String,
+        primaryActionKey: String,
         primaryAction: @escaping () -> Void
     ) -> some View {
         self.alertDialog(
             isPresented: isPresented,
             titleKey: titleKey,
             message: message,
-            primaryButtonTitle: primaryButtonTitle,
+            primaryActionKey: primaryActionKey,
             primaryAction: primaryAction,
-            secondaryButtonTitle: nil,
+            secondaryActionKey: nil,
             secondaryAction: nil
         )
     }
@@ -68,9 +68,9 @@ extension View {
     ///   - isPresented: A binding to a Boolean value that determines whether to present the alert.
     ///   - titleKey: The title of the alert.
     ///   - message: The message displayed in the alert.
-    ///   - primaryButtonTitle: The title of the primary button.
+    ///   - primaryActionKey: The title key of the primary button.
     ///   - primaryAction: The action to perform when the primary button is tapped.
-    ///   - secondaryButtonTitle: The title of the secondary button.
+    ///   - secondaryActionKey: The title key of the secondary button.
     ///   - secondaryAction: The action to perform when the secondary button is tapped.
     ///
     /// - Returns: A view that presents a Material Design styled alert.
@@ -78,9 +78,9 @@ extension View {
         isPresented: Binding<Bool>,
         titleKey: String,
         message: String,
-        primaryButtonTitle: String,
+        primaryActionKey: String,
         primaryAction: @escaping () -> Void,
-        secondaryButtonTitle: String?,
+        secondaryActionKey: String?,
         secondaryAction: (() -> Void)?
     ) -> some View {
         self.modifier(
@@ -88,9 +88,9 @@ extension View {
                 isPresented: isPresented,
                 titleKey: titleKey,
                 message: message,
-                primaryButtonTitle: primaryButtonTitle,
+                primaryActionKey: primaryActionKey,
                 primaryAction: primaryAction,
-                secondaryButtonTitle: secondaryButtonTitle,
+                secondaryActionKey: secondaryActionKey,
                 secondaryAction: secondaryAction
             )
         )
@@ -109,10 +109,10 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
     let titleKey: String
     let message: String?
     
-    let primaryButtonTitle: String
+    let primaryActionKey: String
     let primaryAction: () -> Void
     
-    let secondaryButtonTitle: String?
+    let secondaryActionKey: String?
     let secondaryAction: (() -> Void)?
     
     // MARK: - BODY
@@ -123,9 +123,9 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
                 isPresented: $isPresented,
                 titleKey: titleKey,
                 message: message,
-                primaryButtonTitle: primaryButtonTitle,
+                primaryActionKey: primaryActionKey,
                 primaryAction: primaryAction,
-                secondaryButtonTitle: secondaryButtonTitle,
+                secondaryActionKey: secondaryActionKey,
                 secondaryAction: secondaryAction
             )
         )
@@ -143,10 +143,10 @@ fileprivate struct AlertDialog: View {
     let titleKey: String
     let message: String?
     
-    let primaryButtonTitle: String
+    let primaryActionKey: String
     let primaryAction: () -> Void
     
-    let secondaryButtonTitle: String?
+    let secondaryActionKey: String?
     let secondaryAction: (() -> Void)?
     
     // MARK: - VIEW BODY
@@ -167,7 +167,7 @@ fileprivate struct AlertDialog: View {
             }
             
             HStack(spacing: MaterialUIKit.configuration.contentPadding) {
-                if let secondaryButtonTitle = secondaryButtonTitle {
+                if let secondaryActionKey = secondaryActionKey {
                     Button {
                         secondaryAction?()
                         
@@ -175,7 +175,7 @@ fileprivate struct AlertDialog: View {
                             isPresented = false
                         }
                     } label: {
-                        Text(secondaryButtonTitle)
+                        Text(secondaryActionKey)
                             .font(MaterialUIKit.configuration.h4)
                     }
                     .tint(.materialUIAccent)
@@ -189,9 +189,9 @@ fileprivate struct AlertDialog: View {
                         isPresented = false
                     }
                 } label: {
-                    Text(primaryButtonTitle)
+                    Text(primaryActionKey)
                         .font(MaterialUIKit.configuration.h4)
-                        .padding(.vertical, 9)
+                        .padding(.vertical, 10)
                         .padding(.horizontal, 18)
                         .foregroundStyle(.materialUITonal)
                         .background(.materialUIAccent)
@@ -201,7 +201,7 @@ fileprivate struct AlertDialog: View {
             .align(.trailing)
         }
         .frame(width: UIScreen.main.bounds.width/1.3)
-        .primaryBackground()
+        .secondaryBackground()
         .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }

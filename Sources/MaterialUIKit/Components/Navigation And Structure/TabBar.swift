@@ -54,7 +54,7 @@ extension View {
     /// Sets up a tab bar item with the specified system image, title, and selection binding.
     ///
     /// - Parameters:
-    ///   - systemName: The name of the system image for the tab item.
+    ///   - systemImage: The name of the system image for the tab item.
     ///   - title: The title text for the tab item.
     ///   - selection: Binding to the selected tab item.
     ///

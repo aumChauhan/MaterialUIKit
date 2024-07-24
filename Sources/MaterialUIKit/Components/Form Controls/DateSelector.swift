@@ -67,7 +67,7 @@ fileprivate struct DateSelector: View {
             }
         }
         .frame(width: UIScreen.main.bounds.width/1.3)
-        .primaryBackground()
+        .secondaryBackground()
         .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
     }
