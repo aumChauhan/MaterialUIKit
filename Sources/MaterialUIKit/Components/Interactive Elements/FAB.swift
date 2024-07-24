@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style FAB to the view with a bottom trailing alignment.
@@ -44,7 +46,7 @@ extension View {
     }
 }
 
-// MARK: - FABViewModifier
+// MARK: - FILE PRIVATE
 
 /// A view modifier that adds a floating action button with specified system symbol and title aligned at the bottom of the screen.
 fileprivate struct FABViewModifier: ViewModifier {
@@ -62,12 +64,10 @@ fileprivate struct FABViewModifier: ViewModifier {
     }
 }
 
-// MARK: - FAB
-
 /// A Material UI style FAB.
 fileprivate struct FAB: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     let systemName: String
     let image: String?
@@ -75,7 +75,7 @@ fileprivate struct FAB: View {
     let cornerRadius: CGFloat?
     let action: () -> Void
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a FAB with a system symbol, title, and an action.
     init(systemName: String, title: String, _ action: @escaping () -> Void, cornerRadius: CGFloat?) {
@@ -86,7 +86,7 @@ fileprivate struct FAB: View {
         self.image = nil
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     var body: some View {
         Button(action: action) {
@@ -99,6 +99,6 @@ fileprivate struct FAB: View {
             .filledStyledBackground()
             .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
         }
-        .buttonStyle(MUIActionButtonStyle())
+        .buttonStyle(MUIActionButtonAnimationStyle())
     }
 }

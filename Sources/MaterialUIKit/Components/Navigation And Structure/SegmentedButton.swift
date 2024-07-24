@@ -11,7 +11,7 @@ import SwiftUI
 /// A Material UI style segmented control.
 public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private var data: Data
     private var id: KeyPath<Data.Element, ID>
@@ -20,8 +20,8 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
     @Binding private var selectedItem: Data.Element
     @Namespace private var namespace
     
-    // MARK: - Initializer
-    
+    // MARK: - INITIALIZER
+
     /// Creates a segemented contorl with the given data, identifier, and content.
     ///
     /// - Parameters:
@@ -41,8 +41,8 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
         self.content = content
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         HStack(spacing: .zero) {
             ForEach(data, id: id) { item in

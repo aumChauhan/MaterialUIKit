@@ -1,52 +1,43 @@
 //
-// NavigationContainerLabel.swift
+// DropdownMenuLabel.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
-// Created On: 30/12/23
+// Created On: 24/07/24
 //
 
 import SwiftUI
 
-/// A Material UI style navigation-container link label.
-public struct NavigationContainerLabel: View {
+/// A label view to create a row cells in a ``DropdownMenu``.
+public struct DropdownMenuLabel: View {
     
     // MARK: - PROPERTIES
-
+    
     private let systemName: String
     private let title: String
     
     // MARK: - INITIALIZERS
     
-    /// Creates a navigation-container link label with the specified system image and title.
+    /// Creates a menu label with the given system image and title.
     ///
     /// - Parameters:
-    ///   - systemName: The system image name for the icon.
-    ///   - title: The title for the label.
+    ///   - systemName: The name of the system image.
+    ///   - title: The title displayed next to the system image.
     public init(systemName: String, _ title: String) {
         self.systemName = systemName
         self.title = title
     }
     
     // MARK: - VIEW BODY
-
+    
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             Image(systemName: systemName)
-                .font(.subheadline)
-                .elevatedStyledBackground()
-                .frame(width: 35, height: 35)
-                .cornerRadius(50)
+                .foregroundStyle(.materialUIAccent)
             
             Text(title)
                 .font(MaterialUIKit.configuration.h4)
-                .fontWeightWithFallback(.regular)
                 .foregroundStyle(.materialUIPrimaryTitle)
-            
-            Spacer()
-            
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.materialUISecondaryTitle)
         }
     }
 }

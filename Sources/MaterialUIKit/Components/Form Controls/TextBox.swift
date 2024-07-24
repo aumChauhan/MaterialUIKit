@@ -11,7 +11,7 @@ import SwiftUI
 /// A Material UI style text field.
 public struct TextBox: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding private var text: String
     private let systemName: String?
@@ -19,9 +19,9 @@ public struct TextBox: View {
     
     @FocusState private var isFocused: Bool
     @State private var textFieldIsFocused: Bool = false
-    @Environment(\.textFieldcornerRadius) private var cornerRadius: CGFloat
+    @Environment(\.cornerRadius) private var cornerRadius: CGFloat
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a default text field.
     ///
@@ -46,7 +46,7 @@ public struct TextBox: View {
         self.systemName = systemName
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
@@ -90,22 +90,6 @@ public struct TextBox: View {
     }
 }
 
-// MARK: - Environment Keys
-
-/// Environment key for setting the corner radius.
-fileprivate struct CornerRadiusKey: EnvironmentKey {
-    static var defaultValue: CGFloat = MaterialUIKit.configuration.cornerRadius
-}
-
-fileprivate extension EnvironmentValues {
-    var textFieldcornerRadius: CGFloat {
-        get { self[CornerRadiusKey.self] }
-        set { self[CornerRadiusKey.self] = newValue }
-    }
-}
-
-// MARK: - Extension View
-
 extension View {
     
     /// Sets the corner radius for the text field.
@@ -114,6 +98,6 @@ extension View {
     ///
     /// - Returns: A view modified to include the specified corner radius.
     public func textBoxCornerRadius(_ radius: CGFloat) -> some View {
-        self.environment(\.textFieldcornerRadius, radius)
+        self.environment(\.cornerRadius, radius)
     }
 }

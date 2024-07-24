@@ -11,11 +11,11 @@ import SwiftUI
 /// A empty view container with default MaterialUI styling.
 public struct Container<Content>: View where Content: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let content: Content
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     /// Creates a empty container view.
     ///
@@ -24,7 +24,7 @@ public struct Container<Content>: View where Content: View {
         self.content = content()
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         ZStack {

@@ -8,10 +8,12 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 /// A Material UI style circular icon button.
 public struct IconButton: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let systemSymbol: String?
     private let image: String?
@@ -21,7 +23,7 @@ public struct IconButton: View {
     @Environment(\.frameSize) private var frameSize: CGFloat
     @Environment(\.font) private var fontSize: Font
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a circular icon button with a system symbol, style, and action.
     ///
@@ -57,7 +59,7 @@ public struct IconButton: View {
         self.systemSymbol = nil
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         switch style {
@@ -74,99 +76,7 @@ public struct IconButton: View {
             secondaryIconStyle()
         }
     }
-    
-    // MARK: - Helpers
-    
-    /// An icon from SFSymbol or bundle image.
-    private func icon() -> some View {
-        VStack {
-            if let systemSymbol = systemSymbol {
-                Image(systemName: systemSymbol)
-                    .font(fontSize)
-            } else if let image = image {
-                Image(image)
-                    .resizable()
-                    .renderingMode(.template)
-                    .font(fontSize)
-            } 
-        }
-        .fontWeightWithFallback(.semibold)
-    }
-    
-    /// A circular icon  button with a elevated background.
-    private func elevatedIconStyle() -> some View {
-        Button(action: action) {
-            icon()
-                .frame(width: frameSize, height: frameSize)
-                .elevatedStyledBackground()
-                .clipShape(Circle())
-                .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
-                .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
-        }
-        .buttonStyle(MUIActionButtonStyle())
-    }
-    
-    /// A circular button with a filled background.
-    private func filledIconStyle() -> some View {
-        Button(action: action) {
-            icon()
-                .frame(width: frameSize, height: frameSize)
-                .filledStyledBackground()
-                .clipShape(Circle())
-        }
-        .buttonStyle(MUIActionButtonStyle())
-    }
-    
-    /// A circular button with a tonal background.
-    private func tonalIconStyle() -> some View {
-        Button(action: action) {
-            icon()
-                .frame(width: frameSize, height: frameSize)
-                .tonalStyledBackground()
-                .clipShape(Circle())
-        }
-        .buttonStyle(MUIActionButtonStyle())
-    }
-    
-    /// A circular button with a secondary background.
-    private func secondaryIconStyle() -> some View {
-        Button(action: action) {
-            icon()
-                .foregroundStyle(.materialUIAccent)
-                .frame(width: frameSize, height: frameSize)
-                .contentPadding()
-                .background(.materialUISecondaryBackground)
-                .clipShape(Circle())
-        }
-        .buttonStyle(MUIActionButtonStyle())
-    }
 }
-
-// MARK: - Environment Keys
-
-/// Environment key for setting the frame size.
-fileprivate struct FrameSizeKey: EnvironmentKey {
-    static var defaultValue: CGFloat = 20
-}
-
-/// Environment key for setting the font weight.
-fileprivate struct FontSizeKey: EnvironmentKey {
-    static var defaultValue: Font = MaterialUIKit.configuration.h4
-}
-
-fileprivate extension EnvironmentValues {
-    var frameSize: CGFloat {
-        get { self[FrameSizeKey.self] }
-        set { self[FrameSizeKey.self] = newValue }
-    }
-    
-    var font: Font {
-        get { self[FontSizeKey.self] }
-        set { self[FontSizeKey.self] = newValue }
-    }
-}
-
-// MARK: - Extension View
 
 extension View {
     
@@ -186,5 +96,73 @@ extension View {
     /// - Returns: A modified view environment with the specified font weight applied.
     public func iconButtonFontSize(_ fontSize: Font) -> some View {
         self.environment(\.font, fontSize)
+    }
+}
+
+// MARK: - FILE PRIVATE
+
+fileprivate extension IconButton {
+    /// An icon from SFSymbol or bundle image.
+    func icon() -> some View {
+        VStack {
+            if let systemSymbol = systemSymbol {
+                Image(systemName: systemSymbol)
+                    .font(fontSize)
+            } else if let image = image {
+                Image(image)
+                    .resizable()
+                    .renderingMode(.template)
+                    .font(fontSize)
+            }
+        }
+        .fontWeightWithFallback(.semibold)
+    }
+    
+    /// A circular icon  button with a elevated background.
+    func elevatedIconStyle() -> some View {
+        Button(action: action) {
+            icon()
+                .frame(width: frameSize, height: frameSize)
+                .elevatedStyledBackground()
+                .clipShape(Circle())
+                .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
+                .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
+        }
+        .buttonStyle(MUIActionButtonAnimationStyle())
+    }
+    
+    /// A circular button with a filled background.
+    func filledIconStyle() -> some View {
+        Button(action: action) {
+            icon()
+                .frame(width: frameSize, height: frameSize)
+                .filledStyledBackground()
+                .clipShape(Circle())
+        }
+        .buttonStyle(MUIActionButtonAnimationStyle())
+    }
+    
+    /// A circular button with a tonal background.
+    func tonalIconStyle() -> some View {
+        Button(action: action) {
+            icon()
+                .frame(width: frameSize, height: frameSize)
+                .tonalStyledBackground()
+                .clipShape(Circle())
+        }
+        .buttonStyle(MUIActionButtonAnimationStyle())
+    }
+    
+    /// A circular button with a secondary background.
+    func secondaryIconStyle() -> some View {
+        Button(action: action) {
+            icon()
+                .foregroundStyle(.materialUIAccent)
+                .frame(width: frameSize, height: frameSize)
+                .contentPadding()
+                .background(.materialUISecondaryBackground)
+                .clipShape(Circle())
+        }
+        .buttonStyle(MUIActionButtonAnimationStyle())
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 /// A Material UI style collection of items in a radio button form.
 public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let data: Data
     private let id: KeyPath<Data.Element, ID>
@@ -19,7 +19,7 @@ public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccess
     
     @Binding public var selection: Data.Element
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     /// Creates a radio button group view with the provided items and a binding to the selected value.
     ///
@@ -40,7 +40,7 @@ public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccess
         self.content = content
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {

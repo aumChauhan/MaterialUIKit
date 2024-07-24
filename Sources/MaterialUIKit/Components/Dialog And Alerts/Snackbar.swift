@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style snackbar with a description message with a default time of 5s.
@@ -61,7 +63,7 @@ extension View {
     }
 }
 
-// MARK: - SnackbarViewModifier
+// MARK: - FILE PRIVATE
 
 /// A view modifier that adds snackbar presentation behavior to any view.
 fileprivate struct SnackbarViewModifier: ViewModifier {
@@ -85,12 +87,10 @@ fileprivate struct SnackbarViewModifier: ViewModifier {
     }
 }
 
-// MARK: - Snackbar
-
 /// Represents Material Design styled snackbar.
 fileprivate struct Snackbar: View {
     
-    // MARK: Properties
+    // MARK: PROPERTIES
     
     @Binding var isPresented: Bool
     @State private var animationFlag: Bool = false
@@ -101,7 +101,7 @@ fileprivate struct Snackbar: View {
     let primaryButtonTitle: String?
     let primaryAction: (() -> Void)?
     
-    // MARK: - View Body
+    // MARK: - VIEW_BODY
     
     var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {

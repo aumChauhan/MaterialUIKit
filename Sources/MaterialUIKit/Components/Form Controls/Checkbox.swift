@@ -11,12 +11,12 @@ import SwiftUI
 /// A Material UI style checkbox.
 public struct Checkbox: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let titleKey: String
     @Binding private var isOn: Bool
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a Material UI style checkbox.
     ///
@@ -28,7 +28,7 @@ public struct Checkbox: View {
         self._isOn = isOn
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         Toggle(titleKey, isOn: $isOn)

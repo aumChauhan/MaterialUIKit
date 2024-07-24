@@ -8,71 +8,12 @@
 
 import SwiftUI
 
-// MARK: - DropdownMenuLabel
-
-/// A label view to create a row cells in a ``DropdownMenu``.
-public struct DropdownMenuLabel: View {
-    
-    // MARK: - Properties
-    
-    private let systemName: String
-    private let title: String
-    
-    // MARK: - Initializers
-    
-    /// Creates a menu label with the given system image and title.
-    ///
-    /// - Parameters:
-    ///   - systemName: The name of the system image.
-    ///   - title: The title displayed next to the system image.
-    public init(systemName: String, _ title: String) {
-        self.systemName = systemName
-        self.title = title
-    }
-    
-    // MARK: - View Body
-    
-    public var body: some View {
-        HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
-            Image(systemName: systemName)
-                .foregroundStyle(.materialUIAccent)
-            
-            Text(title)
-                .font(MaterialUIKit.configuration.h4)
-                .foregroundStyle(.materialUIPrimaryTitle)
-        }
-        // .padding(.leading, 4)
-    }
-}
-
-// MARK: - DropdownMenuViewLayout
-
-/// A layout view that arranges the menu items vertically.
-fileprivate struct DropdownMenuViewLayout: _VariadicView_UnaryViewRoot {
-    @ViewBuilder
-    func body(children: _VariadicView.Children) -> some View {
-        VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
-            ForEach(children) { child in
-                child
-                    .font(MaterialUIKit.configuration.h4)
-                    .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.materialUIPrimaryTitle)
-                    .align(.leading)
-                
-                if child.id != children.last?.id {
-                    Separator()
-                }
-            }
-        }
-    }
-}
-
-// MARK: - DropdownMenu
+// MARK: - PUBLIC
 
 /// A Material UI style dropdown menu.
 public struct DropdownMenu<Label, Content> : View where Label : View, Content : View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @State private var height = 0.0
     @State private var showMenu: Bool = false
@@ -84,7 +25,7 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
     private var content: Content!
     private var width: Double = 200
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a dropdown menu with custom content and label.
     ///
@@ -130,7 +71,7 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
         self._isActive = isActive
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         Button {
@@ -153,8 +94,11 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
             }
         }
     }
-    
-    // MARK: - Helpers
+}
+
+// MARK: - FILE PRIVATE
+
+fileprivate extension DropdownMenu {
     
     /// Adds a background overlay to the menu, allowing to close the menu when tapped outside of it.
     func backgroundOverlay() -> some View {
@@ -236,5 +180,24 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
     /// Calculates the vertical offset for the menu based on its position on the screen.
     func menuOffsetY(_ y: Double) -> Double {
         return y > screenHeight / 3.5 ? -height / 1.5 + 16 : height / 2.0 + 16
+    }
+}
+
+/// A layout view that arranges the menu items vertically.
+fileprivate struct DropdownMenuViewLayout: _VariadicView_UnaryViewRoot {
+    @ViewBuilder func body(children: _VariadicView.Children) -> some View {
+        VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            ForEach(children) { child in
+                child
+                    .font(MaterialUIKit.configuration.h4)
+                    .fontWeightWithFallback(.regular)
+                    .foregroundStyle(.materialUIPrimaryTitle)
+                    .align(.leading)
+                
+                if child.id != children.last?.id {
+                    Separator()
+                }
+            }
+        }
     }
 }

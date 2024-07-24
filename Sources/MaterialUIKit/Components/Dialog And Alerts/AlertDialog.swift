@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style alert dialog with a title and message.
@@ -95,12 +97,12 @@ extension View {
     }
 }
 
-// MARK: - AlertDialogViewModifier
+// MARK: - FILE PRIVATE
 
 /// A view modifier that adds alert dialog sheet to any view.
 fileprivate struct AlertDialogViewModifier: ViewModifier {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding var isPresented: Bool
     
@@ -113,7 +115,7 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
     let secondaryButtonTitle: String?
     let secondaryAction: (() -> Void)?
     
-    // MARK: - Body
+    // MARK: - BODY
     
     func body(content: Content) -> some View {
         content.overlay(
@@ -130,12 +132,10 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
     }
 }
 
-// MARK: - AlertDialog
-
 /// A view that represents a Material Design styled alert dialog.
 fileprivate struct AlertDialog: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding var isPresented: Bool
     @State private var animationFlag: Bool = false
@@ -149,7 +149,7 @@ fileprivate struct AlertDialog: View {
     let secondaryButtonTitle: String?
     let secondaryAction: (() -> Void)?
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     var body: some View {
         VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {

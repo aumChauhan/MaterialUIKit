@@ -8,17 +8,17 @@
 
 import SwiftUI
 
-// MARK: - NavigationContainer
+// MARK: - PUBLIC
 
 /// A navigation container that wraps the content in a MaterialUI-style navigation bar.
 public struct NavigationContainer<Content>: View where Content: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let content: Content
     
-    // MARK: - Initializer
-    
+    // MARK: - INITIALIZER
+
     /// Creates a custom navigation container with the specified content.
     ///
     /// - Parameter content: The content to be wrapped in the navigation stack.
@@ -26,8 +26,8 @@ public struct NavigationContainer<Content>: View where Content: View {
         self.content = content()
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack { contentWrapper() }
@@ -50,7 +50,62 @@ public struct NavigationContainer<Content>: View where Content: View {
     }
 }
 
-// MARK: - ContainerHeader
+extension View {
+    
+    /// Sets the title for the navigation bar.
+    ///
+    /// - Parameter title: The title to be displayed in the navigation bar.
+    ///
+    /// - Returns: A view modified to include the specified navigation bar title.
+    public func navigationContainerTitle(_ title: String) -> some View {
+        return self.preference(key: NavigationContainerTitlePreferenceKey.self, value: title)
+    }
+    
+    /// Sets the style for the navigation bar header.
+    ///
+    /// - Parameter style: The style of the navigation bar header.
+    ///
+    /// - Returns: A view modified to include the specified navigation bar header style.
+    public func navigationContainerHeaderStyle(_ style: MUINavigationContainerHeaderStyle) -> some View {
+        return self.preference(key: NavigationContainerHeaderStylePreferenceKey.self, value: style)
+    }
+    
+    /// Sets the toolbar for the navigation bar.
+    ///
+    /// - Parameter toolbar: The toolbar to be displayed in the navigation bar.
+    ///
+    /// - Returns: A view modified to include the specified toolbar.
+    public func navigationContainerToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
+        return self.preference(key: NavigationContainerToolBarPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
+    }
+    
+    /// Sets the visibility of the back button in the navigation bar.
+    ///
+    /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
+    ///
+    /// - Returns: A view modified to include the specified back button visibility.
+    public func navigationContainerBackButtonHidden(_ hidden: Bool) -> some View {
+        return self.preference(key: NavigationContainerBackButtonHiddenPreferenceKey.self, value: !hidden)
+    }
+    
+    /// Sets the properties for the navigation bar.
+    ///
+    /// - Parameters:
+    ///   - title: The title to be displayed in the navigation bar.
+    ///   - backButtonHidden: A Boolean value indicating whether the back button should be hidden.
+    ///   - style: The style of the navigation bar header.
+    ///
+    /// - Returns: A view modified to include the specified navigation bar properties.
+    public func navigationContainerTopBar(title: String = "", backButtonHidden: Bool = false, style: MUINavigationContainerHeaderStyle = .large) -> some View {
+        self
+            .navigationContainerTitle(title)
+            .navigationContainerBackButtonHidden(backButtonHidden)
+            .navigationContainerHeaderStyle(style)
+    }
+    
+}
+
+// MARK: - FILE PRIVATE
 
 fileprivate struct ContainerHeader: View {
     
@@ -122,12 +177,10 @@ fileprivate struct ContainerHeader: View {
     }
 }
 
-// MARK: - TopAppBar
-
 /// A container view that represents the navigation top bar and content of a screen.
 fileprivate struct TopAppBar<Content>: View where Content: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     public let content: Content
     
@@ -136,14 +189,14 @@ fileprivate struct TopAppBar<Content>: View where Content: View {
     @State private var title: String = ""
     @State private var toolbar: EquatableViewContainer = EquatableViewContainer(view: AnyView(EmptyView()))
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         VStack(spacing: 0) {
             ContainerHeader(
@@ -176,37 +229,6 @@ fileprivate struct TopAppBar<Content>: View where Content: View {
     }
 }
 
-// MARK: - NavigationRoute
-
-/// A navigation route that wraps the destination in a MaterialUI-styled navigation bar.
-public struct NavigationRoute<Label, Destination>: View where Label: View, Destination: View {
-    
-    // MARK: - Properties
-    
-    private let destination: Destination
-    private let label: Label
-    
-    // MARK: - Initializer
-    
-    public init(@ViewBuilder destination: () -> Destination, @ViewBuilder label: () -> Label) {
-        self.destination = destination()
-        self.label = label()
-    }
-    
-    // MARK: - View Body
-    
-    public var body: some View {
-        NavigationLink {
-            destination
-                .navigationBarHidden(true)
-        } label: {
-            label
-        }
-    }
-}
-
-// MARK: - Preference Keys
-
 /// Sets the title for the navigation bar.
 fileprivate struct NavigationContainerTitlePreferenceKey: PreferenceKey {
     static var defaultValue: String = ""
@@ -235,72 +257,13 @@ fileprivate struct NavigationContainerHeaderStylePreferenceKey: PreferenceKey {
 }
 
 /// Sets the toolbar for the navigation bar.
-private struct NavigationContainerToolBarPreferenceKey: PreferenceKey {
+fileprivate struct NavigationContainerToolBarPreferenceKey: PreferenceKey {
     static var defaultValue: EquatableViewContainer = EquatableViewContainer(view: AnyView(EmptyView()) )
     
     static func reduce(value: inout EquatableViewContainer, nextValue: () -> EquatableViewContainer) {
         value = nextValue()
     }
 }
-
-// MARK: - Extension View
-
-extension View {
-    
-    /// Sets the title for the navigation bar.
-    ///
-    /// - Parameter title: The title to be displayed in the navigation bar.
-    ///
-    /// - Returns: A view modified to include the specified navigation bar title.
-    public func navigationContainerTitle(_ title: String) -> some View {
-        return self.preference(key: NavigationContainerTitlePreferenceKey.self, value: title)
-    }
-    
-    /// Sets the style for the navigation bar header.
-    ///
-    /// - Parameter style: The style of the navigation bar header.
-    ///
-    /// - Returns: A view modified to include the specified navigation bar header style.
-    public func navigationContainerHeaderStyle(_ style: MUINavigationContainerHeaderStyle) -> some View {
-        return self.preference(key: NavigationContainerHeaderStylePreferenceKey.self, value: style)
-    }
-    
-    /// Sets the toolbar for the navigation bar.
-    ///
-    /// - Parameter toolbar: The toolbar to be displayed in the navigation bar.
-    ///
-    /// - Returns: A view modified to include the specified toolbar.
-    public func navigationContainerToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
-        return self.preference(key: NavigationContainerToolBarPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
-    }
-    
-    /// Sets the visibility of the back button in the navigation bar.
-    ///
-    /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
-    ///
-    /// - Returns: A view modified to include the specified back button visibility.
-    public func navigationContainerBackButtonHidden(_ hidden: Bool) -> some View {
-        return self.preference(key: NavigationContainerBackButtonHiddenPreferenceKey.self, value: !hidden)
-    }
-    
-    /// Sets the properties for the navigation bar.
-    ///
-    /// - Parameters:
-    ///   - title: The title to be displayed in the navigation bar.
-    ///   - backButtonHidden: A Boolean value indicating whether the back button should be hidden.
-    ///   - style: The style of the navigation bar header.
-    ///
-    /// - Returns: A view modified to include the specified navigation bar properties.
-    public func navigationContainerTopBar(title: String = "", backButtonHidden: Bool = false, style: MUINavigationContainerHeaderStyle = .large) -> some View {
-        self
-            .navigationContainerTitle(title)
-            .navigationContainerBackButtonHidden(backButtonHidden)
-            .navigationContainerHeaderStyle(style)
-    }
-    
-}
-
-// MARK: - EquatableViewContainer
 
 /// A container to hold an equatable view.
 fileprivate struct EquatableViewContainer: Equatable {
@@ -309,18 +272,5 @@ fileprivate struct EquatableViewContainer: Equatable {
     
     static func == (lhs: EquatableViewContainer, rhs: EquatableViewContainer) -> Bool {
         return lhs.id == rhs.id
-    }
-}
-
-
-// MARK: - Extension UINavigationController
-
-/// An extension for `UINavigationController` to customize its behavior.
-extension UINavigationController {
-    
-    /// Overrides the `viewDidLoad` method to disable the interactive pop gesture recognizer's delegate.
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        interactivePopGestureRecognizer?.delegate = nil
     }
 }

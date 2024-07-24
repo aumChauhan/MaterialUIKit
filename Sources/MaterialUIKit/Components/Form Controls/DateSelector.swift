@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style date selector.
@@ -21,17 +23,17 @@ extension View {
     
 }
 
-// MARK: - DateSelectorViewModifier
+// MARK: - FILE PRIVATE
 
 /// A view modifier that adds date selector presentation behavior to any view.
 fileprivate struct DateSelectorViewModifier: ViewModifier {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding var isPresented: Bool
     @Binding var selection: Date
     
-    // MARK: - Body
+    // MARK: - BODY
     
     func body(content: Content) -> some View {
         content.overlay(
@@ -40,12 +42,10 @@ fileprivate struct DateSelectorViewModifier: ViewModifier {
     }
 }
 
-// MARK: - DateSelector
-
 /// A Material Design styled date selector.
 fileprivate struct DateSelector: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
@@ -54,7 +54,7 @@ fileprivate struct DateSelector: View {
     @Binding var selection: Date
     @State private var animationFlag: Bool = false
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     var body: some View {
         VStack(alignment: .leading) {

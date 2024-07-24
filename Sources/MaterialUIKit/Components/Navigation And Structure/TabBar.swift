@@ -8,17 +8,19 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 /// A Material UI style bottom tab items container.
-public struct BottomTabBar<Content>: View where Content: View {
+public struct TabBar<Content>: View where Content: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let content: Content
     
     @Binding private var selection: MUITabBarItem
     @State private var tabs: [MUITabBarItem] = []
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     /// Creates a container view with a MaterialUI-style tab bar.
     ///
@@ -30,7 +32,7 @@ public struct BottomTabBar<Content>: View where Content: View {
         self.content = content()
     }
     
-    // MARK: - View Body
+    // MARK: - View BODY
     
     public var body: some View {
         ZStack(alignment: .bottom) {
@@ -47,21 +49,44 @@ public struct BottomTabBar<Content>: View where Content: View {
     }
 }
 
-// MARK: - TabBarContainer
+extension View {
+    
+    /// Sets up a tab bar item with the specified system image, title, and selection binding.
+    ///
+    /// - Parameters:
+    ///   - systemName: The name of the system image for the tab item.
+    ///   - title: The title text for the tab item.
+    ///   - selection: Binding to the selected tab item.
+    ///
+    /// - Returns: A modified view with the specified tab bar item.
+    public func tabBarItem(systemName: String, title: String, selection: Binding<MUITabBarItem>) -> some View {
+        modifier(
+            TabBarItemViewModifer(
+                tab: MUITabBarItem(
+                    systemName: systemName,
+                    title: title
+                ),
+                selection: selection
+            )
+        )
+    }
+}
+
+// MARK: - FILE PRIVATE
 
 /// A view that represents the MaterialUI-style tab bar.
 fileprivate struct TabBarContainer: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
-    public let tabs: [MUITabBarItem]
-    @Binding public var selection: MUITabBarItem
-    @State public var localSelection: MUITabBarItem
+    let tabs: [MUITabBarItem]
+    @Binding var selection: MUITabBarItem
+    @State var localSelection: MUITabBarItem
     
     @Namespace private var namespace
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     var body: some View {
         tabBar
             .onChangeWithFallback(of: selection) { oldValue, newValue in
@@ -72,7 +97,7 @@ fileprivate struct TabBarContainer: View {
     }
     
     /// Returns tab bar.
-    private var tabBar: some View {
+    fileprivate var tabBar: some View {
         HStack {
             ForEach(tabs, id: \.self) { tab in
                 VStack(alignment: .center , spacing: 4) {
@@ -109,8 +134,6 @@ fileprivate struct TabBarContainer: View {
     }
 }
 
-// MARK: - TabBarPreferenceKey
-
 /// A preference key to collect tab bar items for rendering.
 fileprivate struct TabBarPreferenceKey: PreferenceKey {
     static var defaultValue: [MUITabBarItem] = []
@@ -120,18 +143,14 @@ fileprivate struct TabBarPreferenceKey: PreferenceKey {
     }
 }
 
-// MARK: - TabBarItemViewModifer
 
 /// A view modifier to handle the appearance of tab bar items.
 fileprivate struct TabBarItemViewModifer: ViewModifier {
     
-    public let tab: MUITabBarItem
-    @Binding public var selection: MUITabBarItem
+    let tab: MUITabBarItem
+    @Binding var selection: MUITabBarItem
     
     /// Applies the view modifier to handle the appearance of tab bar items.
-    /// - Parameters:
-    ///   - content: The content to be modified.
-    /// - Returns: A modified view.
     @ViewBuilder
     func body(content: Content) -> some View {
         if selection == tab {
@@ -149,27 +168,3 @@ fileprivate struct TabBarItemViewModifer: ViewModifier {
     }
 }
 
-// MARK: - View Extension
-
-extension View {
-    
-    /// Sets up a tab bar item with the specified system image, title, and selection binding.
-    ///
-    /// - Parameters:
-    ///   - systemName: The name of the system image for the tab item.
-    ///   - title: The title text for the tab item.
-    ///   - selection: Binding to the selected tab item.
-    ///
-    /// - Returns: A modified view with the specified tab bar item.
-    public func tabBarItem(systemName: String, title: String, selection: Binding<MUITabBarItem>) -> some View {
-        modifier(
-            TabBarItemViewModifer(
-                tab: MUITabBarItem(
-                    systemName: systemName,
-                    title: title
-                ),
-                selection: selection
-            )
-        )
-    }
-}

@@ -11,12 +11,12 @@ import SwiftUI
 /// A model representing an item in the MaterialUI-style tab bar.
 public struct MUITabBarItem: Hashable {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     let systemName: String
     let title: String
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     public init(systemName: String, title: String) {
         self.systemName = systemName

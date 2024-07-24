@@ -11,12 +11,12 @@ import SwiftUI
 /// A Material UI style switch.
 public struct Switch: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let title: String
     @Binding private var isOn: Bool
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a Material UI style switch.
     ///
@@ -28,7 +28,7 @@ public struct Switch: View {
         self._isOn = isOn
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         Toggle(title, isOn: $isOn)

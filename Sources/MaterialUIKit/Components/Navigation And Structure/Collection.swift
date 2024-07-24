@@ -8,107 +8,17 @@
 
 import SwiftUI
 
-// MARK: - CollectionViewLayout
-
-/// A `_Variadic­View.Tree` with a `MUIListViewLayout` and list styles.
-fileprivate struct CollectionViewLayout: _VariadicView_UnaryViewRoot {
-    
-    // MARK: - Properties
-    
-    var listStyle: MUICollectionStyle
-    
-    // MARK: - Initializers
-    
-    public init(listStyle: MUICollectionStyle) {
-        self.listStyle = listStyle
-    }
-    
-    // MARK: - Body
-    
-    @ViewBuilder
-    public func body(children: _VariadicView.Children) -> some View {
-        ScrollView {
-            switch listStyle {
-            case .plain:
-                plainStyle(children: children)
-                
-            case .inset:
-                insetStyle(children: children)
-                
-            case .insetGrouped:
-                insetGroupedStyle(children: children)
-            }
-        }
-    }
-    
-    // MARK: Helpers
-
-    /// Returns a plain-style list with a vertical stack of content items.
-    private func plainStyle(children: _VariadicView.Children) -> some View {
-        
-        let last = children.last?.id
-        
-        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
-            ForEach(children) { child in
-                child
-                    .font(MaterialUIKit.configuration.h4)
-                    .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.materialUIPrimaryTitle)
-                    .align(.leading)
-                
-                if child.id != last {
-                    Separator()
-                }
-            }
-        }
-    }
-    
-    /// Returns an inset-style list with rounded rectangles as background on individual list item.
-    private func insetStyle(children: _VariadicView.Children) -> some View {
-        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
-            ForEach(children) { child in
-                child
-                    .font(MaterialUIKit.configuration.h4)
-                    .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.materialUIPrimaryTitle)
-                    .align(.leading)
-                    .secondaryBackground()
-            }
-        }
-    }
-    
-    /// Returns an inset-grouped-style list with rounded rectangles as background.
-    private func insetGroupedStyle(children: _VariadicView.Children) -> some View {
-        let last = children.last?.id
-        
-        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
-            ForEach(children) { child in
-                child
-                    .font(MaterialUIKit.configuration.h4)
-                    .fontWeightWithFallback(.regular)
-                    .foregroundStyle(.materialUIPrimaryTitle)
-                    .align(.leading)
-                
-                if child.id != last {
-                    Separator()
-                }
-            }
-        }
-        .secondaryBackground()
-    }
-}
-
-// MARK: - Collection
+// MARK: - PUBLIC
 
 /// A Material Design style collection (list) with different visual styles.
 public struct Collection<Content>: View where Content: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private var content: Content
     private var listStyle: MUICollectionStyle
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a stylized collection (list) with a default insetGrouped style.
     ///
@@ -129,7 +39,7 @@ public struct Collection<Content>: View where Content: View {
         self.listStyle = listStyle
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         ScrollView(.vertical) {
@@ -145,27 +55,116 @@ public struct Collection<Content>: View where Content: View {
             }
         }
     }
-    
-    // MARK: Helpers
+}
+
+// MARK: - FILE PRIVATE
+
+fileprivate extension Collection {
     
     /// Returns a plain-style list with a vertical stack of content items.
-    private func plainStyle() -> some View {
+    func plainStyle() -> some View {
         _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
             content
         }
     }
     
     /// Returns an inset-style list with rounded rectangles as background on individual list item.
-    private func insetStyle() -> some View {
+    func insetStyle() -> some View {
         _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
             content
         }
     }
     
     /// Returns an inset-grouped-style list with rounded rectangles as background.
-    private func insetGroupedStyle() -> some View {
+    func insetGroupedStyle() -> some View {
         _VariadicView.Tree(CollectionViewLayout(listStyle: listStyle)) {
             content
         }
+    }
+}
+
+/// A `_Variadic­View.Tree` with a `MUIListViewLayout` and list styles.
+fileprivate struct CollectionViewLayout: _VariadicView_UnaryViewRoot {
+    
+    // MARK: - Properties
+    
+    var listStyle: MUICollectionStyle
+    
+    // MARK: - Initializers
+    
+    public init(listStyle: MUICollectionStyle) {
+        self.listStyle = listStyle
+    }
+    
+    // MARK: - View Body
+    
+    @ViewBuilder
+    public func body(children: _VariadicView.Children) -> some View {
+        ScrollView {
+            switch listStyle {
+            case .plain:
+                plainStyle(children: children)
+                
+            case .inset:
+                insetStyle(children: children)
+                
+            case .insetGrouped:
+                insetGroupedStyle(children: children)
+            }
+        }
+    }
+    
+    /// Returns a plain-style list with a vertical stack of content items.
+    func plainStyle(children: _VariadicView.Children) -> some View {
+        
+        let last = children.last?.id
+        
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            ForEach(children) { child in
+                child
+                    .font(MaterialUIKit.configuration.h4)
+                    .fontWeightWithFallback(.regular)
+                    .foregroundStyle(.materialUIPrimaryTitle)
+                    .align(.leading)
+                
+                if child.id != last {
+                    Separator()
+                }
+            }
+        }
+    }
+    
+    /// Returns an inset-style list with rounded rectangles as background on individual list item.
+    func insetStyle(children: _VariadicView.Children) -> some View {
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            ForEach(children) { child in
+                child
+                    .font(MaterialUIKit.configuration.h4)
+                    .fontWeightWithFallback(.regular)
+                    .foregroundStyle(.materialUIPrimaryTitle)
+                    .align(.leading)
+                    .secondaryBackground()
+            }
+        }
+    }
+    
+    /// Returns an inset-grouped-style list with rounded rectangles as background.
+    func insetGroupedStyle(children: _VariadicView.Children) -> some View {
+        let last = children.last?.id
+        
+        return VStack(spacing: MaterialUIKit.configuration.verticalStackSpacing) {
+            ForEach(children) { child in
+                child
+                    .font(MaterialUIKit.configuration.h4)
+                    .fontWeightWithFallback(.regular)
+                    .foregroundStyle(.materialUIPrimaryTitle)
+                    .align(.leading)
+                
+                if child.id != last {
+                    Separator()
+                }
+            }
+        }
+        .secondaryBackground()
     }
 }

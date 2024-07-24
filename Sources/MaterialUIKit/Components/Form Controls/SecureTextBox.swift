@@ -11,7 +11,7 @@ import SwiftUI
 /// A Material UI style secure text field.
 public struct SecureTextBox: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding private var text: String
     private let systemName: String?
@@ -21,7 +21,7 @@ public struct SecureTextBox: View {
     @State private var secureFieldIsFocused: Bool = false
     @Environment(\.cornerRadius) private var cornerRadius: CGFloat
 
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a default secure field.
     ///
@@ -46,7 +46,7 @@ public struct SecureTextBox: View {
         self.systemName = systemName
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     public var body: some View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
@@ -89,22 +89,6 @@ public struct SecureTextBox: View {
         }
     }
 }
-
-// MARK: - Environment Keys
-
-/// Environment key for setting the corner radius.
-fileprivate struct CornerRadiusKey: EnvironmentKey {
-    static var defaultValue: CGFloat = MaterialUIKit.configuration.cornerRadius
-}
-
-fileprivate extension EnvironmentValues {
-    var cornerRadius: CGFloat {
-        get { self[CornerRadiusKey.self] }
-        set { self[CornerRadiusKey.self] = newValue }
-    }
-}
-
-// MARK: - Extension View
 
 extension View {
     

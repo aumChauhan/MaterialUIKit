@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style time selector.
@@ -20,17 +22,17 @@ extension View {
     }
 }
 
-// MARK: - TimeSelectorViewModifier
+// MARK: - FILE PRIVATE
 
 /// A view modifier that adds time picker to any view.
 fileprivate struct TimeSelectorViewModifier: ViewModifier {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding var isPresented: Bool
     @Binding var selection: Date
     
-    // MARK: - Body
+    // MARK: - BODY
     
     func body(content: Content) -> some View {
         content.overlay(
@@ -39,12 +41,10 @@ fileprivate struct TimeSelectorViewModifier: ViewModifier {
     }
 }
 
-// MARK: - TimePicker
-
 /// A Material UI styled time picker.
 fileprivate struct TimePicker: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.verticalSizeClass) private var verticalSizeClass
@@ -53,7 +53,7 @@ fileprivate struct TimePicker: View {
     @Binding var selection: Date
     @State private var animationFlag: Bool = false
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     var body: some View {
         VStack(alignment: .leading) {

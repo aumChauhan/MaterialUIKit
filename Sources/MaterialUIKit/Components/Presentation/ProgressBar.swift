@@ -8,34 +8,19 @@
 
 import SwiftUI
 
-/// A custom shape for the `ProgressBar`.
-fileprivate struct MaterialProgressArc: Shape {
-    func path(in rect: CGRect) -> Path {
-        let radius = min(rect.width, rect.height) / 2
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        let startAngle: Angle = .degrees(0)
-        let endAngle: Angle = .degrees(360 * 0.8) // 80% of the circle
-        
-        var path = Path()
-        path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        
-        return path
-    }
-}
-
-// MARK: - ProgressBar
+// MARK: - PUBLIC
 
 /// A Material UI style progress bar.
 public struct ProgressBar: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let lineWidth: CGFloat
     
     @State private var rotationAngle: Double = 0
     private let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     /// Creates a progress view with default line width.
     public init() {
@@ -50,8 +35,8 @@ public struct ProgressBar: View {
         self.lineWidth = lineWidth
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         MaterialProgressArc()
             .stroke(.materialUIAccent, lineWidth: lineWidth)
@@ -62,5 +47,22 @@ public struct ProgressBar: View {
                     rotationAngle += 40
                 }
             }
+    }
+}
+
+// MARK: - FILE PRIVATE
+
+/// A custom shape for the `ProgressBar`.
+fileprivate struct MaterialProgressArc: Shape {
+    func path(in rect: CGRect) -> Path {
+        let radius = min(rect.width, rect.height) / 2
+        let center = CGPoint(x: rect.midX, y: rect.midY)
+        let startAngle: Angle = .degrees(0)
+        let endAngle: Angle = .degrees(360 * 0.8) // 80% of the circle
+        
+        var path = Path()
+        path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        
+        return path
     }
 }

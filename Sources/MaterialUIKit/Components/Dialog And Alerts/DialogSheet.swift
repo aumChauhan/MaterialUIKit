@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+// MARK: - PUBLIC
+
 extension View {
     
     /// Presents a Material UI style dialog sheet over the current view.
@@ -27,8 +29,6 @@ extension View {
     }
 }
 
-// MARK: - DialogSheetViewModifier
-
 /// A view modifier that adds dialog sheet behavior to any view.
 fileprivate struct DialogSheetViewModifier: ViewModifier {
     
@@ -42,26 +42,26 @@ fileprivate struct DialogSheetViewModifier: ViewModifier {
     }
 }
 
-// MARK: - DialogSheet
+// MARK: - FILE PRIVATE
 
 /// A view represents Material UI styled dialog sheet.
 fileprivate struct DialogSheet: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     @Binding var isPresented: Bool
     @State private var animationFlag: Bool = false
     
     let content: AnyView
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     init(isPresented: Binding<Bool>, content: AnyView) {
         self._isPresented = isPresented
         self.content = content
     }
     
-    // MARK: - View Body
+    // MARK: - VIEW BODY
     
     var body: some View {
         VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {

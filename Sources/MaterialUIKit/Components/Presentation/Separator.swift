@@ -11,11 +11,11 @@ import SwiftUI
 /// A Material UI style section-separator.
 public struct Separator: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let orientation: MUISeparatorOrientation
     
-    // MARK: - Initializer
+    // MARK: - INITIALIZER
     
     /// Creates a separator with default horizontal orientation.
     public init() {
@@ -29,8 +29,8 @@ public struct Separator: View {
         self.orientation = orientation
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
             .frame(

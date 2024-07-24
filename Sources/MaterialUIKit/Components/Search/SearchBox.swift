@@ -11,14 +11,14 @@ import SwiftUI
 /// A Material UI styled search box.
 public struct SearchBox: View {
     
-    // MARK: - Properties
+    // MARK: - PROPERTIES
     
     private let placeholder: String
     private let action: () -> Void
     @Binding private var searchText: String
     @State private var showSearchButton: Bool = false
     
-    // MARK: - Initializers
+    // MARK: - INITIALIZERS
     
     /// Creates a search box with a default placeholder text.
     ///
@@ -43,8 +43,8 @@ public struct SearchBox: View {
         self.action = action
     }
     
-    // MARK: - View Body
-    
+    // MARK: - VIEW BODY
+
     public var body: some View {
         HStack {
             HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
@@ -81,7 +81,7 @@ public struct SearchBox: View {
                 Button("Search", action: action)
                     .foregroundStyle(.materialUIAccent)
                     .fontWeightWithFallback(.medium)
-                    .buttonStyle(MUIActionButtonStyle())
+                    .buttonStyle(MUIActionButtonAnimationStyle())
             }
         }
         .onChangeWithFallback(of: searchText) { oldValue, newValue in
