@@ -69,6 +69,7 @@ fileprivate struct TimePicker: View {
         .secondaryBackground()
         .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
+        .hapticFeedbackOnChange(of: selection)
     }
     
     /// Returns the dismiss button bar for the time picker.

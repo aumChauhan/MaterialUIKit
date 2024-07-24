@@ -118,6 +118,8 @@ fileprivate struct Snackbar: View {
                     withMaterialAnimation {
                         isPresented = false
                     }
+                    
+                    hapticFeedback()
                 } label: {
                     Text(actionButtonKey)
                         .font(MaterialUIKit.configuration.h4)

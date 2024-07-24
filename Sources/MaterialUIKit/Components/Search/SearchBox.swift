@@ -44,7 +44,7 @@ public struct SearchBox: View {
     }
     
     // MARK: - VIEW BODY
-
+    
     public var body: some View {
         HStack {
             HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
@@ -78,10 +78,13 @@ public struct SearchBox: View {
             .tint(.materialUIAccent)
             
             if showSearchButton {
-                Button("Search", action: action)
-                    .foregroundStyle(.materialUIAccent)
-                    .fontWeightWithFallback(.medium)
-                    .buttonStyle(MUIActionButtonAnimationStyle())
+                Button("Search") {
+                    action()
+                    hapticFeedback()
+                }
+                .foregroundStyle(.materialUIAccent)
+                .fontWeightWithFallback(.medium)
+                .buttonStyle(MUIActionButtonAnimationStyle())
             }
         }
         .onChangeWithFallback(of: searchText) { oldValue, newValue in

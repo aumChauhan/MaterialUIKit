@@ -89,7 +89,10 @@ fileprivate struct FAB: View {
     // MARK: - VIEW BODY
     
     var body: some View {
-        Button(action: action) {
+        Button {
+            action()
+            hapticFeedback()
+        }label: {
             HStack {
                 Image(systemName: systemImage)
                 Text(titleKey)

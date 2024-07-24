@@ -69,6 +69,7 @@ public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccess
             }
         }
         .align(.leading)
+        .hapticFeedbackOnChange(of: selection)
     }
     
     /// Checks if the current element is the last one in the collection.

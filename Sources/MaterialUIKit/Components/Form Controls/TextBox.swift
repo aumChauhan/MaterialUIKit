@@ -83,6 +83,7 @@ public struct TextBox: View {
             if !text.isEmpty {
                 Button {
                     text = ""
+                    hapticFeedback()
                 } label:  {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.materialUISecondaryTitle)
@@ -96,6 +97,7 @@ public struct TextBox: View {
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()
+            hapticFeedback()
         }
         .onChangeWithFallback(of: isFocused) { oldValue, newValue in
             withMaterialAnimation {

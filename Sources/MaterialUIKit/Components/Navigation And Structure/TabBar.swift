@@ -43,9 +43,10 @@ public struct TabBar<Content>: View where Content: View {
             TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
         }
         .ignoresSafeArea(.keyboard)
-        .onPreferenceChange(TabBarPreferenceKey.self, perform: { value in
+        .onPreferenceChange(TabBarPreferenceKey.self) { value in
             self.tabs = value
-        })
+        }
+        .hapticFeedbackOnChange(of: selection)
     }
 }
 

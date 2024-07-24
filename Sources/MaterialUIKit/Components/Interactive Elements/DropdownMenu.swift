@@ -75,6 +75,7 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
     
     public var body: some View {
         Button {
+            hapticFeedback()
             withMaterialAnimation {
                 showMenu.toggle()
             }

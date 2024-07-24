@@ -67,6 +67,7 @@ fileprivate struct DialogSheet: View {
         VStack(alignment: .leading, spacing: MaterialUIKit.configuration.verticalStackSpacing) {
             Button {
                 isPresented.toggle()
+                hapticFeedback()
             } label: {
                 Image(systemName: "xmark")
                     .foregroundStyle(.materialUIPrimaryTitle)

@@ -88,13 +88,18 @@ public struct MUIKitConfiguration {
     
     /// The type of animation applied to UI elements.
     ///
-    /// Specifies the animation used for transitions and effects.
+    /// Defaults to `.spring()`,Specifies the animation used for transitions and effects.
     public var animationType: Animation
     
     /// The intensity of haptic feedback for interactive elements.
     ///
     /// Defaults to `0.8`, providing a noticeable but not overwhelming feedback.
-    public var hapticFeedbackIntensity: CGFloat = 0.8
+    public var hapticFeedbackIntensity: CGFloat = 0.6
+    
+    /// The intensity of haptic feedback for interactive elements.
+    ///
+    /// Defaults to `.light`.
+    public var hapticFeedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle = .light
     
     /// The color scheme applied to UI elements.
     ///

@@ -78,6 +78,7 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
         .background(.materialUIPrimaryBackground)
         .cornerRadius(MaterialUIKit.configuration.cornerRadius)
         .stroke(background: .materialUIOutline)
+        .hapticFeedbackOnChange(of: selection)
     }
     
     /// Checks if the current element is the last one in the collection.

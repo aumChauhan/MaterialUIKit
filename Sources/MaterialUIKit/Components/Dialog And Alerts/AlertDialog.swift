@@ -174,6 +174,8 @@ fileprivate struct AlertDialog: View {
                         withMaterialAnimation {
                             isPresented = false
                         }
+                        
+                        hapticFeedback()
                     } label: {
                         Text(secondaryActionKey)
                             .font(MaterialUIKit.configuration.h4)
@@ -188,6 +190,8 @@ fileprivate struct AlertDialog: View {
                     withMaterialAnimation {
                         isPresented = false
                     }
+                    
+                    hapticFeedback()
                 } label: {
                     Text(primaryActionKey)
                         .font(MaterialUIKit.configuration.h4)

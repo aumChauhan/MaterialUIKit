@@ -136,6 +136,7 @@ fileprivate struct ContainerHeader: View {
                 if showBackButton {
                     Button {
                         dismiss()
+                        hapticFeedback()
                     } label: {
                         Image(systemName: "arrow.left")
                             .font(.title3)
@@ -160,6 +161,7 @@ fileprivate struct ContainerHeader: View {
             if showBackButton {
                 Button {
                     dismiss()
+                    hapticFeedback()
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.headline)

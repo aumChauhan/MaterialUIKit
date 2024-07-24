@@ -124,4 +124,39 @@ package extension View {
             .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
             .frame(maxWidth: .infinity)
     }
+    
+    /// Triggers haptic feedback according to the specified style and intensity in the configuration.
+    func hapticFeedback() {
+        switch MaterialUIKit.configuration.hapticFeedbackStyle {
+        case .light:
+            UIImpactFeedbackGenerator(style: .light)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        case .medium:
+            UIImpactFeedbackGenerator(style: .medium)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        case .heavy:
+            UIImpactFeedbackGenerator(style: .heavy)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        case .soft:
+            UIImpactFeedbackGenerator(style: .soft)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        case .rigid:
+            UIImpactFeedbackGenerator(style: .rigid)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        @unknown default:
+            UIImpactFeedbackGenerator(style: .light)
+                .impactOccurred(intensity: MaterialUIKit.configuration.hapticFeedbackIntensity)
+        }
+    }
+    
+    /// Applies haptic feedback when the specified value changes.
+    ///
+    /// - Parameter value: The value to observe for changes. The feedback is triggered when this value changes.
+    /// - Returns: A modified view with haptic feedback applied on value change.
+    func hapticFeedbackOnChange<V>(of value: V) -> some View where V: Equatable  {
+        self
+            .onChangeWithFallback(of: value) { oldValue, newValue in
+                hapticFeedback()
+            }
+    }
 }
