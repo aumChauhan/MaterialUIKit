@@ -24,7 +24,7 @@ public struct DropdownMenuLabel: View {
     /// - Parameters:
     ///   - systemImage: The name of the system image.
     ///   - titleKey: The title displayed next to the system image.
-    public init(_ systemImage: String, _ titleKey: String) {
+    public init(systemImage: String, _ titleKey: String) {
         self.systemImage = systemImage
         self.titleKey = titleKey
     }

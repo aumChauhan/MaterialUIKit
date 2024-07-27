@@ -35,9 +35,10 @@ public struct NavigationRouteLabel: View {
         HStack(spacing: MaterialUIKit.configuration.horizontalStackSpacing) {
             Image(systemName: systemImage)
                 .font(.subheadline)
-                .elevatedStyledBackground()
-                .frame(width: 35, height: 35)
-                .cornerRadius(50)
+                .padding(10)
+                .foregroundStyle(.materialUIHighlight)
+                .background(.materialUITertiaryBackground)
+                .clipShape(Circle())
             
             Text(titleKey)
                 .font(MaterialUIKit.configuration.h4)

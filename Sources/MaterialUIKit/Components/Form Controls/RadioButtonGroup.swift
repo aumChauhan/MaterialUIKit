@@ -57,11 +57,11 @@ public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccess
                     Image(systemName: item == selection ? "circle.circle.fill" : "circle")
                         .font(.title3)
                         .foregroundStyle(item == selection ? .materialUIAccent : .materialUIOnDisabled)
-                        .onTapGesture {
-                            withMaterialAnimation {
-                                selection = item
-                            }
-                        }
+                }
+                .onTapGesture {
+                    withMaterialAnimation {
+                        selection = item
+                    }
                 }
                 
                 if !isLastElement(data: data, item: item) {

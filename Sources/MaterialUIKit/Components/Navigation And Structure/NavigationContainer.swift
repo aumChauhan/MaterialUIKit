@@ -45,6 +45,7 @@ public struct NavigationContainer<Content>: View where Content: View {
             TopAppBar {
                 content
                     .padding(MaterialUIKit.configuration.contentPadding)
+                    .padding(.bottom, -MaterialUIKit.configuration.contentPadding)
             }
             .navigationBarHidden(true)
         }
@@ -166,11 +167,13 @@ fileprivate struct ContainerHeader: View {
             
             Text(title)
                 .font(MaterialUIKit.configuration.h2)
+                .fontWeightWithFallback(.semibold)
             
             Spacer()
             
             toolbar.view
         }
+        .padding(.top, MaterialUIKit.configuration.verticalPadding)
         .foregroundStyle(.materialUIPrimaryTitle)
     }
 }
