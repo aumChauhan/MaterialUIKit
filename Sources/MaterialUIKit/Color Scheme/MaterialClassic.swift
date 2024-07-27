@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// The `MaterialClassic` provides a predefined color scheme with a classic appearance.
-package struct MaterialClassic: ColorScheme {
+package struct MaterialClassic: MUIKitColorScheme {
     package var accent = Color(lightHex: "246488", darkHex: "94CDF8")
     
     package var tonal = Color(lightHex: "EDF2F6", darkHex: "202529")

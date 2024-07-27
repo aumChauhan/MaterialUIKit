@@ -103,7 +103,7 @@ public struct MUIKitConfiguration {
     /// The color scheme applied to UI elements.
     ///
     /// Defaults to `MaterialClassic()`.
-    public var colorScheme: ColorScheme
+    public var colorScheme: MUIKitColorScheme
     
     /// Initializes a `MaterialUIKitConfiguration` instance with default values.
     public init() {
@@ -147,7 +147,7 @@ public struct MUIKitConfiguration {
         animationType: Animation,
         hapticFeedbackIntensity: CGFloat,
         hapticFeedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle,
-        colorScheme: ColorScheme
+        colorScheme: MUIKitColorScheme
     ) {
         self.contentPadding = contentPadding
         self.hXL = hXL

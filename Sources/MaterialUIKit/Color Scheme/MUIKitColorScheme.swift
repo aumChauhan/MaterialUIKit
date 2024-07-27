@@ -1,5 +1,5 @@
 //
-// ColorScheme.swift
+// MUIKitColorScheme.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -10,7 +10,7 @@ import SwiftUI
 
 /// Definines the color scheme for MaterialUIKit components.
 @available(iOS 15.0, *)
-public protocol ColorScheme {
+public protocol MUIKitColorScheme {
     
     /// The accent color used for emphasis.
     var accent: Color { get set }
