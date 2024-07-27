@@ -7,15 +7,16 @@
 //
 
 import SwiftUI
-
-/// A Material UI style text field.
+ 
+/// Represents a Material UI styled text box for user input.
+@available(iOS 15.0, *)
 public struct TextBox: View {
     
     // MARK: - PROPERTIES
     
     @Binding private var text: String
     private let systemImage: String?
-    private let titlekey: String
+    private let titleKey: String
     private let background: Color?
     
     @FocusState private var isFocused: Bool
@@ -27,10 +28,10 @@ public struct TextBox: View {
     /// Creates a default text box.
     ///
     /// - Parameters:
-    ///   - titleKey: Title key for the text field.
+    ///   - titleKey: Title key for the text box.
     ///   - text: Binding to the text value of the text field.
-    public init(_ titlekey: String, text: Binding<String>) {
-        self.titlekey = titlekey
+    public init(_ titleKey: String, text: Binding<String>) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = nil
         self.background = nil
@@ -39,11 +40,11 @@ public struct TextBox: View {
     /// Creates a text box with a system symbol.
     ///
     /// - Parameters:
-    ///   - systemImage: System symbol for the text field.
-    ///   - titleKey: Title key for the text field.
-    ///   - text: Binding to the text value of the text field.
-    public init(systemImage: String, _ titlekey: String, text: Binding<String>) {
-        self.titlekey = titlekey
+    ///   - systemImage: System symbol for the text box.
+    ///   - titleKey: Title key for the text box.
+    ///   - text: Binding to the text value of the text box.
+    public init(systemImage: String, _ titleKey: String, text: Binding<String>) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = systemImage
         self.background = nil
@@ -56,8 +57,8 @@ public struct TextBox: View {
     ///   - titleKey: Title key for the text box.
     ///   - text: Binding to the text value of the text box.
     ///   - background: Custom background color for the text box.
-    public init(systemImage: String, _ titlekey: String, text: Binding<String>, background: Color) {
-        self.titlekey = titlekey
+    public init(systemImage: String, _ titleKey: String, text: Binding<String>, background: Color) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = systemImage
         self.background = background
@@ -74,7 +75,7 @@ public struct TextBox: View {
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
-            TextField(titlekey, text: $text)
+            TextField(titleKey, text: $text)
                 .font(MaterialUIKit.configuration.h4)
                 .tint(.materialUIAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
@@ -109,9 +110,9 @@ public struct TextBox: View {
 
 extension View {
     
-    /// Sets the corner radius for the text field.
+    /// Sets the corner radius for the text box.
     ///
-    /// - Parameter radius: The corner radius to be applied to the text field.
+    /// - Parameter radius: The corner radius to be applied to the text box.
     ///
     /// - Returns: A view modified to include the specified corner radius.
     public func textBoxCornerRadius(_ radius: CGFloat) -> some View {

@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A Material UI style switch.
+/// Represents a Material UI styled switch for toggling boolean states.
+@available(iOS 15.0, *)
 public struct Switch: View {
     
     // MARK: - PROPERTIES
@@ -35,6 +36,6 @@ public struct Switch: View {
             .font(MaterialUIKit.configuration.h4)
             .foregroundStyle(.materialUIPrimaryTitle)
             .labelsHidden()
-            .toggleStyle(MUISwitchStyle())
+            .toggleStyle(SwitchStyle())
     }
 }

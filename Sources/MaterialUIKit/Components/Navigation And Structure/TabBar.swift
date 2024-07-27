@@ -10,24 +10,25 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A Material UI style bottom tab items container.
+/// Represents a Material UI styled container for bottom tab items, used to organize and switch between different views.
+@available(iOS 15.0, *)
 public struct TabBar<Content>: View where Content: View {
     
     // MARK: - PROPERTIES
     
     private let content: Content
     
-    @Binding private var selection: MUITabBarItem
-    @State private var tabs: [MUITabBarItem] = []
+    @Binding private var selection: TabBarItem
+    @State private var tabs: [TabBarItem] = []
     
     // MARK: - INITIALIZER
     
-    /// Creates a container view with a MaterialUI-style tab bar.
+    /// Creates a container view with a bottom tab bar.
     ///
     /// - Parameters:
     ///   - selection: Binding to the selected tab item.
     ///   - content: The main content of the view.
-    public init(selection: Binding<MUITabBarItem>, @ViewBuilder content: () -> Content) {
+    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
         self._selection = selection
         self.content = content()
     }
@@ -56,16 +57,14 @@ extension View {
     ///
     /// - Parameters:
     ///   - systemImage: The name of the system image for the tab item.
-    ///   - title: The title text for the tab item.
+    ///   - titleKey: The title text for the tab item.
     ///   - selection: Binding to the selected tab item.
-    ///
-    /// - Returns: A modified view with the specified tab bar item.
-    public func tabBarItem(systemName: String, title: String, selection: Binding<MUITabBarItem>) -> some View {
+    public func tabBarItem(systemImage: String, titleKey: String, selection: Binding<TabBarItem>) -> some View {
         modifier(
             TabBarItemViewModifer(
-                tab: MUITabBarItem(
-                    systemName: systemName,
-                    title: title
+                tab: TabBarItem(
+                    systemImage: systemImage,
+                    titleKey: titleKey
                 ),
                 selection: selection
             )
@@ -80,14 +79,14 @@ fileprivate struct TabBarContainer: View {
     
     // MARK: - PROPERTIES
     
-    let tabs: [MUITabBarItem]
-    @Binding var selection: MUITabBarItem
-    @State var localSelection: MUITabBarItem
+    let tabs: [TabBarItem]
+    @Binding var selection: TabBarItem
+    @State var localSelection: TabBarItem
     
     @Namespace private var namespace
     
     // MARK: - VIEW BODY
-
+    
     var body: some View {
         tabBar
             .onChangeWithFallback(of: selection) { oldValue, newValue in
@@ -102,7 +101,7 @@ fileprivate struct TabBarContainer: View {
         HStack {
             ForEach(tabs, id: \.self) { tab in
                 VStack(alignment: .center , spacing: 4) {
-                    Image(systemName: tab.systemName)
+                    Image(systemName: tab.systemImage)
                         .padding(.horizontal, MaterialUIKit.configuration.horizontalPadding)
                         .padding(.vertical, 5)
                         .font(.headline)
@@ -117,7 +116,7 @@ fileprivate struct TabBarContainer: View {
                             }
                         )
                     
-                    Text(tab.title)
+                    Text(tab.titleKey)
                         .font(.footnote)
                         .foregroundStyle(.materialUIPrimaryTitle)
                 }
@@ -137,9 +136,9 @@ fileprivate struct TabBarContainer: View {
 
 /// A preference key to collect tab bar items for rendering.
 fileprivate struct TabBarPreferenceKey: PreferenceKey {
-    static var defaultValue: [MUITabBarItem] = []
+    static var defaultValue: [TabBarItem] = []
     
-    static func reduce(value: inout [MUITabBarItem], nextValue: () -> [MUITabBarItem]) {
+    static func reduce(value: inout [TabBarItem], nextValue: () -> [TabBarItem]) {
         value += nextValue()
     }
 }
@@ -148,8 +147,8 @@ fileprivate struct TabBarPreferenceKey: PreferenceKey {
 /// A view modifier to handle the appearance of tab bar items.
 fileprivate struct TabBarItemViewModifer: ViewModifier {
     
-    let tab: MUITabBarItem
-    @Binding var selection: MUITabBarItem
+    let tab: TabBarItem
+    @Binding var selection: TabBarItem
     
     /// Applies the view modifier to handle the appearance of tab bar items.
     @ViewBuilder

@@ -8,12 +8,13 @@
 
 import SwiftUI
 
-/// A Material UI style section-separator.
+/// Represents a Material UI styled separator for dividing content or sections within a view.
+@available(iOS 15.0, *)
 public struct Separator: View {
     
     // MARK: - PROPERTIES
     
-    private let orientation: MUISeparatorOrientation
+    private let orientation: SeparatorOrientationStyle
     
     // MARK: - INITIALIZER
     
@@ -24,13 +25,13 @@ public struct Separator: View {
     
     /// Creates a separator with the specified orientation.
     ///
-    /// - Parameter orientation: The orientation of the divider.
-    public init(orientation: MUISeparatorOrientation) {
+    /// - Parameter orientation: The orientation of the separator.
+    public init(orientation: SeparatorOrientationStyle) {
         self.orientation = orientation
     }
     
     // MARK: - VIEW BODY
-
+    
     public var body: some View {
         RoundedRectangle(cornerRadius: MaterialUIKit.configuration.cornerRadius)
             .frame(

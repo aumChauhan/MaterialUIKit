@@ -1,5 +1,5 @@
 //
-// MUIColorScheme.swift
+// ColorScheme.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,8 +8,10 @@
 
 import SwiftUI
 
-/// Definines the color scheme for Material UI components.
-public protocol MUIColorScheme {
+/// Definines the color scheme for MaterialUIKit components.
+@available(iOS 15.0, *)
+public protocol ColorScheme {
+    
     /// The accent color used for emphasis.
     var accent: Color { get set }
     
@@ -47,9 +49,5 @@ public protocol MUIColorScheme {
     var outline: Color { get set }
     
     /// The color used for representing disabled or inactive elements in the UI.
-    /// 
-    /// This color is typically applied to elements that are not currently interactive,
-    /// such as switchs, checkbox, or radio buttons in a disabled state. It helps indicate to users
-    /// that these elements cannot be interacted with.
     var onDisabled: Color { get set }
 }

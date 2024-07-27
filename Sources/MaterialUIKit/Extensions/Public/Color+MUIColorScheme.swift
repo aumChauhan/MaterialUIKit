@@ -9,6 +9,9 @@
 import SwiftUI
 
 /// A set of custom color definitions tailored for MaterialUIKit styling.
+///
+/// This extension adds convenience static properties to the `Color` type,
+/// allowing easy access to colors defined in the current `MaterialUIKit` configuration.
 public extension Color {
     /// The accent color based on the current color scheme setting.
     static let materialUIAccent: Color = MaterialUIKit.configuration.colorScheme.accent

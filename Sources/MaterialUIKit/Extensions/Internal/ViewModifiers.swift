@@ -106,8 +106,6 @@ package extension View {
     }
     
     /// Applies vertical and horizontal padding to the view using the values from `MaterialUIKit.configuration`.
-    ///
-    /// - Returns: A view with the specified vertical and horizontal padding applied.
     func contentPadding() -> some View {
         self
             .padding(.horizontal, 4)
@@ -116,8 +114,6 @@ package extension View {
     }
     
     /// Applies vertical and horizontal padding to the view and sets the width to the maximum available, using the values from `MaterialUIKit.configuration`.
-    ///
-    /// - Returns: A view with the specified vertical and horizontal padding applied and width set to maximum.
     func extendedWidthPadded() -> some View {
         self
             .padding(.vertical, MaterialUIKit.configuration.verticalPadding)
@@ -152,7 +148,6 @@ package extension View {
     /// Applies haptic feedback when the specified value changes.
     ///
     /// - Parameter value: The value to observe for changes. The feedback is triggered when this value changes.
-    /// - Returns: A modified view with haptic feedback applied on value change.
     func hapticFeedbackOnChange<V>(of value: V) -> some View where V: Equatable  {
         self
             .onChangeWithFallback(of: value) { oldValue, newValue in

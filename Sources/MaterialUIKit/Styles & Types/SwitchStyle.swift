@@ -1,5 +1,5 @@
 //
-// MUISwitchStyle.swift
+// SwitchStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Visual representation of the Material Design styled toggle switch.
-package struct MUISwitchStyle: ToggleStyle {
+package struct SwitchStyle: ToggleStyle {
     package func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label

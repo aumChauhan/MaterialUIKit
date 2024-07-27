@@ -1,5 +1,5 @@
 //
-// MUIActionButtonAnimationStyle.swift
+// ActionButtonAnimationStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Custom button style for animating the appearance of a button during click event.
-package struct MUIActionButtonAnimationStyle: ButtonStyle {
+package struct ActionButtonAnimationStyle: ButtonStyle {
     package func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .opacity(configuration.isPressed ? 0.8 : 1.0)

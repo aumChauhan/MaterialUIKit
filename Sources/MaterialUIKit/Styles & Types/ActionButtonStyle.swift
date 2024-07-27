@@ -1,5 +1,5 @@
 //
-// MUIActionButtonStyle.swift
+// ActionButtonStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,8 +9,8 @@
 import Foundation
 
 /// Represents different button styles for the ``ActionButton``.
-@frozen
-public enum MUIActionButtonStyle {
+@available(iOS 15.0, *)
+@frozen public enum ActionButtonStyle {
     /// An elevated background and rounded corners.
     case elevated
     

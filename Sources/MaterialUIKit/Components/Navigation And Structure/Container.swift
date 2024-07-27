@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A empty view container with default MaterialUI styling.
+/// Represents a Material UI styled container that wraps and aligns its child elements.
+@available(iOS 15.0, *)
 public struct Container<Content>: View where Content: View {
     
     // MARK: - PROPERTIES
@@ -17,7 +18,7 @@ public struct Container<Content>: View where Content: View {
     
     // MARK: - INITIALIZER
     
-    /// Creates a empty container view.
+    /// Creates an empty container view.
     ///
     /// - Parameter content: The content to be wrapped in the container view.
     public init(@ViewBuilder content: () -> Content) {

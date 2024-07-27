@@ -10,7 +10,8 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A navigation container that wraps the content in a MaterialUI-style navigation bar.
+/// Represents a Material UI styled container for managing navigation stack and layout.
+@available(iOS 15.0, *)
 public struct NavigationContainer<Content>: View where Content: View {
     
     // MARK: - PROPERTIES
@@ -19,7 +20,7 @@ public struct NavigationContainer<Content>: View where Content: View {
     
     // MARK: - INITIALIZER
 
-    /// Creates a custom navigation container with the specified content.
+    /// Creates a navigation container with the specified content.
     ///
     /// - Parameter content: The content to be wrapped in the navigation container.
     public init(@ViewBuilder content: () -> Content) {
@@ -55,8 +56,7 @@ extension View {
     /// Sets the title for the navigation container.
     ///
     /// - Parameter title: The title to be displayed in the navigation container.
-    ///
-    /// - Returns: A view modified to include the specified navigation bar title.
+    @available(iOS 15.0, *)
     public func navigationContainerTitle(_ title: String) -> some View {
         return self.preference(key: NavigationContainerTitlePreferenceKey.self, value: title)
     }
@@ -64,39 +64,35 @@ extension View {
     /// Sets the style for the navigation container header.
     ///
     /// - Parameter style: The style of the navigation container header.
-    ///
-    /// - Returns: A view modified to include the specified navigation container header style.
-    public func navigationContainerHeaderStyle(_ style: MUINavigationContainerHeaderStyle) -> some View {
+    @available(iOS 15.0, *)
+    public func navigationContainerHeaderStyle(_ style: NavigationContainerHeaderStyle) -> some View {
         return self.preference(key: NavigationContainerHeaderStylePreferenceKey.self, value: style)
     }
     
     /// Sets the toolbar for the navigation container.
     ///
     /// - Parameter toolbar: The toolbar to be displayed in the navigation container.
-    ///
-    /// - Returns: A view modified to include the specified toolbar.
-    public func navigationContainerToolbar<Toolbar: View>(toolbar: () -> Toolbar) -> some View {
+    @available(iOS 15.0, *)
+    public func navigationContainerToolbar<Toolbar>(toolbar: () -> Toolbar) -> some View where Toolbar: View {
         return self.preference(key: NavigationContainerToolBarPreferenceKey.self, value: EquatableViewContainer(view: AnyView(toolbar())))
     }
     
     /// Sets the visibility of the back button in the navigation container.
     ///
     /// - Parameter hidden: A Boolean value indicating whether the back button should be hidden.
-    ///
-    /// - Returns: A view modified to include the specified back button visibility.
+    @available(iOS 15.0, *)
     public func navigationContainerBackButtonHidden(_ hidden: Bool) -> some View {
         return self.preference(key: NavigationContainerBackButtonHiddenPreferenceKey.self, value: !hidden)
     }
     
-    /// Sets the properties for the navigation container.
+    /// Sets the properties for the navigation container’s top bar.
     ///
     /// - Parameters:
     ///   - title: The title to be displayed in the navigation container.
     ///   - backButtonHidden: A Boolean value indicating whether the back button should be hidden.
     ///   - style: The style of the navigation container header.
-    ///
-    /// - Returns: A view modified to include the specified navigation bar properties.
-    public func navigationContainerTopBar(title: String, backButtonHidden: Bool, style: MUINavigationContainerHeaderStyle) -> some View {
+    @available(iOS 15.0, *)
+    public func navigationContainerTopBar(title: String, backButtonHidden: Bool, style: NavigationContainerHeaderStyle) -> some View {
         self
             .navigationContainerTitle(title)
             .navigationContainerBackButtonHidden(backButtonHidden)
@@ -113,7 +109,7 @@ fileprivate struct ContainerHeader: View {
     
     let toolbar: EquatableViewContainer
     let title: String
-    let headerStyle: MUINavigationContainerHeaderStyle
+    let headerStyle: NavigationContainerHeaderStyle
     let showBackButton: Bool
     
     @Environment(\.dismiss) private var dismiss
@@ -187,7 +183,7 @@ fileprivate struct TopAppBar<Content>: View where Content: View {
     public let content: Content
     
     @State private var showBackButton: Bool = false
-    @State private var headerStyle: MUINavigationContainerHeaderStyle = .large
+    @State private var headerStyle: NavigationContainerHeaderStyle = .large
     @State private var title: String = ""
     @State private var toolbar: EquatableViewContainer = EquatableViewContainer(view: AnyView(EmptyView()))
     
@@ -251,9 +247,9 @@ fileprivate struct NavigationContainerBackButtonHiddenPreferenceKey: PreferenceK
 
 /// Sets the style for the navigation bar header.
 fileprivate struct NavigationContainerHeaderStylePreferenceKey: PreferenceKey {
-    static var defaultValue: MUINavigationContainerHeaderStyle = .large
+    static var defaultValue: NavigationContainerHeaderStyle = .large
     
-    static func reduce(value: inout MUINavigationContainerHeaderStyle, nextValue: () -> MUINavigationContainerHeaderStyle) {
+    static func reduce(value: inout NavigationContainerHeaderStyle, nextValue: () -> NavigationContainerHeaderStyle) {
         value = nextValue()
     }
 }

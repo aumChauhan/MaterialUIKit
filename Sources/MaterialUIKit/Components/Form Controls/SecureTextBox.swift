@@ -8,14 +8,15 @@
 
 import SwiftUI
 
-/// A Material UI style secure text field.
+/// Represents a Material UI styled text box for secure fields.
+@available(iOS 15.0, *)
 public struct SecureTextBox: View {
     
     // MARK: - PROPERTIES
     
     @Binding private var text: String
     private let systemImage: String?
-    private let titlekey: String
+    private let titleKey: String
     private let background: Color?
     
     @FocusState private var isFocused: Bool
@@ -28,9 +29,9 @@ public struct SecureTextBox: View {
     ///
     /// - Parameters:
     ///   - titleKey: Title key for the secure text box.
-    ///   - text: Binding to the text value of the secure field.
-    public init(_ titlekey: String, text: Binding<String>) {
-        self.titlekey = titlekey
+    ///   - text: Binding to the text value of the secure text box.
+    public init(_ titleKey: String, text: Binding<String>) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = nil
         self.background = nil
@@ -39,25 +40,25 @@ public struct SecureTextBox: View {
     /// Creates a secure text box with a system symbol.
     ///
     /// - Parameters:
-    ///   - systemImage: System symbol for the secure field.
-    ///   - titleKey: Title key for the secure field.
-    ///   - text: Binding to the text value of the secure field.
-    public init(systemImage: String, _ titlekey: String, text: Binding<String>) {
-        self.titlekey = titlekey
+    ///   - systemImage: System symbol for the secure text box.
+    ///   - titleKey: Title key for the secure text box.
+    ///   - text: Binding to the text value of the secure text box.
+    public init(systemImage: String, _ titleKey: String, text: Binding<String>) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = systemImage
         self.background = nil
     }
     
-    /// Creates a MaterialUI style secure field with a system symbol and custom background color.
+    /// Creates a secure text box with a system symbol and custom background color.
     ///
     /// - Parameters:
-    ///   - systemImage: System symbol for the secure field.
-    ///   - titleKey: Title key for the secure field.
-    ///   - text: Binding to the text value of the secure field.
-    ///   - background: Custom background color for the secure field.
-    public init(systemImage: String, _ titlekey: String, text: Binding<String>, background: Color) {
-        self.titlekey = titlekey
+    ///   - systemImage: System symbol for the secure text box.
+    ///   - titleKey: Title key for the secure text boxfield.
+    ///   - text: Binding to the text value of the secure text box.
+    ///   - background: Custom background color for the secure text box.
+    public init(systemImage: String, _ titleKey: String, text: Binding<String>, background: Color) {
+        self.titleKey = titleKey
         self._text = text
         self.systemImage = systemImage
         self.background = background
@@ -75,7 +76,7 @@ public struct SecureTextBox: View {
                     .padding(.leading, MaterialUIKit.configuration.horizontalPadding)
             }
             
-            SecureField(titlekey, text: $text)
+            SecureField(titleKey, text: $text)
                 .font(MaterialUIKit.configuration.h4)
                 .tint(.materialUIAccent)
                 .padding(.vertical, MaterialUIKit.configuration.verticalPadding)

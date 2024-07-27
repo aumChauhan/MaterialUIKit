@@ -8,31 +8,31 @@
 
 import SwiftUI
 
-/// A default implementation of a classic Material color scheme.
-public struct MaterialClassic: MUIColorScheme {
-    public var accent = Color(lightHex: "246488", darkHex: "94CDF8")
+/// The `MaterialClassic` provides a predefined color scheme with a classic appearance.
+package struct MaterialClassic: ColorScheme {
+    package var accent = Color(lightHex: "246488", darkHex: "94CDF8")
     
-    public var tonal = Color(lightHex: "EDF2F6", darkHex: "202529")
+    package var tonal = Color(lightHex: "EDF2F6", darkHex: "202529")
     
-    public var primaryBackground = Color(lightHex: "f8f9fa", darkHex: "212529")
+    package var primaryBackground = Color(lightHex: "f8f9fa", darkHex: "212529")
     
-    public var secondaryBackground = Color(lightHex: "e9ecef", darkHex: "343a40")
+    package var secondaryBackground = Color(lightHex: "e9ecef", darkHex: "343a40")
     
-    public var tertiaryBackground = Color(lightHex: "dee2e6", darkHex: "495057")
+    package var tertiaryBackground = Color(lightHex: "dee2e6", darkHex: "495057")
     
-    public var quaternaryBackground = Color(lightHex: "ced4da", darkHex: "6c757d")
+    package var quaternaryBackground = Color(lightHex: "ced4da", darkHex: "6c757d")
     
-    public var primaryTitle = Color(lightHex: "343a40", darkHex: "e9ecef")
+    package var primaryTitle = Color(lightHex: "343a40", darkHex: "e9ecef")
     
-    public var secondaryTitle = Color(lightHex: "6c757d", darkHex: "ced4da")
-        
-    public var highlight = Color(lightHex: "246488", darkHex: "94CDF8")
+    package var secondaryTitle = Color(lightHex: "6c757d", darkHex: "ced4da")
     
-    public var separator: Color = Color(lightHex: "ced4da", darkHex: "6c757d")
+    package var highlight = Color(lightHex: "246488", darkHex: "94CDF8")
     
-    public var onError: Color = Color(lightHex: "8b575c", darkHex: "c98986")
+    package var separator: Color = Color(lightHex: "ced4da", darkHex: "6c757d")
     
-    public var onDisabled: Color = Color(lightHex: "33415c", darkHex: "7d8597")
+    package var onError: Color = Color(lightHex: "8b575c", darkHex: "c98986")
     
-    public var outline: Color = Color(lightHex: "33415c", darkHex: "7d8597")
+    package var onDisabled: Color = Color(lightHex: "33415c", darkHex: "7d8597")
+    
+    package var outline: Color = Color(lightHex: "33415c", darkHex: "7d8597")
 }

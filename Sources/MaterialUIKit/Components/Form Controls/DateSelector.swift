@@ -12,11 +12,12 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style date selector.
+    /// Presents a date selector with a binding to control the presentation state and a binding to manage the selected date.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation state of the date picker.
     ///   - selection: A binding to manage the selected date.
+    @available(iOS 15.0, *)
     public func dateSelector(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
         return self.modifier(DateSelectorViewModifier(isPresented: isPresented, selection: selection))
     }
@@ -25,7 +26,7 @@ extension View {
 
 // MARK: - FILE PRIVATE
 
-/// A view modifier that adds date selector presentation behavior to any view.
+/// Adds date selector presentation over the view.
 fileprivate struct DateSelectorViewModifier: ViewModifier {
     
     // MARK: - PROPERTIES
@@ -42,7 +43,7 @@ fileprivate struct DateSelectorViewModifier: ViewModifier {
     }
 }
 
-/// A Material Design styled date selector.
+/// Represents a Material UI styled date selector for picking date values.
 fileprivate struct DateSelector: View {
     
     // MARK: - PROPERTIES

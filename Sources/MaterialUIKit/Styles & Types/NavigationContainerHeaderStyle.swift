@@ -1,5 +1,5 @@
 //
-// MUINavigationContainerHeaderStyle.swift
+// NavigationContainerHeaderStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,9 +8,9 @@
 
 import SwiftUI
 
-/// Represents different styles for navigation bar headers.
-@frozen
-public enum MUINavigationContainerHeaderStyle {
+/// Represents different styles for navigation container headers.
+@available(iOS 15.0, *)
+@frozen public enum NavigationContainerHeaderStyle {
     /// A large-style navigation bar header.
     case large
     

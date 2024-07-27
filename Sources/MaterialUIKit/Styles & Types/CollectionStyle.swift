@@ -1,5 +1,5 @@
 //
-// MUICollectionStyle.swift
+// CollectionStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-/// Represents different styles for ``CollectionStyle``.
-@frozen public enum MUICollectionStyle {
+/// Represents different styles for ``Collection``.
+@available(iOS 15.0, *)
+@frozen public enum CollectionStyle {
     /// A plain-style list.
     case plain
     

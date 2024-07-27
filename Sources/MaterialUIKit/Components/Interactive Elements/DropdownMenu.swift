@@ -10,7 +10,8 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A Material UI style dropdown menu.
+/// Represents a Material UI styled dropdown menu for selecting items from a list.
+@available(iOS 15.0, *)
 public struct DropdownMenu<Label, Content> : View where Label : View, Content : View {
     
     // MARK: - PROPERTIES
@@ -44,14 +45,14 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
     /// Creates a dropdown menu with a title-based label and custom content.
     ///
     /// - Parameters:
-    ///   - title: A string representing the title of the menu button.
+    ///   - titleKey: A string representing the title of the menu button.
     ///   - content: A closure that returns the content view for the menu.
     public init<S>(
-        _ title: S,
+        _ titleKey: S,
         @ViewBuilder content: () -> Content
     ) where Label == Text, S : StringProtocol {
         self.content = content()
-        self.label = Text(title)
+        self.label = Text(titleKey)
         self._isActive = .constant(false)
     }
     

@@ -1,5 +1,5 @@
 //
-// MUICheckboxStyle.swift
+// CheckboxStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,7 +9,7 @@
 import SwiftUI
 
 /// Visual representation of the Material design styled checkbox.
-package struct MUICheckboxStyle: ToggleStyle {
+package struct CheckboxStyle: ToggleStyle {
     package func makeBody(configuration: Configuration) -> some View {
         HStack {
             configuration.label

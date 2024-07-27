@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A Material UI style checkbox.
+/// Represent a Material UI styled checkbox for toggling a boolean state.
+@available(iOS 15.0, *)
 public struct Checkbox: View {
     
     // MARK: - PROPERTIES
@@ -18,7 +19,7 @@ public struct Checkbox: View {
     
     // MARK: - INITIALIZERS
     
-    /// Creates a Material UI style checkbox.
+    /// Creates a checkbox with a specified title and state binding.
     ///
     /// - Parameters:
     ///   - titleKey: The title displayed next to the checkbox.
@@ -35,6 +36,6 @@ public struct Checkbox: View {
             .font(MaterialUIKit.configuration.h4)
             .foregroundStyle(.materialUIPrimaryTitle)
             .labelsHidden()
-            .toggleStyle(MUICheckboxStyle())
+            .toggleStyle(CheckboxStyle())
     }
 }

@@ -9,105 +9,163 @@
 import SwiftUI
 
 /// Configuration settings for MaterialUIKit.
+///
+/// The `MUIKitConfiguration` struct provides a centralized way to define and manage the configuration settings for the MaterialUIKit components.
+/// This includes various design attributes such as padding, font styles, spacing, and color schemes, which are used to maintain a consistent and customizable look and feel across the UI components.
+@available(iOS 15.0, *)
 public struct MUIKitConfiguration {
     
     /// The padding applied inside UI elements to separate content from borders.
     ///
-    /// Defaults to `20`, providing ample space between content and edges of the element.
-    public var contentPadding: CGFloat = 20
+    /// Defaults to `20`.
+    public var contentPadding: CGFloat
     
     /// The font style used for the extra large header (H-XL).
     ///
-    /// Defaults to `.largeTitle`, which provides a prominent header style.
-    public var hXL: Font = .largeTitle
+    /// Defaults to `.largeTitle`.
+    public var hXL: Font
     
     /// The font style used for the largest header (H1).
     ///
-    /// Defaults to `.title`, which provides a prominent header style.
-    public var h1: Font = .title
+    /// Defaults to `.title`.
+    public var h1: Font
     
     /// The font style used for the second largest header (H2).
     ///
-    /// Defaults to `.title2`, suitable for secondary headers.
-    public var h2: Font = .title2
+    /// Defaults to `.title2`.
+    public var h2: Font
     
     /// The font style used for the third largest header (H3).
     ///
-    /// Defaults to `.title3`, ideal for tertiary headers.
-    public var h3: Font = .title3
+    /// Defaults to `.title3`.
+    public var h3: Font
     
     /// The font style used for medium-sized headers (H4).
     ///
-    /// Defaults to `.body`, suitable for body text or less prominent headers.
-    public var h4: Font = .body
+    /// Defaults to `.body`.
+    public var h4: Font
     
     /// The font style used for smaller headers (H5).
     ///
-    /// Defaults to `.subheadline`, which is typically used for subheadings.
-    public var h5: Font = .subheadline
+    /// Defaults to `.subheadline`.
+    public var h5: Font
     
     /// The font style used for the smallest headers (H6).
     ///
-    /// Defaults to `.caption`, suitable for small or minimal headings.
-    public var h6: Font = .caption
+    /// Defaults to `.caption`.
+    public var h6: Font
     
     /// The horizontal padding applied to UI elements.
     ///
-    /// Defaults to `16`, providing consistent spacing on the left and right sides.
-    public var horizontalPadding: CGFloat = 16
+    /// Defaults to `16`.
+    public var horizontalPadding: CGFloat
     
     /// The horizontal padding applied to UI elements.
     ///
-    /// Defaults to `16`, providing consistent spacing on the left and right sides.
-    public var verticalPadding: CGFloat = 16
+    /// Defaults to `16`.
+    public var verticalPadding: CGFloat
     
     /// The corner radius applied to UI elements.
     ///
-    /// Defaults to `20`, giving elements a rounded appearance.
-    public var cornerRadius: CGFloat = 20
+    /// Defaults to `20`.
+    public var cornerRadius: CGFloat
     
     /// The vertical spacing applied between elements in a vertical layout.
     ///
-    /// Defaults to `16`, ensuring consistent spacing between stacked elements.
-    public var verticalStackSpacing: CGFloat = 16
+    /// Defaults to `16`.
+    public var verticalStackSpacing: CGFloat
     
     /// The horizontal spacing applied between elements in a horizontal layout.
     ///
-    /// Defaults to `12`, providing consistent spacing between horizontally arranged elements.
-    public var horizontalStackSpacing: CGFloat = 12
+    /// Defaults to `12`.
+    public var horizontalStackSpacing: CGFloat
     
     /// The width of the border applied to UI elements.
     ///
-    /// Defaults to `1.0`, giving elements a subtle border.
-    public var borderWidth: CGFloat = 1.0
-    
-    /// The duration of animations applied to UI elements.
-    ///
-    /// Defaults to `0.4` seconds, controlling the speed of animations.
-    public var animationDuration: Double = 0.3
+    /// Defaults to `1.0.
+    public var borderWidth: CGFloat
     
     /// The type of animation applied to UI elements.
     ///
-    /// Defaults to `.spring()`,Specifies the animation used for transitions and effects.
+    /// Defaults to `.spring()`.
     public var animationType: Animation
     
     /// The intensity of haptic feedback for interactive elements.
     ///
-    /// Defaults to `0.8`, providing a noticeable but not overwhelming feedback.
-    public var hapticFeedbackIntensity: CGFloat = 0.6
+    /// Defaults to `0.8`.
+    public var hapticFeedbackIntensity: CGFloat
     
     /// The intensity of haptic feedback for interactive elements.
     ///
     /// Defaults to `.light`.
-    public var hapticFeedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle = .light
+    public var hapticFeedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle
     
     /// The color scheme applied to UI elements.
     ///
-    /// Defaults to `MaterialClassic()`, providing a classic color theme.
-    public var colorScheme: MUIColorScheme = MaterialClassic()
+    /// Defaults to `MaterialClassic()`.
+    public var colorScheme: ColorScheme
     
     /// Initializes a `MaterialUIKitConfiguration` instance with default values.
     public init() {
-        animationType = .spring(duration: animationDuration)
+        self.contentPadding = 20
+        self.hXL = .largeTitle
+        self.h1 = .title
+        self.h2 = .title2
+        self.h3 = .title3
+        self.h4 = .body
+        self.h5 = .subheadline
+        self.h6 = .caption
+        self.horizontalPadding = 16
+        self.verticalPadding = 16
+        self.cornerRadius = 20
+        self.verticalStackSpacing = 16
+        self.horizontalStackSpacing = 12
+        self.borderWidth = 1.0
+        self.animationType = .spring(duration: 0.4)
+        self.hapticFeedbackIntensity = 0.6
+        self.hapticFeedbackStyle = .light
+        self.colorScheme = MaterialClassic()
+    }
+    
+    /// Initializes a `MUIKitConfiguration` instance with specified values for each property.
+    public init(
+        contentPadding: CGFloat,
+        hXL: Font,
+        h1: Font,
+        h2: Font,
+        h3: Font,
+        h4: Font,
+        h5: Font,
+        h6: Font,
+        horizontalPadding: CGFloat,
+        verticalPadding: CGFloat,
+        cornerRadius: CGFloat,
+        verticalStackSpacing: CGFloat,
+        horizontalStackSpacing: CGFloat,
+        borderWidth: CGFloat,
+        animationDuration: Double,
+        animationType: Animation,
+        hapticFeedbackIntensity: CGFloat,
+        hapticFeedbackStyle: UIImpactFeedbackGenerator.FeedbackStyle,
+        colorScheme: ColorScheme
+    ) {
+        self.contentPadding = contentPadding
+        self.hXL = hXL
+        self.h1 = h1
+        self.h2 = h2
+        self.h3 = h3
+        self.h4 = h4
+        self.h5 = h5
+        self.h6 = h6
+        self.horizontalPadding = horizontalPadding
+        self.verticalPadding = verticalPadding
+        self.cornerRadius = cornerRadius
+        self.verticalStackSpacing = verticalStackSpacing
+        self.horizontalStackSpacing = horizontalStackSpacing
+        self.borderWidth = borderWidth
+        self.animationType = animationType
+        self.hapticFeedbackIntensity = hapticFeedbackIntensity
+        self.hapticFeedbackStyle = hapticFeedbackStyle
+        self.colorScheme = colorScheme
     }
 }

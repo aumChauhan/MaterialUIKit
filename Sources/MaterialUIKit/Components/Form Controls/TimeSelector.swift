@@ -12,11 +12,12 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style time selector.
+    /// Presents a time selector with a binding to control the presentation state and a binding to manage the selected time.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation of the time picker.
-    ///   - selection: A binding to manage the selected date.
+    ///   - selection: A binding to manage the selected time.
+    @available(iOS 15.0, *)
     public func timeSelector(isPresented: Binding<Bool>, selection: Binding<Date>) -> some View {
         return self.modifier(TimeSelectorViewModifier(isPresented: isPresented, selection: selection))
     }
@@ -24,7 +25,7 @@ extension View {
 
 // MARK: - FILE PRIVATE
 
-/// A view modifier that adds time picker to any view.
+/// Adds time picker over the view.
 fileprivate struct TimeSelectorViewModifier: ViewModifier {
     
     // MARK: - PROPERTIES
@@ -41,7 +42,7 @@ fileprivate struct TimeSelectorViewModifier: ViewModifier {
     }
 }
 
-/// A Material UI styled time picker.
+/// Represents a Material UI styled time selector for picking time values.
 fileprivate struct TimePicker: View {
     
     // MARK: - PROPERTIES

@@ -12,13 +12,12 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style dialog sheet over the current view.
+    /// Presents a dialog sheet over the current view.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to a Boolean value that determines whether to present the dialog sheet.
     ///   - content: A closure returning the view content to be displayed in the dialog sheet.
-    ///
-    /// - Returns: A modified view with the Material Design dialog sheet behavior.
+    @available(iOS 15.0, *)
     public func dialogSheet<Content>(
         isPresented: Binding<Bool>,
         _ content: @escaping () -> Content
@@ -29,7 +28,9 @@ extension View {
     }
 }
 
-/// A view modifier that adds dialog sheet behavior to any view.
+// MARK: - FILE PRIVATE
+
+/// Adds dialog sheet over the current view.
 fileprivate struct DialogSheetViewModifier: ViewModifier {
     
     @Binding var isPresented: Bool
@@ -42,9 +43,7 @@ fileprivate struct DialogSheetViewModifier: ViewModifier {
     }
 }
 
-// MARK: - FILE PRIVATE
-
-/// A view represents Material UI styled dialog sheet.
+/// Represents Material Desgin styled dialog sheet.
 fileprivate struct DialogSheet: View {
     
     // MARK: - PROPERTIES

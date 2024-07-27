@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A label view to create a row cells in a ``DropdownMenu``.
+/// Represents a Material UI styled label for a dropdown menu item.
+@available(iOS 15.0, *)
 public struct DropdownMenuLabel: View {
     
     // MARK: - PROPERTIES
@@ -23,7 +24,7 @@ public struct DropdownMenuLabel: View {
     /// - Parameters:
     ///   - systemImage: The name of the system image.
     ///   - titleKey: The title displayed next to the system image.
-    public init(systemImage: String, _ titleKey: String) {
+    public init(_ systemImage: String, _ titleKey: String) {
         self.systemImage = systemImage
         self.titleKey = titleKey
     }

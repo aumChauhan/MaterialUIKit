@@ -10,7 +10,8 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A Material UI style progress bar.
+/// Represents a Material UI styled progress indicator for showing ongoing processes or loading states.
+@available(iOS 15.0, *)
 public struct ProgressBar: View {
     
     // MARK: - PROPERTIES
@@ -22,7 +23,7 @@ public struct ProgressBar: View {
     
     // MARK: - INITIALIZER
     
-    /// Creates a progress view with default line width.
+    /// Creates a progress view with default line width of 2 points.
     public init() {
         lineWidth = 2
     }

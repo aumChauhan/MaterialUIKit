@@ -10,14 +10,15 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A Material UI style circular icon button.
+/// Represents a Material UI styled icon button for user interaction.
+@available(iOS 15.0, *)
 public struct IconButton: View {
     
     // MARK: - PROPERTIES
     
     private let systemImage: String?
-    private let image: String?
-    private let style: MUIIconButtonStyle
+    private let imageName: String?
+    private let style: IconButtonStyle
     private let action: () -> ()
     
     @Environment(\.frameSize) private var frameSize: CGFloat
@@ -29,33 +30,33 @@ public struct IconButton: View {
     ///
     /// - Parameters:
     ///  - systemImage: SF Symbol string for system-provided icons.
-    ///  - style: The style of the button, defined by `MUIIconButtonStyle`.
+    ///  - style: The style of the button, defined by `IconButtonStyle`.
     ///  - action: The closure to execute when the button is pressed.
     public init(
         systemImage: String,
-        style: MUIIconButtonStyle,
+        style: IconButtonStyle,
         _ action: @escaping () -> Void
     ) {
         self.systemImage = systemImage
         self.style = style
         self.action = action
-        self.image = nil
+        self.imageName = nil
     }
     
-    /// Creates a circular icon  button with a custom image, style, and action.
+    /// Creates a circular icon button with a custom image, style, and action.
     ///
     /// - Parameters:
-    ///   - image: String representing the name of a custom image.
-    ///   - style: The style of the button, defined by `MUIIconButtonStyle`.
+    ///   - imageName: String representing the name of a custom image.
+    ///   - style: The style of the button, defined by `IconButtonStyle`.
     ///   - action: The closure to execute when the button is pressed.
     public init(
-        _ image: String,
-        style: MUIIconButtonStyle,
+        imageName: String,
+        style: IconButtonStyle,
         _ action: @escaping () -> Void
     ) {
         self.style = style
         self.action = action
-        self.image = image
+        self.imageName = imageName
         self.systemImage = nil
     }
     
@@ -77,20 +78,16 @@ public struct IconButton: View {
 
 extension View {
     
-    /// Sets the corner radius for Material icon button  within the environment.
+    /// Sets the corner radius for the icon button.
     ///
     /// - Parameter radius: The corner radius value to apply.
-    ///
-    /// - Returns: A modified view environment with the specified corner radius applied.
     public func iconButtonSize(_ frameSize: CGFloat) -> some View {
         self.environment(\.frameSize, frameSize)
     }
     
-    /// Sets the font weight for Material icon button within the environment.
+    /// Sets the font weight for the icon button.
     ///
     /// - Parameter fontWeight: The font weight to apply.
-    ///
-    /// - Returns: A modified view environment with the specified font weight applied.
     public func iconButtonFontSize(_ fontSize: Font) -> some View {
         self.environment(\.font, fontSize)
     }
@@ -105,8 +102,8 @@ fileprivate extension IconButton {
             if let systemImage = systemImage {
                 Image(systemName: systemImage)
                     .font(fontSize)
-            } else if let image = image {
-                Image(image)
+            } else if let imageName = imageName {
+                Image(imageName)
                     .resizable()
                     .renderingMode(.template)
                     .font(fontSize)
@@ -125,7 +122,7 @@ fileprivate extension IconButton {
                 .shadow(color: .black.opacity(0.15), radius: 1.5, x: 0, y: 1)
                 .shadow(color: .black.opacity(0.3), radius: 1, x: 0, y: 1)
         }
-        .buttonStyle(MUIActionButtonAnimationStyle())
+        .buttonStyle(ActionButtonAnimationStyle())
     }
     
     /// A circular button with a filled background.
@@ -136,7 +133,7 @@ fileprivate extension IconButton {
                 .filledStyledBackground()
                 .clipShape(Circle())
         }
-        .buttonStyle(MUIActionButtonAnimationStyle())
+        .buttonStyle(ActionButtonAnimationStyle())
     }
     
     /// A circular button with a tonal background.
@@ -147,6 +144,6 @@ fileprivate extension IconButton {
                 .tonalStyledBackground()
                 .clipShape(Circle())
         }
-        .buttonStyle(MUIActionButtonAnimationStyle())
+        .buttonStyle(ActionButtonAnimationStyle())
     }
 }

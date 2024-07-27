@@ -1,5 +1,5 @@
 //
-// MUIIconButtonStyle.swift
+// IconButtonStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,8 +9,8 @@
 import SwiftUI
 
 /// Represens different styles for the ``IconButton``.
-@frozen
-public enum MUIIconButtonStyle {
+@available(iOS 15.0, *)
+@frozen public enum IconButtonStyle {
     /// A circular button with an elevated style.
     case elevated
     

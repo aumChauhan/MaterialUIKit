@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A Material UI style collection of items in a radio button form.
+/// Represents a Material UI styled group of radio buttons for selecting a single option.
+@available(iOS 15.0, *)
 public struct RadioButtonGroup<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
     // MARK: - PROPERTIES

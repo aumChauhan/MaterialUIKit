@@ -12,8 +12,6 @@ import SwiftUI
 package extension Date {
     
     /// Formats the date in the "E, MMM D" style.
-    ///
-    /// - Returns: A formatted string representing the date.
     func formattedMUIDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E, MMM d"

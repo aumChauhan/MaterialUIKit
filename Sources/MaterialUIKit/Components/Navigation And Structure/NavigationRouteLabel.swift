@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-/// A Material UI style navigation container link label.
-public struct NavigationContainerLabel: View {
+/// Represents a Material UI styled label for navigation routes, used to display route names in a navigation container.
+@available(iOS 15.0, *)
+public struct NavigationRouteLabel: View {
     
     // MARK: - PROPERTIES
 
@@ -18,11 +19,11 @@ public struct NavigationContainerLabel: View {
     
     // MARK: - INITIALIZERS
     
-    /// Creates a navigation container link label with the specified system image and title.
+    /// Creates a `NavigationRouteLabel` instance with the specified system image and title.
     ///
     /// - Parameters:
-    ///   - systemImage: The system image name for the icon.
-    ///   - titleKey: The title for the label.
+    ///   - systemImage: The name of the system image to be used as the label's icon.
+    ///   - titleKey: The key for the title text to be displayed.
     public init(systemImage: String, _ titleKey: String) {
         self.systemImage = systemImage
         self.titleKey = titleKey

@@ -12,13 +12,12 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style snackbar with a description message with a default time of 5s.
+    /// Presents a snackbar with a description message with a default time of 5s.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation state of the snackbar.
     ///   - message: The message displayed in the snackbar.
-    ///
-    /// - Returns: A view presenting a Material Design styled snackbar.
+    @available(iOS 15.0, *)
     public func snackbar(
         isPresented: Binding<Bool>,
         message: String
@@ -34,7 +33,7 @@ extension View {
         )
     }
     
-    /// Presents a Material UI style snackbar with a message, duration, and optional button.
+    /// Presents a snackbar with a message, duration, and optional button.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to control the presentation state of the snackbar.
@@ -42,8 +41,7 @@ extension View {
     ///   - duration: The duration (in seconds) for which the snackbar is visible before automatically hiding. Defaults to `nil`.
     ///   - actionButtonKey: The title key of the action button. If `nil`, no button is displayed. Defaults to `nil`.
     ///   - action: The action to perform when the primary button is tapped. Defaults to `nil`.
-    ///
-    /// - Returns: A view presenting a Material Design styled snackbar.
+    @available(iOS 15.0, *)
     public func snackbar(
         isPresented: Binding<Bool>,
         message: String,
@@ -65,7 +63,7 @@ extension View {
 
 // MARK: - FILE PRIVATE
 
-/// A view modifier that adds snackbar presentation behavior to any view.
+/// Adds snackbar presentation over the current view.
 fileprivate struct SnackbarViewModifier: ViewModifier {
     
     @Binding var isPresented: Bool

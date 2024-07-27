@@ -10,17 +10,18 @@ import SwiftUI
 
 // MARK: - PUBLIC
 
-/// A Material Design style collection (list) with different visual styles.
+/// Represents a Material UI styled collection of items arranged in a grid or list.
+@available(iOS 15.0, *)
 public struct Collection<Content>: View where Content: View {
     
     // MARK: - PROPERTIES
     
     private var content: Content
-    private var style: MUICollectionStyle
+    private var style: CollectionStyle
     
     // MARK: - INITIALIZERS
     
-    /// Creates a stylized collection with a default insetGrouped style.
+    /// Creates a stylized collection with a default `.insetGrouped` list style.
     ///
     /// - Parameters:
     ///   - content: A closure that returns the content view for a given element.
@@ -34,7 +35,7 @@ public struct Collection<Content>: View where Content: View {
     /// - Parameters:
     ///   - style: The style of the collection(list), such as `.plain`, `.inset`, or `.insetGrouped`.
     ///   - content: A closure that returns the content view for a given element.
-    public init(style: MUICollectionStyle, @ViewBuilder _ content: () -> Content) {
+    public init(style: CollectionStyle, @ViewBuilder _ content: () -> Content) {
         self.content = content()
         self.style = style
     }
@@ -88,11 +89,11 @@ fileprivate struct CollectionViewLayout: _VariadicView_UnaryViewRoot {
     
     // MARK: - Properties
     
-    var style: MUICollectionStyle
+    var style: CollectionStyle
     
     // MARK: - Initializers
     
-    public init(style: MUICollectionStyle) {
+    public init(style: CollectionStyle) {
         self.style = style
     }
     

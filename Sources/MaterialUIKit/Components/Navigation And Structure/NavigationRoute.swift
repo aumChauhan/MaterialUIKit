@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A navigation route that wraps the destination in a MaterialUI-styled navigation container.
+/// Represents a Material UI-styled navigation route for transitioning between views.
+@available(iOS 15.0, *)
 public struct NavigationRoute<Label, Destination>: View where Label: View, Destination: View {
     
     // MARK: - PROPERTIES
@@ -18,6 +19,11 @@ public struct NavigationRoute<Label, Destination>: View where Label: View, Desti
     
     // MARK: - INITIALIZER
     
+    /// Creates a `NavigationRoute` with the specified destination and label.
+    ///
+    /// - Parameters:
+    ///   - destination: A closure that returns the view to navigate to.
+    ///   - label: A closure that returns the view used as the navigation trigger.
     public init(@ViewBuilder destination: () -> Destination, @ViewBuilder label: () -> Label) {
         self.destination = destination()
         self.label = label()

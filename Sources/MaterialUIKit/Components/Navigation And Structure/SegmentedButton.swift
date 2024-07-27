@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A Material UI style segmented control.
+/// Represents a Material UI styled segmented control for switching between options.
+@available(iOS 15.0, *)
 public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessCollection, ID: Hashable, Content: View, Data.Element: Hashable, Data: Hashable {
     
     // MARK: - PROPERTIES
@@ -21,8 +22,8 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
     @Namespace private var namespace
     
     // MARK: - INITIALIZER
-
-    /// Creates a segemented contorl with the given data, identifier, and content.
+    
+    /// Creates a segemented control with the given data, identifier, and content.
     ///
     /// - Parameters:
     ///   - data: A collection of elements to display in the segmented control.
@@ -42,7 +43,7 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
     }
     
     // MARK: - VIEW BODY
-
+    
     public var body: some View {
         HStack(spacing: .zero) {
             ForEach(data, id: id) { item in
@@ -86,4 +87,3 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
         return data.last == item
     }
 }
-

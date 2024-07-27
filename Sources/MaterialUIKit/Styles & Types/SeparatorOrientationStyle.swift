@@ -1,5 +1,5 @@
 //
-// MUISeparatorOrientation.swift
+// SeparatorOrientationStyle.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -9,11 +9,11 @@
 import SwiftUI
 
 /// Represents the orientation of the separator.
-@frozen
-public enum MUISeparatorOrientation {
-    /// A horizontal divider.
+@available(iOS 15.0, *)
+@frozen public enum SeparatorOrientationStyle {
+    /// A horizontal separator.
     case horizontal
     
-    /// A vertical divider.
+    /// A vertical separator.
     case vertical
 }

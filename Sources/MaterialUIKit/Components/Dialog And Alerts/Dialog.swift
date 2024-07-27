@@ -1,5 +1,5 @@
 //
-// AlertDialog.swift
+// Dialog.swift
 // MaterialUIKit: https://github.com/aumChauhan/MaterialUIKit.git
 //
 // Author: Aum Chauhan
@@ -12,20 +12,19 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style alert dialog with a title and message.
+    /// Presents a dialog box dialog with a title and message.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to a Boolean value that determines whether to present the alert.
     ///   - titleKey: The title of the alert.
     ///   - message: The message displayed in the alert.
-    ///
-    /// - Returns: A view that presents a Material Design styled alert.
-    public func alertDialog(
+    @available(iOS 15.0, *)
+    public func dialog(
         isPresented: Binding<Bool>,
         titleKey: String,
         message: String
     ) -> some View {
-        self.alertDialog(
+        self.dialog(
             isPresented: isPresented,
             titleKey: titleKey,
             message: message,
@@ -34,7 +33,7 @@ extension View {
         )
     }
     
-    /// Presents a Material UI style alert dialog with a title, message, and primary button.
+    /// Presents a dialog box with a title, message, and primary button.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to a Boolean value that determines whether to present the alert.
@@ -42,16 +41,15 @@ extension View {
     ///   - message: The message displayed in the alert.
     ///   - primaryActionKey: The title key of the primary button.
     ///   - primaryAction: The action to perform when the primary button is tapped.
-    ///
-    /// - Returns: A view that presents a Material Design styled alert.
-    public func alertDialog(
+    @available(iOS 15.0, *)
+    public func dialog(
         isPresented: Binding<Bool>,
         titleKey: String,
         message: String,
         primaryActionKey: String,
         primaryAction: @escaping () -> Void
     ) -> some View {
-        self.alertDialog(
+        self.dialog(
             isPresented: isPresented,
             titleKey: titleKey,
             message: message,
@@ -62,7 +60,7 @@ extension View {
         )
     }
     
-    /// Presents a Material UI style alert dialog with a title, message, primary and secondary buttons.
+    /// Presents a dialog box with a title, message, primary and secondary buttons.
     ///
     /// - Parameters:
     ///   - isPresented: A binding to a Boolean value that determines whether to present the alert.
@@ -72,9 +70,8 @@ extension View {
     ///   - primaryAction: The action to perform when the primary button is tapped.
     ///   - secondaryActionKey: The title key of the secondary button.
     ///   - secondaryAction: The action to perform when the secondary button is tapped.
-    ///
-    /// - Returns: A view that presents a Material Design styled alert.
-    public func alertDialog(
+    @available(iOS 15.0, *)
+    public func dialog(
         isPresented: Binding<Bool>,
         titleKey: String,
         message: String,
@@ -84,7 +81,7 @@ extension View {
         secondaryAction: (() -> Void)?
     ) -> some View {
         self.modifier(
-            AlertDialogViewModifier(
+            DialogViewModifier(
                 isPresented: isPresented,
                 titleKey: titleKey,
                 message: message,
@@ -99,8 +96,8 @@ extension View {
 
 // MARK: - FILE PRIVATE
 
-/// A view modifier that adds alert dialog sheet to any view.
-fileprivate struct AlertDialogViewModifier: ViewModifier {
+/// Adds dialog sheet over the current view.
+fileprivate struct DialogViewModifier: ViewModifier {
     
     // MARK: - PROPERTIES
     
@@ -119,7 +116,7 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content.overlay(
-            AlertDialog(
+            Dialog(
                 isPresented: $isPresented,
                 titleKey: titleKey,
                 message: message,
@@ -132,8 +129,8 @@ fileprivate struct AlertDialogViewModifier: ViewModifier {
     }
 }
 
-/// A view that represents a Material Design styled alert dialog.
-fileprivate struct AlertDialog: View {
+/// Represents a Material Design styled dialog box.
+fileprivate struct Dialog: View {
     
     // MARK: - PROPERTIES
     

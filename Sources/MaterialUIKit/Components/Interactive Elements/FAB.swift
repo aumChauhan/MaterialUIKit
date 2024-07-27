@@ -12,12 +12,13 @@ import SwiftUI
 
 extension View {
     
-    /// Presents a Material UI style FAB to the view with a bottom trailing alignment.
+    /// Presents a FAB over the view with a bottom trailing alignment.
     ///
     /// - Parameters:
     ///   - systemImage: The system symbol name for the button icon.
     ///   - titleKey: The title key displayed on the button.
     ///   - action: A closure to be executed when the button is tapped.
+    @available(iOS 15.0, *)
     public func floatingActionButton(
         systemImage: String,
         titleKey: String,
@@ -27,13 +28,14 @@ extension View {
             FABViewModifier(systemImage: systemImage, titleKey: titleKey, cornerRadius: nil, action: action)
         )
     }
-    /// Presents a Material UI style FAB to the view with a bottom trailing alignment and a customizable corner radius.
+    /// Presents a FAB over the view with a bottom trailing alignment and a customizable corner radius.
     ///
     /// - Parameters:
     ///   - systemImage: The system symbol name for the button icon.
     ///   - titleKey: The title key displayed on the button.
     ///   - cornerRadius: The corner radius to apply to the button.
     ///   - action: A closure to be executed when the button is tapped.
+    @available(iOS 15.0, *)
     public func floatingActionButton(
         systemImage: String,
         titleKey: String,
@@ -48,7 +50,7 @@ extension View {
 
 // MARK: - FILE PRIVATE
 
-/// A view modifier that adds a floating action button with specified system symbol and title aligned at the bottom of the screen.
+/// Adds a floating action button with specified system symbol and title aligned at the bottom of the screen.
 fileprivate struct FABViewModifier: ViewModifier {
     let systemImage: String
     let titleKey: String
@@ -64,7 +66,7 @@ fileprivate struct FABViewModifier: ViewModifier {
     }
 }
 
-/// A Material UI style FAB.
+/// Represents a Material UI styled floating action button for primary actions.
 fileprivate struct FAB: View {
     
     // MARK: - PROPERTIES
@@ -102,6 +104,6 @@ fileprivate struct FAB: View {
             .filledStyledBackground()
             .cornerRadius(cornerRadius ?? MaterialUIKit.configuration.cornerRadius)
         }
-        .buttonStyle(MUIActionButtonAnimationStyle())
+        .buttonStyle(ActionButtonAnimationStyle())
     }
 }

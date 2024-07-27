@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-/// A Material UI styled search box.
+/// Represents a Material UI styled search box for user input and search actions.
+@available(iOS 15.0, *)
 public struct SearchBox: View {
     
     // MARK: - PROPERTIES
@@ -84,7 +85,7 @@ public struct SearchBox: View {
                 }
                 .foregroundStyle(.materialUIAccent)
                 .fontWeightWithFallback(.medium)
-                .buttonStyle(MUIActionButtonAnimationStyle())
+                .buttonStyle(ActionButtonAnimationStyle())
             }
         }
         .onChangeWithFallback(of: searchText) { oldValue, newValue in
