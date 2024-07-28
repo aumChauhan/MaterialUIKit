@@ -20,19 +20,17 @@ package struct MaterialClassic: MUIKitColorScheme {
     
     package var tertiaryBackground = Color(lightHex: "dee2e6", darkHex: "495057")
     
-    package var quaternaryBackground = Color(lightHex: "ced4da", darkHex: "6c757d")
-    
     package var primaryTitle = Color(lightHex: "343a40", darkHex: "e9ecef")
     
     package var secondaryTitle = Color(lightHex: "6c757d", darkHex: "ced4da")
     
     package var highlight = Color(lightHex: "246488", darkHex: "94CDF8")
     
-    package var separator: Color = Color(lightHex: "ced4da", darkHex: "6c757d")
+    package var separator: Color = Color(lightHex: "ced4da", darkHex: "6c757d").opacity(0.8)
     
     package var onError: Color = Color(lightHex: "8b575c", darkHex: "c98986")
     
-    package var onDisabled: Color = Color(lightHex: "33415c", darkHex: "7d8597")
-    
-    package var outline: Color = Color(lightHex: "33415c", darkHex: "7d8597")
+    package var onDisabled: Color = Color(lightHex: "33415c", darkHex: "7d8597").opacity(0.7)
+
+    package var outline: Color = Color(lightHex: "505050", darkHex: "7d8597").opacity(0.7)
 }

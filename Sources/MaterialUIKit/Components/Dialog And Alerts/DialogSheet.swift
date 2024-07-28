@@ -69,6 +69,7 @@ fileprivate struct DialogSheet: View {
                 hapticFeedback()
             } label: {
                 Image(systemName: "xmark")
+                    .fontWeightWithFallback(.medium)
                     .foregroundStyle(.materialUIPrimaryTitle)
             }
             .align(.leading)

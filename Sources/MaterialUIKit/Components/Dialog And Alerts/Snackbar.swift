@@ -106,7 +106,7 @@ fileprivate struct Snackbar: View {
             Text(message)
                 .font(MaterialUIKit.configuration.h4)
                 .fontWeightWithFallback(.medium)
-                .foregroundStyle(.materialUISecondaryTitle)
+                .foregroundStyle(.materialUIPrimaryTitle)
                 .align(.leading)
             
             if let actionButtonKey = actionButtonKey {
@@ -132,6 +132,7 @@ fileprivate struct Snackbar: View {
         .align(.bottom)
         .frame(width: UIScreen.main.bounds.width/1.1)
         .offset(y: animationFlag ? 0 : UIScreen.main.bounds.height)
+        .shadow(color: .black.opacity(0.15), radius: 40, x: 0, y: 0)
         .onChangeWithFallback(of: isPresented) { _ , _ in
             withMaterialAnimation {
                 animationFlag = isPresented

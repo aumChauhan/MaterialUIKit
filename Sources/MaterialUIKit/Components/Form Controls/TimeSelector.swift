@@ -58,15 +58,8 @@ fileprivate struct TimePicker: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
-                portraitDatePicker()
-            } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
-                landscapeDatePicker()
-            } else {
-                portraitDatePicker()
-            }
+            timePicker()
         }
-        .frame(width: UIScreen.main.bounds.width/1.3)
         .secondaryBackground()
         .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
@@ -80,7 +73,7 @@ fileprivate struct TimePicker: View {
                 isPresented.toggle()
             }
         } label: {
-            Text("Okay")
+            Text("Done")
                 .font(MaterialUIKit.configuration.h4)
                 .fontWeightWithFallback(.semibold)
         }
@@ -89,12 +82,12 @@ fileprivate struct TimePicker: View {
         .padding(.horizontal, 10)
     }
     
-    /// Returns the time picker view for portrait mode.
-    private func portraitDatePicker() -> some View {
+    /// Returns the time picker view.
+    private func timePicker() -> some View {
         VStack {
             Text("\(selection.formatted(date: .omitted, time: .shortened))")
                 .font(MaterialUIKit.configuration.h1)
-                .fontWeightWithFallback(.medium)
+                .fontWeightWithFallback(.semibold)
                 .foregroundStyle(.materialUIPrimaryTitle)
             
             Separator()
@@ -102,29 +95,22 @@ fileprivate struct TimePicker: View {
             DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
                 .datePickerStyle(.wheel)
                 .tint(.materialUIAccent)
+                .if(isLandscape()) { view in
+                    view
+                }
             
             dismissDatePicker()
         }
+        .frame(width: isLandscape() ? UIScreen.main.bounds.width/3 : UIScreen.main.bounds.width/1.3)
     }
     
-    /// Returns the time picker view for landscape mode.
-    private func landscapeDatePicker() -> some View {
-        VStack {
-            Text("\(selection.formatted(date: .omitted, time: .shortened))")
-                .font(MaterialUIKit.configuration.h1)
-                .fontWeightWithFallback(.medium)
-                .foregroundStyle(.materialUIPrimaryTitle)
-            
-            Separator()
-            
-            ScrollView {
-                DatePicker("", selection: $selection, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
-                    .tint(.materialUIAccent)
-            }
-            
-            dismissDatePicker()
-        }
-        .frame(height: UIScreen.main.bounds.height/1.3)
+    /// Determines whether the current device orientation is portrait.
+    private func isPortrait() -> Bool {
+        return horizontalSizeClass == .compact && verticalSizeClass == .regular
+    }
+    
+    /// Determines whether the current device orientation is landscape.
+    private func isLandscape() -> Bool {
+        return horizontalSizeClass == .compact && verticalSizeClass == .compact
     }
 }

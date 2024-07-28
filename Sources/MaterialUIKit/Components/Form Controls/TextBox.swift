@@ -94,7 +94,7 @@ public struct TextBox: View {
         }
         .background(background ?? .materialUISecondaryBackground)
         .cornerRadius(cornerRadius)
-        .stroke(background: textFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled, cornerRadius: cornerRadius)
+        .stroke(background: textFieldIsFocused ? .materialUIAccent : .materialUIOutline, cornerRadius: cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()

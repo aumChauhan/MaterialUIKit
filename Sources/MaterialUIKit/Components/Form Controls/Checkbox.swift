@@ -37,5 +37,6 @@ public struct Checkbox: View {
             .foregroundStyle(.materialUIPrimaryTitle)
             .labelsHidden()
             .toggleStyle(CheckboxStyle())
+            .hapticFeedbackOnChange(of: isOn)
     }
 }

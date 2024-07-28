@@ -39,7 +39,7 @@ public struct TabBar<Content>: View where Content: View {
         ZStack(alignment: .bottom) {
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
+                .ignoresSafeArea(edges: .bottom)
             
             TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
         }
@@ -167,4 +167,3 @@ fileprivate struct TabBarItemViewModifer: ViewModifier {
         }
     }
 }
-

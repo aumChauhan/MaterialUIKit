@@ -37,5 +37,6 @@ public struct Switch: View {
             .foregroundStyle(.materialUIPrimaryTitle)
             .labelsHidden()
             .toggleStyle(SwitchStyle())
+            .hapticFeedbackOnChange(of: isOn)
     }
 }

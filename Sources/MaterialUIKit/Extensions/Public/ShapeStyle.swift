@@ -38,11 +38,6 @@ public extension ShapeStyle where Self == Color {
         MaterialUIKit.configuration.colorScheme.tertiaryBackground
     }
     
-    /// The quaternary background color based on the current color scheme setting.
-    static var materialUIQuaternaryBackground: Color {
-        MaterialUIKit.configuration.colorScheme.quaternaryBackground
-    }
-    
     /// The accent title color based on the current color scheme setting.
     static var materialUIHighlight: Color {
         MaterialUIKit.configuration.colorScheme.highlight

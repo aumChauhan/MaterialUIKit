@@ -176,6 +176,7 @@ fileprivate struct Dialog: View {
                     } label: {
                         Text(secondaryActionKey)
                             .font(MaterialUIKit.configuration.h4)
+                            .fontWeightWithFallback(.semibold)
                     }
                     .tint(.materialUIAccent)
                     .align(.trailing)
@@ -192,9 +193,10 @@ fileprivate struct Dialog: View {
                 } label: {
                     Text(primaryActionKey)
                         .font(MaterialUIKit.configuration.h4)
+                        .fontWeightWithFallback(.semibold)
+                        .foregroundStyle(.materialUITonal)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 18)
-                        .foregroundStyle(.materialUITonal)
                         .background(.materialUIAccent)
                         .cornerRadius(.infinity)
                 }

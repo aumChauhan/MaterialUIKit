@@ -30,9 +30,6 @@ public protocol MUIKitColorScheme {
     /// The tertiary background color.
     var tertiaryBackground: Color { get set }
     
-    /// The quaternary background color.
-    var quaternaryBackground: Color { get set }
-    
     /// The color used for highlighting elements.
     var highlight: Color { get set }
     

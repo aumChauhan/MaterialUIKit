@@ -166,14 +166,13 @@ fileprivate struct ContainerHeader: View {
             }
             
             Text(title)
-                .font(MaterialUIKit.configuration.h2)
-                .fontWeightWithFallback(.semibold)
+                .font(MaterialUIKit.configuration.h3)
+                .fontWeightWithFallback(.medium)
             
             Spacer()
             
             toolbar.view
         }
-        .padding(.top, MaterialUIKit.configuration.verticalPadding)
         .foregroundStyle(.materialUIPrimaryTitle)
     }
 }
@@ -206,6 +205,7 @@ fileprivate struct TopAppBar<Content>: View where Content: View {
                 headerStyle: headerStyle,
                 showBackButton: showBackButton
             )
+            .padding(.top, 10)
             .padding(.horizontal, MaterialUIKit.configuration.contentPadding)
             
             content

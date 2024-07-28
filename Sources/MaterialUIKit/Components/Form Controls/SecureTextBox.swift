@@ -95,7 +95,7 @@ public struct SecureTextBox: View {
         }
         .background(background ?? .materialUISecondaryBackground)
         .cornerRadius(cornerRadius)
-        .stroke(background: secureFieldIsFocused ? .materialUIAccent : .materialUIOnDisabled, cornerRadius: cornerRadius)
+        .stroke(background: secureFieldIsFocused ? .materialUIAccent : .materialUIOutline, cornerRadius: cornerRadius)
         .focused($isFocused)
         .onTapGesture {
             isFocused.toggle()

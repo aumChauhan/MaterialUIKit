@@ -50,7 +50,7 @@ public struct SegmentedButton<Data, ID, Content>: View where Data: RandomAccessC
                 ZStack {
                     if item == selection {
                         RoundedRectangle(cornerRadius: .zero)
-                            .foregroundStyle(.materialUIHighlight.opacity(0.15))
+                            .foregroundStyle(.materialUIHighlight.opacity(0.2))
                             .matchedGeometryEffect(id: "selectedTabBackground", in: namespace)
                     }
                     

@@ -154,4 +154,25 @@ package extension View {
                 hapticFeedback()
             }
     }
+    
+    /// Conditionally applies a transformation to a view based on a given condition.
+    ///
+    /// - Parameters:
+    ///   - condition: A Boolean value that determines whether the transformation
+    ///     should be applied. If `true`, the content closure is executed; if `false`,
+    ///     the original view is returned unchanged.
+    ///   - content: A closure that defines the transformation to apply to the view
+    ///     if the condition is `true`. This closure takes the original view as a parameter
+    ///     and returns the modified or wrapped view.
+    ///
+    /// - Returns: The original view if the condition is `false`; otherwise, the result
+    ///   of the `content` closure.
+    @ViewBuilder
+    func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
+        if condition {
+            content(self)
+        } else {
+            self
+        }
+    }
 }

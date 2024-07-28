@@ -59,15 +59,8 @@ fileprivate struct DateSelector: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            if horizontalSizeClass == .compact && verticalSizeClass == .regular {
-                portraitDatePicker()
-            } else if horizontalSizeClass == .compact && verticalSizeClass == .compact {
-                landscapeDatePicker()
-            } else {
-                portraitDatePicker()
-            }
+            datePicker()
         }
-        .frame(width: UIScreen.main.bounds.width/1.3)
         .secondaryBackground()
         .scaleEffect(animationFlag ? 1 : 1.1)
         .modalBackdrop(isPresented: $isPresented, animationFlag: $animationFlag)
@@ -81,7 +74,7 @@ fileprivate struct DateSelector: View {
                 isPresented.toggle()
             }
         } label: {
-            Text("Okay")
+            Text("Done")
                 .font(MaterialUIKit.configuration.h4)
                 .fontWeightWithFallback(.semibold)
         }
@@ -90,42 +83,35 @@ fileprivate struct DateSelector: View {
         .padding(.horizontal, 10)
     }
     
-    /// Returns the date picker view for portrait mode.
-    private func portraitDatePicker() -> some View {
+    /// Returns the date picker.
+    private func datePicker() -> some View {
         VStack(alignment: .leading) {
             Text("\(selection.formattedMUIDate())")
                 .font(MaterialUIKit.configuration.h1)
-                .fontWeightWithFallback(.medium)
+                .fontWeightWithFallback(.semibold)
                 .foregroundStyle(.materialUIPrimaryTitle)
-
+            
             Separator()
             
             DatePicker("", selection: $selection, displayedComponents: .date)
                 .datePickerStyle(.graphical)
                 .tint(.materialUIAccent)
+                .if(isLandscape()) { view in
+                    ScrollView { view }
+                }
             
             dismissDatePicker()
         }
+        .frame(width: isLandscape() ? UIScreen.main.bounds.width/2 : UIScreen.main.bounds.width/1.3)
     }
     
-    /// Returns the date picker view for landscape mode.
-    private func landscapeDatePicker() -> some View {
-        VStack(alignment: .leading) {
-            Text("\(selection.formattedMUIDate())")
-                .font(MaterialUIKit.configuration.h1)
-                .fontWeightWithFallback(.medium)
-                .foregroundStyle(.materialUIPrimaryTitle)
-            
-            Separator()
-            
-            ScrollView {
-                DatePicker("", selection: $selection, displayedComponents: .date)
-                    .datePickerStyle(.graphical)
-                    .tint(.materialUIAccent)
-            }
-            
-            dismissDatePicker()
-        }
-        .frame(height: UIScreen.main.bounds.height/1.3)
+    /// Determines whether the current device orientation is portrait.
+    private func isPortrait() -> Bool {
+        return horizontalSizeClass == .compact && verticalSizeClass == .regular
+    }
+    
+    /// Determines whether the current device orientation is landscape.
+    private func isLandscape() -> Bool {
+        return horizontalSizeClass == .compact && verticalSizeClass == .compact
     }
 }
