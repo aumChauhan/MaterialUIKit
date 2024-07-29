@@ -6,7 +6,7 @@ SwiftUI components inspired by Material Design.
 
 ## Overview
 
-MaterialUIKit is a SwiftUI package offering a range of UI components inspired by Material Design. It includes components for dialogs and alerts, form controls, interactive elements, navigation structures, presentation and search. The package supports flexible configuration options to tailor the appearance and behavior of these components, facilitating the creation of material-inspired interfaces in SwiftUI applications.
+MaterialUIKit is a SwiftUI package offering a range of UI components inspired by Material Design. It includes dialogs, form controls, navigation, and more, with flexible configuration options for customizing component appearance and behavior.
 
 ## Requirements
 
