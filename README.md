@@ -1,33 +1,29 @@
-![MUILogo70x70](https://github.com/aumChauhan/MaterialUIKit/assets/83302656/cd2d537e-436b-4ca2-b5e6-0893894192e2)
+![MaterialUIKit@70px](https://github.com/user-attachments/assets/c6e6b9be-e61d-423d-82c4-1156dd14d068)
 
 # MaterialUIKit
 
-Material Design-inspired UI components for SwiftUI.
-
-**Sample Project:** https://github.com/aumChauhan/MaterialUIKit_SampleProject
+SwiftUI components inspired by Material Design.
 
 ## Overview
-                                            
-- MaterialUIKit is a SwiftUI package offering a set of user interface components inspired by Google's Material Design. These components are designed to provide a consistent and visually appealing look to your SwiftUI applications.
+
+MaterialUIKit is a SwiftUI package offering a range of UI components inspired by Material Design. It includes components for dialogs and alerts, form controls, interactive elements, navigation structures, presentation and search. The package supports flexible configuration options to tailor the appearance and behavior of these components, facilitating the creation of material-inspired interfaces in SwiftUI applications.
 
 ## Requirements
 
-- iOS 15.0 and above
+Compatible with iOS 15.0 and later.
 
 ## Documentation
 
-- For detailed documentation on each component, including usage examples and customization options, please refer to the [MaterialUIKit Wiki](https://github.com/aumChauhan/MaterialUIKit/wiki). Installation and getting started instructions are also available on the wiki.
+For comprehensive information on each component, including usage examples and customization options, visit the MaterialUIKit [documentation](https://swift-packages.gitbook.io/materialuikit/).
 
-- Each component's documentation page includes a preview of the component's appearance.
+## Demonstration
+
+For a practical demonstration and example usage of MaterialUIKit components, check out the [Sample Project](https://github.com/aumChauhan/MaterialUIKit_SampleProject).
 
 ## Communication and Contribution
 
-- **Reporting Bugs:** If you find a bug, please open an issue or submit a fix via a pull request.
-
-- **Feature Requests:** For feature requests, open an issue or submit an implementation via a pull request.
-
-- **Contributing:** Contributions are always welcome! Feel free to submit a pull request onto the master branch.
+For bug reports, feature requests, or contributions, please open an issue or submit a pull request. All contributions are welcome and appreciated.
 
 ## License
 
-- MaterialUIKit is released under the [MIT License](LICENSE)
+MaterialUIKit is released under the [MIT License](LICENSE).
