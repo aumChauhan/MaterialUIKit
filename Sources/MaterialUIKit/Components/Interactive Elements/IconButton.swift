@@ -78,9 +78,9 @@ public struct IconButton: View {
 
 extension View {
     
-    /// Sets the corner radius for the icon button.
+    /// Sets the frame size for the icon button.
     ///
-    /// - Parameter radius: The corner radius value to apply.
+    /// - Parameter frameSize: The frame size value to apply.
     public func iconButtonSize(_ frameSize: CGFloat) -> some View {
         self.environment(\.frameSize, frameSize)
     }

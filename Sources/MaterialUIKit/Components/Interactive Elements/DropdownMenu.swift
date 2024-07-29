@@ -95,6 +95,12 @@ public struct DropdownMenu<Label, Content> : View where Label : View, Content : 
                 showMenu.toggle()
             }
         }
+        .zIndex(.infinity)
+        .onChangeWithFallback(of: showMenu) { oldValue, newValue in
+            withMaterialAnimation {
+                showMenu.toggle()
+            }
+        }
     }
 }
 
@@ -127,7 +133,7 @@ fileprivate extension DropdownMenu {
     @ViewBuilder func menuOverlay() -> some View {
         GeometryReader { geo in
             if showMenu {
-                ZStack {
+                VStack {
                     // Uses scrollable frame with fixed height
                     if height > 190 {
                         ScrollView {

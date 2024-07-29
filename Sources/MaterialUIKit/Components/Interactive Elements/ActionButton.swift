@@ -87,7 +87,7 @@ extension View {
     
     /// Sets the corner radius for an action buttons.
     ///
-    /// - Parameter radius: The corner radius value to apply.
+    /// - Parameter cornerRadius: The corner radius value to apply.
     public func actionButtonCornerRadius(_ cornerRadius: CGFloat) -> some View {
         self.environment(\.cornerRadius, cornerRadius)
     }

@@ -112,10 +112,10 @@ extension View {
     
     /// Sets the corner radius for the text box.
     ///
-    /// - Parameter radius: The corner radius to be applied to the text box.
+    /// - Parameter cornerRadius: The corner radius to be applied to the text box.
     ///
     /// - Returns: A view modified to include the specified corner radius.
-    public func textBoxCornerRadius(_ radius: CGFloat) -> some View {
-        self.environment(\.cornerRadius, radius)
+    public func textBoxCornerRadius(_ cornerRadius: CGFloat) -> some View {
+        self.environment(\.cornerRadius, cornerRadius)
     }
 }

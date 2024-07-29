@@ -113,10 +113,10 @@ extension View {
     
     /// Sets the corner radius for the secure field.
     ///
-    /// - Parameter radius: The corner radius to be applied to the secure field.
+    /// - Parameter cornerRadius: The corner radius to be applied to the secure field.
     ///
     /// - Returns: A view modified to include the specified corner radius.
-    public func secureTextBoxCornerRadius(_ radius: CGFloat) -> some View {
-        self.environment(\.cornerRadius, radius)
+    public func secureTextBoxCornerRadius(_ cornerRadius: CGFloat) -> some View {
+        self.environment(\.cornerRadius, cornerRadius)
     }
 }
