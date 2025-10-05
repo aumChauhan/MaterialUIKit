@@ -42,10 +42,15 @@ public struct TabBar<Content>: View where Content: View {
         Group {
             if usesVerticalLayout {
                 VStack(spacing: .zero) {
-                    content
+                    ZStack(alignment: .bottom) {
+                        content
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                    
                     TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
                         .frame(maxWidth: .infinity)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ZStack(alignment: .bottom) {
                     content
