@@ -17,6 +17,7 @@ public struct TabBar<Content>: View where Content: View {
     // MARK: - PROPERTIES
     
     private let content: Content
+    private let useVStack: Bool
     
     @Binding private var selection: TabBarItem
     @State private var tabs: [TabBarItem] = []
@@ -28,20 +29,31 @@ public struct TabBar<Content>: View where Content: View {
     /// - Parameters:
     ///   - selection: Binding to the selected tab item.
     ///   - content: The main content of the view.
-    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
+    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content, useVStack: Bool = false) {
         self._selection = selection
         self.content = content()
+        self.useVStack = useVStack
     }
     
     // MARK: - View BODY
     
     public var body: some View {
-        ZStack(alignment: .bottom) {
-            content
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea(edges: .bottom)
-            
-            TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
+        Group {
+            if useVStack {
+                VStack(spacing: .zero) {
+                    content
+                    Spacer(minLength: 0)
+                    TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
+                        .frame(maxWidth: .infinity)
+                }
+            } else {
+                ZStack(alignment: .bottom) {
+                    content
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .ignoresSafeArea(edges: .bottom)
+
+                    TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
+            }
         }
         .ignoresSafeArea(.keyboard)
         .onPreferenceChange(TabBarPreferenceKey.self) { value in
