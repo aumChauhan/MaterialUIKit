@@ -17,7 +17,7 @@ public struct TabBar<Content>: View where Content: View {
     // MARK: - PROPERTIES
     
     private let content: Content
-    private let useVStack: Bool
+    private let usesVerticalLayout: Bool
     
     @Binding private var selection: TabBarItem
     @State private var tabs: [TabBarItem] = []
@@ -29,17 +29,17 @@ public struct TabBar<Content>: View where Content: View {
     /// - Parameters:
     ///   - selection: Binding to the selected tab item.
     ///   - content: The main content of the view.
-    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content, useVStack: Bool = false) {
+    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content, usesVerticalLayout: Bool = false) {
         self._selection = selection
         self.content = content()
-        self.useVStack = useVStack
+        self.usesVerticalLayout = usesVerticalLayout
     }
     
     // MARK: - View BODY
     
     public var body: some View {
         Group {
-            if useVStack {
+            if usesVerticalLayout {
                 VStack(spacing: .zero) {
                     content
                     Spacer(minLength: 0)
@@ -53,6 +53,7 @@ public struct TabBar<Content>: View where Content: View {
                         .ignoresSafeArea(edges: .bottom)
 
                     TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
+                }
             }
         }
         .ignoresSafeArea(.keyboard)
