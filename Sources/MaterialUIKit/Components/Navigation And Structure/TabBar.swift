@@ -29,7 +29,7 @@ public struct TabBar<Content>: View where Content: View {
     /// - Parameters:
     ///   - selection: Binding to the selected tab item.
     ///   - content: The main content of the view.
-    ///   - usesVerticalLayout: A Boolean value indicating whether to use a vertical layout for the tab bar. (The content must then use the whole screen height)
+    ///   - usesVerticalLayout: A Boolean value indicating whether to use a vertical layout for the tab bar.
     public init(selection: Binding<TabBarItem>, usesVerticalLayout: Bool = false, @ViewBuilder content: () -> Content) {
         self._selection = selection
         self.content = content()
@@ -48,9 +48,7 @@ public struct TabBar<Content>: View where Content: View {
                     }
                     
                     TabBarContainer(tabs: tabs, selection: $selection, localSelection: selection)
-                        .frame(maxWidth: .infinity)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 ZStack(alignment: .bottom) {
                     content
