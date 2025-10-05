@@ -29,7 +29,8 @@ public struct TabBar<Content>: View where Content: View {
     /// - Parameters:
     ///   - selection: Binding to the selected tab item.
     ///   - content: The main content of the view.
-    public init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content, usesVerticalLayout: Bool = false) {
+    ///   - usesVerticalLayout: A Boolean value indicating whether to use a vertical layout for the tab bar.
+    public init(selection: Binding<TabBarItem>, usesVerticalLayout: Bool = false, @ViewBuilder content: () -> Content) {
         self._selection = selection
         self.content = content()
         self.usesVerticalLayout = usesVerticalLayout
